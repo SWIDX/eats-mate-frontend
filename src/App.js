@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+const CLIENT_ID = "	c4a648b170fea0fbd26e61d052e9093b";
+const REDIRECT_URI =  "https://localhost:8080/auth/kakao";
+
+export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div>
+        <a href={KAKAO_AUTH_URL}>
+            <div 
+                className="kakao_btn"
+                >
+            </div>
         </a>
-      </header>
     </div>
   );
 }
