@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes} from 'react-router-dom';
+import KakaoRedirectHandler from './KakaoRedirectHandler';
+import login from './login';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div classname="App">
+      <Routes>
+      <Route exact path="/signin" element={login} />
+        <Route path="/oauth/callback/kakao" element={KakaoRedirectHandler} />
+      </Routes>
     </div>
   );
 }
