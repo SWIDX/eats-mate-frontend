@@ -1,6 +1,7 @@
 
 import React, { useEffect } from "react";
 import axios from 'axios';
+import styles from "./Login.module.css";
 
 
 const REST_API_KEY = "c4a648b170fea0fbd26e61d052e9093b";
@@ -33,9 +34,7 @@ function Login() {
       }, [])
     
     return (
-        <div className="kakao_btn">
-            <a href={KAKAO_AUTH_URL}>카카오로 로그인하기</a>
-        </div>
+        <div className={styles.kakao_btn} />
     );
 }
 
