@@ -16,18 +16,17 @@ function Login() {
         let grant_type = "authorization_code";
         let client_id = "c4a648b170fea0fbd26e61d052e9093b";
     
-        axios.post(`https://kauth.kakao.com/oauth/token?
-            grant_type=${grant_type}
-            &client_id=${client_id}
-            &redirect_uri=http://localhost:3000/user-service/auth/kakao
-            &code=${code}`,
-            {
+        axios.post("https://kauth.kakao.com/oauth/token"
+            + "?grant_type=" + grant_type
+            + "&client_id=" + client_id
+            + "&redirect_uri=" + REDIRECT_URI
+            + "&code=" + code, {
                 headers: {
                     'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'
                 }
             }).then((res) => {
           axios.post("http://localhost:8081/user-service/auth/kakao", {
-          access_token: res.access_token
+          access_token: res.data.access_token
         });
           console.log(res)
       })
