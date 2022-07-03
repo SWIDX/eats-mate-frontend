@@ -12,7 +12,7 @@ const KakaoRedirectHandler = () => {
     axios.post(`https://kauth.kakao.com/oauth/token?
         grant_type=${grant_type}
         &client_id=${client_id}
-        &redirect_uri=https://localhost:8080/auth/kakao
+        &redirect_uri=https://localhost:8081/user-service/auth/kakao
         &code=${code}`
         , {
     headers: {
