@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginButton from './LoginButton';
-import KakaoRedirectHandler from './KakaoRedirectHandler'
+import KakaoRedirectHandler from './KakaoRedirectHandler';
 
 function App() {
     return (
