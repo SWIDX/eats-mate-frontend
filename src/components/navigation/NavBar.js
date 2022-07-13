@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./NavBar.module.css"
 import LoginButton from "../login/LoginButton";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, Image } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector } from 'react-redux'
+
 
 function NavBar() {
+    const userinfo = useSelector((state) => state.userReducer.userinfo)
 
     return (
         <Navbar expand="lg" bg="light" variant="light" sticky="top" className={styles.navbar}>
@@ -16,7 +19,14 @@ function NavBar() {
                     <Nav.Link href="/mypage">마이페이지</Nav.Link>
                 </Nav>
                 <Nav>
-                    <LoginButton />
+                    {userinfo == null ? <LoginButton /> :
+                        <div className={styles.userprofile}>
+                            <Image
+                                src={userinfo.profileImageUrl}
+                                roundedCircle
+                            />
+                            <p><b>{userinfo.name}</b> 메이트님</p>
+                        </div>}
                 </Nav>
             </Container>
         </Navbar>
