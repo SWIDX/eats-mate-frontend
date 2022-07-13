@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import promiseMiddleware from 'redux-promise';
+import ReduxThunk from 'redux-thunk';
+import Reducer from './_reducers'; // index.js 작성 안해도 알아서 처리함
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
+
 root.render(
   //<React.StrictMode> // render 이중 호출 비활성화
+  <Provider
+    store={createStoreWithMiddleware(Reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+    )}
+  >
     <App />
+  </Provider>
   //</React.StrictMode>
 );
 
