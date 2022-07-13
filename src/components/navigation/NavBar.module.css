@@ -6,3 +6,18 @@
 .nav > a:nth-child(n) {
     margin: 0px 10px 0px;
 }
+
+.userprofile {
+    display: flex;
+    flex-direction: row;
+}
+
+.userprofile > img {
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px 0px;
+}
+
+.userprofile > p {
+    margin: auto;
+}
