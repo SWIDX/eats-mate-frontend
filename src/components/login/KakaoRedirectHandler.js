@@ -27,9 +27,14 @@ const KakaoRedirectHandler = () => {
                     headers: {'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'}
                 }
             );
-            const res = await axios.post("http://localhost:8081/user-service/auth/kakao", {
-                access_token: kakao_res.data.access_token
-            });
+            const res = await axios.post("http://localhost:8081/user-service/auth/kakao",
+                {
+                    access_token: kakao_res.data.access_token
+                },
+                {
+                    withCredentials: true // Set-Cookie 작동을 위해 필수
+                }
+            );
             dispatch(changeUserInfo(res.data))
             navigate("/");
         } catch(e) {
