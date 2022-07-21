@@ -1,7 +1,7 @@
 /* global kakao */
 
 import React, { useState, useEffect } from 'react';
-import "./MapPage.module.css";
+import styles from "./MapPage.module.css";
 
 const { kakao } = window;
 
@@ -133,7 +133,7 @@ function MapPage() {
 	return (
 		<div className="Map">
 
-			<div className="search">
+			<div className={styles.search}>
 				<select id="select" onChange={selectBoxChange}>
 					<option value="location">장소</option>
 					<option value="name">식당</option>
@@ -147,22 +147,22 @@ function MapPage() {
 		          onChange={onChange}
 		          onKeyPress={handleOnEnterKeyPress}
 		        ></input>
-				<img className="search_btn" alt="sesarch icon" onClick={() => handleOnKeyPress()} src="/img/search icon.png" />
+				<img className={styles.search_btn} alt="sesarch icon" onClick={() => handleOnKeyPress()} src="/img/search icon.png" />
 		    </div>
 
-			<div className="infobar"
+			<div className={styles.infobar}
 				id="infobar">
 					<button onClick={infobarBtn}>X</button>
-					<h2>식당명</h2>
+					<h5>식당명</h5>
 					<hr></hr>
-					<h4>주소</h4>
+					<h6>주소</h6>
 					<hr></hr>
-					<h4>영업시간</h4>
+					<h6>영업시간</h6>
 					<hr></hr>
-					<h4>전화번호</h4>
+					<h6>전화번호</h6>
 			</div>
 
-			<div className="category">
+			<div className={styles.category}>
 				<ul>
 					<li><button onClick={() => categoryBtn("전체")}>전체</button></li>
 					<li><button onClick={() => categoryBtn("한식")}>한식</button></li>
@@ -170,11 +170,11 @@ function MapPage() {
 					<li><button onClick={() => categoryBtn("일식")}>일식</button></li>
 					<li><button onClick={() => categoryBtn("양식")}>양식</button></li>
 					<li><button onClick={() => categoryBtn("기타")}>기타</button></li>
-					<li><img className="gps" alt="gps icon" onClick={() => gps()} src="/img/gps icon.jpg" /></li>
+					<li><img className={styles.gps} alt="gps icon" onClick={() => gps()} src="/img/gps icon.jpg" /></li>
 				</ul>
 			</div>
 
-			<div className="map"
+			<div className={styles.map}
 				id="map"
 				style={{
 					width: "100%",
