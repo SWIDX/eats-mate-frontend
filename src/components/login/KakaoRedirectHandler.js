@@ -27,13 +27,25 @@ const KakaoRedirectHandler = () => {
                     headers: {'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'}
                 }
             );
-            const res = await axios.post("http://localhost:8081/user-service/auth/kakao", {
-                access_token: kakao_res.data.access_token
-            });
+            const res = await axios.post("http://localhost:8081/user-service/auth/kakao",
+                {
+                    access_token: kakao_res.data.access_token
+                },
+                {
+                    withCredentials: true // Set-Cookie 작동을 위해 필수
+                }
+            );
             dispatch(changeUserInfo(res.data))
             navigate("/");
         } catch(e) {
             console.warn(e);
+            window.alert("오류가 발생했습니다. 다시 시도해주세요.");
+            const res = await axios.delete("http://localhost:8081/user-service/auth/logout",
+                {
+                    withCredentials: true // Set-Cookie 작동을 위해 필수
+                }
+            ); // 가독성 떨어져서 일부러 예외처리 안함. axios 모듈화 필요
+            navigate("/");
         }
     })();
 

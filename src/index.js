@@ -4,23 +4,30 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, compose } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-import Reducer from './_reducers'; // index.js 작성 안해도 알아서 처리함
+import persistedReducer from './_reducers'; // index.js 작성 안해도 알아서 처리함
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
+const store = createStore(persistedReducer, compose(
+    applyMiddleware(promiseMiddleware, ReduxThunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  )
+)
+
+const persistor = persistStore(store)
 
 root.render(
   //<React.StrictMode> // render 이중 호출 비활성화
   <Provider
-    store={createStoreWithMiddleware(Reducer,
-      window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__()
-    )}
+    store={store}
   >
-    <App />
+    <PersistGate persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>
   //</React.StrictMode>
 );

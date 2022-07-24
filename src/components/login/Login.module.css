@@ -6,3 +6,15 @@
     display: block;
     cursor: pointer;
 }
+
+.logout_btn {
+    color: #939393;
+    font-size: 13px;
+    margin: auto 25px;
+    margin-right: 0px;
+    cursor: pointer;
+}
+
+.logout_btn > svg {
+    margin-left: 6px;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import MainSearchBar from "../components/etc/MainSearchBar";
 import NavBar from "../components/navigation/NavBar"
 
 function MainPage () {
@@ -6,6 +7,7 @@ function MainPage () {
     return (
         <>
             <NavBar/>
+            <MainSearchBar/>
         </>
     );
 }
