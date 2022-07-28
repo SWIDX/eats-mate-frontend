@@ -61,3 +61,83 @@
   border: 1px solid #e97869;
   border-radius: 10px;
 }
+
+.card {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  margin-left: 50px;
+  z-index: 30;
+}
+
+.card > div {
+  width: 380px;
+  height: 1000px;
+  border: 1px solid #e97869;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.cardTop {
+  width: 380px;
+  height: 9%;
+  border-radius: 10px;
+}
+
+.cardName {
+  padding-top: 8%;
+  padding-left: 8%;
+  padding-bottom: 3%;
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  float: left;
+}
+.cardTag {
+  padding-top: 8.8%;
+  padding-left: 8%;
+  padding-bottom: 3%;
+  text-align: left;
+  font-size: medium;
+  font-weight: 400;
+  float: left;
+}
+
+.cardImg > img {
+  align-items: center;
+  margin-left: 1%;
+  width: 93px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cardMiddle {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 380px;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.cardMiddle > hr {
+  border: 1%;
+}
+
+.cardMiddle > div {
+  height: 33%;
+  background-color: antiquewhite;
+  text-align: left;
+  padding-left: 10%;
+  padding-top: 3%;
+  margin: 5%;
+}
+
+.cardMiddle > div > div {
+  text-align: left;
+  padding-top: 3%;
+}
+
+.cardBottom {
+  height: 500px;
+}
