@@ -1,13 +1,13 @@
 /* global kakao */
 
 import React, { useEffect, useState } from 'react';
-import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, Circle } from 'react-kakao-maps-sdk';
 import styles from './Map.module.css';
 
 const MapContainer = (props) => {
   const [state, setState] = useState({
     // 지도의 초기 위치
-    center: { lat: 37.566767891, lng: 126.978657934 },
+    center: { lat: 37.56076811229905, lng: 126.93694098263262 },//37.566767891, 126.978657934
     // 지도 위치 변경시 panto를 이용할지에 대해서 정의
     isPanto: true,
   });
@@ -19,12 +19,21 @@ const MapContainer = (props) => {
   };
 
   useEffect(() => {
+
     if (props.markerInformation.length > 0) {
       setState({
         center: {
           lat: props.markerInformation[0].lat,
           lng: props.markerInformation[0].lng,
         },
+      });
+    } else if (props.gpsInformation.lat !== 0) { // When the gps value changes
+      setState({
+        center: {
+          lat: props.gpsInformation.lat,
+          lng: props.gpsInformation.lng,
+        },
+        isPanto: true,
       });
     }
   }, [props]);
@@ -40,7 +49,29 @@ const MapContainer = (props) => {
           height: '100vh',
         }}
         level={2} // 지도의 확대 레벨
+        onCenterChanged={(map) => setState({
+          center: {
+            lat: map.getCenter().getLat(),
+            lng: map.getCenter().getLng(),
+          }
+        })}
       >
+
+      <Circle
+        // circle fpr express current location
+        center={{
+          lat: state.center.lat,
+          lng: state.center.lng,
+        }}
+        radius={4}
+        strokeWeight={2}
+        strokeColor={"red"}
+        strokeOpacity={1}
+        strokeStyle={"solid"}
+        fillColor={"red"}
+        fillOpacity={0.6}
+      />
+
         {props.markerInformation.length == 1 ? (
           <MapMarker
             position={{
