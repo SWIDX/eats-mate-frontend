@@ -1,38 +1,46 @@
 /* global kakao */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import MapContainer from '../components/map/MapContainer';
 import MapSearchBar from '../components/map/MapSearchBar';
 import CategoryBtn from '../components/map/CategoryBtn';
+import InformationCard from '../components/map/InformationCard';
+import ListCard from '../components/map/ListCard';
 
 import styles from './MapPage.module.css';
-import InformationCard from '../components/map/InformationCard';
 
 function MapPage() {
-  const [information, setInformation] = useState([]);
   const [clickInformation, setClickInformation] = useState();
+  const [listInformation, setListInformation] = useState();
 
-  const getLocInfo = (info) => {
-    setInformation(info);
-  };
   const getClickInfo = (info) => {
     setClickInformation(info);
+  };
+
+  const getListInfo = (info) => {
+    setListInformation(info);
   };
 
   return (
     <>
       <div>
-        <MapSearchBar propFunction={getLocInfo} />
+        <MapSearchBar propFunction={getListInfo} />
         <CategoryBtn />
+        {listInformation ? (
+          <ListCard
+            listInformation={listInformation}
+            propFunction={getClickInfo}
+          />
+        ) : null}
         {clickInformation ? (
           <InformationCard clickInformation={clickInformation} />
         ) : null}
       </div>
       <div className="styles.map">
         <MapContainer
-          markerInformation={information}
-          propFunction={getClickInfo}
+          markerInformation={listInformation}
+          clickedInformation={clickInformation}
         />
       </div>
     </>
