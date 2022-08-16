@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './Map.module.css';
 
@@ -7,6 +7,12 @@ const MapSearchBar = (props) => {
 
   const [selectvalue, setSelectValue] = useState('location');
   const [information, setInformation] = useState([]);
+
+  useEffect(() => {
+    if (information.length != 0) {
+      props.propFunction(information);
+    }
+  }, [information]);
 
   const selectBoxChange = (e) => {
     var value = e.target.value;
@@ -17,18 +23,20 @@ const MapSearchBar = (props) => {
     setInputText(e.target.value);
   };
 
-  const handleOnEnterKeyPress = (e) => {
+  const handleOnEnterKeyPress = async (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (selectvalue === 'location') {
+      if (selectvalue === 'all') {
         var place = inputText;
-      } else if (selectvalue === 'name') {
+      } else if (selectvalue === 'restaurant') {
         var restaurant = inputText;
         var url = 'http://localhost:8081/map-service/information/findByName/';
-        axios.get(url + restaurant).then((res) => {
-          setInformation(res.data);
-          props.propFunction(information);
+        const data = await axios.get(url + restaurant).then((res) => {
+          return res.data;
         });
+        if (data != undefined || data != []) {
+          setInformation(data);
+        }
       }
       //setInputText('');
     }
@@ -46,8 +54,12 @@ const MapSearchBar = (props) => {
   return (
     <div className={styles.search}>
       <select id="select" onChange={selectBoxChange}>
-        <option value="location">장소</option>
-        <option value="name">식당</option>
+        <option value="all">장소</option>
+        <option value="tourist_area">관광지</option>
+        <option value="cultural_facilities">문화시설</option>
+        <option value="festival">행사/공연/축제</option>
+        <option value="shopping">쇼핑</option>
+        <option value="restaurant">식당</option>
       </select>
       <input
         type="text"
