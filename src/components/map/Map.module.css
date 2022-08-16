@@ -15,6 +15,17 @@
   border-radius: 10px;
 }
 
+.search > select > option {
+  background-color: white;
+  color: black;
+  position: absolute;
+  padding: 2.5px;
+  border-radius: 6px;
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.3s ease-in;
+}
+
 .search > input {
   width: 500px;
   height: 50px;
@@ -62,12 +73,68 @@
   border-radius: 10px;
 }
 
+.list {
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  margin-left: 50px;
+  z-index: 30;
+  overflow: auto;
+}
+
+.list > div {
+  width: 380px;
+  height: 1000px;
+  border: 1px solid #e97869;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.result_name {
+  padding-top: 8%;
+  padding-left: 8%;
+  padding-bottom: 3%;
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  float: left;
+}
+
+.result_tag {
+  padding-top: 8.8%;
+  padding-left: 8%;
+  padding-bottom: 3%;
+  text-align: left;
+  font-size: medium;
+  font-weight: 400;
+  float: left;
+}
+
+.result {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  position: relative;
+  width: 380px;
+  border-radius: 10px;
+}
+
+.result > div {
+  height: 33%;
+  width: auto;
+  background-color: antiquewhite;
+  text-align: left;
+  margin: 5%;
+  cursor: pointer;
+}
+
 .card {
   position: absolute;
   top: 20px;
   left: 0px;
   margin-left: 50px;
   z-index: 30;
+  overflow: scroll;
 }
 
 .card > div {
@@ -103,9 +170,16 @@
   float: left;
 }
 
+.cardImg {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .cardImg > img {
   align-items: center;
   margin-left: 1%;
+  padding-right: 10px;
   width: 93px;
   border-radius: 10px;
   object-fit: cover;
