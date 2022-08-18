@@ -14,15 +14,18 @@ import styles from './MapPage.module.css';
 function MapPage() {
   const [clickInformation, setClickInformation] = useState();
   const [listInformation, setListInformation] = useState();
+  const [listCardOn, setListCardOn] = useState(false);
   const [gpsLoc, setGpsLoc] = useState({
     lat: 0,
     lng: 0,
   });
 
   const getClickInfo = (info) => {
+    setListCardOn(false);
     setClickInformation(info);
   };
   const getListInfo = (info) => {
+    setListCardOn(true);
     setListInformation(info);
   };
 
@@ -66,24 +69,25 @@ function MapPage() {
       <div>
         <NavBar />
         <MapSearchBar propFunction={getListInfo} />
-        <CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />
       </div>
+      {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
+
       <div className="styles.map">
+        {listInformation && listCardOn ? (
+          <ListCard
+            listInformation={listInformation}
+            propFunction={getClickInfo}
+          />
+        ) : null}
+        {clickInformation && !listCardOn ? (
+          <InformationCard clickInformation={clickInformation} />
+        ) : null}
         <MapContainer
           markerInformation={listInformation}
           clickedInformation={clickInformation}
           gpsInformation={gpsLoc}
           propFunction={getClickInfo}
         />
-        {clickInformation ? (
-          <InformationCard clickInformation={clickInformation} />
-        ) : null}
-        {listInformation ? (
-          <ListCard
-            listInformation={listInformation}
-            propFunction={getClickInfo}
-          />
-        ) : null}
       </div>
     </>
   );
