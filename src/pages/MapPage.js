@@ -29,6 +29,10 @@ function MapPage() {
     setListInformation(info);
   };
 
+  const getLocInfo = (info) => {
+    setInformation(info);
+  };
+
   const getGpsLoc = (info) => {
     setGpsLoc({
       lat: info.lat,

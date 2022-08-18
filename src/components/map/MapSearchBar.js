@@ -1,19 +1,18 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './Map.module.css';
 
 const MapSearchBar = (props) => {
   const [inputText, setInputText] = useState('');
-
-  const [selectvalue, setSelectValue] = useState('location');
+  const [selectvalue, setSelectValue] = useState('all');
   const [information, setInformation] = useState([]);
-
+  
   useEffect(() => {
     if (information.length != 0) {
       props.propFunction(information);
     }
   }, [information]);
-
   const selectBoxChange = (e) => {
     var value = e.target.value;
     setSelectValue(value);
@@ -22,6 +21,7 @@ const MapSearchBar = (props) => {
   const onChange = (e) => {
     setInputText(e.target.value);
   };
+
 
   const handleOnEnterKeyPress = async (e) => {
     if (e.key === 'Enter') {
@@ -39,17 +39,9 @@ const MapSearchBar = (props) => {
         }
       }
       //setInputText('');
+
     }
   }; // input Enter key press event function
-
-  const handleOnKeyPress = () => {
-    if (selectvalue === 'location') {
-      var place = inputText;
-    } else if (selectvalue === 'name') {
-      var restaurant = inputText;
-    }
-    //setInputText('');
-  }; // search btn key press event function
 
   return (
     <div className={styles.search}>
@@ -60,6 +52,7 @@ const MapSearchBar = (props) => {
         <option value="festival">행사/공연/축제</option>
         <option value="shopping">쇼핑</option>
         <option value="restaurant">식당</option>
+
       </select>
       <input
         type="text"
@@ -81,3 +74,4 @@ const MapSearchBar = (props) => {
 };
 
 export default MapSearchBar;
+

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { Map, MapMarker, Circle } from 'react-kakao-maps-sdk';
 import axios from 'axios';
-
 import styles from './Map.module.css';
 
 const MapContainer = (props) => {
@@ -78,6 +77,10 @@ const MapContainer = (props) => {
       });
     }
   }, [props.markerInformation]);
+  const clickInformation = (info) => {
+    props.propFunction(info);
+  };
+
 
   return (
     <>
@@ -96,6 +99,31 @@ const MapContainer = (props) => {
               return item.data;
             })
           : null}
+
+        onCenterChanged={(map) => setState({
+          center: {
+            lat: map.getCenter().getLat(),
+            lng: map.getCenter().getLng(),
+          }
+        })}
+      >
+
+      <Circle
+        // circle fpr express current location
+        center={{
+          lat: state.center.lat,
+          lng: state.center.lng,
+        }}
+        radius={4}
+        strokeWeight={2}
+        strokeColor={"red"}
+        strokeOpacity={1}
+        strokeStyle={"solid"}
+        fillColor={"red"}
+        fillOpacity={0.6}
+      />
+
+        
       </Map>
     </>
   );
