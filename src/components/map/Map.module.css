@@ -14,13 +14,12 @@ hr {
   font-size: 24px;
 }
 
-.cardTop .cardName span{
+.cardTop .cardName span {
   font-size: 16px;
   font-weight: normal;
   margin-left: 24px;
   color: #8c8c8c;
 }
-
 
 .search > select {
   width: 120px;
@@ -88,9 +87,16 @@ hr {
   left: 0px;
   margin-left: 50px;
   z-index: 30;
+  overflow-y: scroll;
+}
+
+.card::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 
 .card > div {
+  position: relative;
+  top: 80px;
   width: 380px;
   height: 1350px;
   border: 1px solid #e97869;
@@ -105,11 +111,6 @@ hr {
 }
 
 .cardName {
-  /*
-  padding-top: 8%;
-  padding-left: 8%;
-  padding-bottom: 3%;
-  */
   margin-left: 32px;
   margin-top: 40px;
   text-align: left;
@@ -118,14 +119,7 @@ hr {
   float: left;
 }
 
-
-
 .cardTag {
-  /*
-  padding-top: 8.8%;
-  padding-left: 8%;
-  padding-bottom: 3%;
-  */
   text-align: left;
   font-size: medium;
   font-weight: 400;
@@ -136,7 +130,7 @@ hr {
   border: 0;
   width: 100%;
   height: 8px;
-  background: #F7F7F7;
+  background: #f7f7f7;
 }
 
 .cardImg {
@@ -160,8 +154,6 @@ hr {
   padding: 28px 36px;
 }
 
-
-
 .cardMiddle .addressInfo {
   font-weight: bold;
   font-size: 16px;
@@ -182,7 +174,6 @@ hr {
 .cardMiddle .timeInfo > img {
   width: 24px;
 }
-
 
 .cardMiddle .callInfo {
   font-weight: bold;
@@ -247,7 +238,7 @@ hr {
   padding: 24px 56px;
 }
 
-.reviews span{
+.reviews span {
   font-size: 14px;
   font-weight: normal;
   margin-left: 10px;
@@ -271,7 +262,6 @@ hr {
   margin-bottom: 36px;
   font-weight: normal;
   color: #8c8c8c;
-
 }
 
 .totalReviews img {
@@ -293,7 +283,7 @@ hr {
   margin-right: 10px;
 }
 
-.DetailReviews{
+.DetailReviews {
   margin-bottom: 24px;
 }
 
@@ -318,22 +308,21 @@ hr {
   margin-bottom: 24px;
 }
 
-.DetailReviews .face img{
-width: 26px;
-margin-right: 8px;
+.DetailReviews .face img {
+  width: 26px;
+  margin-right: 8px;
 }
 
 .Buttons {
   display: flex;
   justify-content: space-between;
   padding: 0 44px;
-
 }
 
 .DetailButton {
   width: 240px;
   height: 50px;
-  background: #E97869;
+  background: #e97869;
   border: 0;
   box-shadow: 0px 5px 12px 4px rgba(181, 181, 181, 0.25);
   border-radius: 8px;
@@ -347,5 +336,11 @@ margin-right: 8px;
   margin: 0;
   margin-top: -10px;
   background-color: #fff;
-  background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointerx
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointerx;
 }

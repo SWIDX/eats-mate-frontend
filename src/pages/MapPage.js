@@ -34,19 +34,23 @@ function MapPage() {
 
   function getUserLoc() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        //alert(position.coords.latitude+""+position.coords.longitude);
-        setGpsLoc({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      }, function(error) {
-        console.error(error);
-      }, {
-        enableHighAccuracy: true,
-        maximumAge: 0,
-        timeout: Infinity
-      });
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          //alert(position.coords.latitude+""+position.coords.longitude);
+          setGpsLoc({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        function (error) {
+          console.error(error);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 0,
+          timeout: Infinity,
+        },
+      );
     } else {
       alert('GPS를 지원하지 않습니다');
     }
@@ -61,10 +65,7 @@ function MapPage() {
       <div>
         <NavBar />
         <MapSearchBar propFunction={getLocInfo} />
-        <CategoryBtn
-          propFunction={getGpsLoc}
-          gpsInformation={gpsLoc}
-        />
+        <CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />
         {clickInformation ? (
           <InformationCard clickInformation={clickInformation} />
         ) : null}

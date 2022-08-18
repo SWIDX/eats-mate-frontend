@@ -12,23 +12,24 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const store = createStore(persistedReducer, compose(
+const store = createStore(
+  persistedReducer,
+  compose(
     applyMiddleware(promiseMiddleware, ReduxThunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  )
-)
+    window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__(),
+  ),
+);
 
-const persistor = persistStore(store)
+const persistor = persistStore(store);
 
 root.render(
   //<React.StrictMode> // render 이중 호출 비활성화
-  <Provider
-    store={store}
-  >
+  <Provider store={store}>
     <PersistGate persistor={persistor}>
       <App />
     </PersistGate>
-  </Provider>
+  </Provider>,
   //</React.StrictMode>
 );
 
