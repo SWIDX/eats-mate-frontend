@@ -16,15 +16,16 @@ const MapContainer = (props) => {
   //센터 이동은 한번검색에 한번만.
   //첫번째 검색결과에만 해당되도록 bool 인수 할당
 
-  const [nearbyRest, setNearbyRest] = useState([]);
+  //const [nearbyRest, setNearbyRest] = useState([]);
   const [currentMarker, setCurrentMarker] = useState([]);
 
+  /*
   const onClickMarker = (info) => {
     const url = `http://localhost:8081/map-service/information/findByNearby?lat=${info.lat}&lng=${info.lng}&dist=1.0`;
     axios.get(url).then((res) => {
       setNearbyRest(res.data);
     });
-  };
+  };*/
 
   const markerConstructor = (info) => {
     const marker = (
@@ -85,10 +86,6 @@ const MapContainer = (props) => {
       });
     }
   }, [props.markerInformation]);
-
-  useEffect(() => {
-    console.log(props.clickedInformation);
-  }, [props.clickedInformation]);
 
   return (
     <>
