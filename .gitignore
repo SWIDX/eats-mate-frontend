@@ -24,3 +24,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# IntelliJ files
+.idea
+.idea/*.xml
+*.iml
+out
+gen
+build
+rebel.xml
