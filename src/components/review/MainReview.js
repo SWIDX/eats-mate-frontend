@@ -18,7 +18,8 @@ function MainReview(){
                         <p className={styles.gagename}>성수완당 본점</p>
                     </div>
                     <div className={styles.locationboxflex}>
-                    <div className={styles.rrrcontent}><img src="/img/rrr.png"></img>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
+                    <img className={styles.rrr} src="/img/rrr.png"></img>
+                    <div className={styles.rrrcontent}>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
                 </div>
              
                 </div>

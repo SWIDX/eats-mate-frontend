@@ -1,19 +1,50 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./Review.module.css";
+import ReviewModal from "./ReviewModal";
 import axios from "axios";
 
 
 function AllReview(){
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const showModal = () => {
+        setModalOpen(true);
+    }
+
+
     return(
         <>
             <div className={styles.responsivewrapper}>
                 <br></br><br></br>
                 <p className={styles.gagename}>총 3건의 리뷰가 있어요</p>
-                <hr/>
+                <hr className={styles.line}/>
 
                 <div className={styles.locationboxflex}>
-                    <div className={styles.ratebox}></div>
-                    <div className={styles.rrrcontent}><img src="/img/rrr.png"></img>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
+                    <div className={styles.ratebox}>
+                        <div className={styles.locationboxflex}>
+                            <img className={styles.rateimg} src="/img/besttextcolor.png"></img>
+                            <img className={styles.rateimg} src="/img/sosotext.png"></img>
+                            <img className={styles.rateimg} src="/img/badtext.png"></img>
+                        </div>
+                    </div>
+
+                    <div className={styles.locationboxflex}>
+                        <img className={styles.allreviewimg} src="/img/emonga.jpeg"></img>
+                        <img className={styles.allreviewimg} src="/img/emonga.jpeg"></img>
+                        <img className={styles.allreviewimg} src="/img/emonga.jpeg"></img>
+                    </div>
+
+                    <div className={styles.locationboxflex2}>
+                    <div className={styles.locationboxflex}>
+                    <img className={styles.rrr} src="/img/rrr.png"></img>
+                    <div className={styles.rrrcontent}>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
+                    </div>
+                    <div>
+                        <button onClick={showModal}><img src="/img/goreview.png"></img></button>
+                        {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
+                    </div>
+                    </div>
                 </div>
              
 
