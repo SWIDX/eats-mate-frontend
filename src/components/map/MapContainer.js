@@ -2,6 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { Map, MapMarker, Circle } from 'react-kakao-maps-sdk';
+import axios from 'axios';
+
 import styles from './Map.module.css';
 
 const MapContainer = (props) => {
@@ -14,18 +16,65 @@ const MapContainer = (props) => {
   //센터 이동은 한번검색에 한번만.
   //첫번째 검색결과에만 해당되도록 bool 인수 할당
 
-  const clickInformation = (info) => {
-    props.propFunction(info);
+  //const [nearbyRest, setNearbyRest] = useState([]);
+  const [currentMarker, setCurrentMarker] = useState([]);
+
+  /*
+  const onClickMarker = (info) => {
+    const url = `http://localhost:8081/map-service/information/findByNearby?lat=${info.lat}&lng=${info.lng}&dist=1.0`;
+    axios.get(url).then((res) => {
+      setNearbyRest(res.data);
+    });
+  };*/
+
+  const markerConstructor = (info) => {
+    const marker = (
+      <MapMarker
+        position={{
+          lat: info.lat,
+          lng: info.lng,
+        }}
+        image={{
+          src: '/img/pin_1x.png', // 마커이미지의 주소입니다
+          size: {
+            width: 64,
+            height: 69,
+          }, // 마커이미지의 크기입니다
+          options: {
+            offset: {
+              x: 27,
+              y: 69,
+            }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+          },
+        }}
+        clickable={true}
+        onClick={() => onClickMarker(info)}
+      >
+        <div>{info.name}</div>
+      </MapMarker>
+    );
+    return marker;
   };
 
   useEffect(() => {
-
-    if (props.markerInformation.length > 0) {
-      setState({
-        center: {
-          lat: props.markerInformation[0].lat,
-          lng: props.markerInformation[0].lng,
-        },
+    setCurrentMarker([]);
+    if (props.markerInformation !== undefined) {
+      props.markerInformation.map((item, idx) => {
+        if (idx == 0) {
+          setState({
+            center: {
+              lat: item.lat,
+              lng: item.lng,
+            },
+          });
+        }
+        setCurrentMarker((arr) => [
+          ...arr,
+          {
+            id: item.id,
+            data: markerConstructor(item),
+          },
+        ]);
       });
     } else if (props.gpsInformation.lat !== 0) { // When the gps value changes
       setState({
@@ -36,7 +85,7 @@ const MapContainer = (props) => {
         isPanto: true,
       });
     }
-  }, [props]);
+  }, [props.markerInformation]);
 
   return (
     <>
@@ -56,64 +105,11 @@ const MapContainer = (props) => {
           }
         })}
       >
-
-      <Circle
-        // circle fpr express current location
-        center={{
-          lat: state.center.lat,
-          lng: state.center.lng,
-        }}
-        radius={4}
-        strokeWeight={2}
-        strokeColor={"red"}
-        strokeOpacity={1}
-        strokeStyle={"solid"}
-        fillColor={"red"}
-        fillOpacity={0.6}
-      />
-
-        {props.markerInformation.length == 1 ? (
-          <MapMarker
-            position={{
-              lat: props.markerInformation[0].lat,
-              lng: props.markerInformation[0].lng,
-            }}
-            clickable={true}
-            onClick={() => clickInformation(props.markerInformation[0])}
-          >
-            <div>{props.markerInformation[0].name}</div>
-          </MapMarker>
-        ) : (
-          props.markerInformation.map((marker, index) => {
-            if (index == 0) {
-              return (
-                <MapMarker
-                  position={{ lat: marker.lat, lng: marker.lng }}
-                  clickable={true}
-                  onClick={() => clickInformation(marker)}
-                >
-                  <div
-                    style={{
-                      background_color: 'white',
-                      border: '1px solid #e97869',
-                      border_radius: '10px',
-                    }}
-                  >
-                    {marker.name}
-                  </div>
-                </MapMarker>
-              );
-            } else {
-              return (
-                <MapMarker
-                  position={{ lat: marker.lat, lng: marker.lng }}
-                  clickable={true}
-                  onClick={() => clickInformation(marker)}
-                />
-              );
-            }
-          })
-        )}
+        {currentMarker.length != 0
+          ? currentMarker.map((item) => {
+              return item.data;
+            })
+          : null}
       </Map>
     </>
   );
