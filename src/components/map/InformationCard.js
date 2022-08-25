@@ -1,7 +1,22 @@
 import React from 'react';
 import styles from './Map.module.css';
+import { useSelector } from 'react-redux';
 
 function InformationCard(props) {
+
+  const userinfo = useSelector((state) => state.userReducer.userinfo);
+
+  const clickLikeBtn = () => {
+    if(userinfo == null) {
+      alert("해당 식당을 찜하려면 먼저 로그인을 해주세요");
+      /*
+      https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fuser-service%252Fauth%252Fkakao%26through_account%3Dtrue%26client_id%3Dc4a648b170fea0fbd26e61d052e9093b
+      */
+    } else {
+      alert("해당 식당을 찜하였습니다.(회원 정보: "+userinfo.name+"메이트님)");
+    }
+  };
+
   return (
     <>
       <div className={styles.card}>
@@ -98,7 +113,7 @@ function InformationCard(props) {
             </div>
             <div className={styles.Buttons}>
               <button className={styles.DetailButton}>상세페이지 보기</button>
-              <button className={styles.heart}>
+              <button className={styles.heart} onClick={() => clickLikeBtn()} >
                 {' '}
                 <img src="/img/heart.png" />
               </button>
