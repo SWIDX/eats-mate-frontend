@@ -12,9 +12,11 @@ function MainSearchBar() {
                 </div>
 
                 <div className={styles.search_m}>
-                    <div className={styles.map}>
-                        <p>지도에서 찾기</p>
-                    </div>
+                    <a href="http://localhost:3000/map-service/main">
+                        <div className={styles.map}>
+                            <p>지도에서 찾기</p>
+                        </div>
+                    </a>
                 </div>
             </div>
     );
