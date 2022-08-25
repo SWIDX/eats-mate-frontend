@@ -22,8 +22,7 @@ function ReviewInfo(){
                         <div className={styles.locationboxflex}>
                                 <div className={styles.carouselsize}>
                                     <Swiper
-                                        slidesPerView={3}
-                                        spaceBetween={30}
+                                        slidesPerView={2.3}
                                         slidesPerGroup={3}
                                         loop={true}
                                         loopFillGroupWithBlank={true}
