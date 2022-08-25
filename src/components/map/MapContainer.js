@@ -1,15 +1,15 @@
 /* global kakao */
 
-import React, { useEffect, useState } from 'react';
-import { Map, MapMarker, Circle, Polyline } from 'react-kakao-maps-sdk';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Map, MapMarker, Circle, Polyline } from "react-kakao-maps-sdk";
+import axios from "axios";
 
-import styles from './Map.module.css';
+import styles from "./Map.module.css";
 
 const MapContainer = (props) => {
   const [state, setState] = useState({
     // 지도의 초기 위치
-    center: { lat: 37.56076811229905, lng: 126.93694098263262 },//37.566767891, 126.978657934
+    center: { lat: 37.56076811229905, lng: 126.93694098263262 }, //37.566767891, 126.978657934
     // 지도 위치 변경시 panto를 이용할지에 대해서 정의
     isPanto: true,
   });
@@ -18,7 +18,6 @@ const MapContainer = (props) => {
 
   //const [nearbyRest, setNearbyRest] = useState([]);
   const [currentMarker, setCurrentMarker] = useState([]);
-
   const [information, setInformation] = useState();
 
   const [courseInfoWindow, setCourseInfoWindow] = useState(false); // course info window
@@ -34,13 +33,9 @@ const MapContainer = (props) => {
     setDrawCourseLine(true);
   }, [props.courseLine]);
 
- const onClickMarker = (info) => {
+  const onClickMarker = (info) => {
     setCourseInfoWindow(true);
     setInformation(info);
-    /*const url = `http://localhost:8081/map-service/information/findByNearby?lat=${info.lat}&lng=${info.lng}&dist=1.0`;
-    axios.get(url).then((res) => {
-      setNearbyRest(res.data);
-    });*/
   };
 
   useEffect(() => {
@@ -50,7 +45,7 @@ const MapContainer = (props) => {
   const AddCourse = () => {
     props.propFunction(information);
     setCourseInfoWindow(false);
-  }
+  };
 
   /* course distance information
   const DistanceInfo = ({ distance }) => {
@@ -90,11 +85,11 @@ const MapContainer = (props) => {
     const marker = (
       <MapMarker
         position={{
-          lat: info.children[13].value, // info.lat
-          lng: info.children[12].value, // info.lng
+          lat: info.lat,
+          lng: info.lng,
         }}
         image={{
-          src: '/img/pin_1x.png', // 마커이미지의 주소입니다
+          src: "/img/pin_1x.png", // 마커이미지의 주소입니다
           size: {
             width: 64,
             height: 69,
@@ -108,8 +103,7 @@ const MapContainer = (props) => {
         }}
         clickable={true}
         onClick={() => onClickMarker(info)}
-      >
-      </MapMarker>
+      ></MapMarker>
     );
     return marker;
   };
@@ -121,8 +115,8 @@ const MapContainer = (props) => {
         if (idx == 0) {
           setState({
             center: {
-              lat: item.children[13].value, // item.lat
-              lng: item.children[12].value, // item.lng
+              lat: item.lat,
+              lng: item.lng,
             },
           });
         }
@@ -134,7 +128,8 @@ const MapContainer = (props) => {
           },
         ]);
       });
-    } else if (props.gpsInformation.lat !== 0) { // When the gps value changes
+    } else if (props.gpsInformation.lat !== 0) {
+      // When the gps value changes
       setState({
         center: {
           lat: props.gpsInformation.lat,
@@ -152,16 +147,18 @@ const MapContainer = (props) => {
         isPanto={state.isPanto}
         style={{
           // 지도의 크기
-          width: '100%',
-          height: '100vh',
+          width: "100%",
+          height: "100vh",
         }}
         level={2} // 지도의 확대 레벨
-        onCenterChanged={(map) => setState({
-          center: {
-            lat: map.getCenter().getLat(),
-            lng: map.getCenter().getLng(),
-          }
-        })}
+        onCenterChanged={(map) =>
+          setState({
+            center: {
+              lat: map.getCenter().getLat(),
+              lng: map.getCenter().getLng(),
+            },
+          })
+        }
       >
         {currentMarker.length != 0
           ? currentMarker.map((item) => {
@@ -183,36 +180,36 @@ const MapContainer = (props) => {
               }}
               onClick={() => setCourseInfoWindow(false)}
             />
-            <div className={styles.infoWindowTitle}>{information.children[19].value}</div>
-            <div className={styles.infoWindowAddress}>{information.children[0].value}</div>
-            <div><img
-              alt="add course btn"
-              src="/img/addCourseBtn.png"
-              style={{
-                position: "absolute",
-                right: "30px",
-                top: "120px",
-              }}
-              onClick={() => AddCourse()}
-            /></div>
-
+            <div className={styles.infoWindowTitle}>
+              {information.children[19].value}
+            </div>
+            <div className={styles.infoWindowAddress}>
+              {information.children[0].value}
+            </div>
+            <div>
+              <img
+                alt="add course btn"
+                src="/img/addCourseBtn.png"
+                style={{
+                  position: "absolute",
+                  right: "30px",
+                  top: "120px",
+                }}
+                onClick={() => AddCourse()}
+              />
+            </div>
           </div>
         )}
 
         {drawCourseLine && (
           <Polyline
-          path=
-            {course.map((info) => (
-              { lat: info.lat, lng: info.lng }
-            ))}
-            
-          strokeWeight={3} // 선의 두께 입니다
-          strokeColor={"#e97869"} // 선의 색깔입니다
-          strokeOpacity={1} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-          strokeStyle={"solid"} // 선의 스타일입니다
+            path={course.map((info) => ({ lat: info.lat, lng: info.lng }))}
+            strokeWeight={3} // 선의 두께 입니다
+            strokeColor={"#e97869"} // 선의 색깔입니다
+            strokeOpacity={1} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle={"solid"} // 선의 스타일입니다
           />
         )}
-
       </Map>
     </>
   );
