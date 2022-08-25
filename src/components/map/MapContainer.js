@@ -1,7 +1,7 @@
 /* global kakao */
 
 import React, { useEffect, useState } from 'react';
-import { Map, MapMarker, Circle } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, Circle, Polyline } from 'react-kakao-maps-sdk';
 import axios from 'axios';
 
 import styles from './Map.module.css';
@@ -19,20 +19,79 @@ const MapContainer = (props) => {
   //const [nearbyRest, setNearbyRest] = useState([]);
   const [currentMarker, setCurrentMarker] = useState([]);
 
-  /*
-  const onClickMarker = (info) => {
-    const url = `http://localhost:8081/map-service/information/findByNearby?lat=${info.lat}&lng=${info.lng}&dist=1.0`;
+  const [information, setInformation] = useState();
+
+  const [courseInfoWindow, setCourseInfoWindow] = useState(false); // course info window
+
+  const [course, setCourse] = useState([]); // 사용자 맞춤 코스로 저장될 정보
+  const [drawCourseLine, setDrawCourseLine] = useState(false);
+  const [distance, setDistance] = useState();
+
+  useEffect(() => {
+    setDrawCourseLine(false);
+    setCourse([]); // to redraw course with new point data
+    setCourse(props.courseLine);
+    setDrawCourseLine(true);
+  }, [props.courseLine]);
+
+ const onClickMarker = (info) => {
+    setCourseInfoWindow(true);
+    setInformation(info);
+    /*const url = `http://localhost:8081/map-service/information/findByNearby?lat=${info.lat}&lng=${info.lng}&dist=1.0`;
     axios.get(url).then((res) => {
       setNearbyRest(res.data);
-    });
-  };*/
+    });*/
+  };
+
+  useEffect(() => {
+    //alert(courseInfoWindow);
+  }, [courseInfoWindow]);
+
+  const AddCourse = () => {
+    props.propFunction(information);
+    setCourseInfoWindow(false);
+  }
+
+  /* course distance information
+  const DistanceInfo = ({ distance }) => {
+    const walkkTime = (distance / 67) | 0
+    const bycicleTime = (distance / 227) | 0
+
+    return (
+      <ul className="dotOverlay distanceInfo">
+        <li>
+          <span className="label">총거리</span>{" "}
+          <span className="number">{distance}</span>m
+        </li>
+        <li>
+          <span className="label">도보</span>{" "}
+          {walkkTime > 60 && (
+            <>
+              <span className="number">{Math.floor(walkkTime / 60)}</span> 시간{" "}
+            </>
+          )}
+          <span className="number">{walkkTime % 60}</span> 분
+        </li>
+        <li>
+          <span className="label">자전거</span>{" "}
+          {bycicleTime > 60 && (
+            <>
+              <span className="number">{Math.floor(bycicleTime / 60)}</span>{" "}
+              시간{" "}
+            </>
+          )}
+          <span className="number">{bycicleTime % 60}</span> 분
+        </li>
+      </ul>
+    )
+  } */
 
   const markerConstructor = (info) => {
     const marker = (
       <MapMarker
         position={{
-          lat: info.lat,
-          lng: info.lng,
+          lat: info.children[13].value, // info.lat
+          lng: info.children[12].value, // info.lng
         }}
         image={{
           src: '/img/pin_1x.png', // 마커이미지의 주소입니다
@@ -50,7 +109,6 @@ const MapContainer = (props) => {
         clickable={true}
         onClick={() => onClickMarker(info)}
       >
-        <div>{info.name}</div>
       </MapMarker>
     );
     return marker;
@@ -63,8 +121,8 @@ const MapContainer = (props) => {
         if (idx == 0) {
           setState({
             center: {
-              lat: item.lat,
-              lng: item.lng,
+              lat: item.children[13].value, // item.lat
+              lng: item.children[12].value, // item.lng
             },
           });
         }
@@ -110,6 +168,51 @@ const MapContainer = (props) => {
               return item.data;
             })
           : null}
+
+        {courseInfoWindow && (
+          <div className={styles.infoWindow}>
+            <img
+              alt="close btn"
+              width="35"
+              height="35"
+              src="/img/closeBtn.png"
+              style={{
+                position: "absolute",
+                right: "20px",
+                top: "20px",
+              }}
+              onClick={() => setCourseInfoWindow(false)}
+            />
+            <div className={styles.infoWindowTitle}>{information.children[19].value}</div>
+            <div className={styles.infoWindowAddress}>{information.children[0].value}</div>
+            <div><img
+              alt="add course btn"
+              src="/img/addCourseBtn.png"
+              style={{
+                position: "absolute",
+                right: "30px",
+                top: "120px",
+              }}
+              onClick={() => AddCourse()}
+            /></div>
+
+          </div>
+        )}
+
+        {drawCourseLine && (
+          <Polyline
+          path=
+            {course.map((info) => (
+              { lat: info.lat, lng: info.lng }
+            ))}
+            
+          strokeWeight={3} // 선의 두께 입니다
+          strokeColor={"#e97869"} // 선의 색깔입니다
+          strokeOpacity={1} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+          strokeStyle={"solid"} // 선의 스타일입니다
+          />
+        )}
+
       </Map>
     </>
   );
