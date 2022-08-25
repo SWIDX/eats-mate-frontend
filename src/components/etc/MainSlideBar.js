@@ -2,12 +2,11 @@ import React from 'react';
 import styles from "./MainSlideBar.module.css";
 import leftBtn from "./icons/slide left.png";
 import rightBtn from "./icons/slide right.png";
-import slideBtn from "./icons/slide btn.png";
 
 function MainSlideBar() {
 
     function imgClick() {
-        alert("이미지 클릭 이벤트 함수 실행");
+        alert("소개 페이지 연결");
     } // img click event function
 
     function leftBtnClick() {
@@ -18,24 +17,26 @@ function MainSlideBar() {
         alert("오른쪽 버튼 클릭 이벤트 함수 실행");
     } // right button click event function
 
-    function listBtnClick() {
-        alert("리스트 버튼 클릭 이벤트 함수 실행");
-    } // list button click event function
-
     return (
-        <div className="MainSlideBar">
-            <img className={styles.image} alt="slide img" onClick={() => imgClick()} src="/img/slide img.png" />
+        <div className={styles.list}>
+            <input type="radio" name="slide" id="slide1" />
+            <input type="radio" name="slide" id="slide2" checked />
+            <input type="radio" name="slide" id="slide3" />
+            <input type="radio" name="slide" id="slide4"/ >
+            <ul id="imgholder">
+                <li><img className={styles.image1} alt="slide img"  onClick={() => imgClick()}  src="/img/slideImg1.png" /></li>
+                <li><img className={styles.image2} alt="slide img" onClick={() => imgClick()}  src="/img/slideImg2.png" /></li>
+                <li><img className={styles.image3} alt="slide img" onClick={() => imgClick()}  src="/img/slideImg3.png" /></li>
+            </ul>
             <img className={styles.leftBtn} alt="slide left" onClick={() => leftBtnClick()} src={leftBtn} />
             <img className={styles.rightBtn} alt="slide right" onClick={() => rightBtnClick()} src={rightBtn} />
-            <img className={styles.slideBtn} alt="slide slide" onClick={() => rightBtnClick()} src={slideBtn} />
-            <div className={styles.listBtn}>
-				<ul>
-					<li><button onClick={() => listBtnClick()}>전체</button></li>
-					<li><button onClick={() => listBtnClick()}>한식</button></li>
-					<li><button onClick={() => listBtnClick()}>중식</button></li>
-					<li><button onClick={() => listBtnClick()}>일식</button></li>
-				</ul>
-			</div>
+
+            <div className={styles.bullets}>
+                <label for="slide1">&nbsp;</label>
+                <label for="slide2">&nbsp;</label>
+                <label for="slide3">&nbsp;</label>
+                <label for="slide4">&nbsp;</label>
+            </div>
         </div>
     );
 
