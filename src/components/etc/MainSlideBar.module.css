@@ -1,46 +1,128 @@
-.image {
-    position: absolute;
-    top: 100px;
-    left: 150px;
-    width: 80%;
-    height: 500px;
-    border-radius: 10px;
-}
-
 .leftBtn {
     position: absolute;
     top: 300px;
     left: 100px;
     width: 100px;
     height: 100px;
+    z-index: 20;
 }
 
 .rightBtn {
     position: absolute;
     top: 300px;
-    left: 1350px;
+    left: 1325px;
     width: 100px;
     height: 100px;
+    z-index: 20;
 }
 
-.listBtn {
-	position: absolute;
-	top: 700px;
+.list > input[type=radio] {
+    display: none;
+}
+
+.bullets {
+    position: absolute;
+	top: 640px;
 	left: 700px;
 	width: 500px;
 	height: 100px;
 }
 
-.listBtn > ul li {
-	list-style-type: none;
-	float: left;
+.bullets label {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #8F7BF7;
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+    cursor: pointer;
 }
 
-.listBtn > ul li > button {
-	width: 50px;
-	height: 50px;
-	margin-right: 10px;
-	background-color: white;
-	border: 1px solid #8F7BF7;
-	border-radius: 10px;
+.list > input[type=radio]:nth-child(1):checked~.bullets > label:nth-child(1) {
+    background-color: #8F7BF7;
 }
+
+.list > input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2){
+    background-color: #8F7BF7;
+}
+.list > input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
+    background-color: #8F7BF7;
+}
+.list > input[type=radio]:nth-child(4):checked~.bullets>label:nth-child(4){
+    background-color: #8F7BF7;
+}
+
+.list ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.image1 {
+    transition-delay: 1s;
+    padding: 0;
+    margin: 0;
+
+    position: absolute;
+    top: 100px;
+    left: -1150px;
+    width: 80%;
+    height: 500px;
+    border-radius: 10px;
+    z-index: 10;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+
+.image2 {
+    transition-delay: 1s; /* 새 슬라이드가 이동해 오는 동안 이전 슬라이드 이미지가 배경이 보이도록 지연 */
+    padding: 0;
+    margin: 0;
+
+    position: absolute;
+    top: 100px;
+    left: 150px;
+    width: 80%;
+    height: 500px;
+    border-radius: 10px;
+    z-index: 10;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+
+.image3 {
+    transition-delay: 1s;
+    padding: 0;
+    margin: 0;
+
+    position: absolute;
+    top: 100px;
+    left: 1450px;
+    width: 80%;
+    height: 500px;
+    border-radius: 10px;
+    z-index: 10;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+}
+
+/* slide move animation effect */
+
+.list input[type=radio]:nth-child(1):checked~ul>li:nth-child(1){
+    left: 150px;
+    transition: 0.5s;
+    z-index:15;
+}
+.list input[type=radio]:nth-child(2):checked~ul>li:nth-child(2){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+.list input[type=radio]:nth-child(3):checked~ul>li:nth-child(3){
+    left: 150px;
+    transition: 0.5s;
+    z-index:15;
+}
+/*.list input[type=radio]:nth-child(4):checked~ul>li:nth-child(4){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}*/
