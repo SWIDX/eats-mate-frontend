@@ -1,10 +1,13 @@
-
+.banner_menu {
+    position: absolute;
+    left: 150px;
+    top: 600px;
+}
 
 .banner_menu > p {
     position: absolute;
-    width: 387px;
+    width: 500px;
     height: 41px;
-    left: 363px;
     top: 120px;
 
     font-family: 'Noto Sans KR';
@@ -21,7 +24,6 @@
     position: absolute;
     width: 582px;
     height: 102px;
-    left: 363px;
     top: 222px;
 
     background: #FFFFFF;
@@ -30,7 +32,7 @@
 }
 
 .searchbar {
-    width: 500px;
+    width: 550px;
     height: 102px;
     border: none;
     font-family: 'Noto Sans KR';
@@ -47,7 +49,10 @@
     background-size: 54px;
     background-repeat: no-repeat;
 
-    padding: 5px 5px;
+    padding: 10px;
+
+    border-radius: 10px;
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);*/
 
 }
 .searchbar:focus {
@@ -68,9 +73,9 @@
 
 .map{
     position: absolute;
-    width: 582px;
+    width: 550px;
     height: 102px;
-    left: 975px;
+    left: 700px;
     top: 222px;
 
     background: #FFFFFF;
@@ -84,12 +89,15 @@
     background-size: 54px;
     background-repeat: no-repeat;
 
-    padding: 5px 5px;
+    padding: 10px;
+
+    border-radius: 10px;
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);*/
 
 }
 
 
-.map > p{
+.map > p {
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
