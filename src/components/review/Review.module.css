@@ -62,6 +62,7 @@
 }
 
 .gagerightsquarebox {
+  padding:10px;
   margin-top: 50px;
   width: 378px;
   height: 473px;
@@ -117,6 +118,12 @@
 .carouselsize2 {
   width: 400px;
   height: 149px;
+}
+
+.carouselsize3 {
+  margin-top:-30px;
+  width: 768px;
+  height: 116px;
 }
 
 
@@ -545,4 +552,27 @@ textarea::placeholder {
 
 .detail_map {
   margin-top: 1%;
+}
+
+
+.modalbutton{
+  margin-top:-15px;
+  border:0;
+  outline:0;
+  background-color:transparent;
+}
+
+.modalbutton2{
+  margin-top:-15px;
+  margin-left:-70px;
+  border:0;
+  outline:0;
+  background-color:transparent;
+}
+
+.one{
+  bottom:-10px;
+  width:22px;
+  height: 22px;
+  z-index:-1;
 }

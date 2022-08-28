@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './Review.module.css';
+import ReviewModal from "./ReviewModal";
 
 function MainReview(){
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const showModal = () => {
+        setModalOpen(true);
+    }
+
     return(
         <>
             <div className={styles.responsivewrapper}>
@@ -13,15 +21,20 @@ function MainReview(){
 
 
                 <div className={styles.locationboxflex}>
-                <div className={styles.locationboxflex2}>
-                    <div className={styles.box1}>
-                        <p className={styles.gagename}>성수완당 본점</p>
+                    <div className={styles.locationboxflex2}>
+                        <div className={styles.box1}>
+                            <p className={styles.gagename}>성수완당 본점</p>
+                        </div>
+                        <div className={styles.locationboxflex}>
+                        <img className={styles.rrr} src="/img/rrr.png"></img>
+                        <div className={styles.locationboxflex2}>
+                        <div className={styles.rrrcontent}>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
+                        <div>
+                        <button className={styles.modalbutton2} onClick={showModal}><img src="/img/goreview.png"></img></button>
+                        {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
+                        </div>
                     </div>
-                    <div className={styles.locationboxflex}>
-                    <img className={styles.rrr} src="/img/rrr.png"></img>
-                    <div className={styles.rrrcontent}>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
-                </div>
-             
+                    </div>
                 </div>
              
             

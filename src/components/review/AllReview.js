@@ -61,7 +61,7 @@ function AllReview(){
                     <div className={styles.rrrcontent}>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
                     </div>
                     <div>
-                        <button onClick={showModal}><img src="/img/goreview.png"></img></button>
+                        <button className={styles.modalbutton} onClick={showModal}><img src="/img/goreview.png"></img></button>
                         {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
                     </div>
                     </div>
