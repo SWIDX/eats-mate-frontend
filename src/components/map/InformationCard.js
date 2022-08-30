@@ -1,33 +1,30 @@
-import React from 'react';
-import styles from './Map.module.css';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import styles from "./Map.module.css";
 
 function InformationCard(props) {
-
-  const userinfo = useSelector((state) => state.userReducer.userinfo);
-
-  const clickLikeBtn = () => {
-    if(userinfo == null) {
-      alert("해당 식당을 찜하려면 먼저 로그인을 해주세요");
-      /*
-      https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fuser-service%252Fauth%252Fkakao%26through_account%3Dtrue%26client_id%3Dc4a648b170fea0fbd26e61d052e9093b
-      */
-    } else {
-      alert("해당 식당을 찜하였습니다.(회원 정보: "+userinfo.name+"메이트님)");
-    }
-  };
+  const { onClose } = props;
 
   return (
     <>
+      <div className={styles.exitbutton}>
+        <button
+          onClick={() => {
+            onClose(false);
+          }}
+        >
+          X
+        </button>
+      </div>
       <div className={styles.card}>
         <div id="search" name="search">
           <div className={styles.cardTop}>
             <div className={styles.cardName}>
-              {props.clickInformation.name}{' '}
-              <span>{props.clickInformation.gubun}</span>{' '}
+              {props.clickInformation.name}{" "}
+              <span>{props.clickInformation.gubun}</span>{" "}
             </div>
             {/* <div className={styles.cardTag}>광진구</div>  */}
           </div>
+
           <hr />
           <div className={styles.cardImg}>
             <img src="/img/emonga.jpeg" alt="first pic" />
@@ -37,7 +34,7 @@ function InformationCard(props) {
           <div className={styles.divSections}></div>
           <div className={styles.cardMiddle}>
             <div className={styles.addressInfo}>
-              {' '}
+              {" "}
               <img src="/img/address.png" /> 주소
               <div className={styles.addressDetail}>
                 {props.clickInformation.address}
@@ -45,7 +42,7 @@ function InformationCard(props) {
             </div>
             <hr />
             <div className={styles.timeInfo}>
-              {' '}
+              {" "}
               <img src="/img/time.png" /> 영업시간
               <div className={styles.timeDetail}>
                 {props.clickInformation.usage_of_week_and_time}
@@ -53,14 +50,15 @@ function InformationCard(props) {
             </div>
             <hr />
             <div className={styles.callInfo}>
-              {' '}
+              {" "}
               <img src="/img/call.png" /> 전화번호
               <div className={styles.callDetail}>
-                {' '}
+                {" "}
                 {props.clickInformation.cntct}
               </div>
             </div>
           </div>
+
           <div className={styles.divSections}></div>
           <div className={styles.cardBottom}>
             <div className={styles.reviews}>
@@ -113,8 +111,8 @@ function InformationCard(props) {
             </div>
             <div className={styles.Buttons}>
               <button className={styles.DetailButton}>상세페이지 보기</button>
-              <button className={styles.heart} onClick={() => clickLikeBtn()} >
-                {' '}
+              <button className={styles.heart}>
+                {" "}
                 <img src="/img/heart.png" />
               </button>
             </div>
