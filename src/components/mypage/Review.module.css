@@ -1,0 +1,106 @@
+.container {
+    position: relative; /* for floating effect */
+    display: flex;
+    padding: 32px 50px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.reviewInfo {
+    margin-right: 60px;
+}
+
+.title {
+    display: flex;
+    margin-bottom: 13px;
+}
+
+.placeName {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.04em;
+    color: #000000;
+}
+
+.category {
+    margin: auto auto auto 16px;
+    font-size: 16px;
+    letter-spacing: -0.04em;
+    color: #8C8C8C;
+}
+
+.content {
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    color: #000000;
+}
+
+.meta {
+    display: flex;
+    margin-top: 24px;
+}
+
+.rate {
+    display: flex;
+}
+
+.rateBorder {
+    margin: auto 12px auto 12px;
+    width: 1px;
+    height: 9px;
+    background-color: #DBDBDB;
+}
+
+.rateText {
+    margin: auto 0px auto 12px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    color: #8E8E8E;
+}
+
+.createdBy {
+    margin: auto auto auto 2px;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    color: #8C8C8C;
+}
+
+.others {
+    display: flex;
+    margin: 0px 0px 0px auto;
+    flex-direction: column;
+}
+
+.reviewMenu {
+    display: flex;
+    cursor: pointer;
+}
+.reviewMenu > svg {
+    margin: auto 0px auto auto;
+}
+
+.reviewLike {
+    display: flex;
+    margin: auto 0px 0px auto;
+}
+.reviewLike > svg {
+    margin: auto auto;
+}
+
+.subMenu {
+    position: absolute; /* for floating effect */
+    top: 30px; /* for floating effect */
+    right: -90px; /* for floating effect */
+    z-index: 999; /* for floating effect */
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 0px 16px 16px 16px;
+}
+
+.deleteBtn {
+    padding: 20px 26px 20px 26px;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    cursor: pointer;
+}

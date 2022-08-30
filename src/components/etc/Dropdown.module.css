@@ -1,0 +1,42 @@
+.container {
+    position: relative; /* for floating effect */
+    padding: 2px 20px;
+    margin: auto 30px auto auto;
+    display: flex;
+    cursor: pointer;
+}
+
+.selection {
+    display: flex;
+    margin: auto auto;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    color: #000000;
+}
+
+.arrow {
+    margin: auto auto auto 16px;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    position: absolute; /* for floating effect */
+    top: 45px; /* for floating effect */
+    left: -10px;
+    z-index: 999; /* for floating effect */
+    background-color: #ffffff;
+    border: 1px solid #DBDBDB;
+    border-radius: 12px 0px 12px 12px;
+    overflow: hidden;
+}
+.option > div {
+    width: 100px;
+    padding: 10px 20px;
+}
+.option > div:not(:last-child) {
+    border-bottom: 1px solid #DBDBDB;
+}
+.option > div:hover {
+    background-color: #f2f2f2;
+}

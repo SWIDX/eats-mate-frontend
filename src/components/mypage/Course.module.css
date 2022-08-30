@@ -1,0 +1,128 @@
+.container {
+    position: relative; /* for floating effect */
+    width: 526px;
+    padding: 14px 24px 8px 24px;
+    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.4);
+    border-radius: 16px;
+    margin: 32px auto auto auto;
+}
+
+.title {
+    display: flex;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 10px 10px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    border-bottom: 1px solid #000000;
+}
+
+.courseMenu {
+    display: flex;
+    width: 20px;
+    height: 20px;
+    margin: auto 0px auto auto;
+    cursor: pointer;
+}
+.courseMenu > svg {
+    margin: auto 5px auto auto;
+}
+
+.courseInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.distanceList {
+    display: flex;
+    flex-direction: column;
+}
+
+.distance {
+    display: flex;
+    height: 74px;
+    transform: translateX(4px);
+}
+
+.distance > p {
+    margin: 39px 0px auto auto;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #E97869;
+}
+
+.placeList {
+    display: flex;
+    flex-direction: column;
+}
+
+.place {
+    display: flex;
+    height: 74px;
+    overflow: hidden;
+}
+
+.courseNumber {
+    display: flex;
+    width: 23px;
+    height: 23px;
+    border: 2px solid #E97869;
+    border-radius: 100px;
+    background-color: #ffffff;
+}
+
+.courseNumber > p {
+    margin: 9px auto auto auto;
+    font-size: 14px;
+    line-height: 0px;
+    font-weight: 500;
+    align-items: center;
+    color: #E97869;
+}
+
+.courseDash {
+    width: 12px;
+    height: 100%;
+    border-right: 1px dashed #9B9B9B;
+}
+
+.placeData {
+    padding: 0px 10px 0px 12px;
+}
+
+.placeName > p {
+    line-height: 23px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.placeAddress > p {
+    line-height: 19px;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: -0.04em;
+    color: #9B9B9B;
+}
+
+.subMenu {
+    position: absolute; /* for floating effect */
+    top: 30px; /* for floating effect */
+    right: -100px; /* for floating effect */
+    z-index: 999; /* for floating effect */
+    background: #FFFFFF;
+    border: 1px solid #DBDBDB;
+    border-radius: 0px 16px 16px 16px;
+}
+
+.deleteBtn {
+    padding: 20px 26px 20px 26px;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    cursor: pointer;
+}
