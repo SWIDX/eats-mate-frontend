@@ -5,7 +5,9 @@ import MapPage from './pages/MapPage';
 import ReviewPage from "./pages/ReviewPage";
 import StoreDetailPage from "./pages/StoreDetailPage";
 import AboutPage from "./pages/AboutPage";
+import MyPage from './pages/MyPage';
 import "swiper/css/bundle";
+import './App.css';
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/review-service/main" element={<ReviewPage />} />
           <Route path="/store-detail/main" element={<StoreDetailPage/>}/>
           <Route path="/about/main" element={<AboutPage/>}/>
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </div>
     </BrowserRouter>
