@@ -11,8 +11,6 @@ import InformationCard from "../components/map/InformationCard";
 import ListCard from "../components/map/ListCard";
 
 import styles from "./MapPage.module.css";
-import { useSelector } from "react-redux";
-import restReducer from "../_reducers/restaurant_reducer";
 
 function MapPage() {
   const [clickInformation, setClickInformation] = useState();
@@ -37,7 +35,6 @@ function MapPage() {
   const [infoCard, setInfoCard] = useState(false);
 
   const getClickInfo = (info) => {
-    //setListCardOn(false);
     setClickInformation(info);
   };
 
@@ -81,10 +78,6 @@ function MapPage() {
     setViewCourseComponent(false);
     setCourseLine([]);
   };
-
-  let listInfo = useSelector((state) => {
-    console.log(state.restReducer.restinfo);
-  });
 
   /*const getGpsLoc = (info) => {
     setGpsLoc({

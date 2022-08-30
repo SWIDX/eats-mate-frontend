@@ -3,14 +3,12 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import styles from "./TabMenu.module.css";
 import "react-tabs/style/react-tabs.css";
-import { useSelector, useDispatch } from "react-redux";
-import { changeClickInfo } from "../../_actions/restaurant_action";
 
-function TabMenu() {
+function TabMenu(props) {
   const [defaultTab, setDefaultTab] = useState(1);
   const [selectedTab, setSelectedTab] = useState();
   const [tabData, setTabData] = useState([]);
-  const dispatch = useDispatch();
+  const [data, setData] = useState([]);
 
   const restaurant = {
     0: "전체",
@@ -30,34 +28,33 @@ function TabMenu() {
     5: "기타",
   };
 
-  const result = useSelector((state) => {
-    return state.restReducer.restinfo;
-  });
-
-  const onClickName = (item) => {
-    dispatch(changeClickInfo(item));
+  const onClickItem = (item) => {
     props.propFunction(item);
   };
 
   useEffect(() => {
+    setData(props.information);
+  }, [props.information]);
+
+  useEffect(() => {
     if (selectedTab !== undefined) {
       if (selectedTab.main == "음식점") {
-        let data = [];
+        let item = [];
         if (selectedTab.sub == "전체") {
-          data = result;
+          item = data;
         } else {
-          data = result.filter((info) => info.gubun == selectedTab.sub);
+          item = data.filter((info) => info.gubun == selectedTab.sub);
         }
-        setTabData(data);
+        setTabData(item);
       }
     }
   }, [selectedTab]);
 
   useEffect(() => {
-    if (result) {
-      setTabData(result);
+    if (data) {
+      setTabData(data);
     }
-  }, [result]);
+  }, [data]);
 
   const listConstructor = (items) => {
     if (items !== undefined) {
@@ -70,7 +67,7 @@ function TabMenu() {
             <p
               className={styles.name}
               onClick={() => {
-                onClickName(item);
+                onClickItem(item);
               }}
             >
               {item.name}
