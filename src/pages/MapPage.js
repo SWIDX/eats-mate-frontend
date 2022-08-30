@@ -1,24 +1,28 @@
 /* global kakao */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import NavBar from '../components/navigation/NavBar';
-import MapContainer from '../components/map/MapContainer';
-import MapSearchBar from '../components/map/MapSearchBar';
-import MapCourse from '../components/map/MapCourse';
-import CategoryBtn from '../components/map/CategoryBtn';
-import InformationCard from '../components/map/InformationCard';
-import ListCard from '../components/map/ListCard';
+import NavBar from "../components/navigation/NavBar";
+import MapContainer from "../components/map/MapContainer";
+import MapSearchBar from "../components/map/MapSearchBar";
+import MapCourse from "../components/map/MapCourse";
+import CategoryBtn from "../components/map/CategoryBtn";
+import InformationCard from "../components/map/InformationCard";
+import ListCard from "../components/map/ListCard";
 
-import styles from './MapPage.module.css';
+import styles from "./MapPage.module.css";
+import { useSelector } from "react-redux";
+import restReducer from "../_reducers/restaurant_reducer";
 
 function MapPage() {
   const [clickInformation, setClickInformation] = useState();
   const [listInformation, setListInformation] = useState();
+  const [selectedType, setSelectedType] = useState();
   const [listCardOn, setListCardOn] = useState(false);
   const [viewCourseComponent, setViewCourseComponent] = useState(false);
   const [point, setPoint] = useState();
-  const [courseLine, setCourseLine] = useState([/*{
+  const [courseLine, setCourseLine] = useState([
+    /*{
     lat: "",
     lng: "",
     title: "",
@@ -29,15 +33,24 @@ function MapPage() {
     lat: 0,
     lng: 0,
   });
+  const [onCard, setOnCard] = useState(true);
+  const [infoCard, setInfoCard] = useState(false);
 
   const getClickInfo = (info) => {
-    setListCardOn(false);
+    //setListCardOn(false);
     setClickInformation(info);
   };
 
-  const getListInfo = (info) => {
-    setListCardOn(true);
-    setListInformation(info);
+  const getSearchBarInfo = (item) => {
+    if (item !== []) {
+      if (item.info.length > 0) {
+        setListCardOn(true);
+        setListInformation(item.info);
+      }
+      if (item.value != null) {
+        setSelectedType(item.value);
+      }
+    }
   };
 
   const clickAddCourse = (info) => {
@@ -49,6 +62,12 @@ function MapPage() {
     /*to set point value directly*/
   }, [point]);
 
+  useEffect(() => {
+    if (clickInformation !== undefined) {
+      setInfoCard(true);
+    }
+  }, [clickInformation]);
+
   const clearCoursePoint = () => {
     setPoint(null);
   };
@@ -56,12 +75,16 @@ function MapPage() {
   const drawCourse = (pointInfo) => {
     setCourseLine([]);
     setCourseLine(pointInfo);
-  }
+  };
 
   const closeCourseComponent = () => {
     setViewCourseComponent(false);
     setCourseLine([]);
-  }
+  };
+
+  let listInfo = useSelector((state) => {
+    console.log(state.restReducer.restinfo);
+  });
 
   /*const getGpsLoc = (info) => {
     setGpsLoc({
@@ -101,7 +124,7 @@ function MapPage() {
       </div>
 
       <div>
-        <MapSearchBar propFunction={getListInfo} />
+        <MapSearchBar propFunction={getSearchBarInfo} />
       </div>
       {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
 
@@ -109,17 +132,18 @@ function MapPage() {
         {listInformation && listCardOn ? (
           <ListCard
             listInformation={listInformation}
+            selectedType={selectedType}
             propFunction={getClickInfo}
           />
         ) : null}
-        {clickInformation && !listCardOn ? (
-          <InformationCard clickInformation={clickInformation} />
-        ) : null}
+
         {viewCourseComponent ? (
-          <MapCourse point={point}
-          propFunction={clearCoursePoint}
-          propFunction2={drawCourse}
-          propFunction3={closeCourseComponent}/>
+          <MapCourse
+            point={point}
+            propFunction={clearCoursePoint}
+            propFunction2={drawCourse}
+            propFunction3={closeCourseComponent}
+          />
         ) : null}
         <MapContainer
           markerInformation={listInformation}
