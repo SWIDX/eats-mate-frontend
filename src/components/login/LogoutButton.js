@@ -29,7 +29,7 @@ function LogoutButton() {
 
     return (
         <div className={styles.logout_btn} onClick={handleLogout}>
-            로그아웃
+            <div>로그아웃</div>
             <RightArrowSvg stroke="#939393"/>
         </div>
     );

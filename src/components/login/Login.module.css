@@ -1,20 +1,23 @@
 .kakao_btn{
-    background-image: url("/src/images/kakao_login_medium_narrow.png");
-    background-repeat: no-repeat;
+    scale: 0.95;
     width: 183px;
-    height: 45px;
+    height: 50px;
     display: block;
     cursor: pointer;
 }
 
 .logout_btn {
+    display: flex;
     color: #939393;
     font-size: 13px;
     margin: auto 25px;
     margin-right: 0px;
     cursor: pointer;
 }
-
+.logout_btn > div {
+    margin: auto auto;
+    transform: translateY(-1px); /* intended */
+}
 .logout_btn > svg {
-    margin-left: 6px;
+    margin: auto auto auto 6px;
 }

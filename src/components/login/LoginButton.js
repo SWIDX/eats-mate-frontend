@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Login.module.css";
+import { ReactComponent as KakaoLoginSvg } from "../../images/svg/kakao-login.svg";
 
 
 const REST_API_KEY = "c4a648b170fea0fbd26e61d052e9093b";
@@ -10,7 +11,7 @@ function LoginButton() {
 
     return (
         <a href={KAKAO_AUTH_URL}>
-            <div className={styles.kakao_btn} />
+            <KakaoLoginSvg className={styles.kakao_btn} />
         </a>
     );
 }
