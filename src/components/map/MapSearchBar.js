@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Map.module.css";
 import XMLParser from "react-xml-parser"; /*추후 삭제*/
+import { useDispatch } from "react-redux";
+import { changeRestInfo, chageInfolen } from "../../_actions/restaurant_action";
 
 const MapSearchBar = (props) => {
   const [inputText, setInputText] = useState("");
@@ -12,6 +14,8 @@ const MapSearchBar = (props) => {
     info: information,
     value: selectValue,
   });
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (information.length != 0) {
@@ -73,12 +77,13 @@ const MapSearchBar = (props) => {
         var url = "http://localhost:8081/map-service/information/findByName/";
 
         const data = await axios.get(url + restaurant).then((res) => {
-          console.log(res.data);
           return res.data;
         });
 
         if (data != undefined || data != []) {
           setInformation(data);
+          dispatch(changeRestInfo(data));
+          dispatch(chageInfolen(data.length));
           props.propFunction(information);
         }
       }
