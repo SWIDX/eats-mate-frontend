@@ -4,9 +4,11 @@ import { ReactComponent as RightArrowSvg } from "../../images/svg/right-arrow.sv
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { changeUserInfo } from '../../_actions/user_action';
+import { useNavigate } from "react-router-dom";
 
 function LogoutButton() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     async function handleLogout() {
         if (window.confirm('정말로 로그아웃 하시겠습니까?')) {
@@ -17,6 +19,7 @@ function LogoutButton() {
                         withCredentials: true // Set-Cookie 작동을 위해 필수
                     }
                 );
+                navigate("/")
             } catch(e) {
                 console.warn(e);
             }
