@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect } from "react";
+import { useLocation } from "react-router";
 
-import ReviewInfo from '../components/review/ReviewInfo';
-import AllReview from '../components/review/AllReview';
-import DetailMap from '../components/review/DetailMap';
+import ReviewInfo from "../components/review/ReviewInfo";
+import AllReview from "../components/review/AllReview";
+import DetailMap from "../components/review/DetailMap";
 
 function ReviewPage() {
+  const { state } = useLocation();
+
   return (
     <>
       <div>
-        <ReviewInfo />
+        <ReviewInfo information={state} />
         <div>
-          <DetailMap />
+          <DetailMap address={state.address} />
         </div>
         <AllReview />
       </div>
