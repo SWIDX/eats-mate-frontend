@@ -1,0 +1,104 @@
+.welcomeText {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.welcomeText > p {
+    line-height: 35px;
+    letter-spacing: -0.04em;
+}
+
+.welcomeText > p > b7 {
+    font-weight: 700;
+}
+
+.category {
+    display: inline-block;
+    padding: 8px 46px;
+    background: #F2F2F2;
+    border-radius: 8px;
+    margin-bottom: 100px;
+}
+
+.category > div {
+    display: flex;
+    height: 27px;
+
+}
+
+.category > div > div {
+    display: flex;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+}
+
+.category > div > div > p {
+    margin-right: 13px;
+}
+
+.category > div > div > b7 {
+    font-weight: 700;
+    color: #E97869;
+}
+
+.separator {
+    width: 1px;
+    height: 14.5px;
+    margin: auto 28px;
+    background-color: #878787;
+}
+
+.subTitle {
+    display: flex;
+    padding: 20px 10px;
+    border-bottom: 2px solid #000000;
+}
+
+.titleText {
+    line-height: 35px;
+    letter-spacing: -0.04em;
+    font-size: 24px;
+}
+
+.titleText > b7 {
+    font-weight: 700;
+}
+
+.pagination {
+    margin: auto 10px auto auto;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.pagination > hl {
+    font-size: 20px;
+    font-weight: 700;
+    color: #E97869;
+}
+
+.arrowContainer {
+    display: flex;
+    margin-right: 10px;
+}
+
+.leftArrow {
+    margin: auto 14px auto 20px;
+    cursor: pointer;
+}
+.leftArrow > svg {
+    stroke: #000000;
+}
+
+.rightArrow {
+    margin: auto 0px auto 14px;
+    cursor: pointer;
+}
+.rightArrow > svg {
+    stroke: #000000;
+}
+
+.courseList {
+    display: flex;
+    align-items: flex-start;
+}
