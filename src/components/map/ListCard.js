@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import TabMenu from "./TabMenu";
 import styles from "./ListCard.module.css";
-import restReducer from "../../_reducers/restaurant_reducer";
+import InformationCard from "./InformationCard";
 
 function ListCard(props) {
+  const [information, setInformation] = useState();
+  const [onClose, setOnClose] = useState(true);
+
   const mouseOver = (e) => {
     e.preventDefault();
     e.currentTarget.style.backgroundColor = "#ccc";
@@ -15,26 +17,55 @@ function ListCard(props) {
   };
 
   const getSelectedInformation = (information) => {
-    props.propFunction(information);
+    setInformation(information);
   };
 
-  const number = useSelector((state) => state.restReducer.length);
+  const getOnClose = (close) => {
+    setOnClose(close);
+  };
+
+  useEffect(() => {
+    if (information != undefined) {
+      if (onClose == true) {
+        setOnClose(false);
+      } else {
+        setOnClose(true);
+      }
+    }
+  }, [information]);
+
+  useEffect(() => {
+    if (props.listInformation) {
+      setOnClose(true);
+    }
+  }, [props.listInformation]);
 
   return (
     <>
-      <div className={styles.list_outer}>
-        <div className={styles.cardTop}>
-          <span className={styles.result_name}>검색결과</span>
-          <span className={styles.result_tag}>{number}건</span>
-        </div>
+      {onClose ? (
+        <div className={styles.list_outer}>
+          <div className={styles.cardTop}>
+            <span className={styles.result_name}>검색결과</span>
+            <span className={styles.result_tag}>
+              {props.listInformation.length}건
+            </span>
+          </div>
 
-        <div className={styles.tabmenu_outer}>
-          <TabMenu
-            className={styles.tabmenu}
-            selectedType={props.selectedType}
-          />
+          <div className={styles.tabmenu_outer}>
+            <TabMenu
+              className={styles.tabmenu}
+              selectedType={props.selectedType}
+              information={props.listInformation}
+              propFunction={getSelectedInformation}
+            />
+          </div>
         </div>
-      </div>
+      ) : (
+        <InformationCard
+          clickInformation={information}
+          propFunction={getOnClose}
+        />
+      )}
     </>
   );
 }
