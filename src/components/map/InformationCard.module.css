@@ -261,3 +261,19 @@
   overflow: visible;
   cursor: pointerx;
 }
+
+.exitbutton {
+  position: absolute;
+  margin: 5% 0 40% 22.7%;
+  z-index: 30;
+}
+
+.exitbutton > button {
+  display: inline-block;
+  color: #e97869;
+  background-color: white;
+  border-radius: 0 10px 10px 0;
+  border-color: #e6e6e6;
+  width: 44px;
+  height: 44px;
+}
