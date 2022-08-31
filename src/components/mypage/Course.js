@@ -67,7 +67,7 @@ function Course(props) {
                 {props.course.placeNameList.map((o, i) =>
                     <div className={styles.place}>
                         <div>
-                            <div className={styles.courseNumber}><p>{i}</p></div>
+                            <div className={styles.courseNumber}><p>{i+1}</p></div>
                             <div className={styles.courseDash} />
                         </div>
                         <div className={styles.placeData}>
