@@ -14,7 +14,7 @@ function NavBar() {
     return (
         <Navbar expand="lg" bg="light" variant="light" sticky="top" className={styles.navbar}>
             <Container style={{ width: "75%" }}>
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="/" className={styles.logoContainer}>
                     <LogoSvg className={styles.logoSvg}/>
                 </Navbar.Brand>
                 <Nav className={`me-auto ${styles.nav}`}>

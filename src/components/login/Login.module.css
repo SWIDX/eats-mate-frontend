@@ -17,6 +17,7 @@
 .logout_btn > div {
     margin: auto auto;
     transform: translateY(-1px); /* intended */
+    letter-spacing: -0.04em;
 }
 .logout_btn > svg {
     margin: auto auto auto 6px;

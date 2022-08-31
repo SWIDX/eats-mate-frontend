@@ -3,6 +3,12 @@
     height: 75px;
 }
 
+.logoContainer {
+    width: fit-content;
+    transform: translateX(-20px);
+    margin-right: 5px;
+}
+
 .logoSvg {
     scale: 0.7;
 }
@@ -28,6 +34,7 @@
 }
 
 .userprofile > img {
+    object-fit: cover; /* prevent image to resize */
     width: 35px;
     height: 35px;
     margin: 0px 15px 0px;
