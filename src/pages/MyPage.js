@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from "./MyPage.module.css"
-import { Container } from 'react-bootstrap';
+import { Container, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import NavBar from '../components/navigation/NavBar';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ import Course from '../components/mypage/Course';
 import Like from '../components/mypage/Like';
 import Review from '../components/mypage/Review';
 import Dropdown from '../components/etc/Dropdown';
+import { ReactComponent as KakaoCircleSvg } from "../images/svg/kakao-circle.svg";
 
 function MyPage() {
   const dispatch = useDispatch();
@@ -257,7 +258,19 @@ function MyPage() {
 
           {/* 싱단 타이틀 */}
           <div className={styles.title}>
-            <div>
+            <div className={styles.profileContainer}>
+              <Image
+                  src={userinfo.profileImageUrl}
+                  roundedCircle
+                  className={styles.profileImage}
+              />
+              <div className={styles.userName}>{userinfo.name}</div>
+              <div className={styles.userEmailContainer}>
+                <KakaoCircleSvg />
+                <div className={styles.userEmail}>{userinfo.email}</div>
+              </div>
+            </div>
+            <div className={styles.welcomeContainer}>
               <div className={styles.welcomeText}>
                 {<p>안녕하세요 <b7>{userinfo.name}</b7> 메이트님!<br/>오늘도 잇츠메이트와 맛있는 식사하세요 🍴</p>}
               </div>
