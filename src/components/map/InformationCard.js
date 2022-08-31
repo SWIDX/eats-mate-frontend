@@ -120,7 +120,7 @@ function InformationCard(props) {
                 <button
                   className={styles.DetailButton}
                   onClick={() => {
-                    navigate("/review-service/main", {
+                    navigate("/store-detail/main", {
                       state: props.clickInformation,
                     });
                   }}
