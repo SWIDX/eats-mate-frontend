@@ -1,16 +1,9 @@
 import React from "react";
 import styles from "./Review.module.css";
 import NavBar from "../navigation/NavBar";
-import "react-alice-carousel/lib/alice-carousel.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Pagination, Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 
 function MainGageInfo(props){
-
 
     return(
         <>
@@ -55,24 +48,7 @@ function MainGageInfo(props){
                             </div>
 
                             <div className={styles.carouselsize3}>
-                            <Swiper
-                                        slidesPerView={4}
-                                        slidesPerGroup={3}
-                                        loop={true}
-                                        loopFillGroupWithBlank={true}
-                                        pagination={{
-                                            clickable: true,
-                                        }}
-                                        navigation={true}
-                                        modules={[Pagination, Navigation]}
-                                        className="mySwiper2"
-                                    >
-                            <SwiperSlide><img className={styles.maingageimg2} alt="" src="/img/reviewinfoimg.png"></img></SwiperSlide>
-                            <SwiperSlide><img className={styles.maingageimg2} alt="" src="/img/reviewinfoimg.png"></img></SwiperSlide>
-                            <SwiperSlide><img className={styles.maingageimg2} alt="" src="/img/reviewinfoimg.png"></img></SwiperSlide>
-                            <SwiperSlide><img className={styles.maingageimg2} alt="" src="/img/reviewinfoimg.png"></img></SwiperSlide>
-                            <SwiperSlide><img className={styles.maingageimg2} alt="" src="/img/reviewinfoimg.png"></img></SwiperSlide>
-                            </Swiper>    
+
                             </div>                
             </div>
         </>

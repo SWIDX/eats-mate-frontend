@@ -1,14 +1,7 @@
 import React, {useState} from "react";
 import styles from "./Review.module.css";
 import ReviewModal from "./ReviewModal";
-import "react-alice-carousel/lib/alice-carousel.css";
-import { Swiper, SwiperSlide } from "swiper/react";
 
-import NavBar from "../navigation/NavBar";
-import { Pagination, Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 function AllReview(){
 
     const [modalOpen, setModalOpen] = useState(false);
@@ -36,22 +29,7 @@ function AllReview(){
 
                     <div className={styles.locationboxflex}>
                     <div className={styles.carouselsize2}>
-                    <Swiper
-                                        slidesPerView={2.5}
-                                        slidesPerGroup={3}
-                                        loop={true}
-                                        loopFillGroupWithBlank={true}
-                                        pagination={{
-                                            clickable: true,
-                                        }}
-                                        navigation={true}
-                                        modules={[Pagination, Navigation]}
-                                        className="mySwiper2"
-                                    >
-                        <SwiperSlide><img className={styles.allreviewimg} src="/img/emonga.jpeg"></img></SwiperSlide>
-                        <SwiperSlide><img className={styles.allreviewimg} src="/img/emonga.jpeg"></img></SwiperSlide>
-                        <SwiperSlide><img className={styles.allreviewimg} src="/img/emonga.jpeg"></img></SwiperSlide>
-                        </Swiper>
+
                     </div>
                     </div>
 
