@@ -62,11 +62,15 @@ const MapSearchBar = (props) => {
         var place = inputText;
         /*url 수정, parseXMLtoJSON도 추후 삭제*/
         var url =
-          "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword?serviceKey=iYVYThiw2Vsox6T1%2FhhDhR5iUTuaqxW2AJWXmsDBKqXk7Ct1Z03uYclP8SfSqlJ7%2Fg7LSPv8MRDTmgUKOQBcWw%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&areaCode=1&listYN=Y&contentTypeId=12&keyword=";
+          "http://localhost:8081/map-service/tour-information/findByName/";
 
         axios.get(url + place).then((res) => {
           const data = res.data;
-          parseXMLtoJSON(data);
+          //parseXMLtoJSON(data);
+          if (data != undefined || data != []) {
+            setInformation(data);
+            props.propFunction(information);
+          }
         });
       } else if (selectValue === "음식점") {
         var restaurant = inputText;
