@@ -533,3 +533,7 @@ hr {
   width: 44px;
   height: 44px;
 }
+
+.map_outer {
+  display: flex;
+}
