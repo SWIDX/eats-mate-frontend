@@ -24,6 +24,11 @@ function MainReview(){
                     <div className={styles.locationboxflex2}>
                         <div className={styles.box1}>
                             <p className={styles.gagename}>성수완당 본점</p>
+                            <div className={styles.locationboxflex}>
+                            <img className={styles.rateimg} src="/img/besttextcolor.png"></img>
+                            <img className={styles.rateimg} src="/img/sosotext.png"></img>
+                            <img className={styles.rateimg} src="/img/badtext.png"></img>
+                    </div>
                         </div>
                         <div className={styles.locationboxflex}>
                         <img className={styles.rrr} src="/img/rrr.png"></img>
