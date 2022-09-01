@@ -20,7 +20,7 @@ const DetailMap = (props) => {
       <div className={styles.detail_map_wrapper}>
         <div className={styles.detail_map_wrapper_top}>
           <p className={styles.detail_map_title}>찾아가는 길을 알려드릴게요</p>
-          <div className={styles.detail_map_address}>주소</div>
+          <div className={styles.detail_map_address}>{props.address}</div>
         </div>
         <hr />
 
