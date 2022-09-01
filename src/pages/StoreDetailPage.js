@@ -13,7 +13,7 @@ function StoreDetailPage(){
             <div>
                 <MainGageInfo information={state}/>
                 <DetailMap address={state.address} />
-                <MainReview/>
+                <MainReview information={state}/>
             </div>
         </>
     );
