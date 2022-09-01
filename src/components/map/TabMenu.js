@@ -3,12 +3,14 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import styles from "./TabMenu.module.css";
 import "react-tabs/style/react-tabs.css";
+import axios from "axios";
 
 function TabMenu(props) {
   const [defaultTab, setDefaultTab] = useState(1);
   const [selectedTab, setSelectedTab] = useState();
   const [tabData, setTabData] = useState([]);
   const [data, setData] = useState([]);
+  const [standardInfo, setStandardInfo] = useState({});
 
   const restaurant = {
     0: "전체",
@@ -21,19 +23,24 @@ function TabMenu(props) {
 
   const tour = {
     0: "전체",
-    1: "쇼핑몰",
-    2: "유적지",
-    3: "일식",
-    4: "중식",
-    5: "기타",
+    1: "문화시설",
+    2: "행사/공연/축제",
+    3: "쇼핑",
   };
 
   const onClickItem = (item) => {
     props.propFunction(item);
   };
 
+  const nearByTourInformation = async (position) => {
+    //let data = axios.get()
+    //nearyByTourInformation
+    //backend 수정 후 추가 할 예정
+  };
+
   useEffect(() => {
     setData(props.information);
+    setStandardInfo(props.information[0]);
   }, [props.information]);
 
   useEffect(() => {
@@ -46,6 +53,15 @@ function TabMenu(props) {
           item = data.filter((info) => info.gubun == selectedTab.sub);
         }
         setTabData(item);
+      }
+      if (selectedTab.main == "관광지") {
+        let item = [];
+        if (selectedTab.sub == "전체") {
+          nearByTourInformation({
+            lat: standardInfo.lat,
+            lng: standardInfo.lng,
+          });
+        }
       }
     }
   }, [selectedTab]);
@@ -81,11 +97,15 @@ function TabMenu(props) {
   };
   return (
     <>
-      <Tabs defaultIndex={defaultTab}>
+      <Tabs
+        defaultIndex={defaultTab}
+        className={styles.tabs}
+        selectedTabClassName={styles.is_selected}
+      >
         <TabList>
-          <Tab>전체</Tab>
-          <Tab>음식점</Tab>
-          <Tab>여행지</Tab>
+          <Tab className={styles.tab}>전체</Tab>
+          <Tab className={styles.tab}>음식점</Tab>
+          <Tab className={styles.tab}>여행지</Tab>
         </TabList>
         <TabPanel>
           <Tabs
@@ -95,10 +115,12 @@ function TabMenu(props) {
                 : setSelectedTab({ main: "전체", sub: "관광지" })
             }
             forceRenderTabPanel
+            className={styles.tabs}
+            selectedTabClassName={styles.sub_is_selected}
           >
-            <TabList>
-              <Tab>음식점</Tab>
-              <Tab>관광지</Tab>
+            <TabList className={styles.subtab_list}>
+              <Tab className={styles.subtab_all}>음식점</Tab>
+              <Tab className={styles.subtab_all}>관광지</Tab>
             </TabList>
             <TabPanel>
               <p>음식점 데이터</p>
@@ -114,43 +136,53 @@ function TabMenu(props) {
               setSelectedTab({ main: "음식점", sub: restaurant[index] })
             }
             forceRenderTabPanel
+            className={styles.tabs}
+            selectedTabClassName={styles.sub_is_selected}
           >
-            <TabList>
-              <Tab>전체</Tab>
-              <Tab>한식</Tab>
-              <Tab>양식</Tab>
-              <Tab>일식</Tab>
-              <Tab>중식</Tab>
-              <Tab>기타</Tab>
+            <TabList className={styles.subtab_list}>
+              <Tab className={styles.subtab_rest}>전체</Tab>
+              <Tab className={styles.subtab_rest}>한식</Tab>
+              <Tab className={styles.subtab_rest}>양식</Tab>
+              <Tab className={styles.subtab_rest}>일식</Tab>
+              <Tab className={styles.subtab_rest}>중식</Tab>
+              <Tab className={styles.subtab_rest}>기타</Tab>
             </TabList>
-            <TabPanel>{listConstructor(tabData)}</TabPanel>
-            <TabPanel>{listConstructor(tabData)}</TabPanel>
-            <TabPanel>{listConstructor(tabData)}</TabPanel>
-            <TabPanel>{listConstructor(tabData)}</TabPanel>
-            <TabPanel>{listConstructor(tabData)}</TabPanel>
-            <TabPanel>{listConstructor(tabData)}</TabPanel>
+            <div className={styles.tabpanel}>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+            </div>
           </Tabs>
         </TabPanel>
         <TabPanel>
-          <Tabs forceRenderTabPanel>
-            <TabList>
-              <Tab>전체</Tab>
-              <Tab>쇼핑몰</Tab>
-              <Tab>양식</Tab>
-              <Tab>일식</Tab>
-              <Tab>중식</Tab>
+          <Tabs
+            forceRenderTabPanel
+            onSelect={(index) =>
+              setSelectedTab({ main: "관광지", sub: tour[index] })
+            }
+            className={styles.tabs}
+            selectedTabClassName={styles.sub_is_selected}
+          >
+            <TabList className={styles.subtab_list}>
+              <Tab className={styles.subtab_tour}>전체</Tab>
+              <Tab className={styles.subtab_tour}>문화시설</Tab>
+              <Tab className={styles.subtab_tour}>행사/공연/축제</Tab>
+              <Tab className={styles.subtab_tour}>쇼핑</Tab>
             </TabList>
             <TabPanel>
-              <p>전체 음식 데이터</p>
+              <p>전체 관광지 데이터</p>
             </TabPanel>
             <TabPanel>
-              <p>한식 데이터</p>
+              <p>문화시설</p>
             </TabPanel>
             <TabPanel>
-              <p>양식데이터</p>
+              <p>행사/공연/축제</p>
             </TabPanel>
             <TabPanel>
-              <p>일식데이터</p>
+              <p>쇼핑</p>
             </TabPanel>
             <TabPanel>
               <p>기타 음식 데이터</p>
