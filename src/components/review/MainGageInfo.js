@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-function MainGageInfo(){
+function MainGageInfo(props){
 
 
     return(
@@ -26,21 +26,21 @@ function MainGageInfo(){
                             </div>
                                 <div className={styles.gagerightsquarebox}>
                                 <img className={styles.one} alt="" src="/img/one.png"></img>
-                                    <p className={styles.gagename}>성수완당 본점</p>
+                                    <p className={styles.gagename}>{props.information.name}</p>
                                     <hr/>
                                     <div>
                                         <div className={styles.locationboxflex}>
                                             <img className={styles.gageimg} alt="" src="/img/location.png"></img>
                                             <p className={styles.gageinfoname}>주소</p>
                                         </div>
-                                        <p className={styles.gageinfocontent}>서울 광진구 동일로22길 117-14</p>
+                                        <p className={styles.gageinfocontent}>{props.information.address}</p>
                                     </div>
                                     <div>
                                       <div className={styles.locationboxflex}>
                                             <img className={styles.gageimg} alt="" src="/img/call.png"></img>
                                             <p className={styles.gageinfoname}>전화번호</p>
                                       </div>
-                                        <p className={styles.gageinfocontent}>0507 - 1448 - 5243</p>
+                                        <p className={styles.gageinfocontent}>{props.information.cntct}</p>
                                     </div>
                                     <div>
                                         <div className={styles.locationboxflex}>
