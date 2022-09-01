@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styles from './Review.module.css';
 import ReviewModal from "./ReviewModal";
 
-function MainReview(){
+function MainReview(props){
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -23,7 +23,7 @@ function MainReview(){
                 <div className={styles.locationboxflex}>
                     <div className={styles.locationboxflex2}>
                         <div className={styles.box1}>
-                            <p className={styles.gagename}>성수완당 본점</p>
+                            <p className={styles.gagename}>{props.information.name}</p>
                             <div className={styles.locationboxflex}>
                             <img className={styles.rateimg} src="/img/besttextcolor.png"></img>
                             <img className={styles.rateimg} src="/img/sosotext.png"></img>
@@ -33,7 +33,7 @@ function MainReview(){
                         <div className={styles.locationboxflex}>
                         <img className={styles.rrr} src="/img/rrr.png"></img>
                         <div className={styles.locationboxflex2}>
-                        <div className={styles.rrrcontent}>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
+                        <div className={styles.rrrcontent}>{props.information.name}에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
                         <div>
                         <button className={styles.modalbutton2} onClick={showModal}><img src="/img/goreview.png"></img></button>
                         {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
