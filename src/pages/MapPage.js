@@ -114,10 +114,7 @@ function MapPage() {
       <div>
         <NavBar />
       </div>
-
-      <div>
-        <MapSearchBar propFunction={getSearchBarInfo} />
-      </div>
+      
       {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
 
       <div className="styles.map">
@@ -128,6 +125,8 @@ function MapPage() {
             propFunction={getClickInfo}
           />
         ) : null}
+
+        <MapSearchBar propFunction={getSearchBarInfo} />
 
         {viewCourseComponent ? (
           <MapCourse
