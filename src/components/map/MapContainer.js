@@ -1,8 +1,7 @@
 /* global kakao */
 
 import React, { useEffect, useState } from "react";
-import { Map, MapMarker, Circle, Polyline } from "react-kakao-maps-sdk";
-import axios from "axios";
+import { Map, MapMarker, Circle, Polyline, CustomOverlayMap } from "react-kakao-maps-sdk";
 
 import styles from "./Map.module.css";
 
@@ -25,12 +24,17 @@ const MapContainer = (props) => {
   const [course, setCourse] = useState([]); // 사용자 맞춤 코스로 저장될 정보
   const [drawCourseLine, setDrawCourseLine] = useState(false);
   const [distance, setDistance] = useState();
+  const [viewDistance, setViewDistance] = useState(false);
 
   useEffect(() => {
     setDrawCourseLine(false);
     setCourse([]); // to redraw course with new point data
     setCourse(props.courseLine);
     setDrawCourseLine(true);
+    if(props.courseLine.length < 2) {
+      setViewDistance(false);
+      setDistance(0);
+    } 
   }, [props.courseLine]);
 
   const onClickMarker = (info) => {
@@ -47,39 +51,12 @@ const MapContainer = (props) => {
     setCourseInfoWindow(false);
   };
 
-  /* course distance information
-  const DistanceInfo = ({ distance }) => {
-    const walkkTime = (distance / 67) | 0
-    const bycicleTime = (distance / 227) | 0
-
-    return (
-      <ul className="dotOverlay distanceInfo">
-        <li>
-          <span className="label">총거리</span>{" "}
-          <span className="number">{distance}</span>m
-        </li>
-        <li>
-          <span className="label">도보</span>{" "}
-          {walkkTime > 60 && (
-            <>
-              <span className="number">{Math.floor(walkkTime / 60)}</span> 시간{" "}
-            </>
-          )}
-          <span className="number">{walkkTime % 60}</span> 분
-        </li>
-        <li>
-          <span className="label">자전거</span>{" "}
-          {bycicleTime > 60 && (
-            <>
-              <span className="number">{Math.floor(bycicleTime / 60)}</span>{" "}
-              시간{" "}
-            </>
-          )}
-          <span className="number">{bycicleTime % 60}</span> 분
-        </li>
-      </ul>
-    )
-  } */
+  useEffect(() => {
+    if(props.distance !== undefined) {
+      setViewDistance(true);
+      setDistance(props.distance);
+    }
+  }, [props.distance]);
 
   const markerConstructor = (info) => {
     const marker = (
@@ -181,10 +158,10 @@ const MapContainer = (props) => {
               onClick={() => setCourseInfoWindow(false)}
             />
             <div className={styles.infoWindowTitle}>
-              {information.children[19].value}
+              {information.name}
             </div>
             <div className={styles.infoWindowAddress}>
-              {information.children[0].value}
+              {information.address}
             </div>
             <div>
               <img
@@ -210,6 +187,13 @@ const MapContainer = (props) => {
             strokeStyle={"solid"} // 선의 스타일입니다
           />
         )}
+
+        {viewDistance && (
+          <div className={styles.distance}>
+            코스 거리:{distance}m
+          </div>
+        )}
+
       </Map>
     </>
   );
