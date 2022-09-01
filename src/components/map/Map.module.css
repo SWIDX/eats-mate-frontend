@@ -537,3 +537,16 @@ hr {
 .map_outer {
   display: flex;
 }
+
+/* (test) final distance info component */
+.distance {
+  position: absolute;
+  left: 900px;
+  top: 500px;
+  width: 130px;
+  height: 30px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.3);
+  z-index: 30;
+}
