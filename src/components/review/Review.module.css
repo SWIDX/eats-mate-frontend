@@ -286,6 +286,7 @@
 }
 
 .ratebox {
+  margin-top: 30px;
   width: 313px;
   height: 149px;
   border: 1px solid #f1f1f1;
