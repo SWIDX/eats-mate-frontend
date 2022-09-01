@@ -5,9 +5,8 @@
   top: 11%;
   height: 800px;
   background-color: white;
-  border-width: 10px;
-  border-radius: 10px 10px 10px 10px;
-  border-color: #e6e6e6;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
 }
 
 .list {
