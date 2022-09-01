@@ -19,13 +19,8 @@ function MapPage() {
   const [listCardOn, setListCardOn] = useState(false);
   const [viewCourseComponent, setViewCourseComponent] = useState(false);
   const [point, setPoint] = useState();
-  const [courseLine, setCourseLine] = useState([
-    /*{
-    lat: "",
-    lng: "",
-    title: "",
-    },*/
-  ]);
+  const [courseLine, setCourseLine] = useState([]);
+  const [finalDistance, setFinalDistance] = useState();
 
   const [gpsLoc, setGpsLoc] = useState({
     lat: 0,
@@ -77,6 +72,10 @@ function MapPage() {
   const closeCourseComponent = () => {
     setViewCourseComponent(false);
     setCourseLine([]);
+  };
+
+  const setDistanceFunc = (distance) => {
+    setFinalDistance(distance);
   };
 
   /*const getGpsLoc = (info) => {
@@ -136,12 +135,14 @@ function MapPage() {
             propFunction={clearCoursePoint}
             propFunction2={drawCourse}
             propFunction3={closeCourseComponent}
+            propFunction4={setDistanceFunc}
           />
         ) : null}
         <MapContainer
           markerInformation={listInformation}
           clickedInformation={clickInformation}
           courseLine={courseLine}
+          distance={finalDistance}
           gpsInformation={gpsLoc}
           propFunction={clickAddCourse}
         />
