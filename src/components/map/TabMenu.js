@@ -10,7 +10,14 @@ function TabMenu(props) {
   const [selectedTab, setSelectedTab] = useState();
   const [tabData, setTabData] = useState([]);
   const [data, setData] = useState([]);
+  const [tourData, setTourData] = useState([]);
   const [standardInfo, setStandardInfo] = useState({});
+
+  const idx = {
+    0: "전체",
+    1: "음식점",
+    2: "여행지",
+  };
 
   const restaurant = {
     0: "전체",
@@ -33,7 +40,15 @@ function TabMenu(props) {
   };
 
   const nearByTourInformation = async (position) => {
-    //let data = axios.get()
+    const lat = position.lat;
+    const lng = position.lng;
+    const dist = 1000;
+    const url = `http://localhost:8081/map-service/tour-information/findByNearby?lat=${lat}&lng=${lng}&dist=${dist}`;
+    let data = await axios.get(url).then((res) => {
+      return res.data;
+    });
+    setTourData(data);
+    //console.log(tourData);
     //nearyByTourInformation
     //backend 수정 후 추가 할 예정
   };
@@ -41,6 +56,10 @@ function TabMenu(props) {
   useEffect(() => {
     setData(props.information);
     setStandardInfo(props.information[0]);
+    nearByTourInformation({
+      lat: standardInfo.lat,
+      lng: standardInfo.lng,
+    });
   }, [props.information]);
 
   useEffect(() => {
@@ -54,14 +73,19 @@ function TabMenu(props) {
         }
         setTabData(item);
       }
-      if (selectedTab.main == "관광지") {
+      if (selectedTab.main == "여행지") {
         let item = [];
-        if (selectedTab.sub == "전체") {
-          nearByTourInformation({
-            lat: standardInfo.lat,
-            lng: standardInfo.lng,
+
+        if (selectedTab.sub == "전체" && tourData) {
+          item = tourData;
+        } else {
+          tourData.map((info) => {
+            if (info.gubun == selectedTab.sub) {
+              item.push(info);
+            }
           });
         }
+        setTabData(item);
       }
     }
   }, [selectedTab]);
@@ -101,40 +125,31 @@ function TabMenu(props) {
         defaultIndex={defaultTab}
         className={styles.tabs}
         selectedTabClassName={styles.is_selected}
+        onSelect={(index) => {
+          if (index == 0) {
+            setSelectedTab({
+              main: idx[index],
+              sub: "음식점",
+            });
+          } else {
+            setSelectedTab({
+              main: idx[index],
+              sub: "전체",
+            });
+          }
+        }}
       >
         <TabList>
           <Tab className={styles.tab}>전체</Tab>
           <Tab className={styles.tab}>음식점</Tab>
           <Tab className={styles.tab}>여행지</Tab>
         </TabList>
+        <TabPanel>안녕하세요</TabPanel>
         <TabPanel>
           <Tabs
-            onSelect={(index) =>
-              index == 0
-                ? setSelectedTab({ main: "전체", sub: "음식점" })
-                : setSelectedTab({ main: "전체", sub: "관광지" })
-            }
-            forceRenderTabPanel
-            className={styles.tabs}
-            selectedTabClassName={styles.sub_is_selected}
-          >
-            <TabList className={styles.subtab_list}>
-              <Tab className={styles.subtab_all}>음식점</Tab>
-              <Tab className={styles.subtab_all}>관광지</Tab>
-            </TabList>
-            <TabPanel>
-              <p>음식점 데이터</p>
-            </TabPanel>
-            <TabPanel>
-              <p>관광지데이터</p>
-            </TabPanel>
-          </Tabs>
-        </TabPanel>
-        <TabPanel>
-          <Tabs
-            onSelect={(index) =>
-              setSelectedTab({ main: "음식점", sub: restaurant[index] })
-            }
+            onSelect={(index) => {
+              setSelectedTab({ main: "음식점", sub: restaurant[index] });
+            }}
             forceRenderTabPanel
             className={styles.tabs}
             selectedTabClassName={styles.sub_is_selected}
@@ -161,7 +176,7 @@ function TabMenu(props) {
           <Tabs
             forceRenderTabPanel
             onSelect={(index) =>
-              setSelectedTab({ main: "관광지", sub: tour[index] })
+              setSelectedTab({ main: "여행지", sub: tour[index] })
             }
             className={styles.tabs}
             selectedTabClassName={styles.sub_is_selected}
@@ -172,21 +187,13 @@ function TabMenu(props) {
               <Tab className={styles.subtab_tour}>행사/공연/축제</Tab>
               <Tab className={styles.subtab_tour}>쇼핑</Tab>
             </TabList>
-            <TabPanel>
-              <p>전체 관광지 데이터</p>
-            </TabPanel>
-            <TabPanel>
-              <p>문화시설</p>
-            </TabPanel>
-            <TabPanel>
-              <p>행사/공연/축제</p>
-            </TabPanel>
-            <TabPanel>
-              <p>쇼핑</p>
-            </TabPanel>
-            <TabPanel>
-              <p>기타 음식 데이터</p>
-            </TabPanel>
+            <div className={styles.tabpanel}>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+              <TabPanel>{listConstructor(tabData)}</TabPanel>
+            </div>
           </Tabs>
         </TabPanel>
       </Tabs>
