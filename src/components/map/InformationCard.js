@@ -12,7 +12,7 @@ function InformationCard(props) {
 
   return (
     <>
-      <div>
+      <div className={styles.card_outer}>
         <div className={styles.exitbutton}>
           <button
             onClick={() => {
