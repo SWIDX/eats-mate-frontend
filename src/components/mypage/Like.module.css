@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 130px;
+    padding: 30px 50px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.icon {
+    margin-top: 2px;
+}
+
+.likeInfo {
+    margin-left: 16px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 13px;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -0.04em;
+}
+
+.gubun {
+    margin: auto auto auto 16px;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    color: #8C8C8C;
+}
+
+.address {
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    color: #7E7E7E;
+}
+
+.deleteBtn {
+    margin: auto 10px auto auto;
+    cursor: pointer;
+}

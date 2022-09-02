@@ -1,0 +1,155 @@
+.title {
+    display: flex;
+}
+
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto auto 10px;
+}
+.profileImage {
+    object-fit: cover; /* prevent image to resize */
+    width: 124px;
+    height: 124px;
+    background: #ffffff;
+    box-shadow: 0px 4px 31px 5px rgba(215, 215, 215, 0.3);
+    border-radius: 100px;
+    margin-bottom: 28px;
+}
+.userName {
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-bottom: 4px;
+}
+
+.userEmailContainer {
+    display: flex;
+}
+.userEmailContainer > svg {
+    margin: auto 8px auto 0px;
+    width: 20px;
+    height: 20px;
+}
+
+.userEmail {
+    font-size: 16px;
+    letter-spacing: -0.04em;
+    color: #3F3F3F;
+    margin: auto auto;
+}
+
+.welcomeContainer {
+    margin: auto auto auto 0px;
+}
+
+.welcomeText {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.welcomeText > p {
+    line-height: 35px;
+    letter-spacing: -0.04em;
+}
+
+.welcomeText > p > b7 {
+    font-weight: 700;
+}
+
+.category {
+    display: inline-block;
+    padding: 21px 46px;
+    background: #F9F9F9;
+    border-radius: 8px;
+    margin-bottom: 100px;
+}
+
+.category > div {
+    display: flex;
+
+}
+
+.category > div > div {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    letter-spacing: -0.04em;
+    cursor: pointer;
+}
+
+.category > div > div > p {
+    margin: 0px 0px 3px 0px;
+    color: #585858;
+    font-size: 16px;
+    letter-spacing: -0.04em;
+}
+
+.category > div > div > b7 {
+    font-weight: 700;
+    font-size: 24px;
+    color: #E97869;
+    letter-spacing: -0.04em;
+}
+
+.separator {
+    width: 1px;
+    height: 64px;
+    margin: auto 46px;
+    background-color: #E1E1E1;
+}
+
+.subTitle {
+    display: flex;
+    padding: 20px 10px;
+    border-bottom: 2px solid #000000;
+}
+
+.titleText {
+    line-height: 35px;
+    letter-spacing: -0.04em;
+    font-size: 24px;
+}
+
+.titleText > b7 {
+    font-weight: 700;
+}
+
+.pagination {
+    margin: auto 10px auto auto;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.pagination > hl {
+    font-size: 20px;
+    font-weight: 700;
+    color: #E97869;
+}
+
+.arrowContainer {
+    display: flex;
+    margin-right: 10px;
+}
+
+.leftArrow {
+    margin: auto 14px auto 20px;
+    cursor: pointer;
+}
+.leftArrow > svg {
+    stroke: #000000;
+}
+
+.rightArrow {
+    margin: auto 0px auto 14px;
+    cursor: pointer;
+}
+.rightArrow > svg {
+    stroke: #000000;
+}
+
+.courseList {
+    display: flex;
+    align-items: flex-start;
+}

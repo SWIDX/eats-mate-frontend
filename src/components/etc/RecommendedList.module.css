@@ -1,0 +1,77 @@
+.recommended_list {
+    position: absolute;
+    left: 150px;
+    top: 1050px;
+}
+
+.recommended_list > span {
+    font-size: 18px;
+    color: grey;
+}
+
+.recommended_list > p {
+    /*position: absolute;*/
+    width: 500px;
+    height: 41px;
+    /*top: 120px;*/
+
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.04em;
+}
+
+.element_list {
+    width: 1200px;
+    height: 350px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.element {
+    width: 33%;
+    height: 100%;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    margin-right: 30px;
+}
+
+.title {
+    display: flex;
+    margin-top: 15px;
+}
+
+.image {
+    
+    margin-left: 15px;
+    width: 15px;
+    height: 20px;
+}
+
+.address {
+    margin-left: 8px;
+}
+
+.name {
+    margin-top: 15px;
+    margin-left: 15px;
+    font-weight: bold;
+}
+
+.name > span {
+    color: lightgrey;
+    font-size: 15px;
+}
+
+.ment {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.ment > span {
+    color: red;
+}

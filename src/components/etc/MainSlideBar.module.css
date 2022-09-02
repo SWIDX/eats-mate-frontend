@@ -1,0 +1,77 @@
+.slideShow {
+    width: 1300px;
+    height: 500px;
+    margin-left: 100px;
+    overflow: hidden;
+  }
+
+.slideShow > input[type=radio] {
+    display: none;
+}
+
+.slides {
+    /*position: absolute;*/
+    width: 1300px;
+    height: 500px;
+    display: flex;
+}
+
+.leftBtn {
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    z-index: 20;
+}
+
+.rightBtn {
+    position: absolute;
+    top: 250px;
+    left: 1350px;
+    width: 100px;
+    height: 100px;
+    z-index: 20;
+}
+
+.bullets {
+    position: absolute;
+	top: 600px;
+	left: 700px;
+	width: 500px;
+	height: 100px;
+}
+
+.bullets label {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #8F7BF7;
+    width: 15px;
+    height: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.image {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.slideShow > input[type=radio]:nth-child(1):checked~.bullets > label:nth-child(1) {
+    background-color: #8F7BF7;
+}
+
+.slideShow > input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2){
+    background-color: #8F7BF7;
+}
+.slideShow > input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
+    background-color: #8F7BF7;
+}
+.slideShow > input[type=radio]:nth-child(4):checked~.bullets>label:nth-child(4){
+    background-color: #8F7BF7;
+}

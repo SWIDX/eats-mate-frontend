@@ -1,188 +1,153 @@
 /* global kakao */
 
-import React, { useState, useEffect } from 'react';
-import "./MapPage.module.css";
+import React, { useState, useEffect } from "react";
 
-const { kakao } = window;
+import NavBar from "../components/navigation/NavBar";
+import MapContainer from "../components/map/MapContainer";
+import MapSearchBar from "../components/map/MapSearchBar";
+import MapCourse from "../components/map/MapCourse";
+import CategoryBtn from "../components/map/CategoryBtn";
+import InformationCard from "../components/map/InformationCard";
+import ListCard from "../components/map/ListCard";
+
+import styles from "./MapPage.module.css";
 
 function MapPage() {
+  const [clickInformation, setClickInformation] = useState();
+  const [listInformation, setListInformation] = useState();
+  const [selectedType, setSelectedType] = useState();
+  const [listCardOn, setListCardOn] = useState(false);
+  const [viewCourseComponent, setViewCourseComponent] = useState(false);
+  const [point, setPoint] = useState();
+  const [courseLine, setCourseLine] = useState([]);
+  const [finalDistance, setFinalDistance] = useState();
 
-	const [map, setMap] = useState(null);
+  const [gpsLoc, setGpsLoc] = useState({
+    lat: 0,
+    lng: 0,
+  });
+  const [onCard, setOnCard] = useState(true);
+  const [infoCard, setInfoCard] = useState(false);
 
-	const [inputText, setInputText] = useState("");
-	const [selectvalue, setSelectValue] = useState("location");
+  const getClickInfo = (info) => {
+    setClickInformation(info);
+  };
 
-	var ps = new kakao.maps.services.Places();
-	var infowindow = new kakao.maps.InfoWindow({zIndex:1}); // marker info window
+  const getSearchBarInfo = (item) => {
+    if (item !== []) {
+      if (item.info.length > 0) {
+        setListCardOn(true);
+        setListInformation(item.info);
+      }
+      if (item.value != null) {
+        setSelectedType(item.value);
+      }
+    }
+  };
 
-	useEffect(() => {
-		var mapContainer = document.getElementById('map'),
-	    mapOption = { 
-	        center: new kakao.maps.LatLng(37.5004988522186, 127.028079434784), // center location
-	        level: 3 // magnification level
-	    };
+  const clickAddCourse = (info) => {
+    setViewCourseComponent(true);
+    setPoint(info);
+  };
 
-		// generate map
-		var map = new kakao.maps.Map(mapContainer, mapOption);
-		setMap(map);
-	},[]) // useEffect
+  useEffect(() => {
+    /*to set point value directly*/
+  }, [point]);
 
-    function placesSearchCB(data, status, pagination) {
-		if (status === kakao.maps.services.Status.OK) {
-	        let bounds = new kakao.maps.LatLngBounds();
+  useEffect(() => {
+    if (clickInformation !== undefined) {
+      setInfoCard(true);
+    }
+  }, [clickInformation]);
 
-	        for (let i = 0; i < data.length; i++) {
-	          displayMarker(data[i]); // display marker
-	          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-	        }
+  const clearCoursePoint = () => {
+    setPoint(null);
+  };
 
-	        map.setBounds(bounds);
-	    }
-	} // placesSearchCB
-		
-	function displayMarker(place) {
-		let marker = new kakao.maps.Marker({
-	        map: map,
-	        position: new kakao.maps.LatLng(place.y, place.x),
-	    });
+  const drawCourse = (pointInfo) => {
+    setCourseLine([]);
+    setCourseLine(pointInfo);
+  };
 
-		// marker click event
-		kakao.maps.event.addListener(marker, 'click', function() {
-			infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-			infowindow.open(map, marker);
+  const closeCourseComponent = () => {
+    setViewCourseComponent(false);
+    setCourseLine([]);
+  };
 
-			if (window.confirm("해당 위치를 기반으로 식당을 검색하시겠습니까?") === true){
-				
-				var circle = new kakao.maps.Circle({
-					center : new kakao.maps.LatLng(place.y, place.x),  // center location
-					radius: 500, // radius(m)
-					strokeWeight: 2,
-					strokeColor: '#E97869',
-					strokeOpacity: 1,
-					strokeStyle: 'solid',
-					fillColor: '#E97869',
-					fillOpacity: 0.2
-				}); // generate circle
+  const setDistanceFunc = (distance) => {
+    setFinalDistance(distance);
+  };
 
-				circle.setMap(map);
+  /*const getGpsLoc = (info) => {
+    setGpsLoc({
+      lat: info.lat,
+      lng: info.lng,
+    });
+  };
 
-				// search data
-				findData(place.y, place.x);
-			} else {}
+  function getUserLoc() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        //alert(position.coords.latitude+""+position.coords.longitude);
+        setGpsLoc({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      }, function(error) {
+        console.error(error);
+      }, {
+        enableHighAccuracy: true,
+        maximumAge: 0,
+        timeout: Infinity
+      });
+    } else {
+      alert('GPS를 지원하지 않습니다');
+    }
+  }
 
-		});
-	} // displayMarker
+  useEffect(() => {
+    getUserLoc();
+  }, []);*/
 
-	function findData(y, x) {
-		alert(y +" / "+ x); // check place
-	} // fingData
+  return (
+    <>
+      <div>
+        <NavBar />
+      </div>
+      
+      {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
 
-	function infobarBtn() {
-		var infobar = document.getElementById("infobar");
-		/* infobar content initialization */
-		infobar.style.display="none";
-	} // infobarBtn
+      <div className="styles.map">
+        {listInformation && listCardOn ? (
+          <ListCard
+            listInformation={listInformation}
+            selectedType={selectedType}
+            propFunction={getClickInfo}
+          />
+        ) : null}
 
-	function categoryBtn(value) {
-		alert("카테고리 검색: " +value);
-		var infobar = document.getElementById("infobar");
-		infobar.style.display="block";
-	} // categoryBtn
+        <MapSearchBar propFunction={getSearchBarInfo} />
 
-	function gps() {
-		alert("GPS 선택");
-	}
-
-	function selectBoxChange(e) {
-		var value = e.target.value;
-		setSelectValue(value);
-	}
-
-  	const onChange = (e) => {
-	    setInputText(e.target.value);
-	};
-
-	const handleOnEnterKeyPress = (e) => {
-	  if (e.key === 'Enter') {
-		  	e.preventDefault();
-			if (selectvalue === "location") {
-				var place = inputText;
-
-    			ps.keywordSearch(place, placesSearchCB);
-			} else if (selectvalue === "name") {
-				var restaurant = inputText;
-				alert(restaurant);
-			}
-		    setInputText("");
-
-	  }
-	}; // input Enter key press event function
-
-	const handleOnKeyPress = () => {
-		if (selectvalue === "location") {
-			var place = inputText;
-  
-			ps.keywordSearch(place, placesSearchCB);
-		} else if (selectvalue === "name") {
-			var restaurant = inputText;
-			alert(restaurant);
-		}
-		setInputText("");
-	}; // search btn key press event function
-
-	return (
-		<div className="Map">
-
-			<div className="search">
-				<select id="select" onChange={selectBoxChange}>
-					<option value="location">장소</option>
-					<option value="name">식당</option>
-				</select>
-				<input
-		          type="text"
-		          id="search"
-		          name="search"
-		          value={inputText}
-		          placeholder="  검색어를 입력하세요."
-		          onChange={onChange}
-		          onKeyPress={handleOnEnterKeyPress}
-		        ></input>
-				<img className="search_btn" alt="sesarch icon" onClick={() => handleOnKeyPress()} src="/img/search icon.png" />
-		    </div>
-
-			<div className="infobar"
-				id="infobar">
-					<button onClick={infobarBtn}>X</button>
-					<h2>식당명</h2>
-					<hr></hr>
-					<h4>주소</h4>
-					<hr></hr>
-					<h4>영업시간</h4>
-					<hr></hr>
-					<h4>전화번호</h4>
-			</div>
-
-			<div className="category">
-				<ul>
-					<li><button onClick={() => categoryBtn("전체")}>전체</button></li>
-					<li><button onClick={() => categoryBtn("한식")}>한식</button></li>
-					<li><button onClick={() => categoryBtn("중식")}>중식</button></li>
-					<li><button onClick={() => categoryBtn("일식")}>일식</button></li>
-					<li><button onClick={() => categoryBtn("양식")}>양식</button></li>
-					<li><button onClick={() => categoryBtn("기타")}>기타</button></li>
-					<li><img className="gps" alt="gps icon" onClick={() => gps()} src="/img/gps icon.jpg" /></li>
-				</ul>
-			</div>
-
-			<div className="map"
-				id="map"
-				style={{
-					width: "100%",
-					height: "100%",
-					position: "absolute"
-			}}></div>
-		</div>
-	);
+        {viewCourseComponent ? (
+          <MapCourse
+            point={point}
+            propFunction={clearCoursePoint}
+            propFunction2={drawCourse}
+            propFunction3={closeCourseComponent}
+            propFunction4={setDistanceFunc}
+          />
+        ) : null}
+        <MapContainer
+          markerInformation={listInformation}
+          clickedInformation={clickInformation}
+          courseLine={courseLine}
+          distance={finalDistance}
+          gpsInformation={gpsLoc}
+          propFunction={clickAddCourse}
+        />
+      </div>
+    </>
+  );
 }
 
 export default MapPage;

@@ -1,0 +1,579 @@
+.responsivewrapper {
+  position: relative;
+  left: 200px;
+}
+
+.category {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #8c8c8c;
+}
+
+.name {
+  margin-top: -20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.line {
+  width: 1194px;
+  border: 1px solid;
+  color: #000000;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.line2 {
+  width: 848px;
+  border: 1px solid;
+  color: #e2e2e2;
+}
+
+.gagename {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.gageinfoname {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.gageinfocontent {
+  margin-top: -10px;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.gageinfocontent2 {
+  margin-top: -10px;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #979797;
+}
+
+.gageimg {
+  height: 24px;
+  width: 24px;
+}
+
+.gagerightbox {
+  margin-left: 40px;
+}
+
+.gagerightsquarebox {
+  padding:10px;
+  margin-top: 50px;
+  width: 378px;
+  height: 473px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 1px 1px 1px 1px lightgray;
+  margin-left: 40px;
+}
+
+.maingageimg {
+  margin-top: 50px;
+  width: 786px;
+  height: 421px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.maingageimg2 {
+  width: 174px;
+  height: 93px;
+  border-radius: 10px 10px 10px 10px;
+  margin: 10px;
+}
+
+.allreview {
+  width: 91px;
+  height: 30px;
+  position: relative;
+  left: 500px;
+}
+
+.box1 {
+  margin-top: 40px;
+  width: 378px;
+  height: 253px;
+  padding: 50px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.box2 {
+  padding: 10px;
+  width: 786px;
+  height: 197px;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 1px 1px 1px 1px lightgray;
+  margin: 40px;
+}
+
+.carouselsize {
+  width: 800px;
+  height: 336px;
+}
+
+.carouselsize2 {
+  width: 400px;
+  height: 149px;
+}
+
+.carouselsize3 {
+  margin-top:-30px;
+  width: 768px;
+  height: 116px;
+}
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.maininfomessage {
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.mainreview {
+  position: absolute;
+  left: 363px;
+  top: 1000px;
+}
+
+.recentreview {
+  position: absolute;
+  left: 363px;
+  top: 1000px;
+}
+
+.recentreviewimg {
+  position: relative;
+  margin-left: 10px;
+  margin-top: 50px;
+}
+
+.locationboxflex {
+  display: flex;
+}
+
+.locationboxflex2 {
+  flex-direction: column; /*수직 정렬*/
+}
+
+.locationbox {
+  width: 97px;
+  height: 42px;
+  padding: 10px;
+  border: 2px solid #e97869;
+  color: #e97869;
+  font-weight: bold;
+  margin-left: 10px;
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.infobox {
+  position: absolute;
+  margin-top: -100px;
+  width: 378px;
+  height: 168px;
+  padding: 10px;
+  border: 1px;
+  background: #8f7bf7;
+  border-radius: 50px 50px 50px 8px;
+}
+
+.infomessagebox1 {
+  margin-left: 80px;
+  margin-top: 40px;
+  width: 378px;
+  height: 107px;
+  padding: 30px;
+  border-radius: 50px 50px 8px 50px;
+  font-size: 16px;
+  box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.infomessagebox2 {
+  margin-left: 30px;
+  margin-top: 30px;
+  width: 378px;
+  height: 107px;
+  padding: 30px;
+  border-radius: 50px 50px 50px 8px;
+  font-size: 16px;
+  box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.infomessageboxuser {
+  font-size: 14px;
+  color: #959595;
+  margin-left: 200px;
+}
+
+.infoname {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #7be7a3;
+}
+
+.infocategory {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.infocontent {
+  margin-top: 10px;
+  margin-left: 30px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.kakaolocation {
+  margin-top: 20px;
+  margin-left: 60px;
+}
+
+.rateimg {
+  padding: 27px;
+}
+
+.rrr {
+  width: 20px;
+  height: 20px;
+  margin-left: 40px;
+}
+
+.rrrcontent {
+  width: 300px;
+  font-size: 20px;
+}
+
+.ratebox {
+  margin-top: 30px;
+  width: 313px;
+  height: 149px;
+  border: 1px solid #f1f1f1;
+  border-radius: 1px 1px 1px 1px;
+  margin-left: 10px;
+}
+
+.allreviewimg {
+  margin-left: 30px;
+  width: 149px;
+  height: 149px;
+}
+
+.bestcontent {
+  margin-top: 30px;
+}
+
+.reviewimg {
+  width: 166px;
+  height: 166px;
+}
+
+.reviewcontent {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.count {
+  position: relative;
+  left: 10px;
+}
+
+.reviewwriter {
+  font-size: 14px;
+  padding: 10px;
+}
+
+.reviewwriterimg {
+  margin-top: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: 1px solid white;
+}
+
+.reviewdate {
+  color: #8c8c8c;
+  font-size: 14px;
+  padding: 10px;
+}
+
+.reviewimgs {
+  border-radius: 10%;
+  border: 1px solid white;
+}
+
+.detail_map_wrapper {
+  position: relative;
+  left: 200px;
+}
+
+/* 모달창을 화면 중앙. 최상단에 노출 */
+.container {
+  padding: 50px;
+  /* 모달창 크기 */
+  width: 960px;
+  height: 783px;
+
+  /* 최상단 위치 */
+  z-index: 999;
+
+  /* 중앙 배치 */
+  /* top, bottom, left, right 는 브라우저 기준으로 작동한다. */
+  /* translate는 본인의 크기 기준으로 작동한다. */
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+
+  /* 모달창 디자인 */
+  background-color: white;
+  border-radius: 16px;
+
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 0 9999px;
+  z-index: 100;
+}
+
+/* 모달창 내부 X버튼 */
+.close {
+  /* X버튼 위치  */
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  right: 32px;
+  top: 32px;
+
+  /* X버튼 디자인  */
+  border: 2px solid #e6e6e6;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  color: #e97869;
+}
+
+/* 식당 정보 컨테이너 */
+.locationboxflex {
+  margin-top: 28px;
+}
+
+/* 식당 위치 정보 컨테이너  */
+.locationboxflex2 {
+  margin-top: 8px;
+}
+
+/* 식당 이미지  */
+.reviewmodalimg {
+  width: 98px;
+  height: 98px;
+  border: 1px solid #f1f1f1;
+  border-radius: 16px;
+  margin-right: 24px;
+}
+
+/* 식당 카테고리  */
+.reviewmodalcategory {
+  font-size: 16px;
+  color: #8c8c8c;
+}
+
+/* 리뷰 타이틀  */
+.reviewmodalname {
+  font-size: 20px;
+  letter-spacing: -0.04em;
+}
+
+/* 영역 구분 선  */
+.line2 {
+  margin: 16px 0 24px 0;
+}
+
+/* 리뷰 남기기 제목  */
+.reviewmodalask {
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: -0.04em;
+}
+
+.locationboxflex3 {
+  display: flex;
+  justify-content: center;
+}
+
+/* 리뷰 텍스트 박스 */
+textarea {
+  /* 위치  */
+  width: 848px;
+  height: 94px;
+  resize: none;
+  margin-bottom: 12px;
+  padding: 20px 24px;
+
+  /* 디자인  */
+  background: #f7f7f7;
+  border: 1px solid #d3d3d3;
+}
+
+/* placeholder 텍스트 속성  */
+textarea::placeholder {
+  color: #a4a4a4;
+  letter-spacing: -0.04em;
+}
+
+/* 리뷰 유의사항 타이틀 */
+.reviewWarning > b {
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: -0.04em;
+  color: #000;
+}
+
+/* 리뷰 유의사항 내용  */
+.reviewWarning {
+  color: #959595;
+  line-height: 24px;
+  margin-top: 4px;
+}
+
+.detail_map_wrapper_top {
+  display: flex;
+  position: relative;
+  top: 20px;
+  margin-bottom: 10px;
+}
+
+.addReviewImg {
+  position: relative;
+}
+
+/* 리뷰 이미지 첨부 -> default값 없애기  */
+.addImg {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+/* 리뷰 이미지 첨부 버튼 디자인  */
+.addImg + label {
+  font-size: 16px;
+  font-weight: 400;
+  color: #e97869;
+  border: 1px solid #e97869;
+  display: inline-block;
+  padding: 8px 24px;
+  position: absolute;
+  top: -72px;
+  right: 12px;
+}
+
+.reviewModalBtn {
+  position: relative;
+}
+
+.closeReview {
+  position: absolute;
+  width: 160px;
+  height: 48px;
+  left: 260px;
+  top: 56px;
+
+  border: 1px solid #c2c2c2;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #8a8a8a;
+}
+
+.uploadReview {
+  position: absolute;
+  width: 160px;
+  height: 48px;
+  right: 260px;
+  top: 56px;
+
+  background: #e97869;
+  border-radius: 8px;
+  color: #fff;
+  border: none;
+}
+
+.detail_map_title {
+  flex-grow: 1;
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+}
+.detail_map_address {
+  flex-grow: 1;
+  display: inline-block;
+}
+
+.detail_map {
+  margin-top: 1%;
+}
+
+
+.modalbutton{
+  margin-top:-15px;
+  border:0;
+  outline:0;
+  background-color:transparent;
+}
+
+.modalbutton2{
+  margin-top:-15px;
+  margin-left:-70px;
+  border:0;
+  outline:0;
+  background-color:transparent;
+}
+
+.one{
+  bottom:-10px;
+  width:22px;
+  height: 22px;
+  z-index:-1;
+}
