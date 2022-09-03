@@ -12,34 +12,40 @@ function MapCourse(props) {
   const [placeAddressList, setPlaceAddressList] = useState([]); // lat, lng
   const [distance, setDistance] = useState();
   const [distanceList, setDistanceList] = useState([]);
-  const [exampleDistanceList, setExampleList] = useState([100, 200, 300]);
+  const [finalDistance, setFinalDistance] = useState();
 
   const clickCompleteBtn = () => {
     if(userinfo == null) {
-      alert("코스를 완성하려면 먼저 로그인을 해주세요");
-      // 추후 title 수정 작업 진행
-      /*console.log(title);
-      console.log(placeNameList);
-      console.log(placeAddressList);
-      console.log(distanceList);*/
+     //alert("코스를 완성하려면 먼저 로그인을 해주세요");
+      if(placeNameList.length == 1) {
+        alert("코스를 완성하려면 두 개 이상의 경유지가 필요합니다.");
+      } else {
+        console.log(placeNameList);
+        console.log(placeAddressList);
+        console.log(distanceList);
+      }
     } else {
       setTitle(userinfo.name+"메이트님의 혼행 코스");
-      var url = "http://localhost:8081/user-service/user/course/";
-      var data = {
-        title: title,
-        placeNameList: placeNameList,
-        placeAddressList: placeAddressList,
-        distanceList: exampleDistanceList,
-      }
-      var config = {
-        headers: {
-          Authorization: "Bearer "+userinfo.accessToken, // 'Authorization'
+       if(placeNameList.length == 1) {
+        alert("코스를 완성하려면 두 개 이상의 경유지가 필요합니다.");
+      } else {
+        var url = "http://localhost:8081/user-service/user/course/";
+        // 추후 title 수정 작업 진행
+        var data = {
+          title: title,
+          placeNameList: placeNameList,
+          placeAddressList: placeAddressList,
+          distanceList: distanceList,
         }
-      }
-      axios.post(url, data, config).then((res) => {
-        console.log(res);
-        alert("코스가 저장되었습니다. 마이페이지에서 확인해 보세요.");
-      });
+        var config = {
+          headers: {
+            Authorization: "Bearer "+userinfo.accessToken,
+          }
+        }
+        axios.post(url, data, config).then((res) => {
+          alert("코스가 저장되었습니다. 마이페이지에서 확인해 보세요.");
+        });
+      } // if-else
     }
   };
 
@@ -47,16 +53,17 @@ function MapCourse(props) {
     setPoint(point.filter(point => point.name == info));
     setPlaceNameList(placeNameList.filter(placeNameList => placeNameList[0] == info));
     setPlaceAddressList(placeAddressList.filter(placeAddressList => placeAddressList[0] == info));
-    setDistanceList(distanceList.filter(distanceList => distanceList[0] == info));
+    setDistanceList(distanceList.filter(distanceList => distanceList[0] == 1234567));
     props.propFunction3();
   }; // delete all point data
 
   const clickDeleteBtn = (info) => {
     var index = point.findIndex(point => point.name == info.name);
-    setPoint(point.filter(point => point.name !== info.name));
     placeNameList.splice(index, 1);
     placeAddressList.splice(index, 1);
-    setDistanceList([]);
+    setDistanceList(distanceList.filter(distanceList => distanceList[0] == "1234567"));
+
+    setPoint(point.filter(point => point.name !== info.name));
     //distanceList.length=0;
     //setDistanceList(distanceList.filter(distanceList => distanceList[index] == info));
   };
@@ -100,19 +107,27 @@ function MapCourse(props) {
   }, [props.point]);
 
   useEffect(() => {
-      props.propFunction2(point); // To draw course line on the map
+      props.propFunction2(point); // To draw course line on the map]
+
+      //setDistance(0);
       if(point.length >= 2) {
+        var resultList = [];
         for(var i=0; i+1< point.length; i++) {
           const result = getDistanceInKm(point[i].lat, point[i].lng, point[i+1].lat, point[i+1].lng);
           const resultToMeter = result * 1000;
-          setDistance(parseInt(resultToMeter));
+          resultList[i] = parseInt(resultToMeter);
+          //setDistanceList([...distanceList, parseInt(resultToMeter)]);
         }
-      }
+        setDistanceList(resultList);
+      } //else if(point.length == 1) {
+        //setDistance(0);
+      //}
   }, [point]);
   //const result = getDistanceInKm(point[point.length-1].lat, point[point.length-1].lng, point[point.length-2].lat, point[point.length-2].lng);
 
   useEffect(() => {
     if(distance !== undefined) {
+      console.log("test:" + distance);
       setDistanceList([...distanceList, distance]);
     }
   }, [distance]);
@@ -123,8 +138,8 @@ function MapCourse(props) {
     for(var i=0; i < distanceList.length; i++) {
       finalDistance += distanceList[i];
     }
-    if(distanceList !== undefined && finalDistance != 0) {
-      props.propFunction4(finalDistance);
+    if(distanceList !== undefined) {// && finalDistance != 0
+      setFinalDistance(finalDistance);
     }
   }, [distanceList]);
 
@@ -153,6 +168,9 @@ function MapCourse(props) {
                 top: "15px",
               }}
               onClick={() => clickCompleteBtn()}/>
+            <div className={styles.courseDistance}>
+              총 거리:{finalDistance}m
+            </div>
 
             <img src="/img/closeBtn.png"
               alt="close btn"
