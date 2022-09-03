@@ -12,7 +12,7 @@ function NavBar() {
     const userinfo = useSelector((state) => state.userReducer.userinfo)
 
     return (
-        <Navbar expand="lg" bg="light" variant="light" sticky="top" className={styles.navbar}>
+        <Navbar expand="lg" bg="white" variant="light" sticky="top" className={styles.navbar}>
             <Container style={{ width: "75%" }}>
                 <Navbar.Brand href="/" className={styles.logoContainer}>
                     <LogoSvg className={styles.logoSvg}/>
