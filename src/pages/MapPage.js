@@ -1,89 +1,89 @@
 /* global kakao */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import NavBar from "../components/navigation/NavBar";
-import MapContainer from "../components/map/MapContainer";
-import MapSearchBar from "../components/map/MapSearchBar";
-import MapCourse from "../components/map/MapCourse";
-import CategoryBtn from "../components/map/CategoryBtn";
-import InformationCard from "../components/map/InformationCard";
-import ListCard from "../components/map/ListCard";
+import NavBar from '../components/navigation/NavBar';
+import MapContainer from '../components/map/MapContainer';
+import MapSearchBar from '../components/map/MapSearchBar';
+import MapCourse from '../components/map/MapCourse';
+import CategoryBtn from '../components/map/CategoryBtn';
+import InformationCard from '../components/map/InformationCard';
+import ListCard from '../components/map/ListCard';
 
-import styles from "./MapPage.module.css";
+import styles from './MapPage.module.css';
 
 function MapPage() {
-  const [clickInformation, setClickInformation] = useState();
-  const [listInformation, setListInformation] = useState();
-  const [selectedType, setSelectedType] = useState();
-  const [listCardOn, setListCardOn] = useState(false);
-  const [viewCourseComponent, setViewCourseComponent] = useState(false);
-  const [point, setPoint] = useState();
-  const [courseLine, setCourseLine] = useState([]);
-  const [finalDistance, setFinalDistance] = useState();
+    const [clickInformation, setClickInformation] = useState();
+    const [listInformation, setListInformation] = useState();
+    const [selectedType, setSelectedType] = useState();
+    const [listCardOn, setListCardOn] = useState(false);
+    const [viewCourseComponent, setViewCourseComponent] = useState(false);
+    const [point, setPoint] = useState();
+    const [courseLine, setCourseLine] = useState([]);
+    const [finalDistance, setFinalDistance] = useState();
 
-  const [gpsLoc, setGpsLoc] = useState({
-    lat: 0,
-    lng: 0,
-  });
-  const [onCard, setOnCard] = useState(true);
-  const [infoCard, setInfoCard] = useState(false);
+    const [gpsLoc, setGpsLoc] = useState({
+        lat: 0,
+        lng: 0,
+    });
+    const [onCard, setOnCard] = useState(true);
+    const [infoCard, setInfoCard] = useState(false);
+    const [inputText, setInputText] = useState();
 
-  const getClickInfo = (info) => {
-    setClickInformation(info);
-  };
+    const getClickInfo = (info) => {
+        setClickInformation(info);
+    };
 
-  const getSearchBarInfo = (item) => {
-    if (item !== []) {
-      if (item.info.length > 0) {
-        setListCardOn(true);
-        setListInformation(item.info);
-      }
-      if (item.value != null) {
-        setSelectedType(item.value);
-      }
-    }
-  };
+    const getSearchBarInfo = (item) => {
+        if (item !== undefined) {
+            if (item.info) {
+                setListCardOn(true);
+                setListInformation(item.info);
+                setSelectedType(item.value);
+                setInputText(item.input);
+            }
+        }
+    };
 
-  const clickAddCourse = (info) => {
-    setViewCourseComponent(true);
-    setPoint(info);
-  };
+    const clickAddCourse = (info) => {
+        setViewCourseComponent(true);
+        setPoint(info);
+    };
 
-  const clickAddCourse2 = (info) => {
-    setViewCourseComponent(true);
-    setPoint(info);
-  };
+    const clickAddCourse2 = (info) => {
+        setViewCourseComponent(true);
+        setPoint(info);
+    };
 
-  useEffect(() => {
-    /*to set point value directly*/
-  }, [point]);
+    useEffect(() => {
+        /*to set point value directly*/
+    }, [point]);
 
-  useEffect(() => {
-    if (clickInformation !== undefined) {
-      setInfoCard(true);
-    }
-  }, [clickInformation]);
+    useEffect(() => {
+        if (clickInformation !== undefined) {
+            setInfoCard(true);
+        }
+    }, [clickInformation]);
 
-  const clearCoursePoint = () => {
-    setPoint(null);
-  };
+    const clearCoursePoint = () => {
+        setPoint(null);
+    };
 
-  const drawCourse = (pointInfo) => {
-    setCourseLine([]);
-    setCourseLine(pointInfo);
-  };
+    const drawCourse = (pointInfo) => {
+        setCourseLine([]);
+        setCourseLine(pointInfo);
+    };
 
-  const closeCourseComponent = () => {
-    setViewCourseComponent(false);
-    setCourseLine([]);
-  };
+    const closeCourseComponent = () => {
+        setViewCourseComponent(false);
+        setCourseLine([]);
+    };
 
-  const setDistanceFunc = (distance) => {
-    setFinalDistance(distance);
-  };
+    const setDistanceFunc = (distance) => {
+        setFinalDistance(distance);
+    };
 
-  /*const getGpsLoc = (info) => {
+    /*const getGpsLoc = (info) => {
     setGpsLoc({
       lat: info.lat,
       lng: info.lng,
@@ -114,45 +114,46 @@ function MapPage() {
     getUserLoc();
   }, []);*/
 
-  return (
-    <>
-      <div>
-        <NavBar />
-      </div>
-      
-      {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
+    return (
+        <>
+            <div>
+                <NavBar />
+            </div>
 
-      <div className="styles.map">
-        {listInformation && listCardOn ? (
-          <ListCard
-            listInformation={listInformation}
-            selectedType={selectedType}
-            propFunction={getClickInfo}
-            propFunction2={clickAddCourse2}
-          />
-        ) : null}
+            {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
 
-        <MapSearchBar propFunction={getSearchBarInfo} />
+            <div className="styles.map">
+                {listInformation && listCardOn ? (
+                    <ListCard
+                        listInformation={listInformation}
+                        selectedType={selectedType}
+                        propFunction={getClickInfo}
+                        propFunction2={clickAddCourse2}
+                        inputText={inputText}
+                    />
+                ) : null}
 
-        {viewCourseComponent ? (
-          <MapCourse
-            point={point}
-            propFunction={clearCoursePoint}
-            propFunction2={drawCourse}
-            propFunction3={closeCourseComponent}
-          />
-        ) : null}
-        <MapContainer
-          markerInformation={listInformation}
-          clickedInformation={clickInformation}
-          courseLine={courseLine}
-          distance={finalDistance}
-          gpsInformation={gpsLoc}
-          propFunction={clickAddCourse}
-        />
-      </div>
-    </>
-  );
+                <MapSearchBar propFunction={getSearchBarInfo} />
+
+                {viewCourseComponent ? (
+                    <MapCourse
+                        point={point}
+                        propFunction={clearCoursePoint}
+                        propFunction2={drawCourse}
+                        propFunction3={closeCourseComponent}
+                    />
+                ) : null}
+                <MapContainer
+                    markerInformation={listInformation}
+                    clickedInformation={clickInformation}
+                    courseLine={courseLine}
+                    distance={finalDistance}
+                    gpsInformation={gpsLoc}
+                    propFunction={clickAddCourse}
+                />
+            </div>
+        </>
+    );
 }
 
 export default MapPage;
