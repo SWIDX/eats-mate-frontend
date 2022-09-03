@@ -19,11 +19,12 @@ function LogoutButton() {
                         withCredentials: true // Set-Cookie 작동을 위해 필수
                     }
                 );
-                navigate("/")
+                
             } catch(e) {
                 console.warn(e);
             }
             dispatch(changeUserInfo(null))
+            navigate("/")
         }
     }
 
