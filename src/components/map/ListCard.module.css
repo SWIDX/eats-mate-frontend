@@ -1,71 +1,70 @@
 .list_outer {
-  position: absolute;
-  z-index: 30;
-  margin-left: 30px;
-  top: 11%;
-  height: 800px;
-  background-color: white;
-  border: 1px solid #e6e6e6;
-  border-radius: 10px;
+    position: absolute;
+    z-index: 30;
+    margin-left: 30px;
+    top: 11%;
+    height: 800px;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
 }
 
 .list {
-  position: absolute;
-  width: 380px;
-  height: auto;
-  border: 1px solid #e97869;
-  background-color: white;
-  border-radius: 10px;
+    position: absolute;
+    width: 380px;
+    height: auto;
+    border: 1px solid #e97869;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .cardTop {
-  width: 380px;
-  height: 7%;
-  border-radius: 10px;
-  margin: 0 0 5% 0;
+    display: flex;
+    width: 380px;
+    height: 7%;
+    border-radius: 10px;
+    margin: 0 0 5% 0;
+    justify-content: flex-start;
+    align-items: flex-end;
+    align-content: center;
 }
 .result_outer {
-  position: inherit;
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: white;
+    position: inherit;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: white;
 }
 
 .result {
-  position: absolute;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  position: relative;
-  width: 380px;
-  border-radius: 10px;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    width: 380px;
+    border-radius: 10px;
 }
 
 .result > div {
-  height: 33%;
-  width: auto;
-  text-align: left;
-  margin: 5%;
-  cursor: pointer;
+    display: flex;
+    height: 33%;
+    width: auto;
+    text-align: left;
+    margin: 5%;
+    cursor: pointer;
 }
 
 .result_name {
-  position: absolute;
-  padding-top: 8%;
-  padding-left: 8%;
-  padding-bottom: 3%;
-  text-align: left;
-  font-size: x-large;
-  font-weight: bold;
+    text-align: left;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 5%;
 }
 
 .result_tag {
-  position: absolute;
-  margin-top: 9%;
-  margin-left: 36%;
-  margin-bottom: 3%;
-  text-align: left;
-  font-size: medium;
-  font-weight: 400;
+    text-align: left;
+    font-size: medium;
+    font-weight: 400;
+    padding-left: 5%;
 }
