@@ -36,7 +36,7 @@ function MapPage() {
 
     const getSearchBarInfo = (item) => {
         if (item !== undefined) {
-            if (item.info) {
+            if (item.info && item.info.length != 0) {
                 setListCardOn(true);
                 setListInformation(item.info);
                 setSelectedType(item.value);
