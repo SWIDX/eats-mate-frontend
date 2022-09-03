@@ -50,6 +50,11 @@ function MapPage() {
     setPoint(info);
   };
 
+  const clickAddCourse2 = (info) => {
+    setViewCourseComponent(true);
+    setPoint(info);
+  };
+
   useEffect(() => {
     /*to set point value directly*/
   }, [point]);
@@ -123,6 +128,7 @@ function MapPage() {
             listInformation={listInformation}
             selectedType={selectedType}
             propFunction={getClickInfo}
+            propFunction2={clickAddCourse2}
           />
         ) : null}
 
@@ -134,7 +140,6 @@ function MapPage() {
             propFunction={clearCoursePoint}
             propFunction2={drawCourse}
             propFunction3={closeCourseComponent}
-            propFunction4={setDistanceFunc}
           />
         ) : null}
         <MapContainer
