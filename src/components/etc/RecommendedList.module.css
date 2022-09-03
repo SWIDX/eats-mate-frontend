@@ -1,7 +1,7 @@
 .recommended_list {
-    position: absolute;
+    position: relative;
     left: 150px;
-    top: 1050px;
+    top:155px;
 }
 
 .recommended_list > span {
