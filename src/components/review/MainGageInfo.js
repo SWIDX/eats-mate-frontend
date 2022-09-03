@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Review.module.css";
 import NavBar from "../navigation/NavBar";
+import { useState } from "react";
+import LikeButton from "../like/LikeButton";
 
 
 function MainGageInfo(props){
@@ -10,7 +12,7 @@ function MainGageInfo(props){
          <NavBar />
             <div className={styles.responsivewrapper}>
  
-
+    
                         <div className={styles.locationboxflex}>
                             <img className={styles.maingageimg} alt="" src="/img/reviewinfoimg.png"></img>
                             <br></br>
@@ -18,10 +20,17 @@ function MainGageInfo(props){
                             
                             </div>
                                 <div className={styles.gagerightsquarebox}>
-                                <img className={styles.one} alt="" src="/img/one.png"></img>
-                                    <p className={styles.gagename}>{props.information.name}</p>
-                                    <hr/>
-                                    <div>
+                                <div className={styles.locationboxflex}>
+                                <div className={styles.gagecircle} >
+                                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle  cx="11" cy="11" r="11" fill="#E97869"/></svg>
+                                </div>
+                                <div className={styles.locationboxflex}>
+                                <span className={styles.gagename}>{props.information.name}{" "}</span>
+                                <span className={styles.gagegubun}>{props.information.gubun}</span>
+                                </div>
+                                <div className={styles.likebutton}><LikeButton></LikeButton></div>
+                                </div>
+                                    <div className={styles.gagecontents}>
                                         <div className={styles.locationboxflex}>
                                             <img className={styles.gageimg} alt="" src="/img/location.png"></img>
                                             <p className={styles.gageinfoname}>주소</p>
@@ -40,9 +49,7 @@ function MainGageInfo(props){
                                             <img className={styles.gageimg} alt="" src="/img/time.png"></img>
                                             <p className={styles.gageinfoname}>영업시간</p>
                                         </div>   
-                                            <p className={styles.gageinfocontent}>월~토 11:00~21:00</p>
-                                            <p className={styles.gageinfocontent}>브레이크타임 15:00~17:00</p>
-                                            <p className={styles.gageinfocontent2}>*일요일 휴무</p>
+                                            <p className={styles.gageinfocontent}>{props.information.usage_of_week_and_time}</p>
                                     </div>
                                 </div>
                             </div>

@@ -30,6 +30,8 @@
 }
 
 .gagename {
+  width:150px;
+  margin-left: 8px;
   font-size: 24px;
   font-weight: bold;
 }
@@ -40,16 +42,15 @@
 }
 
 .gageinfocontent {
+  width:350px;
   margin-top: -10px;
   margin-left: 20px;
   font-size: 16px;
+  margin-bottom:32px;
 }
 
-.gageinfocontent2 {
-  margin-top: -10px;
-  margin-left: 20px;
-  font-size: 16px;
-  color: #979797;
+.gagecontents{
+  margin-top:25px;
 }
 
 .gageimg {
@@ -62,10 +63,10 @@
 }
 
 .gagerightsquarebox {
-  padding:10px;
-  margin-top: 50px;
-  width: 378px;
-  height: 473px;
+  margin-top:50px;
+  padding:38px;
+  width: 480px;
+  height: 406px;
   border-radius: 10px 10px 10px 10px;
   box-shadow: 1px 1px 1px 1px lightgray;
   margin-left: 40px;
@@ -393,10 +394,6 @@
   color: #e97869;
 }
 
-/* 식당 정보 컨테이너 */
-.locationboxflex {
-  margin-top: 28px;
-}
 
 /* 식당 위치 정보 컨테이너  */
 .locationboxflex2 {
@@ -571,9 +568,19 @@ textarea::placeholder {
   background-color:transparent;
 }
 
-.one{
-  bottom:-10px;
-  width:22px;
-  height: 22px;
+.gagecircle{
+  margin-top:-5px;
+  position:absolute;
   z-index:-1;
+}
+
+.likebutton{
+  margin-left:30px;
+}
+
+.gagegubun{
+  color:#8C8C8C;
+  font-size:16px;
+  width:40px;
+  margin-top:9px;
 }
