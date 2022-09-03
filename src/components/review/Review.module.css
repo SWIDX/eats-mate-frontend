@@ -279,6 +279,7 @@
   width: 20px;
   height: 20px;
   margin-left: 40px;
+  margin-top: 11px;
 }
 
 .rrrcontent {
@@ -546,6 +547,33 @@ textarea::placeholder {
 .detail_map_address {
   flex-grow: 1;
   display: inline-block;
+  margin-left:300px;
+}
+
+.detail_map_box {
+  width:388px;
+  height: 48px;
+  display: flex;
+  background-color: #F8F8F8;
+  border-radius: 20px;
+  padding:12px;
+}
+
+.detail_icon{
+  margin-left:40px;
+}
+
+.detail_map_font{
+  font-size: 16px;
+  margin-left:4px;
+}
+
+.detail_map_font2{
+  font-size: 13px;
+  margin-left:2px;
+  color:#8E8E8E;
+  margin-top:2px;
+  text-decoration: underline;
 }
 
 .detail_map {
@@ -584,3 +612,20 @@ textarea::placeholder {
   width:40px;
   margin-top:9px;
 }
+
+.buttondetail{
+  width: 219px;
+  height: 48px;
+  border:1px solid black;
+  border-radius: 30px;
+  font-size: 16px;
+  text-align:center;
+  padding:6px;
+}
+
+.forallreview{
+  margin-left: 667px;
+  background: none;
+  border:none;
+}
+
