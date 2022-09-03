@@ -9,6 +9,11 @@ export default function userReducer(state = initialState, action) {
             ...state,
             userinfo: action.payload,
         }
+        case "REISSUE_JWT":
+        return {
+            ...state,
+            userinfo: action.payload,
+        }
         default:
             return state
     }

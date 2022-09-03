@@ -3,4 +3,10 @@ export const changeUserInfo = (res) => {
      type: "CHANGE_USERINFO",
      payload: res
     }
-   }
+}
+export const reissueJWT = (res) => {
+    return {
+     type: "REISSUE_JWT",
+     payload: res
+    }
+}

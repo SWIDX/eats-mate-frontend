@@ -5,7 +5,7 @@ import { Container, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import NavBar from '../components/navigation/NavBar';
 import { useNavigate } from 'react-router-dom';
-import { changeUserInfo } from '../_actions/user_action';
+import { changeUserInfo, reissueJWT } from '../_actions/user_action';
 import Course from '../components/mypage/Course';
 import Like from '../components/mypage/Like';
 import Review from '../components/mypage/Review';
@@ -31,18 +31,64 @@ function MyPage() {
   const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
 
   useEffect(() => {
-    getUserData()
-  }, [])
+    checkExp();
+  }, []);
+
+  // 수정 필요
+  // invalid 시 2번 실행, rt 만료 시 실행되는 점이 원치 않는 동작임
+  useEffect(() => {
+    if(userinfo != null) {
+      getUserData();
+    }
+  }, [userinfo]); // matrix에 오류나는거 넣지 마시오 (ex. userinfo.accessToken)
+
+  async function checkExp() {
+    if(userinfo != null) {
+      const isTokenExpired = Date.now() >= userinfo.expirationTime - 10000;
+      console.log('Date.now(): ', Date.now());
+      console.log('exp - 10s: ', userinfo.expirationTime - 10000);
+      console.log('isTokenExpired: ', isTokenExpired);
+
+      if (isTokenExpired) {
+        // invalid
+        console.log("*** ACCESS TOKEN OUTDATED ***")
+        try {
+          const res = await axios.get("http://localhost:8081/user-service/auth/reissue",
+            {
+              withCredentials: true // Set-Cookie 작동을 위해 필수
+            }
+          );
+          console.log(dispatch(reissueJWT(res.data)))
+
+        } catch(e) {
+          console.log(e);
+          console.log("*** REFRESH TOKEN OUTDATED ***")
+          window.alert("로그인이 필요합니다.");
+          navigate(-1) // previous page
+          await logOut(); // rt outdated
+        }
+      }
+      else {
+        // valid
+        console.log("*** VALID USERINFO ***")
+        getUserData();
+      }
+    }
+    else {
+      // not logged in
+      console.log("*** NOT LOGGED IN ***")
+      window.alert("로그인이 필요합니다.");
+      navigate(-1) // previous page
+    }
+  }
 
   async function getUserData() {
-    try{
+    try {
       // getUser... 함수에서 던지는 error 여부를 판단한 후에 render flag를 설정해야 함
-      // await 없으면 render flag를 먼저 설정해버리고 getUser... 에서 발생한 error는 handle 되지 않음
-      // 따라서 getUserData는 async function 이어야 함
-      await getUserCourse()
-      await getUserLike()
-      await getUserReview()
-      setRenderFlag(true)
+      getUserCourse()
+      getUserLike()
+      getUserReview()
+      setRenderFlag(true) // 지금은 일단 처리 없이 해놓음
     } catch(e) {
       console.log(e)
 
@@ -51,7 +97,7 @@ function MyPage() {
         logOut();
       }
 
-      window.alert("로그인이 필요합니다.");
+      window.alert("사용자 정보를 받아오는데 실패했습니다.");
       navigate(-1) // previous page
     }
   }
