@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Map } from 'react-kakao-maps-sdk';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import styles from './Review.module.css';
 
 const DetailMap = (props) => {
   const [state, setState] = useState({
     // 지도의 초기 위치
-    center: { lat: 37.56076811229905, lng: 126.93694098263262 }, //37.566767891, 126.978657934
+    center: { lat: props.information.lat, lng: props.information.lng }, //37.566767891, 126.978657934
     // 지도 위치 변경시 panto를 이용할지에 대해서 정의
     isPanto: true,
   });
@@ -20,7 +20,7 @@ const DetailMap = (props) => {
       <div className={styles.detail_map_wrapper}>
         <div className={styles.detail_map_wrapper_top}>
           <p className={styles.detail_map_title}>찾아가는 길을 알려드릴게요</p>
-          <div className={styles.detail_map_address}>{props.address}</div>
+          <div className={styles.detail_map_address}>{props.information.address}</div>
         </div>
         <hr />
 
@@ -43,7 +43,14 @@ const DetailMap = (props) => {
                 },
               })
             }
-          ></Map>
+          >
+            <MapMarker
+            position={{
+              lat:props.information.lat,
+              lng:props.information.lng
+            }}
+            />
+          </Map>
         </div>
       </div>
     </>
