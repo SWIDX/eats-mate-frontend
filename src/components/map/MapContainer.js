@@ -24,7 +24,6 @@ const MapContainer = (props) => {
   const [course, setCourse] = useState([]); // 사용자 맞춤 코스로 저장될 정보
   const [drawCourseLine, setDrawCourseLine] = useState(false);
   const [distance, setDistance] = useState();
-  const [viewDistance, setViewDistance] = useState(false);
 
   useEffect(() => {
     setDrawCourseLine(false);
@@ -32,7 +31,6 @@ const MapContainer = (props) => {
     setCourse(props.courseLine);
     setDrawCourseLine(true);
     if(props.courseLine.length < 2) {
-      setViewDistance(false);
       setDistance(0);
     } 
   }, [props.courseLine]);
@@ -47,13 +45,16 @@ const MapContainer = (props) => {
   }, [courseInfoWindow]);
 
   const AddCourse = () => {
-    props.propFunction(information);
-    setCourseInfoWindow(false);
+    if(props.courseLine.length == 5) {
+      alert("코스 경유지는 최대 5개까지만 추가할 수 있습니다.");
+    } else {
+      props.propFunction(information);
+      setCourseInfoWindow(false);
+    }
   };
 
   useEffect(() => {
     if(props.distance !== undefined) {
-      setViewDistance(true);
       setDistance(props.distance);
     }
   }, [props.distance]);
@@ -186,12 +187,6 @@ const MapContainer = (props) => {
             strokeOpacity={1} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
             strokeStyle={"solid"} // 선의 스타일입니다
           />
-        )}
-
-        {viewDistance && (
-          <div className={styles.distance}>
-            코스 거리:{distance}m
-          </div>
         )}
 
       </Map>
