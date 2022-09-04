@@ -34,6 +34,10 @@ function MapPage() {
         setClickInformation(info);
     };
 
+    const getClickInformation = (res) => {
+        console.log(res);
+    };
+
     const getSearchBarInfo = (item) => {
         if (item !== undefined) {
             if (item.info && item.info.length != 0) {
@@ -130,6 +134,7 @@ function MapPage() {
                         propFunction={getClickInfo}
                         propFunction2={clickAddCourse2}
                         inputText={inputText}
+                        getClickInformation={getClickInformation}
                     />
                 ) : null}
 
