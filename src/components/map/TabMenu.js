@@ -35,24 +35,25 @@ function TabMenu(props) {
     };
 
     const onClickItem = async (item) => {
-        if(item.type == "음식점") {
+        let data = {};
+
+        if (item.type == '음식점') {
             const url = 'http://localhost:8081/map-service/getRestInfo?id=';
-            let data = await axios.get(url + item.id).then((res) => {
+            data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });
-            if (data) {
-                console.log(data);
-                props.propFunction(data);
-            }
-        } else if(item.type == "관광지") {
+        } else if (item.type == '관광지') {
             const url = 'http://localhost:8081/map-service/getTourInfo?id=';
-            let data = await axios.get(url + item.id).then((res) => {
+            data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });
-            if (data) {
-                console.log(data);
-                props.propFunction(data);
-            }
+        }
+
+        if (data) {
+            props.setClickedInformation({
+                type: item.type,
+                information: data,
+            });
         }
     };
 
