@@ -18,9 +18,8 @@ function MapPage() {
     const [selectedType, setSelectedType] = useState();
     const [listCardOn, setListCardOn] = useState(false);
     const [viewCourseComponent, setViewCourseComponent] = useState(false);
-    const [point, setPoint] = useState();
+    const [point, setPoint] = useState({});
     const [courseLine, setCourseLine] = useState([]);
-    const [finalDistance, setFinalDistance] = useState();
 
     const [gpsLoc, setGpsLoc] = useState({
         lat: 0,
@@ -54,14 +53,8 @@ function MapPage() {
         setPoint(info);
     };
 
-    const clickAddCourse2 = (info) => {
-        setViewCourseComponent(true);
-        setPoint(info);
-    };
-
-    useEffect(() => {
-        /*to set point value directly*/
-    }, [point]);
+    /*useEffect(() => {
+    }, [point]);*/
 
     useEffect(() => {
         if (clickInformation !== undefined) {
@@ -73,18 +66,14 @@ function MapPage() {
         setPoint(null);
     };
 
-    const drawCourse = (pointInfo) => {
+    const drawCourse = (point) => {
         setCourseLine([]);
-        setCourseLine(pointInfo);
+        setCourseLine(point);
     };
-
+    
     const closeCourseComponent = () => {
         setViewCourseComponent(false);
         setCourseLine([]);
-    };
-
-    const setDistanceFunc = (distance) => {
-        setFinalDistance(distance);
     };
 
     /*const getGpsLoc = (info) => {
@@ -132,7 +121,7 @@ function MapPage() {
                         listInformation={listInformation}
                         selectedType={selectedType}
                         propFunction={getClickInfo}
-                        propFunction2={clickAddCourse2}
+                        clickAddCourse={clickAddCourse}
                         inputText={inputText}
                         getClickInformation={getClickInformation}
                     />
@@ -143,16 +132,15 @@ function MapPage() {
                 {viewCourseComponent ? (
                     <MapCourse
                         point={point}
-                        propFunction={clearCoursePoint}
-                        propFunction2={drawCourse}
-                        propFunction3={closeCourseComponent}
+                        clearCoursePoint={clearCoursePoint}
+                        drawCourse={drawCourse}
+                        closeCourseComponent={closeCourseComponent}
                     />
                 ) : null}
                 <MapContainer
                     markerInformation={listInformation}
                     clickedInformation={clickInformation}
                     courseLine={courseLine}
-                    distance={finalDistance}
                     gpsInformation={gpsLoc}
                     propFunction={clickAddCourse}
                 />
