@@ -5,9 +5,6 @@ import { Map, MapMarker, Circle, Polyline, CustomOverlayMap } from 'react-kakao-
 
 import styles from './Map.module.css';
 
-import pin_fork from '../../images/svg/pin_fork.svg';
-import pin_tour from '../../images/svg/pin_tour.svg';
-
 const MapContainer = (props) => {
     const [state, setState] = useState({
         // 지도의 초기 위치
@@ -93,9 +90,8 @@ const MapContainer = (props) => {
         setCurrentMarker([]);
         if (props.markerInformation !== undefined) {
             props.markerInformation.map((item, idx) => {
-                let img_name = '';
-
-                item.type == '음식점' ? (img_name = pin_fork) : (img_name = pin_tour);
+                console.log(item)
+                var imgSrc = "/img/map-marker/" + (item.type == '음식점' ? "pin_fork" : "pin_tour" ) + ".svg";
                 if (idx == 0) {
                     setState({
                         center: {
@@ -108,7 +104,7 @@ const MapContainer = (props) => {
                     ...arr,
                     {
                         id: item.id,
-                        data: markerConstructor(item, img_name),
+                        data: markerConstructor(item, imgSrc),
                     },
                 ]);
             });
