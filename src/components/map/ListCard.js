@@ -20,6 +20,10 @@ function ListCard(props) {
         setOnClose(close);
     };
 
+    const clickAddCourse = (info) => {
+        props.clickAddCourse(info);
+    };
+
     const setClickedInformation = (res) => {
         setInformation(res);
         props.getClickInformation(res);
@@ -60,7 +64,7 @@ function ListCard(props) {
                     </div>
                 </div>
             ) : (
-                <InformationCard clickInformation={information} propFunction={getOnClose} />
+                <InformationCard clickInformation={information} propFunction={getOnClose} clickAddCourse={clickAddCourse} />
             )}
         </>
     );
