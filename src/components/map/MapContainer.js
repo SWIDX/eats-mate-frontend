@@ -8,7 +8,7 @@ import styles from './Map.module.css';
 const MapContainer = (props) => {
     const [state, setState] = useState({
         // 지도의 초기 위치
-        center: { lat: 37.56076811229905, lng: 126.93694098263262 }, //37.566767891, 126.978657934
+        center: { lat: 37.56076811229905, lng: 126.93694098263262 },
         // 지도 위치 변경시 panto를 이용할지에 대해서 정의
         isPanto: true,
     });
@@ -90,8 +90,7 @@ const MapContainer = (props) => {
         setCurrentMarker([]);
         if (props.markerInformation !== undefined) {
             props.markerInformation.map((item, idx) => {
-                console.log(item)
-                var imgSrc = "/img/map-marker/" + (item.type == '음식점' ? "pin_fork" : "pin_tour" ) + ".svg";
+                var imgSrc = '/img/map-marker/' + (item.type == '음식점' ? 'pin_fork' : 'pin_tour') + '.svg';
                 if (idx == 0) {
                     setState({
                         center: {
