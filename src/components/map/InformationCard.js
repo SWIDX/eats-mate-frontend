@@ -22,9 +22,7 @@ function InformationCard(props) {
         /*if(props.courseLine.length == 5) {
       alert("코스 경유지는 최대 5개까지만 추가할 수 있습니다.");
     } else {*/
-        props.propFunction2(props.clickInformation);
-        //setCourseInfoWindow(false);
-        //}
+        props.clickAddCourse(props.clickInformation);
     };
 
     return (
