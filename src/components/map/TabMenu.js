@@ -5,6 +5,7 @@ import styles from './TabMenu.module.css';
 import 'react-tabs/style/react-tabs.css';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { ReactComponent as NoDataMark } from '../../images/svg/mark.svg';
 
 function TabMenu(props) {
     const [defaultTab, setDefaultTab] = useState(0);
@@ -85,7 +86,17 @@ function TabMenu(props) {
     const listConstructor = (items) => {
         if (items !== undefined) {
             if (items.length == 0) {
-                return <div>검색결과가 없습니다 !</div>;
+                return (
+                    <>
+                        <div className={styles.markOuter}>
+                            <ul>
+                                <NoDataMark />
+                            </ul>
+                            <ul className={styles.marktext}>검색결과가 없습니다</ul>
+                            <ul className={styles.marktext}>다른 키워드로 검색해보세요</ul>
+                        </div>
+                    </>
+                );
             }
             return items.map((item) => {
                 return (
