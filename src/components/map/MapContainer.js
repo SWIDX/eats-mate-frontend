@@ -23,21 +23,16 @@ const MapContainer = (props) => {
 
     const [course, setCourse] = useState([]); // 사용자 맞춤 코스로 저장될 정보
     const [drawCourseLine, setDrawCourseLine] = useState(false);
-    const [distance, setDistance] = useState();
 
     useEffect(() => {
         setDrawCourseLine(false);
         setCourse([]); // to redraw course with new point data
         setCourse(props.courseLine);
         setDrawCourseLine(true);
-        if (props.courseLine.length < 2) {
-            setDistance(0);
-        }
     }, [props.courseLine]);
 
     const onClickMarker = (info) => {
-        setCourseInfoWindow(true);
-        setInformation(info);
+        alert("마커 클릭 이벤트 다시 등록 예정입니다.(info card로 연결)");
     };
 
     useEffect(() => {
@@ -52,12 +47,6 @@ const MapContainer = (props) => {
             setCourseInfoWindow(false);
         }
     };
-
-    useEffect(() => {
-        if (props.distance !== undefined) {
-            setDistance(props.distance);
-        }
-    }, [props.distance]);
 
     const markerConstructor = (info, imgSrc) => {
         const marker = (
