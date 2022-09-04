@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import styles from './TabMenu.module.css';
 import 'react-tabs/style/react-tabs.css';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 function TabMenu(props) {
@@ -33,8 +34,26 @@ function TabMenu(props) {
         3: '쇼핑',
     };
 
-    const onClickItem = (item) => {
-        props.propFunction(item);
+    const onClickItem = async (item) => {
+        if(item.type == "음식점") {
+            const url = 'http://localhost:8081/map-service/getRestInfo?id=';
+            let data = await axios.get(url + item.id).then((res) => {
+                return res.data;
+            });
+            if (data) {
+                console.log(data);
+                props.propFunction(data);
+            }
+        } else if(item.type == "관광지") {
+            const url = 'http://localhost:8081/map-service/getTourInfo?id=';
+            let data = await axios.get(url + item.id).then((res) => {
+                return res.data;
+            });
+            if (data) {
+                console.log(data);
+                props.propFunction(data);
+            }
+        }
     };
 
     useEffect(() => {
