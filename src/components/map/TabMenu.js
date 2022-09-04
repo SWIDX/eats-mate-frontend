@@ -42,7 +42,7 @@ function TabMenu(props) {
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });
-        } else if (item.type == '관광지') {
+        } else if (item.type == '여행지') {
             const url = 'http://localhost:8081/map-service/getTourInfo?id=';
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
