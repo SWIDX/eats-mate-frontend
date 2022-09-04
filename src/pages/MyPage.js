@@ -63,9 +63,9 @@ function MyPage() {
         } catch(e) {
           console.log(e);
           console.log("*** REFRESH TOKEN OUTDATED ***")
-          window.alert("로그인이 필요합니다.");
-          navigate(-1) // previous page
+          window.alert("로그인이 필요합니다.");  
           await logOut(); // rt outdated
+          navigate(-1) // previous page
         }
       }
       else {
@@ -78,6 +78,7 @@ function MyPage() {
       // not logged in
       console.log("*** NOT LOGGED IN ***")
       window.alert("로그인이 필요합니다.");
+      await logOut(); // rt outdated
       navigate(-1) // previous page
     }
   }
