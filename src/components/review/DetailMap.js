@@ -3,6 +3,12 @@ import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import styles from './Review.module.css';
 
 const DetailMap = (props) => {
+
+  function copyText(){
+    navigator.clipboard.writeText(props.information.address)
+    alert("주소가 복사되었습니다.");
+  }
+
   const [state, setState] = useState({
     // 지도의 초기 위치
     center: { lat: props.information.lat, lng: props.information.lng }, //37.566767891, 126.978657934
@@ -45,7 +51,7 @@ const DetailMap = (props) => {
                     <path d="M2 10H8" stroke="#8E8E8E"/>
                     </svg>
                   </div>
-                  <div className={styles.detail_map_font2}>
+                  <div onClick={copyText} className={styles.detail_map_font2} >
                     주소 복사
                   </div>
                 </div>
