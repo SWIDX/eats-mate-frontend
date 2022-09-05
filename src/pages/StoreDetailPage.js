@@ -81,17 +81,15 @@ function StoreDetailPage(){
 
     return(
         <>
-            <NavBar />
-            <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
-                <button onClick={runSaveTest}>등록하기</button>
-                <div>
-                    <MainGageInfo information={state}/>
-                    <DetailMap information={state} />
-                    <MainReview information={state} showModal={checkExp}/>
-                </div>
-                { modalOpen ? <ReviewModal information={state} closeModal={closeModal}/> : null }
-            </Container>
-            
+          <NavBar />
+          <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "10px 0px 100px 0px"}}>
+              <div>
+                  <MainGageInfo information={state}/>
+                  <DetailMap information={state} />
+                  <MainReview information={state} showModal={checkExp}/>
+              </div>
+              { modalOpen ? <ReviewModal information={state} closeModal={closeModal}/> : null }
+          </Container>
         </>
     );
 }
