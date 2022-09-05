@@ -9,6 +9,7 @@ function Carousel(props) {
     
     const SLIDES_NUM = props.dataList.length - 1;
 
+    const slideShowRef = useRef(null);
     const slideRef = useRef(null);
     const outerViewRef = useRef(null);
     const innerViewRef = useRef(null);
@@ -50,6 +51,7 @@ function Carousel(props) {
         slideRef.current.style.width = props.imageWidth;
         slideRef.current.style.height = props.imageHeight;
         innerViewRef.current.style.overflow = props.innerViewOverflow;
+        if (props.innerViewOverflow == "visible") { slideShowRef.current.width = "100%"; }
         slideRef.current.style.gap = `${props.gap}px`;
 
         imageRef.forEach((ref, index) => {
@@ -70,7 +72,7 @@ function Carousel(props) {
     }, [slideState]);
 
     return (
-        <div className={styles.slideShow}>
+        <div className={styles.slideShow} ref={slideShowRef}>
 
             <div className={styles.slideBtnContainer} ref={outerViewRef}>
                 <div className={styles.leftBtn} onClick={() => leftBtnClick()} ref={ref => buttonRef[0] = ref}>
