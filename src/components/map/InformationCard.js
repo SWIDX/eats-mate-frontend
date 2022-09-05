@@ -39,10 +39,11 @@ function InformationCard(props) {
                 </div>
 
                 <div className={styles.card}>
-                    <div id="search" name="search">
+                    <div className={styles.topOuter}>
                         <div className={styles.cardTop}>
-                            <div className={styles.cardName}>
-                                {information.name} <span>{information.gubun}</span>{' '}
+                            <div className={styles.cardTagOuter}>
+                                <span className={styles.cardName}>{information.name}</span>{' '}
+                                <span className={styles.cardTag}>{information.gubun}</span>{' '}
                             </div>
                             <button className={styles.heart}>
                                 {' '}
@@ -81,7 +82,7 @@ function InformationCard(props) {
                             <div className={styles.divSections}></div>
                             <div className={styles.reviews}>
                                 평가<span>3건</span>
-                                <div className={styles.more}>더보기</div>
+                                <span className={styles.more}>더보기</span>
                                 <div className={styles.totalReviews}>
                                     <div className={styles.good}>
                                         <img src="/img/good.png" />
@@ -125,7 +126,10 @@ function InformationCard(props) {
                         </div>
 
                         <div className={styles.Buttons}>
-                            <img alt="add course btn" src="/img/addCourseBtn.png" height="50px" onClick={() => AddCourse()} />
+                            <button className={styles.AddCourseBtn} onClick={() => AddCourse()}>
+                                나의 코스에 추가하기
+                            </button>
+                            {/*<img alt="add course btn" src="/img/addCourseBtn.png" height="50px" onClick={() => AddCourse()} />*/}
                             <button
                                 className={styles.DetailButton}
                                 onClick={() => {
