@@ -4,6 +4,14 @@ import styles from './Review.module.css';
 
 const DetailMap = (props) => {
 
+
+  function urlScheme(){
+    let url;
+    url = "https://map.kakao.com/link/to/" + props.information.name + "," + props.information.lat + "," + props.information.lng
+    console.log(url);
+    window.location.assign(url);
+  }
+
   function copyText(){
     navigator.clipboard.writeText(props.information.address)
     alert("주소가 복사되었습니다.");
@@ -60,6 +68,7 @@ const DetailMap = (props) => {
 
         <div className={styles.detail_map}>
           <Map
+            onClick={urlScheme}
             className={styles.detail_map} // 지도를 표시할 Container
             center={state.center}
             isPanto={state.isPanto}
