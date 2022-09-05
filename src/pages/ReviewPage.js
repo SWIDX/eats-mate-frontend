@@ -10,7 +10,7 @@ function ReviewPage() {
     <>
       <div>
         <ReviewInfo information={state} />
-        <AllReview />
+        <AllReview information={state}/>
       </div>
     </>
   );
