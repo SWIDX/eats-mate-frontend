@@ -140,27 +140,27 @@ function MapCourse(props) {
               name="title"
               placeholder="코스 제목을 입력해주세요"
               value={title}
-              size="19"
+              size="24"
               onChange={onInputTitleChange} />
             <img src="/img/rice.png"
               style={{
                 width:"25px",
                 height:"25px",
                 position: "absolute",
-                right: "200px",
+                right: "250px",
                 top: "22.5px",
               }}/>
             <img src="/img/courseBtn.png"
               style={{
-                width:"120px",
-                height:"30px",
+                width:"115px",
+                height:"35px",
                 position: "absolute",
                 right: "60px",
                 top: "20px",
               }}
               onClick={() => clickCompleteBtn()}/>
             <div className={styles.courseDistance}>
-              총 거리:{finalDistance}m
+              총 이동거리:{finalDistance}m
             </div>
 
             <img src="/img/closeBtn.png"
@@ -177,20 +177,21 @@ function MapCourse(props) {
 
         <hr/>
 
-        {point.map((info) => (
-          <div>
-            <div>{info.num}</div>
-            <div className={styles.courseBoxName}>{info.name}</div>
-            <div className={styles.courseBoxAddress}>{info.address}</div>
-            <div className={styles.courseDeleteBtn}>
-            <img src="/img/courseDeleteBtn.png"
-                  alt="course point delete btn"
-                  width="25"
-                  height="25"
-                  onClick={() => clickDeleteBtn(info)}/>
+        <div className={styles.courseBoxContent}>
+          {point.map((info) => (
+            <div>
+              <div className={styles.courseBoxName}>{info.name}</div>
+              <div className={styles.courseBoxAddress}>{info.address}</div>
+              <div className={styles.courseDeleteBtn}>
+                  <img src="/img/courseDeleteBtn.png"
+                        alt="course point delete btn"
+                        width="25"
+                        height="25"
+                        onClick={() => clickDeleteBtn(info)}/>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
     </>
