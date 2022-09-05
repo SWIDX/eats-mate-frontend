@@ -1,0 +1,77 @@
+.infoContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 32px;
+}
+
+.gageInfoContainer {
+    display: flex;
+    flex-direction: row;
+    margin: auto auto;
+}
+
+.gageImg {
+    width: 786px;
+    height: 421px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.gageInfo {
+    flex-grow: 1;
+    padding: 34px 30px;
+    background: #FFFFFF;
+    border-radius: 32px 32px 0px 32px;
+    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.5); 
+    margin-left: 40px;
+}
+
+.gageCircle{
+    position: absolute;
+    margin: 6px auto auto 7px;
+    z-index: 1;
+}
+
+.gageName {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    z-index: 2;
+}
+
+.gageGubun {
+    margin: 5px auto auto 10px;
+    color:#8C8C8C;
+    font-size: 16px;
+    width: 80px;
+    letter-spacing: -0.04em;
+}
+
+.likeButton {
+    margin: 0px 0px auto auto;
+}
+
+.gageContentContainer {
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.gageContent {
+    display: flex;
+    margin-left: 15px;
+    flex-direction: column;
+}
+.gageAddress > div {
+    font-size: 16px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-left: 12px;
+}
+.gageContentTitle {
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
