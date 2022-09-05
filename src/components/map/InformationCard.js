@@ -125,12 +125,12 @@ function InformationCard(props) {
                         </div>
 
                         <div className={styles.Buttons}>
-                            <img alt="add course btn" src="/img/addCourseBtn.png" width="280px" height="50px" onClick={() => AddCourse()} />
+                            <img alt="add course btn" src="/img/addCourseBtn.png" height="50px" onClick={() => AddCourse()} />
                             <button
                                 className={styles.DetailButton}
                                 onClick={() => {
                                     navigate('/store-detail/main', {
-                                        state: props.clickInformation,
+                                        state: props.clickInformation.information,
                                     });
                                 }}
                             >
