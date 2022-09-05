@@ -9,12 +9,13 @@ import { SearchContext } from '../../context/SearchContext';
 import { MarkerContext } from '../../context/MarkerContext';
 
 function TabMenu(props) {
-    const [defaultTab, setDefaultTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState();
     const [tabData, setTabData] = useState([]);
     const [data, setData] = useState();
     const { searchInformation } = useContext(SearchContext);
     const { markerInformation, setMarkerInformation } = useContext(MarkerContext);
+
+    let tabRef = null;
 
     const idx = {
         0: '전체',
@@ -62,7 +63,7 @@ function TabMenu(props) {
     };
 
     useEffect(() => {
-        if (selectedTab !== undefined) {
+        if (data && selectedTab !== undefined) {
             let items;
 
             if (selectedTab.main !== '전체' && selectedTab.sub == undefined) {
@@ -84,7 +85,22 @@ function TabMenu(props) {
 
     useEffect(() => {
         setData([]); // 초기화
-        setDefaultTab(searchInformation.value == '전체' ? 0 : searchInformation == '여행지' ? 1 : 2);
+        
+        const selectedIdx = (searchInformation.value == '전체' ? 0 : searchInformation.value == '여행지' ? 1 : 2);
+
+        if (tabRef){
+            switch (selectedIdx) {
+                case 0:
+                    tabRef.firstElementChild.firstElementChild.click();
+                    break;
+                case 1:
+                    tabRef.firstElementChild.lastElementChild.click();
+                    break;
+                case 2:
+                    tabRef.firstElementChild.firstElementChild.nextSibling.click();
+                    break;
+            }
+        }
 
         if (props.information.length == 0) {
             setTabData([]);
@@ -95,7 +111,6 @@ function TabMenu(props) {
             setSelectedTab({
                 main: props.selectedType,
             });
-            //console.log(selectedTab);
         }
     }, [props.information]);
 
@@ -140,7 +155,7 @@ function TabMenu(props) {
     return (
         <>
             <Tabs
-                defaultIndex={defaultTab}
+                defaultIndex={(searchInformation.value == '전체' ? 0 : searchInformation.value == '음식점' ? 1 : 2)}
                 className={styles.tabs}
                 selectedTabClassName={styles.is_selected}
                 onSelect={(index) => {
@@ -148,6 +163,7 @@ function TabMenu(props) {
                         main: idx[index],
                     });
                 }}
+                domRef={(node) => tabRef = node}
             >
                 <TabList>
                     <Tab className={styles.tab}>전체</Tab>
