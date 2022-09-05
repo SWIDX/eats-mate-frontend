@@ -209,15 +209,20 @@
 .locationbox {
   width: 97px;
   height: 42px;
-  padding: 10px;
   border: 2px solid #e97869;
   color: #e97869;
   font-weight: bold;
   margin-left: 10px;
   text-align: center;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 13px;
+  background-color: #ffffff;
 }
 
+.locationbox:active{
+  background-color: #e97869;
+  color:#ffffff;
+
+}
 .infobox {
   position: absolute;
   margin-top: -100px;
