@@ -1,8 +1,8 @@
 /* global kakao */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Map, MapMarker, Circle, Polyline, CustomOverlayMap } from 'react-kakao-maps-sdk';
-
+import { MarkerContext } from '../../context/MarkerContext';
 import styles from './Map.module.css';
 
 const MapContainer = (props) => {
@@ -23,6 +23,7 @@ const MapContainer = (props) => {
 
     const [course, setCourse] = useState([]); // 사용자 맞춤 코스로 저장될 정보
     const [drawCourseLine, setDrawCourseLine] = useState(false);
+    const markerInformation = useContext(MarkerContext);
 
     useEffect(() => {
         setDrawCourseLine(false);
@@ -32,7 +33,7 @@ const MapContainer = (props) => {
     }, [props.courseLine]);
 
     const onClickMarker = (info) => {
-        alert("마커 클릭 이벤트 다시 등록 예정입니다.(info card로 연결)");
+        alert('마커 클릭 이벤트 다시 등록 예정입니다.(info card로 연결)');
     };
 
     useEffect(() => {
@@ -74,6 +75,41 @@ const MapContainer = (props) => {
         );
         return marker;
     };
+
+    useEffect(() => {
+        setCurrentMarker([]);
+        const data = markerInformation.markerInformation.marker;
+        if (data !== undefined) {
+            data.map((item, idx) => {
+                var imgSrc = '/img/map-marker/' + (item.type == '음식점' ? 'pin_fork' : 'pin_tour') + '.svg';
+                if (idx == 0) {
+                    setState({
+                        center: {
+                            lat: item.lat,
+                            lng: item.lng,
+                        },
+                    });
+                }
+                setCurrentMarker((arr) => [
+                    ...arr,
+                    {
+                        id: item.id,
+                        data: markerConstructor(item, imgSrc),
+                    },
+                ]);
+            });
+        } else if (props.gpsInformation.lat !== 0) {
+            // When the gps value changes
+            setState({
+                center: {
+                    lat: props.gpsInformation.lat,
+                    lng: props.gpsInformation.lng,
+                },
+                isPanto: true,
+            });
+        }
+        //console.log(markerInformation.markerInformation);
+    }, [markerInformation]);
 
     useEffect(() => {
         setCurrentMarker([]);
