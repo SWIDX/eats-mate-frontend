@@ -1,6 +1,6 @@
 /* global kakao */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import NavBar from '../components/navigation/NavBar';
 import MapContainer from '../components/map/MapContainer';
@@ -11,6 +11,8 @@ import InformationCard from '../components/map/InformationCard';
 import ListCard from '../components/map/ListCard';
 
 import styles from './MapPage.module.css';
+import { SearchContext } from '../context/SearchContext';
+import { MarkerContext } from '../context/MarkerContext';
 
 function MapPage() {
     const [clickInformation, setClickInformation] = useState();
@@ -25,25 +27,27 @@ function MapPage() {
         lat: 0,
         lng: 0,
     });
-    const [onCard, setOnCard] = useState(true);
-    const [infoCard, setInfoCard] = useState(false);
     const [inputText, setInputText] = useState();
+    const [searchInformation, setSearchInformation] = useState({ info: [], value: '', text: '' });
+    const [markerInformation, setMarkerInformation] = useState({ marker: [] });
 
     const getClickInfo = (info) => {
         setClickInformation(info);
     };
 
     const getClickInformation = (res) => {
-        console.log(res);
+        //console.log(res);
     };
 
     const getSearchBarInfo = (item) => {
         if (item !== undefined) {
-            if (item.info && item.info.length != 0) {
-                setListCardOn(true);
+            if (item.info) {
                 setListInformation(item.info);
                 setSelectedType(item.value);
-                setInputText(item.input);
+                setInputText(item.text);
+                if (item.text != '') {
+                    setListCardOn(true);
+                }
             }
         }
     };
@@ -70,7 +74,7 @@ function MapPage() {
         setCourseLine([]);
         setCourseLine(point);
     };
-    
+
     const closeCourseComponent = () => {
         setViewCourseComponent(false);
         setCourseLine([]);
@@ -109,42 +113,46 @@ function MapPage() {
 
     return (
         <>
-            <div>
-                <NavBar />
-            </div>
+            <SearchContext.Provider value={{ searchInformation, setSearchInformation }}>
+                <MarkerContext.Provider value={{ markerInformation, setMarkerInformation }}>
+                    <div>
+                        <NavBar />
+                    </div>
 
-            {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
+                    {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
 
-            <div className="styles.map">
-                {listInformation && listCardOn ? (
-                    <ListCard
-                        listInformation={listInformation}
-                        selectedType={selectedType}
-                        propFunction={getClickInfo}
-                        clickAddCourse={clickAddCourse}
-                        inputText={inputText}
-                        getClickInformation={getClickInformation}
-                    />
-                ) : null}
+                    <div className="styles.map">
+                        {listCardOn ? (
+                            <ListCard
+                                listInformation={listInformation}
+                                selectedType={selectedType}
+                                propFunction={getClickInfo}
+                                clickAddCourse={clickAddCourse}
+                                inputText={inputText}
+                                getClickInformation={getClickInformation}
+                            />
+                        ) : null}
 
-                <MapSearchBar propFunction={getSearchBarInfo} />
+                        <MapSearchBar propFunction={getSearchBarInfo} />
 
-                {viewCourseComponent ? (
-                    <MapCourse
-                        point={point}
-                        clearCoursePoint={clearCoursePoint}
-                        drawCourse={drawCourse}
-                        closeCourseComponent={closeCourseComponent}
-                    />
-                ) : null}
-                <MapContainer
-                    markerInformation={listInformation}
-                    clickedInformation={clickInformation}
-                    courseLine={courseLine}
-                    gpsInformation={gpsLoc}
-                    propFunction={clickAddCourse}
-                />
-            </div>
+                        {viewCourseComponent ? (
+                            <MapCourse
+                                point={point}
+                                clearCoursePoint={clearCoursePoint}
+                                drawCourse={drawCourse}
+                                closeCourseComponent={closeCourseComponent}
+                            />
+                        ) : null}
+                        <MapContainer
+                            markerInformation={listInformation}
+                            clickedInformation={clickInformation}
+                            courseLine={courseLine}
+                            gpsInformation={gpsLoc}
+                            propFunction={clickAddCourse}
+                        />
+                    </div>
+                </MarkerContext.Provider>
+            </SearchContext.Provider>
         </>
     );
 }

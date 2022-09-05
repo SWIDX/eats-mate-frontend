@@ -1,17 +1,20 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, useContext } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 import styles from './TabMenu.module.css';
 import 'react-tabs/style/react-tabs.css';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 import { ReactComponent as NoDataMark } from '../../images/svg/mark.svg';
+import { SearchContext } from '../../context/SearchContext';
+import { MarkerContext } from '../../context/MarkerContext';
 
 function TabMenu(props) {
     const [defaultTab, setDefaultTab] = useState(0);
     const [selectedTab, setSelectedTab] = useState();
     const [tabData, setTabData] = useState([]);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState();
+    const { searchInformation } = useContext(SearchContext);
+    const { markerInformation, setMarkerInformation } = useContext(MarkerContext);
 
     const idx = {
         0: '전체',
@@ -67,21 +70,38 @@ function TabMenu(props) {
             } else {
                 if (selectedTab.main == '전체') {
                     items = data;
-                }
-                if (selectedTab.sub != '전체') {
+                    //console.log(items);
+                } else if (selectedTab.sub != '전체') {
                     items = data.filter((item) => item.gubun == selectedTab.sub);
                 } else {
                     items = data.filter((item) => item.type == selectedTab.main);
                 }
             }
-
+            setMarkerInformation({ marker: items });
             setTabData(items);
         }
     }, [selectedTab]);
 
     useEffect(() => {
-        setData(props.information);
-    }, [props]);
+        setData([]); // 초기화
+        setDefaultTab(searchInformation.value == '전체' ? 0 : searchInformation == '여행지' ? 1 : 2);
+
+        if (props.information.length == 0) {
+            setTabData([]);
+            setData([]);
+        } else {
+            setMarkerInformation({ marker: props.information });
+            setData(props.information);
+            setSelectedTab({
+                main: props.selectedType,
+            });
+            //console.log(selectedTab);
+        }
+    }, [props.information]);
+
+    useEffect(() => {
+        //console.log(searchInformation);
+    }, searchInformation);
 
     const listConstructor = (items) => {
         if (items !== undefined) {
@@ -116,6 +136,7 @@ function TabMenu(props) {
             });
         }
     };
+
     return (
         <>
             <Tabs
