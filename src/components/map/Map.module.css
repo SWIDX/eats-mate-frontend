@@ -464,9 +464,9 @@ hr {
 .courseBox {
   position: absolute;
   top: 400px;
-  left: 1050px;
-  width: 425px;
-  height: 400px;
+  left: 1000px;
+  width: 475px;
+  height: 330px;
   padding: 20px;
   background-color: white;
   border-radius: 15px;
@@ -481,14 +481,38 @@ hr {
 }
 
 .courseBoxTitle {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .courseDistance {
-  margin-top: 10px;
-  margin-left:280px;
-  font-size: 17px;
-  color:#FA8576;
+  position: relative;
+  margin-top: -80px;
+  margin-left: 250px;
+  font-size: 13px;
+  padding: 10px;
+  padding-left: 20px;
+  width: 165px;
+  height:35px;
+  color:white;
+  background-color:black;
+  border-radius: 5px;
+}
+
+.courseDistance:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 16px 17px;
+  left: 40%;
+  border-color: black transparent transparent transparent;
+  bottom: -25px;
+}
+
+.courseBoxContent {
+  overflow: auto;
+  height: 250px;
 }
 
 .courseBoxName {
