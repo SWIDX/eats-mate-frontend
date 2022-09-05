@@ -1,36 +1,42 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import axios from 'axios';
 import styles from './Map.module.css';
+import { SearchContext } from '../../context/SearchContext';
 
 const MapSearchBar = (props) => {
     const [inputText, setInputText] = useState('');
     const [selectValue, setSelectValue] = useState('전체');
     const [information, setInformation] = useState([]); // data(restaurant, tour)
     const [showDropDown, setShowDropDown] = useState(false);
+    const [text, setText] = useState('');
     const dropDownRef = useRef();
+
+    const { searchInformation, setSearchInformation } = useContext(SearchContext);
 
     const [propsItem, setPropsItem] = useState({
         info: information,
         value: selectValue,
+        text: text,
     });
 
     useEffect(() => {
-        if (information.length != 0) {
-            setPropsItem({
-                info: information,
-                value: selectValue,
-            });
-        }
+        setPropsItem({
+            info: information,
+            value: selectValue,
+            text: text,
+        });
     }, [information]);
 
     useEffect(() => {
         setPropsItem({
             info: information,
             value: selectValue,
+            text: text,
         });
     }, [selectValue]);
 
     useEffect(() => {
+        setSearchInformation(propsItem);
         props.propFunction(propsItem);
     }, [propsItem]);
 
@@ -48,12 +54,14 @@ const MapSearchBar = (props) => {
             e.preventDefault();
             const url = 'http://localhost:8081/map-service/getAllData?keyword=';
             let data = await axios.get(url + inputText).then((res) => {
-                return res.data;
+                if (res.data) {
+                    return res.data;
+                } else {
+                    return [];
+                }
             });
-            if (data) {
-                console.log(data);
-                setInformation(data);
-            }
+            setText(inputText);
+            setInformation(data);
         }
     }; // input Enter key press event function
 

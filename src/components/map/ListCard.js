@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import TabMenu from './TabMenu';
 import styles from './ListCard.module.css';
 import InformationCard from './InformationCard';
+import { SearchContext } from '../../context/SearchContext';
 
 function ListCard(props) {
     const [information, setInformation] = useState();
     const [onClose, setOnClose] = useState(true);
+    const { searchInformation } = useContext(SearchContext);
 
     const mouseOver = (e) => {
         e.preventDefault();
@@ -26,7 +28,8 @@ function ListCard(props) {
 
     const setClickedInformation = (res) => {
         setInformation(res);
-        props.getClickInformation(res);
+        //console.log(res);
+        //props.getClickInformation(res);
     }; // click information props
 
     useEffect(() => {
@@ -50,8 +53,8 @@ function ListCard(props) {
             {onClose ? (
                 <div className={styles.list_outer}>
                     <div className={styles.cardTop}>
-                        <span className={styles.result_name}>검색결과</span>
-                        <span className={styles.result_tag}>{props.listInformation.length}건</span>
+                        <span className={styles.result_name}>'{searchInformation.text}' 검색결과</span>
+                        <span className={styles.result_tag}>{searchInformation.info.length}건</span>
                     </div>
 
                     <div className={styles.tabmenu_outer}>
