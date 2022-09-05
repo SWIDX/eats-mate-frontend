@@ -268,24 +268,34 @@ function MyPage() {
               placeName: "성수완당 본점",
               category: "일식",
               content: "말해뭐해 일단 너무 맛있고요... 혼자 건대 갔다가 들렀는데 혼밥하기 딱 좋은 분위기였어요 추천",
+              images: [
+                "https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/2a601097-d0ac-4ae2-b820-7d514e7f89f1",
+                "https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/d796c2a0-563d-4142-9fe4-e830f62f6c1f",
+                "https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/a8c40b52-f1b6-48cf-b0a2-a06d16c06935"
+              ],
               createdBy: "2022-01-08",
-              rate: 2
+              rate: 2,
+              recommend: 38
           },
           {
               id: 1023,
               placeName: "만뽀스키야키 강남 더인피닛스퀘어점",
               category: "일식",
               content: "스키야키가 이렇게 가성비 좋은 음식이었나요...? 1인으로 팔아주시니 넘 감사할 따름입니다~ ",
+              images: [],
               createdBy: "2022-01-08",
-              rate: 1
+              rate: 1,
+              recommend: 15
           },
           {
             id: 2340,
             placeName: "홍마방 이태원점",
             category: "중식",
             content: "저는 꿔바로우가 이렇게 맛있는지 처음 알았어요... 사장님도 잇츠메이트 쓰시는 거 아니죠? ㅋㅋ 가게가 혼밥하기 딱 좋아서 놀랐네요 너무 잘먹어서 후기 남깁니다",
+            images: ["https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/d796c2a0-563d-4142-9fe4-e830f62f6c1f"],
             createdBy: "2022-01-08",
-            rate: 0
+            rate: 0,
+            recommend: 999
           }
       ]
       const newData = data

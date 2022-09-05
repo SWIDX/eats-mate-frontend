@@ -29,9 +29,21 @@
 }
 
 .content {
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: -0.04em;
     color: #000000;
+}
+
+.imageContainer {
+    display: flex;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.imageContainer > img {
+    width: 166px;
+    height: 166px;
+    object-fit: cover;
 }
 
 .meta {
@@ -46,7 +58,7 @@
 .rateBorder {
     margin: auto 12px auto 12px;
     width: 1px;
-    height: 9px;
+    height: 12px;
     background-color: #DBDBDB;
 }
 
@@ -84,7 +96,7 @@
     margin: auto 0px 0px auto;
 }
 .reviewLike > svg {
-    margin: auto auto;
+    margin: auto 8px auto auto;
 }
 
 .subMenu {
@@ -103,4 +115,31 @@
     letter-spacing: -0.04em;
     color: #000000;
     cursor: pointer;
+}
+
+.recommend {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    color: #8E8E8E;
+}
+
+
+/* NOT ON MYPAGE */
+.userProfileImg {
+    width: 24px;
+    height: 24px;
+    border-radius: 50% 50%;
+    object-fit: cover;
+    overflow: hidden;
+    margin-right: 9px;
+}
+
+.username {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    line-height: 20px;
+    color: #000000;
 }

@@ -41,11 +41,25 @@ function Review(props) {
         <div className={styles.container}>
             <div className={styles.reviewInfo}>
                 <div className={styles.title}>
+                    {props.mypageMode ?
+                    <>
                     <div className={styles.placeName}>{props.review.placeName}</div>
                     <div className={styles.category}>{props.review.category}</div>
+                    </>
+                    :
+                    <>
+                    <img className={styles.userProfileImg} src={props.review.userProfileImgUrl} />
+                    <div className={styles.username}>{props.review.username}</div>
+                    </>
+                    }
                 </div>
                 <div className={styles.content}>{props.review.content}</div>
                 {/* 이미지 */}
+                <div className={styles.imageContainer}>
+                {props.review.images.map((imgUrl, i) =>
+                    <img src={imgUrl} />
+                )}
+                </div>
                 <div className={styles.meta}>
                     <div className={styles.rate}>
                     {props.review.rate == 0 ?
@@ -93,13 +107,14 @@ function Review(props) {
                 </div>
             </div>
             <div className={styles.others}>
+                {props.mypageMode ?
                 <div className={styles.reviewMenu} onClick={openMenu}>
                     <svg width="3" height="15" viewBox="0 0 3 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="1.5" cy="7.5" r="1.5" transform="rotate(90 1.5 7.5)" fill="#8C8C8C"/>
                     <circle cx="1.5" cy="13.5" r="1.5" transform="rotate(90 1.5 13.5)" fill="#8C8C8C"/>
                     <circle cx="1.5" cy="1.5" r="1.5" transform="rotate(90 1.5 1.5)" fill="#8C8C8C"/>
                     </svg>
-                </div>
+                </div> : null }
                 <div className={styles.reviewLike}>
                     <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_172_152)">
@@ -113,9 +128,10 @@ function Review(props) {
                     </clipPath>
                     </defs>
                     </svg>
+                    <div className={styles.recommend}>{props.review.recommend}</div>
                 </div>
             </div>
-            {toggleMenu ?
+            {toggleMenu && props.mypageMode ?
             <div className={styles.subMenu} ref={menuRef}>
                 <div className={styles.deleteBtn} onClick={deleteHandler}>삭제하기</div>
             </div>
