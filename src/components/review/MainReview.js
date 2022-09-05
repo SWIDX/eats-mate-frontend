@@ -2,14 +2,11 @@ import React, {useState} from "react";
 import styles from './Review.module.css';
 import ReviewModal from "./ReviewModal";
 import { useNavigate } from "react-router";
+import ReviewCounter from "./ReviewCounter";
 
 function MainReview(props){
     const navigate = useNavigate();
-    const [modalOpen, setModalOpen] = useState(false);
-
-    const showModal = () => {
-        setModalOpen(true);
-    }
+    
 
     //props 확인용
     useState(()=>{console.log(props.information)},[props])
@@ -36,21 +33,15 @@ function MainReview(props){
 
                 <div className={styles.locationboxflex}>
                     <div className={styles.locationboxflex2}>
-                        <div className={styles.box1}>
-                            <p className={styles.gagename}>{props.information.name}</p>
-                            <div className={styles.locationboxflex}>
-                            <img className={styles.rateimg} src="/img/besttextcolor.png"></img>
-                            <img className={styles.rateimg} src="/img/sosotext.png"></img>
-                            <img className={styles.rateimg} src="/img/badtext.png"></img>
-                    </div>
-                        </div>
+                        <ReviewCounter
+                            rateVal={[10, 999, 122]}
+                        />
                         <div className={styles.locationboxflex}>
                         <img className={styles.rrr} src="/img/rrr.png"></img>
                         <div className={styles.locationboxflex2}>
                         <div className={styles.rrrcontent}>{props.information.name}에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
                         <div>
-                        <button className={styles.modalbutton2} onClick={showModal}><img src="/img/goreview.png"></img></button>
-                        {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
+                        <button className={styles.modalbutton2} onClick={props.showModal}><img src="/img/goreview.png"></img></button>
                         </div>
                     </div>
                     </div>

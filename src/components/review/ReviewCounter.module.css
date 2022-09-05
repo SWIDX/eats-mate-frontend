@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    gap: 28px;
+    margin: 0px auto;
+}
+
+.ratebox {
+    display: flex;
+    flex-direction: column;
+}
+
+.ratebox > * {
+    margin: 4px auto;
+}
+
+.highlight {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #E97869;
+}
+
+.normal {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #8C8C8C;
+}
+
+.colored > circle{
+    fill: #FFDC5F;
+}
+
+.grayed > circle{
+    fill: #F4F4F4;
+}
+
+.value {
+    font-size: 13px;
+    line-height: 19px;
+    letter-spacing: -0.04em;
+    color: #8C8C8C;
+}
