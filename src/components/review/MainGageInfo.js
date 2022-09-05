@@ -3,9 +3,10 @@ import styles from "./Review.module.css";
 import NavBar from "../navigation/NavBar";
 import { useState } from "react";
 import LikeButton from "../like/LikeButton";
-
+import { useLocation } from "react-router";
 
 function MainGageInfo(props){
+    const { state } = useLocation();
 
     return(
         <>
@@ -26,7 +27,7 @@ function MainGageInfo(props){
                         <span className={styles.gagename}>{props.information.name}{" "}</span>
                         <span className={styles.gagegubun}>{props.information.gubun}</span>
                         </div>
-                        <div className={styles.likebutton}><LikeButton></LikeButton></div>
+                        <div className={styles.likebutton}><LikeButton information={state}/></div>
                         </div>
                             <div className={styles.gagecontents}>
                                 <div className={styles.locationboxflex}>
