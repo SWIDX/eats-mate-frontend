@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "./Review.module.css";
-import NavBar from "../navigation/NavBar";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
 
 function ReviewInfo(props) {
-
   const navigate = useNavigate();
 
   //props 확인용
@@ -15,7 +13,6 @@ function ReviewInfo(props) {
 
   return (
     <>
-      <NavBar />
       <div className={styles.responsivewrapper}>
           <div className={styles.buttondetail}
               onClick={() => {
