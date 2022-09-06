@@ -29,12 +29,6 @@
   margin: 5px 0px;
 }
 
-.gagename {
-  width:150px;
-  margin-left: 8px;
-  font-size: 24px;
-  font-weight: bold;
-}
 
 .gageinfoname {
   font-size: 16px;
@@ -49,10 +43,6 @@
   margin-bottom:32px;
 }
 
-.gagecontents{
-  margin-top:25px;
-}
-
 .gageimg {
   height: 24px;
   width: 24px;
@@ -60,23 +50,6 @@
 
 .gagerightbox {
   margin-left: 40px;
-}
-
-.gagerightsquarebox {
-  margin-top:50px;
-  padding:38px;
-  width: 480px;
-  height: 406px;
-  border-radius: 10px 10px 10px 10px;
-  box-shadow: 1px 1px 1px 1px lightgray;
-  margin-left: 40px;
-}
-
-.maingageimg {
-  margin-top: 50px;
-  width: 786px;
-  height: 421px;
-  border-radius: 10px 10px 10px 10px;
 }
 
 .maingageimg2 {
@@ -368,10 +341,6 @@
   border: 1px solid white;
 }
 
-.detail_map_wrapper {
-  position: relative;
-  left: 200px;
-}
 
 /* 모달창을 화면 중앙. 최상단에 노출 */
 .container {
@@ -493,12 +462,6 @@ textarea::placeholder {
   letter-spacing: -0.04em;
 }
 
-.detail_map_wrapper_top {
-  display: flex;
-  position: relative;
-  top: 20px;
-  margin-bottom: 10px;
-}
 
 .addReviewImg {
   display: flex;
@@ -572,49 +535,6 @@ textarea::placeholder {
   margin: auto 5px auto auto;
 }
 
-.detail_map_title {
-  flex-grow: 1;
-  font-size: 24px;
-  font-weight: bold;
-  display: inline-block;
-}
-.detail_map_address {
-  flex-grow: 1;
-  display: inline-block;
-  margin-left:300px;
-}
-
-.detail_map_box {
-  width:388px;
-  height: 48px;
-  display: flex;
-  background-color: #F8F8F8;
-  border-radius: 20px;
-  padding:12px;
-}
-
-.detail_icon{
-  margin-left:40px;
-}
-
-.detail_map_font{
-  font-size: 16px;
-  margin-left:4px;
-}
-
-.detail_map_font2{
-  font-size: 13px;
-  margin-left:2px;
-  color:#8E8E8E;
-  margin-top:2px;
-  text-decoration: underline;
-}
-
-.detail_map {
-  margin-top: 1%;
-}
-
-
 .modalbutton{
   margin-top:-15px;
   border:0;
@@ -637,15 +557,9 @@ textarea::placeholder {
 }
 
 .likebutton{
-  margin-left:30px;
+  margin: 0px 0px auto auto;
 }
 
-.gagegubun{
-  color:#8C8C8C;
-  font-size:16px;
-  width:40px;
-  margin-top:9px;
-}
 
 .buttondetail{
   width: 219px;
