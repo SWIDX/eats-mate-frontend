@@ -20,8 +20,8 @@ function App() {
             element={<KakaoRedirectHandler />}
           />
           <Route path="/map-service/main" element={<MapPage />} />
-          <Route path="/review-service/main" element={<ReviewPage />} />
-          <Route path="/store-detail/main" element={<StoreDetailPage/>}/>
+          <Route path="/review/*" element={<ReviewPage />} />
+          <Route path="/detail/*" element={<StoreDetailPage/>}/>
           <Route path="/about/main" element={<AboutPage/>}/>
           <Route path="/mypage" element={<MyPage />} />
         </Routes>
