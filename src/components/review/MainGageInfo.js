@@ -1,11 +1,10 @@
 import React from "react";
 import styles from "./MainGageInfo.module.css";
 import LikeButton from "../like/LikeButton";
-import { useLocation } from "react-router";
 import Carousel from "../etc/Carousel";
 
 function MainGageInfo(props){
-    const { state } = useLocation();
+    console.log(props)
 
     const testData = [
         {
@@ -50,7 +49,7 @@ function MainGageInfo(props){
                             <span className={styles.gageName}>{props.information.name}</span>
                             <span className={styles.gageGubun}>{props.information.gubun}</span>
                         </div>
-                        <div className={styles.likeButton}><LikeButton information={state}/></div>
+                        <div className={styles.likeButton}><LikeButton /></div>
                     </div>
 
                     <div className={styles.gageContentContainer}>
