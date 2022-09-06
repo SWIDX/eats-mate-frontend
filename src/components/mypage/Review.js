@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from 'axios';
 import styles from "./Review.module.css"
 import { useSelector } from 'react-redux';
 
@@ -37,6 +36,10 @@ function Review(props) {
         setTogglemenu(false);
     }
 
+    function viewImage(url) {
+        window.open(url, '_blank');
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.reviewInfo}>
@@ -57,7 +60,7 @@ function Review(props) {
                 {/* 이미지 */}
                 <div className={styles.imageContainer}>
                 {props.review.images.map((imgUrl, i) =>
-                    <img src={imgUrl} />
+                    imgUrl != "" && <img src={imgUrl} onClick={() => viewImage(imgUrl)} />
                 )}
                 </div>
                 <div className={styles.meta}>
