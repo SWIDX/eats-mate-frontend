@@ -3,13 +3,11 @@ import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import styles from './DetailMap.module.css';
 
 const DetailMap = (props) => {
-
-
   function urlScheme(){
     let url;
     url = "https://map.kakao.com/link/to/" + props.information.name + "," + props.information.lat + "," + props.information.lng
     console.log(url);
-    window.location.assign(url);
+    window.open(url, '_blank');
   }
 
   function copyText(){
@@ -87,8 +85,8 @@ const DetailMap = (props) => {
           >
             <MapMarker
             position={{
-              lat:props.information.lat,
-              lng:props.information.lng
+              lat: props.information.lat,
+              lng: props.information.lng
             }}
             />
           </Map>
