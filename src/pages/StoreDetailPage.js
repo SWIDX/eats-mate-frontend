@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from 'axios';
 import MainReview from "../components/review/MainReview";
 import MainGageInfo from "../components/review/MainGageInfo";
@@ -12,11 +12,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, reissueJWT } from '../_actions/user_action';
 
 function StoreDetailPage(){
-    const { state } = useLocation();
     const userinfo = useSelector((state) => state.userReducer.userinfo)
     const dispatch = useDispatch();
 
+    const placeName = useLocation().pathname.split("/").pop();
+
     const [modalOpen, setModalOpen] = useState(false);
+    const [information, setInformation] = useState({});
+
+    useEffect(() => {
+      getStoreDetail();
+    }, []);
+  
+    async function getStoreDetail() {
+      try {
+        const res = await axios.get("http://localhost:8081/map-service/findByName/?name=" + placeName);
+        setInformation(res.data)
+      } catch(e){
+        throw e;
+      }
+    }
 
     const showModal = () => {
         setModalOpen(true);
@@ -84,11 +99,11 @@ function StoreDetailPage(){
           <NavBar />
           <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "10px 0px 100px 0px"}}>
               <div>
-                  <MainGageInfo information={state}/>
-                  <DetailMap information={state} />
-                  <MainReview information={state} showModal={checkExp}/>
+                  <MainGageInfo information={information}/>
+                  <DetailMap information={information} />
+                  <MainReview information={information} showModal={checkExp}/>
               </div>
-              { modalOpen ? <ReviewModal information={state} closeModal={closeModal}/> : null }
+              { modalOpen ? <ReviewModal information={information} closeModal={closeModal}/> : null }
           </Container>
         </>
     );
