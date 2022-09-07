@@ -56,6 +56,8 @@ function Carousel(props) {
 
         imageRef.forEach((ref, index) => {
             ref.style.borderRadius = `${props.imageRadius}px`
+            ref.style.minWidth = props.imageWidth;
+            // ref.style.minHeight = props.imageHeight; // 이거 적용하면 왜 min-width 무시됨..?
         });
         buttonRef[0].style.transform = `translateX(-${props.buttonSize/2}px)`
         buttonRef[1].style.transform = `translateX(${props.buttonSize/2}px)`
