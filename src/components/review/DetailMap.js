@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import styles from './DetailMap.module.css';
 
@@ -14,18 +14,6 @@ const DetailMap = (props) => {
     navigator.clipboard.writeText(props.information.address)
     alert("주소가 복사되었습니다.");
   }
-
-  const [state, setState] = useState({
-    // 지도의 초기 위치
-    center: { lat: props.information.lat, lng: props.information.lng }, //37.566767891, 126.978657934
-    // 지도 위치 변경시 panto를 이용할지에 대해서 정의
-    isPanto: true,
-  });
-  //센터 이동은 한번검색에 한번만.
-  //첫번째 검색결과에만 해당되도록 bool 인수 할당
-
-  //추후 다른 페이지와 연결시 props를 통해 detail information을
-  //부모 컴포넌트를 통해 전달받아서 핀으로 보여줄 것
 
   return (
     <>
@@ -63,33 +51,32 @@ const DetailMap = (props) => {
         </div>
 
         <div className={styles.detail_map}>
+          {props.information.lat && // undefined 주면 안됨
           <Map
             onClick={urlScheme}
             className={styles.detail_map} // 지도를 표시할 Container
-            center={state.center}
-            isPanto={state.isPanto}
+            center={{lat: props.information.lat, lng: props.information.lng}}
+            isPanto={true}
             style={{
               // 지도의 크기
               width: '100%',
               height: '50vh',
             }}
             level={2} // 지도의 확대 레벨
-            onCenterChanged={(map) =>
-              setState({
-                center: {
-                  lat: map.getCenter().getLat(),
-                  lng: map.getCenter().getLng(),
-                },
-              })
-            }
           >
+
             <MapMarker
-            position={{
-              lat: props.information.lat,
-              lng: props.information.lng
+            position={{lat: props.information.lat, lng: props.information.lng}}
+            image={{
+              src: "../img/map-marker/pin_fork.svg",
+              size: {
+                width: 64,
+                height: 69
+              }
             }}
             />
           </Map>
+          }
         </div>
       </div>
     </>
