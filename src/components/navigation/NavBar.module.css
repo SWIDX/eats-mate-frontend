@@ -13,6 +13,15 @@
     scale: 0.7;
 }
 
+@media(max-width:426px){
+    .logoSvg {
+        scale: 0.5;
+        margin-left:-50px;
+        margin-top:-20px;
+    }
+     
+}
+
 .nav > a:nth-child(n) {
     margin: 0px 20px 0px;
     letter-spacing: -0.04em;
@@ -43,4 +52,11 @@
 .userprofile > p {
     margin: auto;
     letter-spacing: -0.04em;
+}
+
+
+@media(max-width:426px){
+    .navLogin{
+    display: none;   
+    }
 }
