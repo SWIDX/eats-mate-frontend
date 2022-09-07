@@ -9,20 +9,31 @@ function MainReview(props){
     const placeName = useLocation().pathname.split("/").pop();
     const navigate = useNavigate();
     const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
+    const [rateList, setRateList] = useState([0, 0, 0]);
 
     // props 확인용
     useState(()=>{console.log(props.information)},[props])
 
     useEffect(() => {
         getUserReview();
+        getReviewRate();
     }, []);
     
     async function getUserReview() {
         try {
-            const res = await axios.get("http://localhost:8081/review-service/review/" + placeName + "/" + 2,
+            const res = await axios.get("http://localhost:8081/review-service/review/?place_name=" + placeName + "&amount=" + 2,
             );
             res.data.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
             setReviewList(res.data);
+        } catch(e){
+            throw e;
+        }
+    }
+
+    async function getReviewRate() {
+        try {
+            const res = await axios.get("http://localhost:8081/review-service/review/count?place_name=" + placeName);
+            setRateList(res.data);
         } catch(e){
             throw e;
         }
@@ -48,8 +59,9 @@ function MainReview(props){
                 <div className={styles.bottomContainer}>
                     <div className={styles.bottomLeftContainer}>
                         <div className={styles.counterBox}>
+                            <div className={styles.reviewCountText}><b>{rateList[0] + rateList[1] + rateList[2]}건</b>의 리뷰가 있어요</div>
                             <ReviewCounter
-                                rateVal={[10, 999, 122]}
+                                rateVal={rateList}
                             />
                         </div>
                         <div className={styles.reviewReqTextContainer}>

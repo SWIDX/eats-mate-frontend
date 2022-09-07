@@ -51,6 +51,7 @@
 .bottomRightContainer {
     display: flex;
     flex-direction: column;
+    align-self: flex-start;
     flex-basis: 72%;
 
     background: #FFFFFF;
@@ -60,12 +61,22 @@
 }
 
 .counterBox {
+    display: flex;
+    flex-direction: column;
     padding: 32px 48px;
     background: #FFFFFF;
     border: 1px solid #EFEFEF;
     box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.4);
     border-radius: 32px 32px 0px 32px;
     margin-bottom: 58px;
+}
+
+.reviewCountText {
+    font-size: 22px;
+    line-height: 35px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin: 0px auto 12px auto;
 }
 
 .reviewReqTextContainer {
