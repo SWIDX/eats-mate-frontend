@@ -135,7 +135,7 @@ function InformationCard(props) {
                                             <span className={styles.reviewcount}>3건</span>
                                         </div>
                                         <div className={styles.more}>
-                                            <button>더보기 {'>'} </button>
+                                            <button className={styles.morebtn}>더보기 {'>'} </button>
                                         </div>
                                     </li>
 
