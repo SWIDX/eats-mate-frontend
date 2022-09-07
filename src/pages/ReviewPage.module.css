@@ -1,0 +1,76 @@
+
+.backButton{
+  display: flex;
+  border:1px solid black;
+  border-radius: 30px;
+  padding: 16px 24px;
+  margin: 0px auto 34px 0px;
+  cursor: pointer;
+}
+.backButton > svg {
+  margin: auto auto;
+}
+
+.category {
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #8c8c8c;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.subTitle {
+  display: flex;
+  padding: 20px 10px;
+  border-bottom: 2px solid #000000;
+}
+
+.titleText {
+  font-weight: 700;
+  line-height: 35px;
+  letter-spacing: -0.04em;
+  font-size: 24px;
+}
+
+.counterBox {
+  background: #FFFFFF;
+  border: 2px solid #F1F1F1;
+  padding: 18px 28px;
+}
+
+.reviewReqTextContainer {
+  display: flex;
+}
+.reviewReqTextContainer > div {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 29px;
+  letter-spacing: -0.04em;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+.reviewButton {
+  display: flex;
+  height: 68px;
+  background: #E97869;
+  box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.25);
+  border-radius: 16px;
+  padding: 19px 27px;
+  cursor: pointer;
+}
+.reviewButton > div {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  margin: auto auto auto 0px;
+}
+.reviewButton > svg {
+  margin: auto 0px auto auto;
+}
