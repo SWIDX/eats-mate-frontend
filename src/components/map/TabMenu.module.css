@@ -1,5 +1,5 @@
 .item {
-    margin: 5% 5% 5% 5%;
+    margin: 18px 24px;
 }
 
 .item > br {
@@ -7,9 +7,15 @@
 }
 
 .name {
-    font-weight: bold;
-    font-size: large;
+    color: #000000;
+    font-weight: 700;
+    font-size: 16px;
     cursor: pointer;
+    transition: ease-in-out 0.1s;
+}
+.name:hover {
+    color: #E97869;
+    transition: ease-in-out 0.1s;
 }
 
 .tablist {
@@ -51,6 +57,17 @@
 
 .subtab_list {
     position: relative;
+    padding: 0;
+    display: flex;
+}
+.subtab_list > li {
+    margin: auto auto;
+}
+.subtab_list > li:first-child {
+    margin-left: 15px;
+}
+.subtab_list > li:last-child {
+    margin-right: 15px;
 }
 
 .subtab_all {
@@ -106,17 +123,17 @@
 }
 
 .tabpanel {
-    overflow-y: scroll;
-    overflow-x: scroll;
-    height: 600px;
-    width: 400px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: calc(100vh - 220px);
+    width: 380px;
 }
 
 .tabpanel_all {
     overflow-y: scroll;
-    overflow-x: scroll;
-    height: 650px;
-    width: 400px;
+    overflow-x: hidden;
+    height: calc(100vh - 220px);
+    width: 380px;
 }
 
 .markOuter {
