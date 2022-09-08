@@ -1,77 +1,227 @@
-.infoContainer {
-    display: flex;
-    flex-direction: row;
-}
-
-.titleContainer {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 32px;
-}
-
-.gageInfoContainer {
-    display: flex;
-    flex-direction: row;
-    margin: auto auto;
-}
-
-.gageImg {
-    width: 786px;
-    height: 421px;
-    border-radius: 10px 10px 10px 10px;
-}
-
-.gageInfo {
-    flex-grow: 1;
-    padding: 34px 30px;
-    background: #FFFFFF;
-    border-radius: 32px 32px 0px 32px;
-    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.5); 
-    margin-left: 40px;
-}
-
-.gageCircle{
-    position: absolute;
-    margin: 6px auto auto 7px;
-    z-index: 1;
-}
-
-.gageName {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    z-index: 2;
-}
-
-.gageGubun {
-    margin: 5px auto auto 10px;
-    color:#8C8C8C;
-    font-size: 16px;
-    width: 80px;
-    letter-spacing: -0.04em;
-}
-
-.likeButton {
-    margin: 0px 0px auto auto;
-}
-
-.gageContentContainer {
-    display: flex;
-    margin-bottom: 32px;
-}
-
-.gageContent {
-    display: flex;
-    margin-left: 15px;
-    flex-direction: column;
-}
-.gageAddress > div {
-    font-size: 16px;
-    letter-spacing: -0.04em;
-    color: #000000;
-    margin-left: 12px;
-}
-.gageContentTitle {
-    font-weight: 700;
-    letter-spacing: -0.04em;
-}
+@media(min-width:426px){
+    .infoContainer {
+        display: flex;
+        flex-direction: row;
+        /*border: 1px solid pink;*/
+    }
+    }
+        
+    @media(max-width:426px){
+    .infoContainer {
+        /*display: flex;
+        flex-direction: row;*/
+        width: 370px;
+        margin-top: 30px;
+        margin-left: -30px;
+        /*border: 1px solid skyblue;*/
+    }
+    }
+    
+    @media(min-width:426px){
+    .gageInfo {
+        flex-grow: 1;
+        padding: 34px 30px;
+        background: #FFFFFF;
+        border-radius: 32px 32px 0px 32px;
+        box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.5);
+        margin-left: 40px;
+    }
+    }
+        
+    @media(max-width:426px){
+    .gageInfo {
+        flex-grow: 1;
+        /*padding: 34px 30px;*/
+        width: 370px;
+        height: 550px;
+        border-radius: 32px 32px 0px 32px;
+        /*box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.5);*/
+    }
+    }
+    
+    .titleContainer {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 32px;
+    }
+    
+    @media(min-width:426px){
+    .gageInfoContainer {
+        display: flex;
+        flex-direction: row;
+        margin: auto auto;
+    }
+    }
+    
+    @media(max-width:426px){
+    .gageInfoContainer {
+        display: flex;
+        flex-direction: row;
+        /*border: 1px solid purple;*/
+    }
+    }
+    
+    .gageImg {
+        width: 786px;
+        height: 421px;
+        border-radius: 10px 10px 10px 10px;
+    }
+    
+    @media(min-width:426px){
+    .gageCircle{
+        position: absolute;
+        margin: 6px auto auto 7px;
+        z-index: 1;
+    }
+    }
+    
+    @media(max-width:426px){
+    .gageCircle{
+        position: absolute;
+        margin: 6px auto auto 7px;
+        display: none;
+    }
+    }
+    
+    @media(min-width:426px){
+    .gageName {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        z-index: 2;
+    }
+    }
+    
+    @media(max-width:426px){
+    .gageName {
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        z-index: 2;
+    }
+    }
+    
+    @media(min-width:426px){
+    .gageGubun {
+        margin: 5px auto auto 10px;
+        color:#8C8C8C;
+        font-size: 16px;
+        width: 80px;
+        letter-spacing: -0.04em;
+    }
+    }
+    
+    @media(max-width:426px){
+        .gageGubun {
+            margin: 5px auto auto 15px;
+            color:#8C8C8C;
+            font-size: 16px;
+            width: 60px;
+            letter-spacing: -0.04em;
+        }
+        }
+    
+    @media(min-width:426px){
+    .likeButton {
+        margin: 0px 0px auto auto;
+    }
+    }
+    
+    @media(max-width:426px){
+    .likeButton {
+        margin-left: 100px;
+    }
+    }
+    
+    @media(min-width:426px) {
+    .ImageContainer {
+        display: none;
+    }
+    }
+    
+    @media(max-width:426px) {
+    .ImageContainer {
+        display: flex;
+        width: 370px;
+        height: 180px;
+        margin-bottom: 32px;
+        /*border: 1px solid orange;*/
+    }
+    }
+    
+    @media(max-width:426px){
+    .LargeImageContainer {
+        width: 230px;
+        height: 180px;
+        margin-right: 20px;
+        background-color: lightgrey;
+    }
+    }
+    
+    @media(max-width:426px){
+    .mobileImage1 {
+        float:left;
+        width: 230px;
+        height: 180px;
+    }
+    }
+    
+    @media(max-width:426px){
+    .SmallImageContainer {
+        width: 120px;
+        height: 180px;
+    }
+    }
+    
+    @media(max-width:426px){
+    .mobileImage2 {
+        width: 120px;
+        height: 100px;
+        margin-bottom: -30px;
+    }
+    }
+    
+    @media(max-width:426px){
+    .mobileImage3 {
+        width: 120px;
+        height: 100px;
+    }
+    }
+    
+    @media(min-width:426px) {
+    .gageContentContainer {
+        display: flex;
+        margin-bottom: 32px;
+    }
+    }
+    
+    @media(max-width:426px) {
+    .gageContentContainer {
+        display: flex;
+        margin-bottom: 32px;
+        margin-left: 15px;
+    }
+    }
+    
+    .gageContent {
+        display: flex;
+        margin-left: 15px;
+        flex-direction: column;
+    }
+    
+    .gageContent {
+        display: flex;
+        margin-left: 15px;
+        flex-direction: column;
+    }
+    
+    .gageAddress > div {
+        font-size: 16px;
+        letter-spacing: -0.04em;
+        color: #000000;
+        margin-left: 12px;
+    }
+    .gageContentTitle {
+        font-weight: 700;
+        letter-spacing: -0.04em;
+    }
