@@ -1,7 +1,7 @@
 /* global kakao */
 
 import React, { useEffect, useState, useContext } from 'react';
-import { Map, MapMarker, Circle, Polyline, CustomOverlayMap } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, Circle, Polyline } from 'react-kakao-maps-sdk';
 import { MarkerContext } from '../../context/MarkerContext';
 import styles from './Map.module.css';
 
@@ -18,9 +18,6 @@ const MapContainer = (props) => {
     //const [nearbyRest, setNearbyRest] = useState([]);
     const [currentMarker, setCurrentMarker] = useState([]);
     const [information, setInformation] = useState();
-
-    const [courseInfoWindow, setCourseInfoWindow] = useState(false); // course info window
-
     const [course, setCourse] = useState([]); // 사용자 맞춤 코스로 저장될 정보
     const [drawCourseLine, setDrawCourseLine] = useState(false);
     const markerInformation = useContext(MarkerContext);
@@ -33,20 +30,8 @@ const MapContainer = (props) => {
     }, [props.courseLine]);
 
     const onClickMarker = (info) => {
-        alert('마커 클릭 이벤트 다시 등록 예정입니다.(info card로 연결)');
-    };
-
-    useEffect(() => {
-        //alert(courseInfoWindow);
-    }, [courseInfoWindow]);
-
-    const AddCourse = () => {
-        if (props.courseLine.length == 5) {
-            alert('코스 경유지는 최대 5개까지만 추가할 수 있습니다.');
-        } else {
-            props.propFunction(information);
-            setCourseInfoWindow(false);
-        }
+        alert("마커 클릭 이벤트 코드 작업 중");
+        //props.clickMarker(info);
     };
 
     const markerConstructor = (info, imgSrc) => {
@@ -64,7 +49,7 @@ const MapContainer = (props) => {
                     }, // 마커이미지의 크기입니다
                     options: {
                         offset: {
-                            x: 27,
+                            x: 30,
                             y: 69,
                         }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                     },
@@ -155,14 +140,14 @@ const MapContainer = (props) => {
                     height: 'calc(100vh - 75px)',
                 }}
                 level={2} // 지도의 확대 레벨
-                onCenterChanged={(map) =>
+                /*onCenterChanged={(map) =>
                     setState({
                         center: {
                             lat: map.getCenter().getLat(),
                             lng: map.getCenter().getLng(),
                         },
                     })
-                }
+                }*/
             >
                 {currentMarker.length != 0
                     ? currentMarker.map((item) => {
@@ -170,46 +155,33 @@ const MapContainer = (props) => {
                       })
                     : null}
 
-                {courseInfoWindow && (
-                    <div className={styles.infoWindow}>
-                        <img
-                            alt="close btn"
-                            width="35"
-                            height="35"
-                            src="/img/closeBtn.png"
-                            style={{
-                                position: 'absolute',
-                                right: '20px',
-                                top: '20px',
-                            }}
-                            onClick={() => setCourseInfoWindow(false)}
-                        />
-                        <div className={styles.infoWindowTitle}>{information.name}</div>
-                        <div className={styles.infoWindowAddress}>{information.address}</div>
-                        <div>
-                            <img
-                                alt="add course btn"
-                                src="/img/addCourseBtn.png"
-                                style={{
-                                    position: 'absolute',
-                                    right: '30px',
-                                    top: '120px',
-                                }}
-                                onClick={() => AddCourse()}
-                            />
-                        </div>
-                    </div>
-                )}
-
                 {drawCourseLine && (
                     <Polyline
                         path={course.map((info) => ({ lat: info.lat, lng: info.lng }))}
-                        strokeWeight={3} // 선의 두께 입니다
+                        draggable={false}
+                        strokeWeight={4} // 선의 두께 입니다
                         strokeColor={'#e97869'} // 선의 색깔입니다
                         strokeOpacity={1} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                         strokeStyle={'solid'} // 선의 스타일입니다
                     />
                 )}
+
+                    {course.map((info) => (
+                        <Circle
+                            center={{
+                            lat: info.lat,
+                            lng: info.lng,
+                            }}
+                            radius={20}
+                            strokeWeight={3} // 선의 두께입니다
+                            strokeColor={"#000000"} // 선의 색깔
+                            strokeOpacity={1} // 선의 불투명도
+                            strokeStyle={"solid"} // dash
+                            fillColor={"#e97869"} // 채우기 색깔
+                            fillOpacity={1} // 채우기 불투명
+                    />
+                    ))}
+
             </Map>
         </>
     );
