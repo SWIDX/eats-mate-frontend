@@ -22,6 +22,7 @@ function MapPage() {
     const [viewCourseComponent, setViewCourseComponent] = useState(false);
     const [point, setPoint] = useState({});
     const [courseLine, setCourseLine] = useState([]);
+    const [courseNum, setCourseNum] = useState();
 
     const [gpsLoc, setGpsLoc] = useState({
         lat: 0,
@@ -30,6 +31,7 @@ function MapPage() {
     const [inputText, setInputText] = useState();
     const [searchInformation, setSearchInformation] = useState({ info: [], value: '', text: '' });
     const [markerInformation, setMarkerInformation] = useState({ marker: [] });
+    // const [information, setInformation] = useState({}); // information value from marker click event
 
     const getClickInfo = (info) => {
         setClickInformation(info);
@@ -73,11 +75,25 @@ function MapPage() {
     const drawCourse = (point) => {
         setCourseLine([]);
         setCourseLine(point);
+        setCourseNum(point.length);
     };
 
     const closeCourseComponent = () => {
         setViewCourseComponent(false);
         setCourseLine([]);
+        setCourseNum(0);
+    };
+
+    const checkCourseNum = () => {
+        // to return course point length
+    };
+
+    const returnCourseNum = (num) => {
+        setCourseNum(num);
+    };
+
+    const clickMarker = (info) => {
+        // setInformation(info);
     };
 
     /*const getGpsLoc = (info) => {
@@ -130,6 +146,8 @@ function MapPage() {
                                 clickAddCourse={clickAddCourse}
                                 inputText={inputText}
                                 getClickInformation={getClickInformation}
+                                checkCourseNum={checkCourseNum}
+                                courseNum={courseNum}
                             />
                         ) : null}
 
@@ -141,6 +159,8 @@ function MapPage() {
                                 clearCoursePoint={clearCoursePoint}
                                 drawCourse={drawCourse}
                                 closeCourseComponent={closeCourseComponent}
+                                checkCourseNum={checkCourseNum}
+                                returnCourseNum={returnCourseNum}
                             />
                         ) : null}
                         <MapContainer
@@ -149,6 +169,7 @@ function MapPage() {
                             courseLine={courseLine}
                             gpsInformation={gpsLoc}
                             propFunction={clickAddCourse}
+                            clickMarker={clickMarker}
                         />
                     </div>
                 </MarkerContext.Provider>
