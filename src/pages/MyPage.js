@@ -169,40 +169,40 @@ function MyPage() {
 
   async function getUserLike() {
     try {
-      // const res = await axios.get("http://localhost:8081/user-service/user/like/all",
-      //   { //header
-      //       headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
-      //   }
-      // );
-      const data = 
-      [
-          {
-              id: 123,
-              name: "멘지",
-              gubun: "일식",
-              address: "서울 마포구 월드컵로11길 8 103호(망원동)"
-          },
-          {
-              id: 92,
-              name: "할랄가이즈 강남점",
-              gubun: "기타",
-              address: "서울 서초구 강남대로69길 8"
-          },
-          {
-            id: 101,
-            name: "비스트로주라",
-            gubun: "양식",
-            address: "서울특별시 마포구 와우산로23길 18-7"
-          },
-          {
-            id: 56,
-            name: "제스의부엌 옐로서브마린점",
-            gubun: "일식",
-            address: "서울 서대문구 연세로5다길 35"
-          }
-      ]
-      setLikeList(data);
-      setFilteredLikeList(data);
+      const res = await axios.get("http://localhost:8081/user-service/user/like/all",
+        { //header
+            headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+        }
+      );
+      // const data = 
+      // [
+      //     {
+      //         id: 123,
+      //         name: "멘지",
+      //         gubun: "일식",
+      //         address: "서울 마포구 월드컵로11길 8 103호(망원동)"
+      //     },
+      //     {
+      //         id: 92,
+      //         name: "할랄가이즈 강남점",
+      //         gubun: "기타",
+      //         address: "서울 서초구 강남대로69길 8"
+      //     },
+      //     {
+      //       id: 101,
+      //       name: "비스트로주라",
+      //       gubun: "양식",
+      //       address: "서울특별시 마포구 와우산로23길 18-7"
+      //     },
+      //     {
+      //       id: 56,
+      //       name: "제스의부엌 옐로서브마린점",
+      //       gubun: "일식",
+      //       address: "서울 서대문구 연세로5다길 35"
+      //     }
+      // ]
+      setLikeList(res.data);
+      setFilteredLikeList(res.data);
     } catch(e){
       throw e;
     }
