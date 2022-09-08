@@ -15,7 +15,8 @@ function StoreDetailPage(){
     const userinfo = useSelector((state) => state.userReducer.userinfo)
     const dispatch = useDispatch();
 
-    const placeName = useLocation().pathname.split("/").pop();
+    //const placeName = useLocation().pathname.split("/").pop();
+    const placeName= useLocation().state.name;
 
     const [modalOpen, setModalOpen] = useState(false);
     const [information, setInformation] = useState({});
