@@ -54,6 +54,15 @@ function InformationCard(props) {
                 <div className={styles.card_outer}>
                     <div className={styles.card}>
                         <div className={styles.topOuter}>
+                        <div className={styles.exitbutton}>
+                            <button
+                                onClick={() => {
+                                    setOnClose(true);
+                                }}
+                            >
+                                <Exit />
+                            </button>
+                        </div>
                             <div className={styles.cardTop}>
                                 <div className={styles.cardTagOuter}>
                                     <span className={styles.cardName}>{information.name}</span>
@@ -65,15 +74,7 @@ function InformationCard(props) {
                                 <button className={styles.heart}>
                                     <LikeButton />
                                 </button>
-                                <div className={styles.exitbutton}>
-                                    <button
-                                        onClick={() => {
-                                            setOnClose(true);
-                                        }}
-                                    >
-                                        <Exit />
-                                    </button>
-                                </div>
+                                
 
                                 {/* <div className={styles.cardTag}>광진구</div>  */}
                             </div>
@@ -92,7 +93,8 @@ function InformationCard(props) {
                                 <div className={styles.addressInfo}>
                                     <div className={styles.addressTop}>
                                         <div className={styles.top}>
-                                            <Address_pin /> <div>주소</div>
+                                            <Address_pin />
+                                            <div>주소</div>
                                         </div>
                                         <div className={styles.bottom}>
                                             <Copy />
@@ -108,7 +110,8 @@ function InformationCard(props) {
                                 <div className={styles.addressInfo}>
                                     <div className={styles.addressTop}>
                                         <div className={styles.top}>
-                                            <Clock /> 영업시간
+                                            <Clock />
+                                            <div>영업시간</div>
                                         </div>
                                     </div>
 
@@ -120,7 +123,7 @@ function InformationCard(props) {
                                     <div className={styles.addressTop}>
                                         <div className={styles.top}>
                                             <Phone />
-                                            전화번호
+                                            <div>전화번호</div>
                                         </div>
                                     </div>
 
@@ -161,10 +164,12 @@ function InformationCard(props) {
                                             나는야먹짱
                                         </div>
                                         <p>말해뭐해 일단 너무 맛있고요... 혼자 건대 갔다가 들렀는데 혼밥하기 딱 좋은 분위기였어요 추천</p>
-                                        <div className={styles.date}>2022. 01. 08</div>
-                                        <div className={styles.face}>
-                                            <img src="/img/good.png" />
-                                            최고예요
+                                        <div style={{display: "flex"}}>
+                                            <div className={styles.date}>2022. 01. 08</div>
+                                            <div className={styles.face}>
+                                                <img src="/img/good.png" />
+                                                최고예요
+                                            </div>
                                         </div>
                                     </div>
                                     <hr />
@@ -174,10 +179,12 @@ function InformationCard(props) {
                                             프로혼밥러
                                         </div>
                                         <p>와 여기 나만 알던 맛집인데 잇메에도 올라왔네... 강추드려요</p>
-                                        <div className={styles.date}>2022. 01. 08</div>
-                                        <div className={styles.face}>
-                                            <img src="/img/good.png" />
-                                            최고예요
+                                        <div style={{display: "flex"}}>
+                                            <div className={styles.date}>2022. 01. 08</div>
+                                            <div className={styles.face}>
+                                                <img src="/img/good.png" />
+                                                최고예요
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

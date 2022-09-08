@@ -1,10 +1,9 @@
 .card {
     position: absolute;
-    top: 20px;
-    left: 0px;
-    margin-left: 30px;
+    bottom: 0px;
+    left: 15px;
     z-index: 30;
-    /*height: 1200px;*/
+    max-height: calc(100vh - 90px);
     /*overflow-y: scroll;*/
 }
 .card_outer {
@@ -17,50 +16,52 @@
 
 .card > div {
     position: relative;
-    top: 80px;
+    top: 0px;
     width: 380px;
     height: fit-content;
     border: 1px solid #e6e6e6;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .topOuter {
-    height: 800;
+    height: calc(100vh - 90px);
 }
 
 .cardTop {
     display: flex;
     flex-direction: row;
     width: 380px;
-    height: 13%;
+    height: 80px;
+    padding: 10px;
     border-radius: 10px;
     justify-content: flex-start;
-    margin: 3%;
+    padding: 15px 24px;
 }
 .cardTop_tour {
     display: flex;
     flex-direction: row;
     width: 380px;
-    height: 13%;
+    height: 80px;
     border-radius: 10px;
     justify-content: flex-start;
-    margin: 5% 5%;
+    padding: 15px 24px;
 }
 
 .cardTagOuter {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 5%;
 }
 .cardName {
     font-size: 20px;
     font-weight: bold;
+    letter-spacing: -0.04em;
 }
 
 .cardTag {
     margin-left: 10px;
+    letter-spacing: -0.04em;
 }
 
 .divSections {
@@ -71,12 +72,13 @@
 }
 
 .cardImg {
-    padding: 32px;
+    display: flex;
+    padding: 24px 32px;
 }
 
 .cardImg > img {
     align-items: center;
-    margin-left: 8px;
+    margin: auto auto;
     width: 93px;
     border-radius: 10px;
     object-fit: cover;
@@ -84,24 +86,25 @@
 .cardImg_tour {
     display: flex;
     justify-content: space-around;
-    margin: 5%;
+    margin: 18px;
 }
 
 .cardImgtour > img {
     align-items: center;
+    
 }
 .tourImg {
-    width: 50%;
+    object-fit: cover;
+    max-width: 150px;
 }
 
 .cardMiddle {
+    height: 410px;
     display: flex;
     flex-direction: column;
-    position: relative;
     width: 380px;
     border-radius: 10px;
-    padding: 28px 20px;
-    height: 420px;
+    padding: 0px 20px 28px 20px;
     overflow-y: scroll;
 }
 .cardMiddle_tour {
@@ -109,47 +112,51 @@
     flex-direction: column;
     position: relative;
     width: 380px;
+    height: 410px;
     border-radius: 10px;
-    padding: 28px 20px;
+    padding: 0px 24px 28px 24px;
     height: fit-content;
     align-items: flex-start;
     overflow-y: scroll;
-    height: 400px;
+    height: 10%;
     justify-content: space-around;
 }
 .addressTop {
     display: flex;
     align-items: center;
+    margin-bottom: 24px;
 }
 
 .addressTop_tour {
     display: flex;
     align-items: center;
-    padding: 5% 5%;
 }
 
 .cardMiddle .addressInfo {
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
+    letter-spacing: -0.04em;
+    padding: 24px 0px;
 }
 
 .cardMiddle_tour .addressInfo {
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
-    padding-bottom: 10px;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
 }
 
 .tour_overviewInfo {
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
+    letter-spacing: -0.04em;
 }
 .overview_top {
     display: flex;
     align-items: center;
-    padding: 5% 5%;
     width: fit-content;
 }
 .overviewDetail {
@@ -159,6 +166,7 @@
     margin-top: 6px;
     margin-left: 24px;
     line-height: 20px;
+    letter-spacing: -0.04em;
 }
 
 .overviewDetail2 {
@@ -167,10 +175,12 @@
     padding: 0;
     margin-top: 6px;
     margin-left: -4px;
+    margin-bottom: 24px;
     line-height: 20px;
     overflow: scroll;
     height: 140px;
     line-height: 23px;
+    letter-spacing: -0.04em;
 }
 .overviewDetail2::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
@@ -179,6 +189,7 @@
 .overview_name {
     width: 60px;
     margin-left: 5px;
+    font-weight: 700;
 }
 .copy {
     margin-left: 1px;
@@ -189,6 +200,7 @@
     text-decoration: underline;
     text-underline-position: under;
     background: white;
+    font-size: 14px;
     color: #8e8e8e;
 }
 
@@ -200,6 +212,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
+    letter-spacing: -0.04em;
 }
 
 .cardMiddle .callInfo {
@@ -210,6 +223,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
+    letter-spacing: -0.04em;
 }
 
 .cardMiddle .callInfo > img {
@@ -219,11 +233,11 @@
 .cardMiddle .addressInfo .addressDetail {
     font-weight: normal;
     font-size: 16px;
-    padding: 0;
-    margin-top: 6px;
     margin-left: 24px;
+    line-height: 22px;
     display: flex;
     justify-content: flex-start;
+    letter-spacing: -0.04em;
 }
 
 .cardMiddle_tour .addressInfo .addressDetail {
@@ -232,6 +246,7 @@
     padding: 0;
     margin-top: 6px;
     margin-left: 24px;
+    letter-spacing: -0.04em;
 }
 
 .cardMiddle .timeInfo .timeDetail {
@@ -243,6 +258,7 @@
     margin-top: 6px;
     line-height: 24px;
     margin-left: 24px;
+    letter-spacing: -0.04em;
 }
 
 .cardMiddle .callInfo .callDetail {
@@ -251,6 +267,7 @@
     padding: 0;
     margin-top: 6px;
     margin-left: 24px;
+    letter-spacing: -0.04em;
 }
 
 .cardMiddle > hr {
@@ -265,8 +282,6 @@
 
 .cardMiddle > div > div {
     text-align: left;
-    padding-top: 3%;
-    margin: 24px 0;
 }
 
 .cardBottom {
@@ -278,6 +293,8 @@
     font-weight: bold;
     font-size: 16px;
     padding: 24px 15px;
+    letter-spacing: -0.04em;
+    margin-bottom: 70px;
 }
 
 .evaluate_outer {
@@ -287,6 +304,7 @@
     margin-left: 10px;
     color: #8c8c8c;
     justify-content: space-between;
+    letter-spacing: -0.04em;
 }
 
 .moreTab {
@@ -296,15 +314,17 @@
     color: #939393;
     font-size: 16px;
     font-weight: normal;
+    letter-spacing: -0.04em;
 }
 .more {
-    padding-left: 50%;
+    margin: auto 0px auto auto;
 }
 .morebtn {
     border: 0px solid white;
     background: white;
     font-size: 14px;
     color: #8c8c8c;
+    letter-spacing: -0.04em;
 }
 
 .totalReviews {
@@ -350,6 +370,7 @@
     color: #8c8c8c;
     font-weight: normal;
     display: inline;
+    letter-spacing: -0.04em;
 }
 
 .DetailReviews .face {
@@ -357,8 +378,9 @@
     text-align: right;
     font-size: 14px;
     font-weight: bold;
-    margin-left: 100px;
+    margin: auto 0px auto auto;
     margin-bottom: 24px;
+    letter-spacing: -0.04em;
 }
 
 .DetailReviews .face img {
@@ -367,12 +389,15 @@
 }
 
 .Buttons {
+    position: fixed;
     display: flex;
     flex-direction: column;
     padding: 44px 44px;
 }
 
 .DetailButton {
+    position: fixed;
+    bottom: 75px;
     width: 280px;
     height: 50px;
     background: #e97869;
@@ -387,8 +412,7 @@
 .heart {
     border: 0;
     padding: 0;
-    margin: 0;
-    margin-top: 10px;
+    margin: auto 8px auto auto;
     background-color: #fff;
     background: inherit;
     border: none;
@@ -400,8 +424,8 @@
 
 .exitbutton {
     position: absolute;
-    margin-top: 15px;
-    margin-left: 367px;
+    top: 15px;
+    right: -44px;
     z-index: 28;
 }
 
@@ -417,8 +441,8 @@
 
 .exitbutton_tour {
     position: absolute;
-    margin-top: 5px;
-    margin-left: 360px;
+    top: 15px;
+    right: -44px;
     z-index: 28;
 }
 
@@ -433,6 +457,8 @@
 }
 
 .AddCourseBtn {
+    position: fixed;
+    bottom: 15px;
     width: 280px;
     height: 50px;
     background: white;
@@ -448,6 +474,9 @@
     display: flex;
     align-items: center;
 }
+.top > div {
+    font-weight: 700;
+}
 .bottom {
     display: flex;
     align-items: center;
@@ -461,6 +490,7 @@
 }
 .tourapi_outer {
     display: flex;
+    margin-bottom: 70px;
 }
 .tourapi {
     margin-top: 10px;
@@ -474,6 +504,7 @@
 .evaluate {
     font-size: 16px;
     font-weight: bold;
+    letter-spacing: -0.04em;
 }
 .reviewcount {
     margin-left: 10px;
