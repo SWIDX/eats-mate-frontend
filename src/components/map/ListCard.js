@@ -8,6 +8,7 @@ function ListCard(props) {
     const [information, setInformation] = useState();
     const [onClose, setOnClose] = useState(true);
     const { searchInformation } = useContext(SearchContext);
+    const [courseNum, setCourseNum] = useState();
 
     const mouseOver = (e) => {
         e.preventDefault();
@@ -48,6 +49,16 @@ function ListCard(props) {
         }
     }, [props.listInformation]);
 
+    useEffect(() => {
+        if(props.courseNum !== undefined) {
+            setCourseNum(props.courseNum);
+        }
+    }, [props.courseNum]);
+
+    const checkCourseNum = () => {
+        props.checkCourseNum();
+    };
+
     return (
         <>
             {onClose ? (
@@ -67,7 +78,7 @@ function ListCard(props) {
                     </div>
                 </div>
             ) : (
-                <InformationCard clickInformation={information} propFunction={getOnClose} clickAddCourse={clickAddCourse} />
+                <InformationCard clickInformation={information} propFunction={getOnClose} clickAddCourse={clickAddCourse} checkCourseNum={checkCourseNum} courseNum={courseNum} />
             )}
         </>
     );
