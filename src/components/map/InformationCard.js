@@ -39,10 +39,12 @@ function InformationCard(props) {
     }, [type]);
 
     const AddCourse = () => {
-        /*if(props.courseLine.length == 5) {
-      alert("코스 경유지는 최대 5개까지만 추가할 수 있습니다.");
-    } else {*/
-        props.clickAddCourse(props.clickInformation);
+        props.checkCourseNum();
+        if(props.courseNum !==undefined && props.courseNum == 5) {
+           alert("코스 경유지는 최대 5개까지만 추가할 수 있습니다.");
+        } else {
+            props.clickAddCourse(props.clickInformation);
+        }
     };
 
     const infoCard = (gubun) => {
@@ -205,7 +207,7 @@ function InformationCard(props) {
         } else {
             return (
                 <div className={styles.card_outer}>
-                    <div className={styles.exitbutton}>
+                <div className={styles.exitbutton}>
                         <button
                             onClick={() => {
                                 setOnClose(true);
@@ -213,7 +215,7 @@ function InformationCard(props) {
                         >
                             X
                         </button>
-                    </div>
+                    </div>    
 
                     <div className={styles.card}>
                         <div className={styles.topOuter}>
