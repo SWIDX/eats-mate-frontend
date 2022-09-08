@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Map.module.css';
+import styles from './MapCourse.module.css';
 import { useSelector } from 'react-redux';
+import { ReactComponent as Pin } from '../../images/svg/course-pin.svg';
+import { ReactComponent as Emoticon } from '../../images/svg/course-emoticon.svg';
+import { ReactComponent as CompleteBtn } from '../../images/svg/course-complete-button.svg';
+import { ReactComponent as ExitBtn } from '../../images/svg/course-exit-button.svg';
+import { ReactComponent as DeleteBtn } from '../../images/svg/course-delete-button.svg';
 import axios from "axios";
 
 function MapCourse(props) {
@@ -25,9 +30,9 @@ function MapCourse(props) {
       } else {
         var finalTitle = "";
         if(title == undefined) {
-          finalTitle = title;
-        } else {
           finalTitle = userinfo.name+"메이트님의 혼행 코스";
+        } else {
+          finalTitle = title;
         }
 
         var url = "http://localhost:8081/user-service/user/course/";
@@ -87,18 +92,22 @@ function MapCourse(props) {
 
   useEffect(() => {
     if( props.point!==null) {
-      var addPoint = {
-        num: props.point.information.length,
-        lat: props.point.information.lat,
-        lng: props.point.information.lng,
-        name: props.point.information.name,
-        address: props.point.information.address,
-      };
-      setPoint([...point, addPoint]);
+      var checkName = placeNameList.find(function(data){ return data === (props.point.information.name)});
+      if (checkName !== undefined) {
+          alert("이미 추가된 경유지입니다.");
+      } else {
+        var addPoint = {
+          num: props.point.information.length,
+          lat: props.point.information.lat,
+          lng: props.point.information.lng,
+          name: props.point.information.name,
+          address: props.point.information.address,
+        };
 
-      setPlaceNameList([...placeNameList, props.point.information.name]);
-
-      setPlaceAddressList([...placeAddressList, props.point.information.address]);
+        setPoint([...point, addPoint]);
+        setPlaceNameList([...placeNameList, props.point.information.name]);
+        setPlaceAddressList([...placeAddressList, props.point.information.address]);
+      }
     }
 
     props.clearCoursePoint(); // To clear(reset) course point data
@@ -117,6 +126,7 @@ function MapCourse(props) {
         }
         setDistanceList(resultList);
       }
+      props.returnCourseNum(point.length);
   }, [point]);
 
   // to express all course distance;
@@ -130,68 +140,107 @@ function MapCourse(props) {
     }
   }, [distanceList]);
 
+  useEffect(() => {
+    props.returnCourseNum(point.length);
+  }, [props.checkCourseNum]);
+
   return (
     <>
-      <div className={styles.courseBox}>
-        <div className={styles.courseBoxTitle}>
-            <input
-              className={styles.courseBoxInput}
-              type="text"
-              name="title"
-              placeholder="코스 제목을 입력해주세요"
-              value={title}
-              size="24"
-              onChange={onInputTitleChange} />
-            <img src="/img/rice.png"
-              style={{
-                width:"25px",
-                height:"25px",
-                position: "absolute",
-                right: "250px",
-                top: "22.5px",
-              }}/>
-            <img src="/img/courseBtn.png"
-              style={{
-                width:"115px",
-                height:"35px",
-                position: "absolute",
-                right: "60px",
-                top: "20px",
-              }}
-              onClick={() => clickCompleteBtn()}/>
-            <div className={styles.courseDistance}>
-              총 이동거리:{finalDistance}m
-            </div>
+      <div>
+        <div className={styles.courseBox}>
+          <div className={styles.courseBoxTitle}>
+              <input
+                className={styles.courseBoxInput}
+                type="text"
+                name="title"
+                placeholder="&nbsp;&nbsp;코스 제목을 입력해주세요"
+                value={title}
+                size="24"
+                onChange={onInputTitleChange} />
+              <Emoticon 
+                style={{
+                  width:"25px",
+                  height:"25px",
+                  position: "absolute",
+                  right: "245px",
+                  top: "25px",
+                }}/>
+              <CompleteBtn
+                style={{
+                  width:"140px",
+                  height:"35px",
+                  position: "absolute",
+                  right: "50px",
+                  top: "20px",
+                }}
+                onClick={() => clickCompleteBtn()}
+              />
+              <div className={styles.courseDistance}>
+                총 이동거리&nbsp;{finalDistance}m
+              </div>
 
-            <img src="/img/closeBtn.png"
-              alt="close btn"
-              style={{
-                width:"30px",
-                height:"30px",
-                position: "absolute",
-                right: "15px",
-                top: "20px",
-              }}
-              onClick={() => clickCloseComponentBtn("all delete")}/>
+              <ExitBtn
+                style={{
+                  width:"35px",
+                  height:"35px",
+                  position: "absolute",
+                  right: "15px",
+                  top: "20px",
+                }}
+                onClick={() => clickCloseComponentBtn("all delete")}
+              />
+          </div>
+
+          <hr/>
+
+          <div className={styles.courseBoxContent}>
+            {point.map((info) => (
+              <div>
+                <div className={styles.courseBoxName}>{info.name}</div>
+                <div className={styles.courseBoxAddress}>{info.address}</div>
+                <div className={styles.courseDeleteBtn}>
+                    <DeleteBtn
+                      width="25"
+                      height="25"
+                      onClick={() => clickDeleteBtn(info)}
+                    />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <hr/>
+        <div className={styles.recommendBox}>
 
-        <div className={styles.courseBoxContent}>
-          {point.map((info) => (
-            <div>
-              <div className={styles.courseBoxName}>{info.name}</div>
-              <div className={styles.courseBoxAddress}>{info.address}</div>
-              <div className={styles.courseDeleteBtn}>
-                  <img src="/img/courseDeleteBtn.png"
-                        alt="course point delete btn"
-                        width="25"
-                        height="25"
-                        onClick={() => clickDeleteBtn(info)}/>
+          <div className={styles.recommendBoxTitle}>
+            다음 장소로 여기는 어때요?
+          </div>
+          <div className={styles.recommendBoxComment}>
+            다른 메이트들이 나의 코스와 함께 추가한 장소들이에요
+          </div>
+
+          <div className={styles.recommendBoxContentList}>
+            <div className={styles.recommendBoxContent}>
+              <div className={styles.recommendBoxImg}>이미지 div</div>
+              <div className={styles.recommendBoxName}>갤러리 마노</div>
+              <div className={styles.recommendBoxDistance}>
+                <Pin className={styles.icon} />
+                최근 코스에서&nbsp;<b>2.3km</b>
               </div>
             </div>
-          ))}
+
+            <div className={styles.recommendBoxContent}>
+              <div className={styles.recommendBoxImg}>이미지 div</div>
+              <div className={styles.recommendBoxName}>능인선원</div>
+              <div className={styles.recommendBoxDistance}>
+                <Pin className={styles.icon} />
+                최근 코스에서&nbsp;<b>1.3km</b>
+              </div>
+            </div>
+          </div>
+
         </div>
+
       </div>
 
     </>
