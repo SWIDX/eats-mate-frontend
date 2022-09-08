@@ -1,29 +1,29 @@
 .list_outer {
     position: absolute;
+    bottom: 0px;
+    left: 15px;
     z-index: 30;
-    margin-left: 30px;
-    top: 11%;
-    height: 800px;
+    height: calc(100vh - 90px);
     background-color: white;
     border: 1px solid #e6e6e6;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .list {
     position: absolute;
     width: 380px;
-    height: auto;
+    height: calc(100vh - 90px);
     border: 1px solid #e97869;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .cardTop {
     display: flex;
     width: 380px;
-    height: 7%;
+    height: 50px;
     border-radius: 10px;
-    margin: 0 0 5% 0;
+    margin: 0 0 20px 0;
     justify-content: flex-start;
     align-items: flex-end;
     align-content: center;
@@ -37,7 +37,7 @@
 }
 
 .result {
-    position: absolute;
+    
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -66,5 +66,5 @@
     text-align: left;
     font-size: medium;
     font-weight: 400;
-    padding-left: 5%;
+    margin: auto auto 5px 15px;
 }
