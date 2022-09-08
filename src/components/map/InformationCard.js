@@ -7,6 +7,7 @@ import { ReactComponent as Clock } from '../../images/svg/time.svg';
 import { ReactComponent as Clip } from '../../images/svg/clip.svg';
 import { ReactComponent as Paper } from '../../images/svg/paper.svg';
 import { ReactComponent as TourApi } from '../../images/svg/tourapi.svg';
+import { ReactComponent as Exit } from '../../images/svg/exit_button.svg';
 
 import styles from './InformationCard.module.css';
 import useCopyClipBoard from '../etc/useCopyClipBoard';
@@ -40,8 +41,8 @@ function InformationCard(props) {
 
     const AddCourse = () => {
         props.checkCourseNum();
-        if(props.courseNum !==undefined && props.courseNum == 5) {
-           alert("코스 경유지는 최대 5개까지만 추가할 수 있습니다.");
+        if (props.courseNum !== undefined && props.courseNum == 5) {
+            alert('코스 경유지는 최대 5개까지만 추가할 수 있습니다.');
         } else {
             props.clickAddCourse(props.clickInformation);
         }
@@ -51,16 +52,6 @@ function InformationCard(props) {
         if (gubun === '음식점') {
             return (
                 <div className={styles.card_outer}>
-                    <div className={styles.exitbutton}>
-                        <button
-                            onClick={() => {
-                                setOnClose(true);
-                            }}
-                        >
-                            X
-                        </button>
-                    </div>
-
                     <div className={styles.card}>
                         <div className={styles.topOuter}>
                             <div className={styles.cardTop}>
@@ -74,6 +65,15 @@ function InformationCard(props) {
                                 <button className={styles.heart}>
                                     <LikeButton />
                                 </button>
+                                <div className={styles.exitbutton}>
+                                    <button
+                                        onClick={() => {
+                                            setOnClose(true);
+                                        }}
+                                    >
+                                        <Exit />
+                                    </button>
+                                </div>
 
                                 {/* <div className={styles.cardTag}>광진구</div>  */}
                             </div>
@@ -207,21 +207,20 @@ function InformationCard(props) {
         } else {
             return (
                 <div className={styles.card_outer}>
-                <div className={styles.exitbutton}>
-                        <button
-                            onClick={() => {
-                                setOnClose(true);
-                            }}
-                        >
-                            X
-                        </button>
-                    </div>    
-
                     <div className={styles.card}>
                         <div className={styles.topOuter}>
                             <div className={styles.cardTop_tour}>
                                 <div className={styles.cardTagOuter}>
                                     <span className={styles.cardName}>{information.name}</span>
+                                </div>
+                                <div className={styles.exitbutton_tour}>
+                                    <button
+                                        onClick={() => {
+                                            setOnClose(true);
+                                        }}
+                                    >
+                                        <Exit />
+                                    </button>
                                 </div>
 
                                 {/* <div className={styles.cardTag}>광진구</div>  */}
@@ -244,7 +243,7 @@ function InformationCard(props) {
                                         <div className={styles.bottom}>
                                             <Copy />
                                             <button className={styles.copyBtn} onClick={() => handleCopyClipBoard(information.address)}>
-                                                주소복사
+                                                주소복사 {isCopy && alert('복사성공')}
                                             </button>
                                         </div>
                                     </div>
@@ -256,9 +255,14 @@ function InformationCard(props) {
                                         <Paper className={styles.copy} /> <div className={styles.overview_name}>장소소개</div>
                                     </div>
                                     <div className={styles.overviewDetail}>
-                                        이곳은 도시 환경오염 최소화를 통한 쾌적한 생활환경 조성이 목적이다. 이를 위해 도시 쓰레기 감량,
-                                        위생적 처리, 자원 회수 등의 활동을 하고 있다. 이것을 폐기물과 재활용품으로 분류, 처리하는
-                                        종합처리시설로 하루 3회 내부 시설 견학 프로그램을 운영 중이다.
+                                        {information.overview == undefined ? (
+                                            '세부 정보가 없습니다'
+                                        ) : (
+                                            <div
+                                                className={styles.overviewDetail2}
+                                                dangerouslySetInnerHTML={{ __html: information.overview }}
+                                            ></div>
+                                        )}
                                     </div>
                                 </div>
 
@@ -269,12 +273,14 @@ function InformationCard(props) {
                                         </div>
                                         <div className={styles.bottom_2}>
                                             <Copy />
-                                            <button className={styles.copyBtn} onClick={() => handleCopyClipBoard(information.address)}>
-                                                링크복사
+                                            <button className={styles.copyBtn} onClick={() => handleCopyClipBoard(information.homepage)}>
+                                                링크복사{isCopy && alert('복사성공')}
                                             </button>
                                         </div>
                                     </div>
-                                    <div className={styles.addressDetail}>http://....</div>
+                                    <div className={styles.addressDetail}>
+                                        {information.homepage == undefined ? '홈페이지 정보가 없습니다' : information.homepage}
+                                    </div>
                                 </div>
                                 <div className={styles.tourapi_outer}>
                                     <div>
