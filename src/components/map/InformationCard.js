@@ -192,8 +192,8 @@ function InformationCard(props) {
                                 <button
                                     className={styles.DetailButton}
                                     onClick={() => {
-                                        navigate('/store-detail/main', {
-                                            state: props.clickInformation.information,
+                                        navigate(`/detail/${information.name}`, {
+                                            state: information,
                                         });
                                     }}
                                 >
@@ -278,7 +278,7 @@ function InformationCard(props) {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className={styles.addressDetail}>
+                                    <div className={styles.overviewDetail}>
                                         {information.homepage == undefined ? '홈페이지 정보가 없습니다' : information.homepage}
                                     </div>
                                 </div>
