@@ -19,7 +19,7 @@ function MainGageInfo(props){
           image: "../img/slideImg1.png",
           link: "/mypage"
         }
-    ];
+      ];
 
     return(
         <div style={{marginBottom: "100px"}}>
@@ -49,7 +49,23 @@ function MainGageInfo(props){
                             <span className={styles.gageName}>{props.information.name}</span>
                             <span className={styles.gageGubun}>{props.information.gubun}</span>
                         </div>
-                        <div className={styles.likeButton}><LikeButton placeId={props.information.id} /></div>
+                        <div className={styles.likeButton}><LikeButton /></div>
+                    </div>
+
+                    <div className={styles.ImageContainer}>
+                        <div className={styles.LargeImageContainer}>
+                            <div className={styles.mobileImage1}>
+                            <img src={testData[0].image} />
+                        </div>
+                    </div>
+                    <div className={styles.SmallImageContainer}>
+                        <div className={styles.mobileImage2}>
+                            <img src={testData[1].image} />
+                        </div>
+                        <div className={styles.mobileImage3}>
+                            <img src={testData[2].image} />
+                        </div>
+                    </div>
                     </div>
 
                     <div className={styles.gageContentContainer}>
