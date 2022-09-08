@@ -2,9 +2,11 @@ import React from "react";
 import axios from 'axios';
 import styles from "./Like.module.css"
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 function Like(props) {
     const userinfo = useSelector((state) => state.userReducer.userinfo)
+    const navigate = useNavigate();
 
     async function requestDelete() {
         try {
@@ -19,6 +21,10 @@ function Like(props) {
         }
     }
 
+    function gotoDetailPage() {
+        navigate("/detail/" + props.like.name);
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.icon}>
@@ -29,7 +35,7 @@ function Like(props) {
             </div>
             <div className={styles.likeInfo}>
                 <div className={styles.title}>
-                    <div className={styles.name}>{props.like.name}</div>
+                    <div className={styles.name} onClick={gotoDetailPage}>{props.like.name}</div>
                     <div className={styles.gubun}>{props.like.gubun}</div>
                 </div>
                 <div className={styles.address}>{props.like.address}</div>
