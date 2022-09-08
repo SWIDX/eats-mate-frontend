@@ -15,6 +15,7 @@ import { changeUserInfo, reissueJWT } from '../_actions/user_action';
 
 function ReviewPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const placeName = useLocation().pathname.split("/").pop();
   const userinfo = useSelector((state) => state.userReducer.userinfo)
 
