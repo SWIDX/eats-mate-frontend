@@ -123,9 +123,9 @@
 }
 
 .tabpanel {
-    overflow-y: hidden;
+    overflow-y: scroll;
     overflow-x: hidden;
-    height: calc(100vh - 220px);
+    height: calc(100vh - 260px - 1rem);
     width: 380px;
 }
 
