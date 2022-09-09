@@ -2,14 +2,19 @@ import { useState } from "react";
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, reissueJWT } from '../../_actions/user_action';
-import styles from "./Review.module.css";
+import styles from "./ReviewModal.module.css";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as Rate0Svg } from "../../images/svg/rate-0.svg";
+import { ReactComponent as Rate1Svg } from "../../images/svg/rate-1.svg";
+import { ReactComponent as Rate2Svg } from "../../images/svg/rate-2.svg";
 
 function ReviewModal(props) {
   const userinfo = useSelector((state) => state.userReducer.userinfo)
   const dispatch = useDispatch();
   const [imageList, setImageList] = useState([]);
   const navigate = useNavigate();
+  const [selectedIdx, setSelectedIdx] = useState(-1); // rate value
+  const [contentText, setContentText] = useState(""); // content string
 
   function addImageFile(e) {
     if (e.target.files.length === 0) {
@@ -23,13 +28,27 @@ function ReviewModal(props) {
   }
 
   function submitReview() {
+    if(contentText.length < 50) {
+      alert("50자 이상 입력해주세요.");
+      return;
+    }
+
+    if(selectedIdx == -1) {
+      alert("만족도를 선택해주세요.");
+      return;
+    }
+
+    if (!confirm("리뷰를 등록하시겠어요?")) {
+      return;
+    }
+
     const jsonData = {
       placeName: props.information.name,
       gugun: props.information.gugun,
-      content: "이미지 잘 올라가는지 확인해보려고 올렸어요",
+      content: contentText,
       category: props.information.gubun,
       createdBy: new Date().toISOString().substring(0, 10),
-      rate: 1
+      rate: selectedIdx
     }
 
     const formData = new FormData();
@@ -150,15 +169,20 @@ function ReviewModal(props) {
       <div className={styles.reviewmodalask}>
         <b>{props.information.name}</b>의 만족도는 어땠나요?
       </div>
-      {/* 임시 표정  */}
-      <div className={styles.locationboxflex3}>
-        <div className={styles.ratebox2}>
-          <div className={styles.locationboxflex3}>
-            <img className={styles.rateimg} src="/img/besttextcolor.png"></img>
-            <img className={styles.rateimg} src="/img/sosotext.png"></img>
-            <img className={styles.rateimg} src="/img/badtext.png"></img>
+      
+      <div className={styles.rateContainer}>
+          <div className={styles.ratebox} onClick={() => {setSelectedIdx(2)}}>
+              <Rate2Svg className={selectedIdx == 2 ? styles.colored : styles.grayed} />
+              <div className={selectedIdx == 2 ? styles.highlight : styles.normal}>최고예요</div>
           </div>
-        </div>
+          <div className={styles.ratebox} onClick={() => {setSelectedIdx(1)}}>
+              <Rate1Svg className={selectedIdx == 1 ? styles.colored : styles.grayed} />
+              <div className={selectedIdx == 1 ? styles.highlight : styles.normal}>평범해요</div>
+          </div>
+          <div className={styles.ratebox} onClick={() => {setSelectedIdx(0)}}>
+              <Rate0Svg className={selectedIdx == 0 ? styles.colored : styles.grayed} />
+              <div className={selectedIdx == 0 ? styles.highlight : styles.normal}>별로예요</div>
+          </div>
       </div>
 
       <div className={styles.addReview}>
@@ -168,6 +192,8 @@ function ReviewModal(props) {
           rows="3"
           cols="50"
           placeholder="자유롭게 경험을 공유해주세요!"
+          value={contentText}
+          onChange={(e)=>{setContentText(e.target.value)}}
         />
 
         <div className={styles.bottomContainer}>
