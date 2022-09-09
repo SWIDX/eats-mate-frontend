@@ -174,33 +174,6 @@ function MyPage() {
             headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
         }
       );
-      // const data = 
-      // [
-      //     {
-      //         id: 123,
-      //         name: "멘지",
-      //         gubun: "일식",
-      //         address: "서울 마포구 월드컵로11길 8 103호(망원동)"
-      //     },
-      //     {
-      //         id: 92,
-      //         name: "할랄가이즈 강남점",
-      //         gubun: "기타",
-      //         address: "서울 서초구 강남대로69길 8"
-      //     },
-      //     {
-      //       id: 101,
-      //       name: "비스트로주라",
-      //       gubun: "양식",
-      //       address: "서울특별시 마포구 와우산로23길 18-7"
-      //     },
-      //     {
-      //       id: 56,
-      //       name: "제스의부엌 옐로서브마린점",
-      //       gubun: "일식",
-      //       address: "서울 서대문구 연세로5다길 35"
-      //     }
-      // ]
       setLikeList(res.data);
       setFilteredLikeList(res.data);
     } catch(e){
@@ -208,20 +181,34 @@ function MyPage() {
     }
   }
 
-  function deleteCourse(id) {
+  async function deleteCourse(id) {
     if (window.confirm('정말로 삭제하시겠어요?')) {
-      const newCourseList = courseList.filter(course => course.courseId !== id);
-      setCourseList(newCourseList);
-      const pages = Math.ceil(newCourseList.length / 2);
+      
+      try {
+        const res = await axios.delete("http://localhost:8081/user-service/user/course/" + id,
+          { //header
+              headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+          }
+        );
+        
+        const newCourseList = courseList.filter(course => course.courseId !== id);
+        setCourseList(newCourseList);
+        const pages = Math.ceil(newCourseList.length / 2);
 
-      if (pages > 0) {
-        setTotalCoursePage(pages);
+        if (pages > 0) {
+          setTotalCoursePage(pages);
 
-        // DO NOT USE totalCoursePage since it's async (use pages instead)
-        if (currentCoursePage > pages) {
-          setCurrentCoursePage(pages);
+          // DO NOT USE totalCoursePage since it's async (use pages instead)
+          if (currentCoursePage > pages) {
+            setCurrentCoursePage(pages);
+          }
         }
+
+      } catch(e){
+        alert("오류가 발생했습니다.")
+        throw e;
       }
+
     }
   }
 
@@ -235,72 +222,56 @@ function MyPage() {
     }
   }
 
-  function deleteLike(id) {
+  async function deleteLike(id) {
     if (window.confirm('정말로 삭제하시겠어요?')) {
-      // 원본에서 삭제
-      const newLikeList = likeList.filter(like => like.id !== id);
-      setLikeList(newLikeList);
+      try {
+        const res = await axios.delete("http://localhost:8081/review-service/review/" + id,
+          { //header
+              headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+          }
+        );
+        // 원본에서 삭제
+        const newLikeList = likeList.filter(like => like.id !== id);
+        setLikeList(newLikeList);
 
-      // 필터에서 삭제
-      const newFilteredList = filteredLikeList.filter(like => like.id !== id);
-      setFilteredLikeList(newFilteredList);
+        // 필터에서 삭제
+        const newFilteredList = filteredLikeList.filter(like => like.id !== id);
+        setFilteredLikeList(newFilteredList);
+
+      } catch(e){
+        alert("오류가 발생했습니다.")
+        throw e;
+      }
     }
   }
 
-  function deleteReview(id) {
+  async function deleteReview(id) {
     if (window.confirm('정말로 삭제하시겠어요?')) {
-      const newReviewList = reviewList.filter(review => review.id !== id);
-      setReviewList(newReviewList);
+      try {
+        const res = await axios.delete("http://localhost:8081/review-service/review/" + id,
+          { //header
+              headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+          }
+        );
+        const newReviewList = reviewList.filter(review => review.id !== id);
+        setReviewList(newReviewList);
+      } catch(e){
+        alert("오류가 발생했습니다.")
+        throw e;
+      }
     }
   }
 
   async function getUserReview() {
     try {
-      // const res = await axios.get("http://localhost:8081/review-service/???",
-      //   { //header
-      //       headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
-      //   }
-      // );
-      const data = 
-      [
-          {
-              id: 999,
-              placeName: "성수완당 본점",
-              category: "일식",
-              content: "말해뭐해 일단 너무 맛있고요... 혼자 건대 갔다가 들렀는데 혼밥하기 딱 좋은 분위기였어요 추천",
-              images: [
-                "https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/2a601097-d0ac-4ae2-b820-7d514e7f89f1",
-                "https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/d796c2a0-563d-4142-9fe4-e830f62f6c1f",
-                "https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/a8c40b52-f1b6-48cf-b0a2-a06d16c06935"
-              ],
-              createdBy: "2022-01-08",
-              rate: 2,
-              recommend: 38
-          },
-          {
-              id: 1023,
-              placeName: "만뽀스키야키 강남 더인피닛스퀘어점",
-              category: "일식",
-              content: "스키야키가 이렇게 가성비 좋은 음식이었나요...? 1인으로 팔아주시니 넘 감사할 따름입니다~ ",
-              images: [],
-              createdBy: "2022-01-08",
-              rate: 1,
-              recommend: 15
-          },
-          {
-            id: 2340,
-            placeName: "홍마방 이태원점",
-            category: "중식",
-            content: "저는 꿔바로우가 이렇게 맛있는지 처음 알았어요... 사장님도 잇츠메이트 쓰시는 거 아니죠? ㅋㅋ 가게가 혼밥하기 딱 좋아서 놀랐네요 너무 잘먹어서 후기 남깁니다",
-            images: ["https://eats-mate-bucket.s3.ap-northeast-2.amazonaws.com/review/d796c2a0-563d-4142-9fe4-e830f62f6c1f"],
-            createdBy: "2022-01-08",
-            rate: 0,
-            recommend: 999
-          }
-      ]
-      const newData = data
-      data.forEach((e, i) => data[i].createdBy = e.createdBy.replaceAll("-", ". "));
-      setReviewList(data);
+      const res = await axios.get("http://localhost:8081/review-service/review/user",
+        { //header
+            headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+        }
+      );
+      const newData = res.data;
+      newData.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
+      setReviewList(newData);
     } catch(e){
       throw e;
     }
