@@ -52,18 +52,26 @@ const MapSearchBar = (props) => {
     const handleOnEnterKeyPress = async (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            const url = 'http://localhost:8081/map-service/getAllData?keyword=';
-            let data = await axios.get(url + inputText).then((res) => {
-                if (res.data) {
-                    return res.data;
-                } else {
-                    return [];
-                }
-            });
-            setText(inputText);
-            setInformation(data);
+            getSearchResult();
         }
     }; // input Enter key press event function
+
+    const handleClickSearch = async () => {
+        getSearchResult();
+    }
+
+    async function getSearchResult() {
+        const url = 'http://localhost:8081/map-service/getAllData?keyword=';
+        let data = await axios.get(url + inputText).then((res) => {
+            if (res.data) {
+                return res.data;
+            } else {
+                return [];
+            }
+        });
+        setText(inputText);
+        setInformation(data);
+    }
 
     function onClickOutside(ref) {
         useEffect(() => {
@@ -102,11 +110,11 @@ const MapSearchBar = (props) => {
                         <option value="전체" onClick={selectBoxChange}>
                             전체
                         </option>
-                        <option value="여행지" onClick={selectBoxChange}>
-                            여행지
-                        </option>
                         <option value="음식점" onClick={selectBoxChange}>
                             음식점
+                        </option>
+                        <option value="여행지" onClick={selectBoxChange}>
+                            여행지
                         </option>
                     </div>
                 ) : null}
@@ -121,7 +129,7 @@ const MapSearchBar = (props) => {
                     onChange={onInputTextChange}
                     onKeyPress={handleOnEnterKeyPress}
                 />
-                <div className={styles.search_btn} onClick={() => handleOnEnterKeyPress()}>
+                <div className={styles.search_btn} onClick={() => handleClickSearch()}>
                     <img alt="sesarch icon" src="/img/search icon.png" />
                 </div>
             </div>
