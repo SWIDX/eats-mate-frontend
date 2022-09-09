@@ -49,7 +49,7 @@ function MainGageInfo(props){
                             <span className={styles.gageName}>{props.information.name}</span>
                             <span className={styles.gageGubun}>{props.information.gubun}</span>
                         </div>
-                        <div className={styles.likeButton}><LikeButton /></div>
+                        <div className={styles.likeButton}><LikeButton placeId={props.information.id}/></div>
                     </div>
 
                     <div className={styles.ImageContainer}>
