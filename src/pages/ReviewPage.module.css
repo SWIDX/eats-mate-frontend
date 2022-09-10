@@ -74,3 +74,16 @@
 .reviewButton > svg {
   margin: auto 0px auto auto;
 }
+
+@media(min-width:426px){
+  .forresponsive{
+    display: flex;
+    padding: 18px 10px;
+  }
+}
+
+@media(max-width:426px){
+  .forresponsive{
+    padding:0px;
+  }
+}

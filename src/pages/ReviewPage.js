@@ -178,7 +178,7 @@ async function logOut() {
             />
           </div>
 
-          <div style={{display: "flex", padding: "18px 10px"}}>
+          <div className={styles.forresponsive}>
             <div className={styles.counterBox}>
                 <ReviewCounter
                   rateVal={rateList}
