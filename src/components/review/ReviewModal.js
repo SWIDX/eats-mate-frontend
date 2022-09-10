@@ -226,7 +226,14 @@ function ReviewModal(props) {
                 accept="image/jpg,image/png,image/jpeg"
                 onChange={addImageFile}
               />
-              <label className={styles.addButton} for="file">+</label>
+              <label className={styles.addButton} for="file">
+                <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.66634 2.83333H17.833V11H20.1663V2.83333C20.1663 1.5465 19.1198 0.5 17.833 0.5H2.66634C1.37951 0.5 0.333008 1.5465 0.333008 2.83333V16.8333C0.333008 18.1202 1.37951 19.1667 2.66634 19.1667H11.9997V16.8333H2.66634V2.83333Z" fill="#E97869"/>
+                <path d="M7.33301 9.83333L3.83301 14.5H16.6663L11.9997 7.5L8.49967 12.1667L7.33301 9.83333Z" fill="#E97869"/>
+                <path d="M20.1663 13.3334H17.833V16.8334H14.333V19.1667H17.833V22.6667H20.1663V19.1667H23.6663V16.8334H20.1663V13.3334Z" fill="#E97869"/>
+                </svg>
+                <div>사진 추가</div>
+              </label>
             </>
             : null
             }

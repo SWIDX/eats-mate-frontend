@@ -175,11 +175,20 @@ textarea::placeholder {
   color: #e97869;
   border: 1px dashed #e97869;
   border-radius: 8px;
-  display: inline-block;
-  padding: 8px 24px;
+  display: flex;
+  flex-direction: column;
   top: -72px;
   right: 12px;
   cursor: pointer;
+}
+.addButton > svg {
+  margin: auto auto 5px auto;
+}
+.addButton > div {
+  font-size: 12px;
+  margin: 0px auto auto auto;
+  flex-shrink: 0;
+  letter-spacing: -0.04em;
 }
 
 .preview {
