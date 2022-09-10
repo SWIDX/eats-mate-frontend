@@ -29,6 +29,7 @@
   
     @media (max-width:426px) {
     .locationboxflex {
+      width:90vw;
       overflow-x:auto; 
       white-space:nowrap; 
       display: flex;
@@ -137,7 +138,6 @@
   
   @media(max-width:426px){
     .infoboxformedia{
-      position:relative;
       margin-top:32px;
     }
   }
@@ -226,7 +226,6 @@
   
   @media(max-width:426px){
     .scrollelement {
-      
       width : 83px;
       height: 40px;
       border: 1px solid #e97869;
@@ -245,4 +244,14 @@
     color:#ffffff;
   
   }
-  
+   
+
+.parent{
+    display: flex;
+}
+
+
+.child{
+    width: 1194px;
+    margin: auto auto;
+} 

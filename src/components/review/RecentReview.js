@@ -17,7 +17,8 @@ function RecentReview(){
 
     return(
         <>
-            <div className={styles.recentreview}>
+        <div className={styles.parent}>
+            <div className={styles.child}>
                 <p className = {styles.maininfomessage}>최근에 달린 식당 리뷰를 확인해보세요</p>
                     <div className={styles.buttonformedia}>
                         <div className = {styles.locationboxflex}>
@@ -84,6 +85,7 @@ function RecentReview(){
                         </div>
                     </div>            
             </div>
+            </div> 
         </>
     );
     
