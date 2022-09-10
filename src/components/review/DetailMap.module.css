@@ -1,6 +1,5 @@
 @media(min-width:426px){
   .detail_map_wrapper {
-    padding: 0px 100px;
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
@@ -111,3 +110,55 @@
   .detail_map {
     display: flex;
   }
+
+.kakao_map {
+  margin-right: 40px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 28px 0px;
+  margin: auto 0px auto auto;
+  padding: 12px 0px;
+}
+.buttonContainer > div > div {
+  text-align: center;
+}
+
+.whiteButton {
+  flex-grow: 1;
+  padding: 22px 80px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 22px -1px rgba(120, 120, 120, 0.25);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.whiteButton > div {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  color: #454545;
+  white-space: nowrap;
+}
+
+.blackButton {
+  display: flex;
+  flex-grow: 1;
+  padding: 28px 80px;
+  background: #404040;
+  box-shadow: 0px 4px 22px -1px rgba(120, 120, 120, 0.25);
+  border-radius: 50px;
+  cursor: pointer;
+}
+.blackButton > svg {
+  margin: auto 12px auto auto;
+}
+.blackButton > div {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  white-space: nowrap;
+  margin: auto auto auto 0px;
+}

@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import styles from './DetailMap.module.css';
+import { ReactComponent as KakaoMapSvg } from "../../images/svg/kakaomap-button.svg";
 
 const DetailMap = (props) => {
+  const [storePos, setStorePos] = useState({})
+  const [centerPos, setCenterPos] = useState({})
+
+  useEffect(() => {
+    setStorePos({lat: props.information.lat, lng: props.information.lng})
+    setCenterPos({lat: props.information.lat, lng: props.information.lng})
+  }, [props.information.lat])
+
   function urlScheme(){
     let url;
     url = "https://map.kakao.com/link/to/" + props.information.name + "," + props.information.lat + "," + props.information.lng
@@ -51,18 +60,24 @@ const DetailMap = (props) => {
         </div>
 
         <div className={styles.detail_map}>
-          {props.information.lat && // undefined 주면 안됨
+          {storePos.lat && // undefined 주면 안됨
+          <>
           <Map
-            onClick={urlScheme}
-            className={styles.detail_map} // 지도를 표시할 Container
-            center={{lat: props.information.lat, lng: props.information.lng}}
+            className={styles.kakao_map} // 지도를 표시할 Container
+            center={centerPos}
+            onCenterChanged={(map) =>
+              setCenterPos({
+                lat: map.getCenter().getLat(),
+                lng: map.getCenter().getLng()
+              })
+            }
             isPanto={true}
             style={{
               // 지도의 크기
               width: '100%',
-              height: '50vh',
+              //height: '50vh',
             }}
-            level={2} // 지도의 확대 레벨
+            level={3} // 지도의 확대 레벨
           >
 
             <MapMarker
@@ -76,6 +91,16 @@ const DetailMap = (props) => {
             }}
             />
           </Map>
+
+          <div className={styles.buttonContainer}>
+            <div className={styles.whiteButton}><div>내 위치로 이동</div></div>
+            <div className={styles.whiteButton} onClick={() => {setCenterPos(storePos)}}><div>가게 위치로 이동</div></div>
+            <div className={styles.blackButton} onClick={urlScheme}>
+              <KakaoMapSvg />
+              <div>카카오맵에서 길찾기</div>
+            </div>
+          </div>
+          </>
           }
         </div>
       </div>
