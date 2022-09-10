@@ -7,7 +7,6 @@ import MapContainer from '../components/map/MapContainer';
 import MapSearchBar from '../components/map/MapSearchBar';
 import MapCourse from '../components/map/MapCourse';
 import CategoryBtn from '../components/map/CategoryBtn';
-import InformationCard from '../components/map/InformationCard';
 import ListCard from '../components/map/ListCard';
 
 import styles from './MapPage.module.css';
