@@ -15,6 +15,8 @@ function RecommendedList() {
 
     return (
         <>
+        <div className={styles.parent}>
+            <div className={styles.child}>
             <span className={styles.timeformedia}>{time}</span>
                 <div className={styles.maininfomessage}>인기있는 맛집을 알려드려요</div>
                     <div className={styles.wrap}>
@@ -47,7 +49,9 @@ function RecommendedList() {
                                 <div className={styles.ment}>오늘 <span>조회수</span>가 가장 많아요</div>
                             </div>
                         </div>
-                    </div>
+                </div>
+            </div>
+        </div>
             </>
     );
 

@@ -44,7 +44,7 @@
     
     @media (min-width:426px){
     .element_list {
-        width: 1200px;
+        width: 1194px;
         height: 350px;
         margin-top: 50px;
         display: flex;
@@ -58,20 +58,24 @@
         margin-left: 16px;
         display: flex;
         overflow-x:auto; 
-        white-space:nowrap;
         background-color: #ffffff;
-        width:100%;
+        width:150%;
     }
     }
     
     @media(max-width:426px){
     .wrap{
-        max-width:500px; 
-        margin:50px auto; 
-        background:#f8f8f8;
+        background:#ffffff;
+        overflow: scroll;
+        width: 100%;
     }
     }
-    
+
+    @media(max-width:426px){
+        .forscroll{
+            overflow: scroll;
+        }
+        }
     
     @media (min-width:426px){
     .element {
@@ -197,3 +201,12 @@
       font-size: 18px;
         }
     }
+
+.parent{
+    display: flex;
+}
+
+.child{
+    margin: auto auto;
+    margin-bottom: 50px;
+}
