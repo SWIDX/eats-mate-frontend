@@ -24,7 +24,7 @@ function MainGageInfo(props){
     return(
         <div style={{marginBottom: "100px"}}>
             <div className={styles.infoContainer}>
-                <div style={{width: "730px"}}>
+                <div style={{width: "730px", flexShrink: "0"}}>
                 <Carousel
                     dataList={testData}
                     outerViewWidth={"660px"}
