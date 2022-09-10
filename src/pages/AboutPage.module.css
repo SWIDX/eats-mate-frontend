@@ -1,8 +1,8 @@
-body{
+/* body{
   width:100%;
   overflow-x:hidden;
   overflow-y:hidden;
-}
+} */
 
 /* CSS-Scroll-snap 속성 */
 .scrollContainer {
