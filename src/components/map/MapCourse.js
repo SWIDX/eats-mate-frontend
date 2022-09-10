@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styles from './MapCourse.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ReactComponent as Pin } from '../../images/svg/course-pin.svg';
-import { ReactComponent as Emoticon } from '../../images/svg/course-emoticon.svg';
+import { ReactComponent as RiceEmoticon } from '../../images/svg/course-title-emoticon.svg';
 import { ReactComponent as CompleteBtn } from '../../images/svg/course-complete-button.svg';
 import { ReactComponent as ExitBtn } from '../../images/svg/course-exit-button.svg';
 import { ReactComponent as DeleteBtn } from '../../images/svg/course-delete-button.svg';
 import axios from "axios";
+import { changeUserInfo, reissueJWT } from '../../_actions/user_action';
 
 function MapCourse(props) {
 
@@ -17,41 +18,90 @@ function MapCourse(props) {
   const [placeAddressList, setPlaceAddressList] = useState([]);
   const [distanceList, setDistanceList] = useState([]);
   const [finalDistance, setFinalDistance] = useState();
+  const dispatch = useDispatch();
+
+  async function checkExp() {
+    if(userinfo != null) {
+      const isTokenExpired = Date.now() >= userinfo.expirationTime - 10000;
+      console.log('Date.now(): ', Date.now());
+      console.log('exp - 10s: ', userinfo.expirationTime - 10000);
+      console.log('isTokenExpired: ', isTokenExpired);
+  
+      if (isTokenExpired) {
+        // invalid
+        console.log("*** ACCESS TOKEN OUTDATED ***")
+        try {
+            const res = await axios.get("http://localhost:8081/user-service/auth/reissue",
+            {
+                withCredentials: true // Set-Cookie 작동을 위해 필수
+            }
+            );
+            console.log(dispatch(reissueJWT(res.data)))
+            clickCompleteBtn();
+    
+        } catch(e) {
+            console.log(e);
+            console.log("*** REFRESH TOKEN OUTDATED ***")
+            window.alert("코스를 완성하려면 로그인이 필요합니다.");  
+            await logOut(); // rt outdated
+        }
+      }
+      else {
+          // valid
+          console.log("*** VALID USERINFO ***")
+          clickCompleteBtn();
+      }
+    }
+    else {
+      // not logged in
+      console.log("*** NOT LOGGED IN ***")
+      window.alert("로그인이 필요합니다.");
+      await logOut(); // rt outdated
+    }
+  }
+      
+  async function logOut() {
+    // logout
+    try {
+      const res = await axios.delete("http://localhost:8081/user-service/auth/logout",
+        {
+            withCredentials: true // Set-Cookie 작동을 위해 필수
+        }
+      );
+    } catch(e) {
+        console.warn(e);
+    }
+    dispatch(changeUserInfo(null))
+  }
 
   const clickCompleteBtn = () => {
-    if(userinfo == null) {
-      alert("코스를 완성하려면 로그인이 필요합니다.");
-      console.log(placeNameList);
-      console.log(placeAddressList);
-      console.log(distanceList);
-    } else {
-       if(placeNameList.length == 1) {
-        alert("코스를 완성하려면 두 개 이상의 경유지가 필요합니다.");
-      } else {
-        var finalTitle = "";
-        if(title == undefined) {
-          finalTitle = userinfo.name+"메이트님의 혼행 코스";
-        } else {
-          finalTitle = title;
-        }
-
-        var url = "http://localhost:8081/user-service/user/course/";
-        var data = {
-          title: finalTitle,
-          placeNameList: placeNameList,
-          placeAddressList: placeAddressList,
-          distanceList: distanceList,
-        }
-        var config = {
-          headers: {
-            Authorization: "Bearer "+userinfo.accessToken,
-          }
-        }
-        axios.post(url, data, config).then((res) => {
-          alert("코스가 저장되었습니다. 마이페이지에서 확인해 보세요.");
-        });
-      } // if-else
+    if(placeNameList.length == 1) {
+      alert("코스를 완성하려면 두 개 이상의 경유지가 필요합니다.");
     }
+    else {
+      var finalTitle = "";
+      if(title == undefined) {
+        finalTitle = userinfo.name+"메이트님의 혼행 코스";
+      } else {
+        finalTitle = title;
+      }
+
+      var url = "http://localhost:8081/user-service/user/course/";
+      var data = {
+        title: finalTitle,
+        placeNameList: placeNameList,
+        placeAddressList: placeAddressList,
+        distanceList: distanceList,
+      }
+      var config = {
+        headers: {
+          Authorization: "Bearer "+userinfo.accessToken,
+        }
+      }
+      axios.post(url, data, config).then((res) => {
+        alert("코스를 저장했어요! 마이페이지에서 확인해보세요.");
+      });
+    } // if-else
   }; // save user course
 
   const clickCloseComponentBtn = (info) => {
@@ -144,36 +194,49 @@ function MapCourse(props) {
     props.returnCourseNum(point.length);
   }, [props.checkCourseNum]);
 
+  function convertDistance(distance) {
+    if (distance < 1000) return distance + "m"
+    else {
+        return (distance / 1000).toFixed(1) + "km"
+    }
+  }
+
+  useEffect(() => {
+    console.log(props.listInformation)
+  },[])
+
   return (
     <>
       <div>
-        <div className={styles.courseBox}>
+        <div className={styles.courseBox} style={{bottom: placeNameList.length > 0 ? "305px" : "20px"}}>
           <div className={styles.courseBoxTitle}>
               <input
                 className={styles.courseBoxInput}
                 type="text"
                 name="title"
-                placeholder="&nbsp;&nbsp;코스 제목을 입력해주세요"
+                placeholder="코스 제목을 입력해주세요"
                 value={title}
                 size="24"
-                onChange={onInputTitleChange} />
-              <Emoticon 
+                onChange={onInputTitleChange}
+              />
+              <RiceEmoticon
                 style={{
                   width:"25px",
                   height:"25px",
                   position: "absolute",
-                  right: "245px",
+                  right: "195px",
                   top: "25px",
-                }}/>
+              }}/>
               <CompleteBtn
                 style={{
-                  width:"140px",
+                  width:"110px",
                   height:"35px",
                   position: "absolute",
-                  right: "50px",
-                  top: "20px",
+                  right: "62px",
+                  top: "18px",
+                  cursor: "pointer"
                 }}
-                onClick={() => clickCompleteBtn()}
+                onClick={() => checkExp()}
               />
               <div className={styles.courseDistance}>
                 총 이동거리&nbsp;{finalDistance}m
@@ -185,7 +248,8 @@ function MapCourse(props) {
                   height:"35px",
                   position: "absolute",
                   right: "15px",
-                  top: "20px",
+                  top: "19px",
+                  cursor: "pointer"
                 }}
                 onClick={() => clickCloseComponentBtn("all delete")}
               />
@@ -194,31 +258,47 @@ function MapCourse(props) {
           <hr/>
 
           <div className={styles.courseBoxContent}>
-            {point.map((info) => (
-              <div>
-                <div className={styles.courseBoxName}>{info.name}</div>
-                <div className={styles.courseBoxAddress}>{info.address}</div>
-                <div className={styles.courseDeleteBtn}>
-                    <DeleteBtn
-                      width="25"
-                      height="25"
-                      onClick={() => clickDeleteBtn(info)}
-                    />
-                </div>
+              <div className={styles.distanceList}>
+              {distanceList.map((o, i) =>
+                      <div className={styles.distance}><p>{convertDistance(o)}</p></div>
+              )}
+              <div className={styles.distance} /> {/* dummy div */}
               </div>
-            ))}
+          
+              <div className={styles.placeList}>
+              {point.map((info, i) =>
+                  <div className={styles.place}>
+                      <div>
+                          <div className={styles.courseNumber}><p>{i+1}</p></div>
+                          <div className={styles.courseDash} />
+                      </div>
+                      <div className={styles.placeData}>
+                          <div className={styles.placeName}><p>{info.name}</p></div>
+                          <div className={styles.placeAddress}><p>{info.address}</p></div>
+                      </div>
+                      <div className={styles.courseDeleteBtn}>
+                          <DeleteBtn
+                            width="25"
+                            height="25"
+                            onClick={() => clickDeleteBtn(info)}
+                          />
+                      </div>
+                  </div>
+              )}
+              </div>
           </div>
         </div>
 
+        {placeNameList.length > 0 ?
         <div className={styles.recommendBox}>
 
           <div className={styles.recommendBoxTitle}>
             다음 장소로 여기는 어때요?
           </div>
           <div className={styles.recommendBoxComment}>
-            다른 메이트들이 나의 코스와 함께 추가한 장소들이에요
+            다른 메이트들이 함께 추가한 장소들이에요
           </div>
-
+          
           <div className={styles.recommendBoxContentList}>
             <div className={styles.recommendBoxContent}>
               <div className={styles.recommendBoxImg}>이미지 div</div>
@@ -238,9 +318,9 @@ function MapCourse(props) {
               </div>
             </div>
           </div>
-
         </div>
-
+        : null
+        }
       </div>
 
     </>
