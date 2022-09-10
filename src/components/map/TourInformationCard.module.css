@@ -6,6 +6,16 @@
     max-height: calc(100vh - 90px);
     /*overflow-y: scroll;*/
 }
+
+.card_display {
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+    z-index: 30;
+    max-height: calc(100vh - 90px);
+    display: none;
+}
+
 .card_outer {
     display: flex;
 }
@@ -33,19 +43,10 @@
     flex-direction: row;
     width: 380px;
     height: 80px;
-    padding: 10px;
     border-radius: 10px;
     justify-content: flex-start;
-    padding: 15px 24px;
-}
-.cardTop_tour {
-    display: flex;
-    flex-direction: row;
-    width: 380px;
-    height: 80px;
-    border-radius: 10px;
-    justify-content: flex-start;
-    padding: 15px 24px;
+    padding: 8px 8px;
+    align-items: center;
 }
 
 .cardTagOuter {
@@ -73,25 +74,12 @@
 
 .cardImg {
     display: flex;
-    padding: 24px 32px;
-}
-
-.cardImg > img {
-    align-items: center;
-    margin: auto auto;
-    width: 93px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-.cardImg_tour {
-    display: flex;
     justify-content: space-around;
     margin: 18px;
 }
 
 .cardImgtour > img {
     align-items: center;
-    
 }
 .tourImg {
     object-fit: cover;
@@ -99,15 +87,6 @@
 }
 
 .cardMiddle {
-    height: 410px;
-    display: flex;
-    flex-direction: column;
-    width: 380px;
-    border-radius: 10px;
-    padding: 0px 20px 28px 20px;
-    overflow-y: scroll;
-}
-.cardMiddle_tour {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -121,6 +100,7 @@
     height: 10%;
     justify-content: space-around;
 }
+
 .addressTop {
     display: flex;
     align-items: center;
@@ -132,15 +112,7 @@
     align-items: center;
 }
 
-.cardMiddle .addressInfo {
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 16px;
-    letter-spacing: -0.04em;
-    padding: 24px 0px;
-}
-
-.cardMiddle_tour .addressInfo {
+.addressInfo {
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
@@ -148,7 +120,7 @@
     letter-spacing: -0.04em;
 }
 
-.tour_overviewInfo {
+.overviewInfo {
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
@@ -231,16 +203,6 @@
 }
 
 .cardMiddle .addressInfo .addressDetail {
-    font-weight: normal;
-    font-size: 16px;
-    margin-left: 24px;
-    line-height: 22px;
-    display: flex;
-    justify-content: flex-start;
-    letter-spacing: -0.04em;
-}
-
-.cardMiddle_tour .addressInfo .addressDetail {
     font-weight: normal;
     font-size: 16px;
     padding: 0;
@@ -409,19 +371,6 @@
     font-weight: bold;
 }
 
-.heart {
-    border: 0;
-    padding: 0;
-    margin: auto 8px auto auto;
-    background-color: #fff;
-    background: inherit;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding-left: 10%;
-    cursor: pointerx;
-}
-
 .exitbutton {
     position: absolute;
     top: 15px;
@@ -430,23 +379,6 @@
 }
 
 .exitbutton > button {
-    display: inline-block;
-    color: #e97869;
-    background-color: white;
-    border-radius: 0 10px 10px 0;
-    border: solid 1px #e6e6e6;
-    width: 44px;
-    height: 44px;
-}
-
-.exitbutton_tour {
-    position: absolute;
-    top: 15px;
-    right: -44px;
-    z-index: 28;
-}
-
-.exitbutton_tour > button {
     display: inline-block;
     color: #e97869;
     background-color: white;
@@ -477,17 +409,13 @@
 .top > div {
     font-weight: 700;
 }
+
 .bottom {
     display: flex;
     align-items: center;
     padding-left: 5%;
 }
-.bottom_2 {
-    display: flex;
-    align-items: center;
-    padding-left: 5%;
-    width: 150px;
-}
+
 .tourapi_outer {
     display: flex;
     margin-bottom: 70px;
@@ -496,16 +424,16 @@
     margin-top: 10px;
     margin-left: 160%;
 }
-.evaluate_outer {
-    display: flex;
-    align-items: center;
+
+.line_hr {
+    margin: 0px 35px;
 }
 
-.evaluate {
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: -0.04em;
+.backBtn {
+    background-color: white;
 }
-.reviewcount {
-    margin-left: 10px;
+
+.backBtn > button {
+    border: solid 0px white;
+    background: white;
 }
