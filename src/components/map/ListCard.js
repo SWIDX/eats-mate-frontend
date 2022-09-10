@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import TabMenu from './TabMenu';
 import styles from './ListCard.module.css';
-import InformationCard from './InformationCard';
 import { SearchContext } from '../../context/SearchContext';
+import RestInformationCard from './RestInformationCard';
+import TourInformationCard from './TourInformationCard';
+import { ReactComponent as Exit } from '../../images/svg/exit_button.svg';
 
 function ListCard(props) {
     const [information, setInformation] = useState();
     const [onClose, setOnClose] = useState(true);
     const { searchInformation } = useContext(SearchContext);
     const [courseNum, setCourseNum] = useState();
+    const [onDisplayNone, setOnDisplayNone] = useState(false);
 
     const mouseOver = (e) => {
         e.preventDefault();
@@ -20,6 +23,7 @@ function ListCard(props) {
     };
 
     const getOnClose = (close) => {
+        console.log(close);
         setOnClose(close);
     };
 
@@ -46,11 +50,12 @@ function ListCard(props) {
     useEffect(() => {
         if (props.listInformation) {
             setOnClose(true);
+            setOnDisplayNone(false);
         }
     }, [props.listInformation]);
 
     useEffect(() => {
-        if(props.courseNum !== undefined) {
+        if (props.courseNum !== undefined) {
             setCourseNum(props.courseNum);
         }
     }, [props.courseNum]);
@@ -62,23 +67,52 @@ function ListCard(props) {
     return (
         <>
             {onClose ? (
-                <div className={styles.list_outer}>
-                    <div className={styles.cardTop}>
-                        <span className={styles.result_name}>'{searchInformation.text}' 검색결과</span>
-                        <span className={styles.result_tag}>{searchInformation.info.length}건</span>
-                    </div>
+                <div className={onDisplayNone === true ? styles.list_display : styles.list_outer}>
+                    <div>
+                        <div className={styles.cardTop}>
+                            <span className={styles.result_name}>'{searchInformation.text}' 검색결과</span>
+                            <span className={styles.result_tag}>{searchInformation.info.length}건</span>
+                            <div className={styles.exitbutton}>
+                                <button
+                                    onClick={() => {
+                                        setOnDisplayNone(true);
+                                    }}
+                                >
+                                    <Exit />
+                                </button>
+                            </div>
+                        </div>
 
-                    <div className={styles.tabmenu_outer}>
-                        <TabMenu
-                            className={styles.tabmenu}
-                            selectedType={props.selectedType}
-                            information={props.listInformation}
-                            setClickedInformation={setClickedInformation}
-                        />
+                        <div className={styles.tabmenu_outer}>
+                            <TabMenu
+                                className={styles.tabmenu}
+                                selectedType={props.selectedType}
+                                information={props.listInformation}
+                                setClickedInformation={setClickedInformation}
+                            />
+                        </div>
                     </div>
                 </div>
+            ) : information.type === '음식점' ? (
+                <>
+                    <RestInformationCard
+                        clickInformation={information}
+                        propFunction={getOnClose}
+                        clickAddCourse={clickAddCourse}
+                        checkCourseNum={checkCourseNum}
+                        courseNum={courseNum}
+                    />
+                </>
             ) : (
-                <InformationCard clickInformation={information} propFunction={getOnClose} clickAddCourse={clickAddCourse} checkCourseNum={checkCourseNum} courseNum={courseNum} />
+                <>
+                    <TourInformationCard
+                        clickInformation={information}
+                        propFunction={getOnClose}
+                        clickAddCourse={clickAddCourse}
+                        checkCourseNum={checkCourseNum}
+                        courseNum={courseNum}
+                    />
+                </>
             )}
         </>
     );
