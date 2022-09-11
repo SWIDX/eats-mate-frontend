@@ -259,16 +259,16 @@ h2 {
 }
 
 @media(min-width:426px){
-img {
+.aboutimg {
   width: 100%;
 }
 }
 @media(max-width:426px){
-  img {
-    width: 80%;
-    margin-top:15px;
-  }
-  }
+.aboutimg {
+  width: 80%;
+  margin-top:15px;
+}
+}
 
 .banner2icon {
   z-index: -999;
