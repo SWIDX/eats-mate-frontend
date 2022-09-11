@@ -18,6 +18,8 @@ function MapCourse(props) {
   const [placeAddressList, setPlaceAddressList] = useState([]);
   const [distanceList, setDistanceList] = useState([]);
   const [finalDistance, setFinalDistance] = useState();
+  const [recommendation, setRecommendation] = useState([]);
+  const [currentPos, setCurrentPos] = useState({});
   const dispatch = useDispatch();
 
   async function checkExp() {
@@ -141,7 +143,7 @@ function MapCourse(props) {
   };
 
   useEffect(() => {
-    if( props.point!==null) {
+    if (props.point !== null) {
       var checkName = placeNameList.find(function(data){ return data === (props.point.information.name)});
       if (checkName !== undefined) {
           alert("이미 추가된 경유지입니다.");
@@ -158,11 +160,31 @@ function MapCourse(props) {
         setPlaceNameList([...placeNameList, props.point.information.name]);
         setPlaceAddressList([...placeAddressList, props.point.information.address]);
       }
+
+      // 추천 받아오기
+      setCurrentPos({lat: props.point.information.lat, lng: props.point.information.lng})
+      getRecommendation()
     }
 
     props.clearCoursePoint(); // To clear(reset) course point data
 
   }, [props.point]);
+
+  async function getRecommendation() {
+    try {
+      const res = await axios.get("http://localhost:8081/map-service/tour-information/findByNearby?"
+        + "lat=" + props.point.information.lat
+        + "&lng=" + props.point.information.lng
+        + "&dist=" + 3 // 3km
+      );
+      console.log(res.data)
+      const selected = res.data.sort(() => .5 - Math.random()).slice(0,2)
+      console.log(selected)
+      setRecommendation(selected)
+    } catch(e){
+      throw e;
+    }
+  }
 
   useEffect(() => {
       props.drawCourse(point); // To draw course line on the map
@@ -200,10 +222,6 @@ function MapCourse(props) {
         return (distance / 1000).toFixed(1) + "km"
     }
   }
-
-  useEffect(() => {
-    console.log(props.listInformation)
-  },[])
 
   return (
     <>
@@ -300,23 +318,18 @@ function MapCourse(props) {
           </div>
           
           <div className={styles.recommendBoxContentList}>
-            <div className={styles.recommendBoxContent}>
-              <div className={styles.recommendBoxImg}>이미지 div</div>
-              <div className={styles.recommendBoxName}>갤러리 마노</div>
-              <div className={styles.recommendBoxDistance}>
-                <Pin className={styles.icon} />
-                최근 코스에서&nbsp;<b>2.3km</b>
-              </div>
-            </div>
 
-            <div className={styles.recommendBoxContent}>
-              <div className={styles.recommendBoxImg}>이미지 div</div>
-              <div className={styles.recommendBoxName}>능인선원</div>
+          {recommendation.map((o,i) => {
+            return (<div className={styles.recommendBoxContent}>
+              <img className={styles.recommendBoxImg} src={o.represent_image} />
+              <div className={styles.recommendBoxName}>{o.name}</div>
               <div className={styles.recommendBoxDistance}>
                 <Pin className={styles.icon} />
-                최근 코스에서&nbsp;<b>1.3km</b>
+                최근 코스에서&nbsp;<b>{getDistanceInKm(currentPos.lat, currentPos.lng, o.lat, o.lng).toFixed(1)}km</b>
               </div>
-            </div>
+            </div>)
+          })}
+
           </div>
         </div>
         : null
