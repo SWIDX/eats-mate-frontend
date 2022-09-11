@@ -73,7 +73,7 @@ function RestInformationCard(props) {
                             </div>
                         </div>
                         <button className={styles.heart}>
-                            <LikeButton />
+                            <LikeButton placeId={information.id} />
                         </button>
 
                         {/* <div className={styles.cardTag}>광진구</div>  */}
