@@ -13,7 +13,7 @@ import styles from './MapPage.module.css';
 import { SearchContext } from '../context/SearchContext';
 import { MarkerContext } from '../context/MarkerContext';
 import { useMediaQuery } from "react-responsive"
-import Burger from '../components/navigation/mobile/Burger';
+import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function MapPage() {
     const [clickInformation, setClickInformation] = useState();
@@ -137,7 +137,7 @@ function MapPage() {
                 <MarkerContext.Provider value={{ markerInformation, setMarkerInformation }}>
                     <div>
                     {isPc && <NavBar />}
-                    {isMobile && <Burger />}
+                    {isMobile && <MobileNavBar />}
                     </div>
 
                     {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}

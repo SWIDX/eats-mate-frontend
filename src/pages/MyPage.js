@@ -12,7 +12,7 @@ import Review from '../components/mypage/Review';
 import Dropdown from '../components/etc/Dropdown';
 import { ReactComponent as KakaoCircleSvg } from "../images/svg/kakao-circle.svg";
 import { useMediaQuery } from "react-responsive"
-import Burger from '../components/navigation/mobile/Burger';
+import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function MyPage() {
   const dispatch = useDispatch();
@@ -286,7 +286,7 @@ function MyPage() {
     { userinfo != null && renderFlag ?
       <>
         {isPc && <NavBar />}
-        {isMobile && <Burger />}
+        {isMobile && <MobileNavBar />}
         <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
 
           {/* 싱단 타이틀 */}

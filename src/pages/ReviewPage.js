@@ -13,7 +13,7 @@ import ReviewModal from "../components/review/ReviewModal";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, reissueJWT } from '../_actions/user_action';
 import { useMediaQuery } from "react-responsive"
-import Burger from '../components/navigation/mobile/Burger';
+import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function ReviewPage() {
   const navigate = useNavigate();
@@ -161,7 +161,7 @@ async function logOut() {
   return (
     <>
       {isPc && <NavBar />}
-      {isMobile && <Burger />}
+      {isMobile && <MobileNavBar/>}
       <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
 
         <div style={{display: "flex", flexDirection: "column"}}>

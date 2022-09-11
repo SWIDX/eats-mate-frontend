@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from '../components/navigation/NavBar';
 import styles from './AboutPage.module.css';
 import { useMediaQuery } from "react-responsive"
-import Burger from '../components/navigation/mobile/Burger';
+import MobileNavBar from '../components/navigation/mobile/MobileNavBar';
 
 function AboutPage(){
     const isPc = useMediaQuery({ query: "(min-width:426px)" });
@@ -11,7 +11,7 @@ function AboutPage(){
     return(
     <>
         {isPc && <NavBar />}
-        {isMobile && <Burger />}
+        {isMobile && <MobileNavBar />}
         <div className={styles.scrollContainer}>
         <div className={styles.section}>
         <div className={styles.bgLogo}>

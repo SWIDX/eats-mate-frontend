@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from '../components/etc/Carousel';
 import NavBar from '../components/navigation/NavBar';
-import Burger from '../components/navigation/mobile/Burger';
+import MobileNavBar from '../components/navigation/mobile/MobileNavBar';
 import RecommendedList from '../components/etc/RecommendedList';
 import RecentReview from "../components/review/RecentReview";
 import { useMediaQuery } from "react-responsive"
@@ -28,7 +28,7 @@ function MainPage() {
   return (
     <>
       {isPc && <NavBar />}
-      {isMobile && <Burger />}
+      {isMobile && <MobileNavBar />}
       <Carousel
         dataList={testData}
         outerViewWidth={"900px"}

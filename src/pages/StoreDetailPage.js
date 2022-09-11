@@ -11,7 +11,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, reissueJWT } from '../_actions/user_action';
 import { useMediaQuery } from "react-responsive"
-import Burger from '../components/navigation/mobile/Burger';
+import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function StoreDetailPage(){
     const userinfo = useSelector((state) => state.userReducer.userinfo)
@@ -103,7 +103,7 @@ function StoreDetailPage(){
     return(
         <>
           {isPc && <NavBar />}
-          {isMobile && <Burger />}
+          {isMobile && <MobileNavBar/>}
           <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "10px 0px 100px 0px"}}>
               <div>
                   <MainGageInfo information={information}/>
