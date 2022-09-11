@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from '../components/etc/Carousel';
+import MobileCarousel from '../components/etc/mobile/MobileCarousel';
 import NavBar from '../components/navigation/NavBar';
 import MobileNavBar from '../components/navigation/mobile/MobileNavBar';
 import RecommendedList from '../components/etc/RecommendedList';
@@ -46,6 +47,19 @@ function MainPage() {
         showBullets={true}
       />
       }
+      {isMobile &&
+      <MobileCarousel
+        dataList={testData}
+        width={"90vw"}
+        height={"50vw"}
+        imageRadius={15}
+        gap={0}
+        innerViewOverflow={"hidden"}
+        scrollStep={"full"}
+        autoScroll={true}
+        showBullets={true}
+      />
+      }
       {/* <Carousel
         dataList={testData}
         outerViewWidth={"580px"}
@@ -67,7 +81,7 @@ function MainPage() {
       </Container>
       }
       {isMobile &&
-      <Container fluid="xxl" style={{ width: "100%", height: "100%", padding: "50px 0px 100px 0px"}}>
+      <Container fluid="xxl" style={{ width: "100%", height: "100%", padding: "20px 0px 100px 0px"}}>
         <RecommendedList />
         <RecentReview />
       </Container>
