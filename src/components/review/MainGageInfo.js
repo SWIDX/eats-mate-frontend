@@ -22,9 +22,9 @@ function MainGageInfo(props){
       ];
 
     return(
-        <div style={{marginBottom: "50px", display: "flex"}}>
-            <div className={styles.infoContainer}>
-                <div style={{flexShrink: "0", marginBottom: "50px"}}>
+        <div style={{marginBottom: "100px"}}> {/* 이부분 */}
+            <div className={styles.infoContainer}> {/* 코드 */}
+                <div style={{width: "730px", flexShrink: "0"}}> {/* 수정하지마세요 */}
                     <Carousel
                         dataList={testData}
                         outerViewWidth={"660px"}
