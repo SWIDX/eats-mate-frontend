@@ -5,6 +5,7 @@ import MobileNavBar from '../components/navigation/mobile/MobileNavBar';
 import RecommendedList from '../components/etc/RecommendedList';
 import RecentReview from "../components/review/RecentReview";
 import { useMediaQuery } from "react-responsive"
+import { Container } from 'react-bootstrap';
 
 function MainPage() {
   const isPc = useMediaQuery({ query: "(min-width:426px)" });
@@ -29,6 +30,7 @@ function MainPage() {
     <>
       {isPc && <NavBar />}
       {isMobile && <MobileNavBar />}
+      {isPc &&
       <Carousel
         dataList={testData}
         outerViewWidth={"900px"}
@@ -43,7 +45,8 @@ function MainPage() {
         autoScroll={true}
         showBullets={true}
       />
-      <Carousel
+      }
+      {/* <Carousel
         dataList={testData}
         outerViewWidth={"580px"}
         outerViewHeight={"200px"}
@@ -56,9 +59,19 @@ function MainPage() {
         scrollStep={"one"}
         autoScroll={false}
         showBullets={false}
-      />
-      <RecommendedList />
-      <RecentReview />
+      /> */}
+      {isPc &&
+      <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
+        <RecommendedList />
+        <RecentReview />
+      </Container>
+      }
+      {isMobile &&
+      <Container fluid="xxl" style={{ width: "100%", height: "100%", padding: "50px 0px 100px 0px"}}>
+        <RecommendedList />
+        <RecentReview />
+      </Container>
+      }
     </>
   );
 }
