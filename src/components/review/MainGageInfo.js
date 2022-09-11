@@ -22,23 +22,23 @@ function MainGageInfo(props){
       ];
 
     return(
-        <div style={{marginBottom: "100px"}}>
+        <div style={{marginBottom: "50px", display: "flex"}}>
             <div className={styles.infoContainer}>
-                <div style={{width: "730px", flexShrink: "0"}}>
-                <Carousel
-                    dataList={testData}
-                    outerViewWidth={"660px"}
-                    outerViewHeight={"400px"}
-                    imageWidth={"400px"}
-                    imageHeight={"400px"}
-                    imageRadius={24}
-                    gap={38}
-                    innerViewOverflow={"hidden"}
-                    buttonSize={50}
-                    scrollStep={"one"}
-                    autoScroll={true}
-                    showBullets={false}
-                />
+                <div style={{flexShrink: "0", marginBottom: "50px"}}>
+                    <Carousel
+                        dataList={testData}
+                        outerViewWidth={"660px"}
+                        outerViewHeight={"400px"}
+                        imageWidth={"400px"}
+                        imageHeight={"400px"}
+                        imageRadius={24}
+                        gap={38}
+                        innerViewOverflow={"hidden"}
+                        buttonSize={50}
+                        scrollStep={"one"}
+                        autoScroll={true}
+                        showBullets={false}
+                    />
                 </div>
                 <div className={styles.gageInfo}>
                     <div className={styles.titleContainer}>
@@ -50,22 +50,6 @@ function MainGageInfo(props){
                             <span className={styles.gageGubun}>{props.information.gubun}</span>
                         </div>
                         <div className={styles.likeButton}><LikeButton placeId={props.information.id}/></div>
-                    </div>
-
-                    <div className={styles.ImageContainer}>
-                        <div className={styles.LargeImageContainer}>
-                            <div className={styles.mobileImage1}>
-                            <img src={testData[0].image} />
-                        </div>
-                    </div>
-                    <div className={styles.SmallImageContainer}>
-                        <div className={styles.mobileImage2}>
-                            <img src={testData[1].image} />
-                        </div>
-                        <div className={styles.mobileImage3}>
-                            <img src={testData[2].image} />
-                        </div>
-                    </div>
                     </div>
 
                     <div className={styles.gageContentContainer}>
