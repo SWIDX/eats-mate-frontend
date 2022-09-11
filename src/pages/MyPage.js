@@ -11,11 +11,15 @@ import Like from '../components/mypage/Like';
 import Review from '../components/mypage/Review';
 import Dropdown from '../components/etc/Dropdown';
 import { ReactComponent as KakaoCircleSvg } from "../images/svg/kakao-circle.svg";
+import { useMediaQuery } from "react-responsive"
+import Burger from '../components/navigation/mobile/Burger';
 
 function MyPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userinfo = useSelector((state) => state.userReducer.userinfo)
+  const isPc = useMediaQuery({ query: "(min-width:426px)" });
+  const isMobile = useMediaQuery({ query: "(max-width:426px)" });
 
   const [renderFlag, setRenderFlag] = useState(false); // 렌더링 할지 말지
   const [tabNum, setTabNum] = useState(0); // 0:코스 1:리뷰 2:찜
@@ -281,7 +285,8 @@ function MyPage() {
     <>
     { userinfo != null && renderFlag ?
       <>
-        <NavBar />
+        {isPc && <NavBar />}
+        {isMobile && <Burger />}
         <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
 
           {/* 싱단 타이틀 */}

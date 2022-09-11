@@ -12,12 +12,16 @@ import ReviewCounter from "../components/review/ReviewCounter";
 import ReviewModal from "../components/review/ReviewModal";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, reissueJWT } from '../_actions/user_action';
+import { useMediaQuery } from "react-responsive"
+import Burger from '../components/navigation/mobile/Burger';
 
 function ReviewPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const placeName = useLocation().pathname.split("/").pop();
   const userinfo = useSelector((state) => state.userReducer.userinfo)
+  const isPc = useMediaQuery({ query: "(min-width:426px)" });
+  const isMobile = useMediaQuery({ query: "(max-width:426px)" });
 
   const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
   const [dynReviewList, setDynReviewList] = useState([]);
@@ -156,7 +160,8 @@ async function logOut() {
 
   return (
     <>
-      <NavBar />
+      {isPc && <NavBar />}
+      {isMobile && <Burger />}
       <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
 
         <div style={{display: "flex", flexDirection: "column"}}>

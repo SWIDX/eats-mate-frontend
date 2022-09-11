@@ -12,6 +12,8 @@ import ListCard from '../components/map/ListCard';
 import styles from './MapPage.module.css';
 import { SearchContext } from '../context/SearchContext';
 import { MarkerContext } from '../context/MarkerContext';
+import { useMediaQuery } from "react-responsive"
+import Burger from '../components/navigation/mobile/Burger';
 
 function MapPage() {
     const [clickInformation, setClickInformation] = useState();
@@ -126,12 +128,16 @@ function MapPage() {
     getUserLoc();
   }, []);*/
 
+    const isPc = useMediaQuery({ query: "(min-width:426px)" });
+    const isMobile = useMediaQuery({ query: "(max-width:426px)" });
+
     return (
         <>
             <SearchContext.Provider value={{ searchInformation, setSearchInformation }}>
                 <MarkerContext.Provider value={{ markerInformation, setMarkerInformation }}>
                     <div>
-                        <NavBar />
+                    {isPc && <NavBar />}
+                    {isMobile && <Burger />}
                     </div>
 
                     {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}

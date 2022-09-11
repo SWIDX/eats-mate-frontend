@@ -10,6 +10,8 @@ import ReviewModal from "../components/review/ReviewModal";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, reissueJWT } from '../_actions/user_action';
+import { useMediaQuery } from "react-responsive"
+import Burger from '../components/navigation/mobile/Burger';
 
 function StoreDetailPage(){
     const userinfo = useSelector((state) => state.userReducer.userinfo)
@@ -20,6 +22,9 @@ function StoreDetailPage(){
 
     const [modalOpen, setModalOpen] = useState(false);
     const [information, setInformation] = useState({});
+
+    const isPc = useMediaQuery({ query: "(min-width:426px)" });
+    const isMobile = useMediaQuery({ query: "(max-width:426px)" });
 
     useEffect(() => {
       getStoreDetail();
@@ -97,7 +102,8 @@ function StoreDetailPage(){
 
     return(
         <>
-          <NavBar />
+          {isPc && <NavBar />}
+          {isMobile && <Burger />}
           <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "10px 0px 100px 0px"}}>
               <div>
                   <MainGageInfo information={information}/>

@@ -1,10 +1,15 @@
 import React from 'react';
 import Carousel from '../components/etc/Carousel';
 import NavBar from '../components/navigation/NavBar';
+import Burger from '../components/navigation/mobile/Burger';
 import RecommendedList from '../components/etc/RecommendedList';
 import RecentReview from "../components/review/RecentReview";
+import { useMediaQuery } from "react-responsive"
 
 function MainPage() {
+  const isPc = useMediaQuery({ query: "(min-width:426px)" });
+  const isMobile = useMediaQuery({ query: "(max-width:426px)" });
+
   const testData = [
     {
       image: "img/main-carousel/main-carousel-1.png",
@@ -22,7 +27,8 @@ function MainPage() {
 
   return (
     <>
-      <NavBar />
+      {isPc && <NavBar />}
+      {isMobile && <Burger />}
       <Carousel
         dataList={testData}
         outerViewWidth={"900px"}
