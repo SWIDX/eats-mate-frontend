@@ -1,8 +1,17 @@
+@media(min-width:426px){
 .container {
     position: relative; /* for floating effect */
     display: flex;
     padding: 32px 50px;
 }
+}
+@media(max-width:426px){
+    .container {
+        position: relative; /* for floating effect */
+        display: flex;
+        padding: 32px 10px;
+    }
+    }
 .container:not(:last-child) {
     border-bottom: 1px solid #E8E8E8;
 }
@@ -49,10 +58,16 @@
     cursor: pointer;
 }
 
+@media(min-width:426px){
 .meta {
     display: flex;
     margin-top: 24px;
-}
+}}
+
+@media(max-width:426px){
+    .meta {
+    }}
+
 
 .rate {
     display: flex;

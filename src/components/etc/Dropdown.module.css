@@ -1,3 +1,4 @@
+@media(min-width:426px){
 .container {
     position: relative; /* for floating effect */
     padding: 2px 20px;
@@ -5,6 +6,16 @@
     display: flex;
     cursor: pointer;
 }
+}
+
+@media(max-width:426px){
+    .container {
+        position: relative; /* for floating effect */
+        margin: auto 0px auto auto;
+        display: flex;
+        cursor: pointer;
+    }
+    }
 
 .selection {
     display: flex;
