@@ -25,21 +25,39 @@
 }
 
 /* 첫 번째 배너 섹션 */
+@media(min-width:426px){
 .section:nth-of-type(1) {
   background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
   position: relative;
   height: 100vh;
-}
+}}
+
+@media(max-width:426px){
+  .section:nth-of-type(1) {
+    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+    position: relative;
+    height: 80vh;
+  }}
 
 /* 첫 번째 배너 위치*/
+@media(min-width:426px){
 .banner1 {
   position: absolute;
   top: 15%;
   left: 35%;
 }
+}
 
+@media(max-width:426px){
+  .banner1 {
+    position: absolute;
+    top: 15%;
+    left: 21%;
+  }
+  }
 /* 첫 번째 배너 텍스트 */
 
+@media(min-width:426px){
 .banner1 h1 {
   margin: 0;
   font-weight: bold;
@@ -50,7 +68,24 @@
   color: #ffffff;
   text-align: center;
 }
+}
 
+
+@media(max-width:426px){
+  .banner1 h1 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 5vw;
+    margin-bottom: 16px;
+    font-weight: bold;
+    letter-spacing: -0.05vw;
+    color: #ffffff;
+    text-align: center;
+  }
+  }
+  
+
+@media(min-width:426px){ 
 .banner1 h6 {
   font-family: 'Noto Sans KR';
   font-style: normal;
@@ -62,6 +97,20 @@
   margin-top: 2vw;
   line-height: 1.75vw;
 }
+}
+
+@media(max-width:426px){ 
+  .banner1 h6 {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3vw;
+    letter-spacing: -0.05vw;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 2vw;
+  }
+  }
 
 /* 첫 번째 배너 목업 */
 .macMockup {
@@ -71,10 +120,17 @@
   position: absolute;
 }
 
+@media(min-width:426px){
 .macMockup img {
   width: 100%;
 }
-
+}
+@media(max-width:426px){
+  .macMockup img {
+    width: 100%;
+    scale:2.0;
+  }
+  }
 /* 배경 이미지 로고 캐릭터 */
 
 .bgLogo {
@@ -91,11 +147,20 @@
 /* ========================================  */
 
 /* 두 번째 배너 섹션 */
+@media(min-width:426px){
 .section:nth-of-type(2) {
   position: relative;
   width: 100%;
 }
+}
 
+@media(max-width:426px){
+  .section:nth-of-type(2) {
+    position: relative;
+    width: 100%;
+    height:80vh;
+  }
+  }
 /* 두 번째 배너 타이틀 */
 h2 {
   font-family: 'Noto Sans KR';
@@ -111,21 +176,45 @@ h2 {
 }
 
 /* 두 번째 배너 서브 타이틀 */
+@media(min-width:426px){
 .banner2 > h6 {
   font-weight: 400;
   font-size: 1vw;
   color: rgb(142, 142, 142);
   letter-spacing: -0.05vw;
 }
-
+}
+@media(max-width:426px){
+  .banner2 > h6 {
+    font-weight: 400;
+    font-size: 3vw;
+    color: rgb(142, 142, 142);
+    letter-spacing: -0.05vw;
+    margin-bottom: 10px;
+  }
+  }
 
 /* 두 번째 배너 위치  */
+@media(min-width:426px){
 .banner2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+}
+
+@media(max-width:426px){
+  .banner2 {
+    position: absolute;
+    top:15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  }
+  
 
 /* 두 번째 배너 숫자 */
 .numbers {
@@ -145,10 +234,19 @@ h2 {
 }
 
 /* 두 번째 배너 웹 이미지 */
+@media(min-width:426px){
 .banner2 > img {
   width: 50%;
   margin-top: 3vw;
 }
+}
+
+@media(max-width:426px){
+  .banner2 > img {
+    width: 80%;
+    margin-top: 3vw;
+  }
+  }
 
 /* 두 번째 배너 꾸밈 아이콘 */
 
@@ -160,9 +258,17 @@ h2 {
   display: inline;
 }
 
+@media(min-width:426px){
 img {
   width: 100%;
 }
+}
+@media(max-width:426px){
+  img {
+    width: 80%;
+    margin-top:15px;
+  }
+  }
 
 .banner2icon {
   z-index: -999;
@@ -195,11 +301,21 @@ img {
 
 
 /* 세 번째 배너 섹션 */
+@media(min-width:426px){
 .section:nth-of-type(3) {
   position: relative;
   width: 100%;
   background: linear-gradient(180deg, #FAFAFA 0%, #F8F8F8 100%);
 }
+}
+@media(max-width:426px){
+  .section:nth-of-type(3) {
+    position: relative;
+    width: 100%;
+    height:80vh;
+    background: linear-gradient(180deg, #FAFAFA 0%, #F8F8F8 100%);
+  }
+  }
 
 /* 세 번째 배너 타이틀 */
 h2 {
@@ -216,6 +332,7 @@ h2 {
 }
 
 /* 세 번째 배너 서브 타이틀 */
+@media(min-width:426px){
 .banner3 > h6 {
   font-weight: 400;
   font-size: 1vw;
@@ -224,9 +341,20 @@ h2 {
   text-align: center;
   line-height: 1.5vw;
 }
+}
 
-
+@media(max-width:426px){
+.banner3 > h6 {
+font-weight: 400;
+    font-size: 3vw;
+    color: rgb(142, 142, 142);
+    letter-spacing: -0.05vw;
+    text-align: center;
+    white-space: pre-line;
+    width: 70vw;
+}}
 /* 세 번째 배너 위치  */
+@media(min-width:426PX){
 .banner3 {
   display: flex;
   flex-direction: column;
@@ -235,6 +363,19 @@ h2 {
   position: relative;
   width: 100%;
 }
+}
+@media(max-width:426PX){
+  .banner3 {
+    position: absolute;
+    top:15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+  }
 
 /* 세 번째 배너 숫자 */
 .numbers {
@@ -254,11 +395,20 @@ h2 {
 }
 
 /* 세 번째 배너 웹 이미지 */
+@media(min-width:426px){
 .banner3 img {
   width: 50%;
   margin-top: 3vw;
   z-index: 999;
 }
+}
+@media(max-width:426px){
+  .banner3 img {
+    width: 80%;
+    margin-top: 3vw;
+    z-index: 999;
+  }
+  }
 
 /* 세 번째 배너 배경 아이콘 */
 .banner3icon {
@@ -297,6 +447,7 @@ h2 {
 
 
 /* 네 번째 배너 타이틀 */
+@media(min-width:426px){
 h2 {
   font-family: 'Noto Sans KR';
   font-style: normal;
@@ -309,8 +460,24 @@ h2 {
   letter-spacing: -0.05vw;
   margin-top: 0.5vw;
 }
+}
+@media(max-width:426px){
+  h2 {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 5vw;
+    line-height: 47px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.05vw;
+    margin-top: 0.5vw;
+  }
+  }
 
 /* 네 번째 배너 서브 타이틀 */
+@media(min-width:426px){
 .banner4 > h6 {
   font-weight: 400;
   font-size: 1vw;
@@ -319,9 +486,23 @@ h2 {
   text-align: center;
   line-height: 1.5vw;
 }
+}
+
+@media(max-width:426px){
+  .banner4 > h6 {
+    font-weight: 400;
+    font-size: 3vw;
+    color: rgb(142, 142, 142);
+    letter-spacing: -0.05vw;
+    text-align: center;
+  }
+  }
+  
+
 
 
 /* 네 번째 배너 위치  */
+@media(min-width:426px){
 .banner4 {
   display: flex;
   flex-direction: column;
@@ -329,15 +510,37 @@ h2 {
   align-items: center;
   position: relative;
 }
+}
 
+@media(max-width:426px){
+  .banner4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height:100vh;
+    position: absolute;
+    top:15%;
+  }
+  }
 
 /* 네 번째 배너 웹 이미지 */
+@media(min-width:426px){
 .banner4 img {
   width: 50%;
   margin-top: 3vw;
   z-index: 9;
 }
-
+}
+@media(max-width:426px){
+  .banner4 img {
+    width: 80%;
+    margin-top: 7vw;
+    z-index: 9;
+  }
+  }
+  
 
 
 .banner4 > .icon1 {
