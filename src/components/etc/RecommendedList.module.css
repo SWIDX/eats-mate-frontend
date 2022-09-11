@@ -89,7 +89,7 @@
     
     @media (max-width:426px){
         .element {
-            width: 146px;
+            width: 200px;
             height: 235px;
             border-radius: 15px;
             border: 1px solid lightgrey;
