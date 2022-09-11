@@ -210,10 +210,19 @@
     display: flex;
 }
 
+@media(min-width:426px){
+.child{
+    margin: auto auto;
+    margin-bottom: 50px;
+}
+}
+
+@media(max-width:426px){
 .child{
     margin: auto auto;
     margin-bottom: 50px;
     width:100%;
+}
 }
 
 @media(max-width:426px){
