@@ -10,19 +10,52 @@ import { ReactComponent as Back } from '../../images/svg/back.svg';
 import styles from './RestInformationCard.module.css';
 import useCopyClipBoard from '../etc/useCopyClipBoard';
 import LikeButton from '../like/LikeButton';
+import ReviewCounter from "../review/ReviewCounter";
+
+import axios from 'axios';
+import Review from '../mypage/Review';
 
 function RestInformationCard(props) {
+    const navigate = useNavigate();
     const [onClose, setOnClose] = useState(false);
     const [information, setInformation] = useState({});
     const [type, setType] = useState();
     const [isCopy, onCopy] = useCopyClipBoard();
     const [onDisplayNone, setOnDisplayNone] = useState(false);
 
+    // 리뷰
+    const [reviewList, setReviewList] = useState([]);
+    const [rateList, setRateList] = useState([0, 0, 0]);
+
+    async function getReviewRate() {
+        try {
+        const res = await axios.get("http://localhost:8081/review-service/review/count?place_name=" + information.name);
+        setRateList(res.data);
+        } catch(e){
+        throw e;
+        }
+    }
+
+    async function getUserReview() {
+        try {
+            const res = await axios.get("http://localhost:8081/review-service/review/?place_name=" + information.name + "&amount=" + 2,
+            );
+            res.data.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
+            setReviewList(res.data);
+        } catch(e){
+            throw e;
+        }
+    }
+
+    useEffect(() => {
+        getUserReview();
+        getReviewRate();
+    }, [information]);
+    // end of 리뷰
+
     const handleCopyClipBoard = (text) => {
         onCopy(text);
     };
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         props.propFunction(onClose);
@@ -135,55 +168,26 @@ function RestInformationCard(props) {
                             <li className={styles.moreTab}>
                                 <div className={styles.evaluate_outer}>
                                     <span className={styles.evaluate}>평가</span>
-                                    <span className={styles.reviewcount}>3건</span>
+                                    <span className={styles.reviewcount}>{reviewList.length}건</span>
                                 </div>
                                 <div className={styles.more}>
-                                    <button className={styles.morebtn}>더보기 {'>'} </button>
+                                    <button className={styles.morebtn} onClick={() => {navigate("/detail/" + information.name)}}>더보기 {'>'}</button>
                                 </div>
                             </li>
 
                             <div className={styles.totalReviews}>
-                                <div className={styles.good}>
-                                    <img src="/img/good.png" />
-                                    최고예요<span>3</span>
-                                </div>
-                                <div className={styles.soso}>
-                                    <img src="/img/soso.png" />
-                                    평범해요<span>3</span>
-                                </div>
-                                <div className={styles.bad}>
-                                    <img src="/img/bad.png" />
-                                    별로예요<span>3</span>
-                                </div>
+                                <ReviewCounter
+                                    rateVal={rateList}
+                                />
                             </div>
                             <div className={styles.DetailReviews}>
-                                <div className={styles.profile}>
-                                    <img src="/img/user1.png" />
-                                    나는야먹짱
-                                </div>
-                                <p>말해뭐해 일단 너무 맛있고요... 혼자 건대 갔다가 들렀는데 혼밥하기 딱 좋은 분위기였어요 추천</p>
-                                <div style={{ display: 'flex' }}>
-                                    <div className={styles.date}>2022. 01. 08</div>
-                                    <div className={styles.face}>
-                                        <img src="/img/good.png" />
-                                        최고예요
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                            <div className={styles.DetailReviews}>
-                                <div className={styles.profile}>
-                                    <img src="/img/user2.png" />
-                                    프로혼밥러
-                                </div>
-                                <p>와 여기 나만 알던 맛집인데 잇메에도 올라왔네... 강추드려요</p>
-                                <div style={{ display: 'flex' }}>
-                                    <div className={styles.date}>2022. 01. 08</div>
-                                    <div className={styles.face}>
-                                        <img src="/img/good.png" />
-                                        최고예요
-                                    </div>
-                                </div>
+                            {reviewList.map((o, i) =>
+                                <Review
+                                    review={o}
+                                    mypageMode={false}
+                                    mappageMode={true}
+                                />
+                            )}
                             </div>
                         </div>
                     </div>

@@ -41,8 +41,8 @@ function Review(props) {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.reviewInfo}>
+        <div className={props.mappageMode ? styles.containerSmaller : styles.container}>
+            <div className={props.mappageMode ? styles.reviewInfoSmaller : styles.reviewInfo}>
                 <div className={styles.title}>
                     {props.mypageMode ?
                     <>
@@ -58,7 +58,7 @@ function Review(props) {
                 </div>
                 <div className={styles.content}>{props.review.content}</div>
                 {/* 이미지 */}
-                <div className={styles.imageContainer}>
+                <div className={props.mappageMode ? styles.imageContainerSmaller : styles.imageContainer}>
                 {props.review.images.map((imgUrl, i) =>
                     imgUrl != "" && <img src={imgUrl} onClick={() => viewImage(imgUrl)} />
                 )}
@@ -107,8 +107,26 @@ function Review(props) {
                     </div>
                     <div className={styles.rateBorder} />
                     <div className={styles.createdBy}>{props.review.createdBy}</div>
+                    {props.mappageMode &&
+                    <div className={styles.reviewLikeSmaller}>
+                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clipPath="url(#clip0_172_152)">
+                        <path d="M5.26794 6.82697H0.533203V17.7081H5.26794V6.82697Z" stroke="#B0B0B0" strokeWidth="2" strokeMiterlimit="10"/>
+                        <path d="M5.26758 6.82697L7.66161 0.525146H10.8128V6.82697H19.4665V18.4748H10.8128L5.26758 16.1537V6.82697Z" stroke="#B0B0B0" strokeWidth="2" strokeMiterlimit="10"/>
+                        <path d="M2.90045 15.3764C3.33627 15.3764 3.68957 15.0285 3.68957 14.5992C3.68957 14.17 3.33627 13.822 2.90045 13.822C2.46463 13.822 2.11133 14.17 2.11133 14.5992C2.11133 15.0285 2.46463 15.3764 2.90045 15.3764Z" fill="#B0B0B0"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_172_152">
+                        <rect width="20" height="19" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                        <div className={styles.recommendSmaller}>{props.review.recommend}</div>
+                    </div>
+                    }
                 </div>
             </div>
+            {!props.mappageMode &&
             <div className={styles.others}>
                 {props.mypageMode ?
                 <div className={styles.reviewMenu} onClick={openMenu}>
@@ -118,6 +136,7 @@ function Review(props) {
                     <circle cx="1.5" cy="1.5" r="1.5" transform="rotate(90 1.5 1.5)" fill="#8C8C8C"/>
                     </svg>
                 </div> : null }
+                
                 <div className={styles.reviewLike}>
                     <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_172_152)">
@@ -134,6 +153,7 @@ function Review(props) {
                     <div className={styles.recommend}>{props.review.recommend}</div>
                 </div>
             </div>
+            }
             {toggleMenu && props.mypageMode ?
             <div className={styles.subMenu} ref={menuRef}>
                 <div className={styles.deleteBtn} onClick={deleteHandler}>삭제하기</div>

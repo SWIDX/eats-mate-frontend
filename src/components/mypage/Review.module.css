@@ -1,23 +1,24 @@
-@media(min-width:426px){
 .container {
     position: relative; /* for floating effect */
     display: flex;
     padding: 32px 50px;
 }
+
+.containerSmaller {
+    position: relative; /* for floating effect */
+    display: flex;
+    padding: 32px 0px;
 }
-@media(max-width:426px){
-    .container {
-        position: relative; /* for floating effect */
-        display: flex;
-        padding: 32px 10px;
-    }
-    }
+
 .container:not(:last-child) {
     border-bottom: 1px solid #E8E8E8;
 }
 
 .reviewInfo {
     margin-right: 60px;
+}
+.reviewInfoSmaller {
+    width: 100%;
 }
 
 .title {
@@ -54,6 +55,19 @@
 .imageContainer > img {
     width: 140px;
     height: 140px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.imageContainerSmaller {
+    display: flex;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.imageContainerSmaller > img {
+    width: 90px;
+    height: 90px;
     object-fit: cover;
     cursor: pointer;
 }
@@ -117,6 +131,15 @@
     margin: auto 8px auto auto;
 }
 
+.reviewLikeSmaller {
+    display: flex;
+    margin: auto 0px auto auto;
+}
+.reviewLikeSmaller > svg {
+    scale: 0.8;
+    margin: auto 8px auto auto;
+}
+
 .subMenu {
     position: absolute; /* for floating effect */
     top: 30px; /* for floating effect */
@@ -138,6 +161,14 @@
 .recommend {
     font-weight: 500;
     font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    color: #8E8E8E;
+}
+
+.recommendSmaller {
+    font-weight: 500;
+    font-size: 16px;
     line-height: 26px;
     letter-spacing: -0.04em;
     color: #8E8E8E;
