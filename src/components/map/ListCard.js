@@ -71,7 +71,11 @@ function ListCard(props) {
         if (information != undefined) {
             if (onClose == true) {
                 setOnClose(false);
-            } else {
+            } else if (props.markerInformation.information !== null) {
+                setOnClose(false);
+                // 마커가 한 번 클릭된 뒤 다른 마커 클릭 시, 리스트 카드가 상단으로 올라와 인포 카드를 가리는 것을 방지함
+            }
+            else {
                 setOnClose(true);
             }
         }
