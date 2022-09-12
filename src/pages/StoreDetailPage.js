@@ -3,7 +3,7 @@ import axios from 'axios';
 import MainReview from "../components/review/MainReview";
 import MainGageInfo from "../components/review/MainGageInfo";
 import DetailMap from "../components/review/DetailMap";
-import { useLocation } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { Container } from "react-bootstrap";
 import NavBar from "../components/navigation/NavBar";
 import ReviewModal from "../components/review/ReviewModal";
@@ -16,6 +16,7 @@ import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 function StoreDetailPage(){
     const userinfo = useSelector((state) => state.userReducer.userinfo)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     // 하단 placeName 할당 코드 절대 수정 금지 - 21/09/09
     const placeName = useLocation().pathname.split("/").pop();
@@ -35,7 +36,9 @@ function StoreDetailPage(){
         const res = await axios.get("http://localhost:8081/map-service/findByName/?name=" + placeName);
         setInformation(res.data)
       } catch(e){
-        throw e;
+        console.log(e)
+        alert("해당 식당 정보가 없습니다.")
+        navigate(-1);
       }
     }
 
