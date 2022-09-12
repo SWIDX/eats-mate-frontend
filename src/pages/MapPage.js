@@ -32,7 +32,7 @@ function MapPage() {
     const [inputText, setInputText] = useState();
     const [searchInformation, setSearchInformation] = useState({ info: [], value: '', text: '' });
     const [markerInformation, setMarkerInformation] = useState({ marker: [] });
-    // const [information, setInformation] = useState({}); // information value from marker click event
+    const [clickMarkerInformation, setClickMarkerInformation] = useState({information:null, type:null, id:null}); // information value from marker click event
 
     const getClickInfo = (info) => {
         setClickInformation(info);
@@ -93,9 +93,16 @@ function MapPage() {
         setCourseNum(num);
     };
 
+    /* Marker Click Event */
     const clickMarker = (info) => {
-        // setInformation(info);
+        if(info !== null) {
+            setClickMarkerInformation({information:info, type:info.type, id:info.id});
+        }
     };
+
+    const clearClickMarkerInfo = () => {
+        setClickMarkerInformation({information:null, type:null, id:null});
+    }
 
     /*const getGpsLoc = (info) => {
     setGpsLoc({
@@ -153,6 +160,8 @@ function MapPage() {
                                 getClickInformation={getClickInformation}
                                 checkCourseNum={checkCourseNum}
                                 courseNum={courseNum}
+                                markerInformation={clickMarkerInformation}
+                                clearClickMarkerInfo={clearClickMarkerInfo}
                             />
                         ) : null}
 
@@ -175,6 +184,7 @@ function MapPage() {
                             gpsInformation={gpsLoc}
                             propFunction={clickAddCourse}
                             clickMarker={clickMarker}
+                            clearClickMarker={clearClickMarkerInfo}
                         />
                     </div>
                 </MarkerContext.Provider>
