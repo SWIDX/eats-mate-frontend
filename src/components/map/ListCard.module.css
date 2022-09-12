@@ -86,7 +86,11 @@
     text-align: left;
     font-size: x-large;
     font-weight: bold;
-    padding-left: 5%;
+    padding-left: 19px;
+    max-width: 315px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .result_tag {
