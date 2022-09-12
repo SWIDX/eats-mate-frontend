@@ -81,38 +81,42 @@ function MapCourse(props) {
       alert("코스를 완성하려면 두 개 이상의 경유지가 필요합니다.");
     }
     else {
-      var finalTitle = "";
-      if(title == undefined) {
-        finalTitle = userinfo.name+"메이트님의 혼행 코스";
-      } else {
-        finalTitle = title;
-      }
-
-      var url = "http://localhost:8081/user-service/user/course/";
-      var data = {
-        title: finalTitle,
-        placeNameList: placeNameList,
-        placeAddressList: placeAddressList,
-        distanceList: distanceList,
-      }
-      var config = {
-        headers: {
-          Authorization: "Bearer "+userinfo.accessToken,
+      if (window.confirm("코스를 저장하시겠어요?")) {
+        var finalTitle = "";
+        if(title == undefined) {
+          finalTitle = userinfo.name+"메이트님의 혼행 코스";
+        } else {
+          finalTitle = title;
         }
-      }
-      axios.post(url, data, config).then((res) => {
-        alert("코스를 저장했어요! 마이페이지에서 확인해보세요.");
-      });
-    } // if-else
+
+        var url = "http://localhost:8081/user-service/user/course/";
+        var data = {
+          title: finalTitle,
+          placeNameList: placeNameList,
+          placeAddressList: placeAddressList,
+          distanceList: distanceList,
+        }
+        var config = {
+          headers: {
+            Authorization: "Bearer "+userinfo.accessToken,
+          }
+        }
+        axios.post(url, data, config).then((res) => {
+          alert("코스를 저장했어요! 마이페이지에서 확인해보세요.");
+        });
+      } // if-else
+    }
   }; // save user course
 
   const clickCloseComponentBtn = (info) => {
-    setPoint(point.filter(point => point.name == info));
-    setPlaceNameList(placeNameList.filter(placeNameList => placeNameList[0] == info));
-    setPlaceAddressList(placeAddressList.filter(placeAddressList => placeAddressList[0] == info));
-    setDistanceList(distanceList.filter(distanceList => distanceList[0] == 1234567));
+    if (window.confirm("코스 만들기를 취소하시겠어요?")) {
+      setPoint(point.filter(point => point.name == info));
+      setPlaceNameList(placeNameList.filter(placeNameList => placeNameList[0] == info));
+      setPlaceAddressList(placeAddressList.filter(placeAddressList => placeAddressList[0] == info));
+      setDistanceList(distanceList.filter(distanceList => distanceList[0] == 1234567));
 
-    props.closeCourseComponent();
+      props.closeCourseComponent();
+    }
   }; // delete all point data
 
   const clickDeleteBtn = (info) => {
