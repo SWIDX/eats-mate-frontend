@@ -34,9 +34,10 @@ function TabMenu(props) {
 
     const tour = {
         0: '전체',
-        1: '문화시설',
-        2: '행사/공연/축제',
-        3: '쇼핑',
+        1: '관광지',
+        2: '문화시설',
+        3: '행사/공연/축제',
+        4: '쇼핑',
     };
 
     const onClickItem = async (item) => {
@@ -85,10 +86,10 @@ function TabMenu(props) {
 
     useEffect(() => {
         setData([]); // 초기화
-        
-        const selectedIdx = (searchInformation.value == '전체' ? 0 : searchInformation.value == '여행지' ? 1 : 2);
 
-        if (tabRef){
+        const selectedIdx = searchInformation.value == '전체' ? 0 : searchInformation.value == '여행지' ? 1 : 2;
+
+        if (tabRef) {
             switch (selectedIdx) {
                 case 0:
                     tabRef.firstElementChild.firstElementChild.click();
@@ -116,7 +117,7 @@ function TabMenu(props) {
 
     useEffect(() => {
         //console.log(searchInformation);
-    }, searchInformation);
+    }, [searchInformation]);
 
     const listConstructor = (items) => {
         if (items !== undefined) {
@@ -155,7 +156,7 @@ function TabMenu(props) {
     return (
         <>
             <Tabs
-                defaultIndex={(searchInformation.value == '전체' ? 0 : searchInformation.value == '음식점' ? 1 : 2)}
+                defaultIndex={searchInformation.value == '전체' ? 0 : searchInformation.value == '음식점' ? 1 : 2}
                 className={styles.tabs}
                 selectedTabClassName={styles.is_selected}
                 onSelect={(index) => {
@@ -163,7 +164,7 @@ function TabMenu(props) {
                         main: idx[index],
                     });
                 }}
-                domRef={(node) => tabRef = node}
+                domRef={(node) => (tabRef = node)}
             >
                 <TabList>
                     <Tab className={styles.tab}>전체</Tab>
@@ -209,11 +210,13 @@ function TabMenu(props) {
                     >
                         <TabList className={styles.subtab_list}>
                             <Tab className={styles.subtab_tour}>전체</Tab>
+                            <Tab className={styles.subtab_tour}>관광지</Tab>
                             <Tab className={styles.subtab_tour}>문화시설</Tab>
                             <Tab className={styles.subtab_tour}>행사/공연/축제</Tab>
                             <Tab className={styles.subtab_tour}>쇼핑</Tab>
                         </TabList>
                         <div className={styles.tabpanel}>
+                            <TabPanel>{listConstructor(tabData)}</TabPanel>
                             <TabPanel>{listConstructor(tabData)}</TabPanel>
                             <TabPanel>{listConstructor(tabData)}</TabPanel>
                             <TabPanel>{listConstructor(tabData)}</TabPanel>

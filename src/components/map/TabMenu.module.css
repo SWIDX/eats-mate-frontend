@@ -14,7 +14,7 @@
     transition: ease-in-out 0.1s;
 }
 .name:hover {
-    color: #E97869;
+    color: #e97869;
     transition: ease-in-out 0.1s;
 }
 
@@ -63,13 +63,13 @@
 .subtab_list > li {
     margin: auto auto;
 }
+
 .subtab_list > li:first-child {
-    margin-left: 15px;
+    margin-left: 3px;
 }
 .subtab_list > li:last-child {
-    margin-right: 15px;
+    margin-right: 3px;
 }
-
 .subtab_all {
     display: inline-block;
     position: relative;
