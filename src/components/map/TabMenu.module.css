@@ -36,7 +36,7 @@
     display: inline-block;
     position: relative;
     list-style: none;
-    padding: 11px 40.5px 18px;
+    padding: 11px 40px 18px;
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
@@ -65,10 +65,10 @@
 }
 
 .subtab_list > li:first-child {
-    margin-left: 3px;
+    margin-left: 9px;
 }
 .subtab_list > li:last-child {
-    margin-right: 3px;
+    margin-right: 9px;
 }
 .subtab_all {
     display: inline-block;
@@ -98,13 +98,14 @@
     background: white;
     margin-left: 1%;
     font-size: 15px;
+    letter-spacing: -0.04em;
 }
 
 .subtab_tour {
     display: inline-block;
     position: relative;
     list-style: none;
-    padding: 11px 13.5px 11px 12px;
+    padding: 11px 10px 11px 10px;
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
@@ -114,6 +115,7 @@
     margin-left: 1%;
     font-weight: bold;
     font-size: 15px;
+    letter-spacing: -0.04em;
 }
 
 .sub_is_selected {
