@@ -111,19 +111,20 @@ function RestInformationCard(props) {
                         {/* <div className={styles.cardTag}>광진구</div>  */}
                     </div>
 
-                    <div className={styles.cardImg}>
-                        {information.image != undefined ? (
-                            <>
-                                <img src={information.image[0]} alt="first pic" />
-                                <img src={information.image[1]} alt="second pic" />
-                                <img src={information.image[2]} alt="third pic" />
-                            </>
-                        ) : null}
-                    </div>
-
-                    <div className={styles.divSections}></div>
-
                     <div className={styles.cardMiddle}>
+
+                        <div className={styles.cardImg}>
+                            {information.image != undefined ? (
+                                <>
+                                    <img src={information.image[0]} alt="first pic" />
+                                    <img src={information.image[1]} alt="second pic" />
+                                    <img src={information.image[2]} alt="third pic" />
+                                </>
+                            ) : null}
+                        </div>
+
+                        <div className={styles.divSections}></div>
+
                         <div className={styles.addressInfo}>
                             <div className={styles.addressTop}>
                                 <div className={styles.top}>
