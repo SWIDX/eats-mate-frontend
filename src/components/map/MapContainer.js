@@ -3,12 +3,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Map, MapMarker, Circle, Polyline } from 'react-kakao-maps-sdk';
 import { MarkerContext } from '../../context/MarkerContext';
-import styles from './Map.module.css';
 
 const MapContainer = (props) => {
     const [state, setState] = useState({
         // 지도의 초기 위치
-        center: { lat: 37.56076811229905, lng: 126.93694098263262 },
+        center: { lat: 37.56530579495912, lng: 126.977418939994 },
         // 지도 위치 변경시 panto를 이용할지에 대해서 정의
         isPanto: true,
     });
@@ -17,10 +16,12 @@ const MapContainer = (props) => {
 
     //const [nearbyRest, setNearbyRest] = useState([]);
     const [currentMarker, setCurrentMarker] = useState([]);
-    const [information, setInformation] = useState();
+    const [clickMarkerInformation, setClickMarkerInformation] = useState(null);
     const [course, setCourse] = useState([]); // 사용자 맞춤 코스로 저장될 정보
     const [drawCourseLine, setDrawCourseLine] = useState(false);
     const markerInformation = useContext(MarkerContext);
+    const [level, setLevel] = useState(2);
+    const [radius, setRadius] = useState(5);
 
     useEffect(() => {
         setDrawCourseLine(false);
@@ -29,10 +30,52 @@ const MapContainer = (props) => {
         setDrawCourseLine(true);
     }, [props.courseLine]);
 
+
     const onClickMarker = (info) => {
-        alert("마커 클릭 이벤트 코드 작업 중");
-        //props.clickMarker(info);
+        setClickMarkerInformation(info);
     };
+
+    useEffect(() => {
+        props.clickMarker(clickMarkerInformation);
+        setClickMarkerInformation(null);
+    }, [clickMarkerInformation]);
+
+    const clearClickMarker = () => {
+        setClickMarkerInformation(null);
+    } // function to reset click marker data
+
+    /* to set circle radius with map level */
+    useEffect(() => {
+        switch (level) {
+            case 1:
+                setRadius(3);
+                break;
+            case 2:
+                setRadius(5);
+                break;
+            case 3:
+                setRadius(10);
+                break;
+            case 4:
+                setRadius(15);
+                break;
+            case 5:
+                setRadius(30);
+                break;
+            case 6:
+                setRadius(80);
+                break;
+            case 7:
+                setRadius(100);
+                break;
+            case 8:
+                setRadius(160);
+                break;
+            default:
+                setRadius(160);
+                break;
+          }
+    }, [level]);
 
     const markerConstructor = (info, imgSrc) => {
         const marker = (
@@ -54,9 +97,13 @@ const MapContainer = (props) => {
                         }, // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
                     },
                 }}
+                opacity={1}
                 clickable={true}
                 onClick={() => onClickMarker(info)}
-            ></MapMarker>
+                onMouseOver={(marker) => marker.setOpacity(0.5)}
+                onMouseOut={(marker) => marker.setOpacity(1)}
+            >
+            </MapMarker>
         );
         return marker;
     };
@@ -140,6 +187,7 @@ const MapContainer = (props) => {
                     height: 'calc(100vh - 75px)',
                 }}
                 level={2} // 지도의 확대 레벨
+                onZoomChanged={(map) => setLevel(map.getLevel())}
                 /*onCenterChanged={(map) =>
                     setState({
                         center: {
@@ -172,7 +220,7 @@ const MapContainer = (props) => {
                             lat: info.lat,
                             lng: info.lng,
                             }}
-                            radius={20}
+                            radius={radius}
                             strokeWeight={3} // 선의 두께입니다
                             strokeColor={"#000000"} // 선의 색깔
                             strokeOpacity={1} // 선의 불투명도
