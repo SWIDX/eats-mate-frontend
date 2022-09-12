@@ -337,7 +337,7 @@ function MapCourse(props) {
 
           {recommendation.map((o,i) => {
             return (<div className={styles.recommendBoxContent}>
-              <img className={styles.recommendBoxImg} src={o.represent_image} onClick={() => onClickRecommendCourse(o)} />
+              <img className={styles.recommendBoxImg} src={o.represent_image != "" ? o.represent_image : "/img/map-recommend/no-image.png"} onClick={() => onClickRecommendCourse(o)} />
               <div className={styles.recommendBoxName}>{o.name}</div>
               <div className={styles.recommendBoxDistance}>
                 <Pin className={styles.icon} />
