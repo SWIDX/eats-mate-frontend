@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
 import { ReactComponent as Copy } from '../../images/svg/copy.svg';
 import { ReactComponent as Address_pin } from '../../images/svg/address_pin.svg';
 import { ReactComponent as Clip } from '../../images/svg/clip.svg';
@@ -9,17 +8,16 @@ import { ReactComponent as Exit } from '../../images/svg/exit_button.svg';
 import { ReactComponent as Back } from '../../images/svg/back.svg';
 
 import styles from './TourInformationCard.module.css';
-import useCopyClipBoard from '../etc/useCopyClipBoard';
 
 function TourInformationCard(props) {
     const [onClose, setOnClose] = useState(false);
     const [information, setInformation] = useState({});
     const [type, setType] = useState();
-    const [isCopy, onCopy] = useCopyClipBoard();
     const [onDisplayNone, setOnDisplayNone] = useState(false);
 
     const handleCopyClipBoard = (text) => {
-        onCopy(text);
+        navigator.clipboard.writeText(text)
+        alert("복사되었습니다.")
     };
 
     useEffect(() => {
@@ -93,7 +91,7 @@ function TourInformationCard(props) {
                                                         className={styles.copyBtn}
                                                         onClick={() => handleCopyClipBoard(information.address)}
                                                     >
-                                                        주소복사 {isCopy && alert('복사성공')}
+                                                        주소복사
                                                     </button>
                                                 </div>
                                             </div>
@@ -127,7 +125,7 @@ function TourInformationCard(props) {
                                                         className={styles.copyBtn}
                                                         onClick={() => handleCopyClipBoard(information.homepage)}
                                                     >
-                                                        링크복사{isCopy && alert('복사성공')}
+                                                        링크복사
                                                     </button>
                                                 </div>
                                             </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// not working in tour info card
 const useCopyClipBoard = () => {
     const [isCopy, setIsCopy] = useState(false);
     const onCopy = async (text) => {
