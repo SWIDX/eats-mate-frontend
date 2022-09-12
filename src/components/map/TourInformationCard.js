@@ -27,6 +27,7 @@ function TourInformationCard(props) {
     useEffect(() => {
         setInformation(props.clickInformation.information);
         setType(props.clickInformation.type);
+        setOnDisplayNone(false); // 리스트 카드를 닫았더라도, 마커 클릭시에는 인포 카드가 보여지게 함
     }, [props.clickInformation]);
 
     const AddCourse = () => {
