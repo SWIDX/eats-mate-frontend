@@ -100,7 +100,7 @@ function RestInformationCard(props) {
                         <div className={styles.cardTagOuter}>
                             <span className={styles.cardName}>{information.name}</span>
 
-                            <div>
+                            <div style={{flexShrink: "0", margin: "3px auto auto auto"}}>
                                 <span className={styles.cardTag}>{information.gubun}</span>
                             </div>
                         </div>
