@@ -1,11 +1,9 @@
 .card {
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
     left: 15px;
     z-index: 30;
-    /*max-height: calc(100vh - 90px);*/
-    height: 75vh;
-    bottom: 14.5vh;
+    height: calc(100vh - 90px);
     /*overflow-y: scroll;*/
 }
 
@@ -26,15 +24,14 @@
 }
 
 .topOuter {
-    /*height: calc(100vh - 90px);*/
     position: relative;
-    top: 0px;
+    bottom: 0px;
     width: 380px;
+    height: calc(100vh - 90px);
     /*height: fit-content;*/
     border: 1px solid #e6e6e6;
     background-color: white;
     border-radius: 10px 10px 0px 0px;
-    padding-bottom: 5%;
 }
 
 .cardTop {
@@ -85,8 +82,8 @@
     max-width: 150px;
 }
 .cardMiddleOuter {
-    height: fit-content;
-    padding-bottom: 100px;
+    height: calc(100vh - 171px); /* 90px + 80px + 1px hr height */
+    /* padding-bottom: 100px; */
 }
 
 .cardMiddle {
@@ -94,13 +91,9 @@
     flex-direction: column;
     position: relative;
     width: 380px;
-    height: 410px;
     border-radius: 10px;
-    padding: 20px 24px 28px 24px;
-    height: fit-content;
+    padding: 20px 24px 100px 24px;
     align-items: flex-start;
-    overflow-y: scroll;
-    height: 10%;
     justify-content: space-around;
 }
 
@@ -127,7 +120,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
-    margin-bottom: 24px;
+    /* margin-bottom: 24px; */
     letter-spacing: -0.04em;
 }
 .overview_top {
@@ -141,6 +134,7 @@
     padding: 0;
     margin-top: 6px;
     margin-left: 24px;
+    margin-bottom: 24px;
     line-height: 20px;
     letter-spacing: -0.04em;
 }
@@ -154,7 +148,7 @@
     margin-bottom: 24px;
     line-height: 20px;
     overflow: scroll;
-    height: 140px;
+    max-height: 140px;
     line-height: 23px;
     letter-spacing: -0.04em;
 }
@@ -356,6 +350,7 @@
 
 .Buttons {
     position: fixed;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     padding: 0px 44px;
@@ -378,7 +373,7 @@
 
 .exitbutton {
     position: absolute;
-    top: 15px;
+    top: 24px;
     right: -44px;
     z-index: 28;
 }
@@ -444,7 +439,8 @@
 }
 
 .cardMiddleScroll {
-    height: 600px;
+    /* height: 600px; */
+    height: calc(100vh - 172px);
     overflow: scroll;
     overflow-x: hidden;
 }
