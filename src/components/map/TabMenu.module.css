@@ -50,7 +50,7 @@
 .is_selected {
     background: white;
     border-color: #aaa;
-    border-bottom: 2px solid #e97869;
+    border-bottom: 3px solid #e97869;
     font: bolder;
     color: #e97869;
 }
@@ -127,14 +127,14 @@
 .tabpanel {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: calc(100vh - 260px - 1rem);
+    height: calc(100vh - 261px - 1rem);
     width: 380px;
 }
 
 .tabpanel_all {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: calc(100vh - 220px);
+    height: calc(100vh - 221px);
     width: 380px;
 }
 
