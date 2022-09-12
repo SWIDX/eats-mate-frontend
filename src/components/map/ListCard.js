@@ -5,6 +5,7 @@ import { SearchContext } from '../../context/SearchContext';
 import RestInformationCard from './RestInformationCard';
 import TourInformationCard from './TourInformationCard';
 import { ReactComponent as Exit } from '../../images/svg/exit_button.svg';
+import axios from 'axios';
 
 function ListCard(props) {
     const [information, setInformation] = useState();
@@ -36,6 +37,35 @@ function ListCard(props) {
         //console.log(res);
         //props.getClickInformation(res);
     }; // click information props
+
+    const onClickItem = async (item) => {
+        let data = {};
+
+        if (item.type == '음식점') {
+            const url = 'http://localhost:8081/map-service/getRestInfo?id=';
+            data = await axios.get(url + item.id).then((res) => {
+                return res.data;
+            });
+        } else if (item.type == '여행지') {
+            const url = 'http://localhost:8081/map-service/getTourInfo?id=';
+            data = await axios.get(url + item.id).then((res) => {
+                return res.data;
+            });
+        }
+
+        if (data) {
+            setClickedInformation({
+                type: item.type,
+                information: data,
+            });
+        }
+    };
+
+    useEffect(() => {
+        if(props.markerInformation.information !== null) {
+            onClickItem(props.markerInformation);
+        } else {}
+    }, [props.markerInformation]);
 
     useEffect(() => {
         if (information != undefined) {
