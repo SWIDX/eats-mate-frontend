@@ -93,12 +93,19 @@ function MapPage() {
         setCourseNum(num);
     };
 
-    /* Marker Click Event */
+    /* Marker && Recommend Course Click Event */
     const clickMarker = (info) => {
         if(info !== null) {
             setClickMarkerInformation({information:info, type:info.type, id:info.id});
         }
     };
+
+    const clickRecommendCourse = (info) => {
+        if(info !== null) {
+            // Using the marker click function with(because of) the same action
+            setClickMarkerInformation({information:info, type:"여행지", id:info.tourId.content_id});
+        }
+    }
 
     const clearClickMarkerInfo = () => {
         setClickMarkerInformation({information:null, type:null, id:null});
@@ -175,6 +182,7 @@ function MapPage() {
                                 closeCourseComponent={closeCourseComponent}
                                 checkCourseNum={checkCourseNum}
                                 returnCourseNum={returnCourseNum}
+                                clickRecommendCourse={clickRecommendCourse}
                             />
                         ) : null}
                         <MapContainer

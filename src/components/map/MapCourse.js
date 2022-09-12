@@ -20,6 +20,7 @@ function MapCourse(props) {
   const [finalDistance, setFinalDistance] = useState();
   const [recommendation, setRecommendation] = useState([]);
   const [currentPos, setCurrentPos] = useState({});
+  const [clickRecommendCourse, setClickRecommendCourse] = useState(null);
   const dispatch = useDispatch();
 
   async function checkExp() {
@@ -146,8 +147,19 @@ function MapCourse(props) {
     return d;
   };
 
+  const onClickRecommendCourse = (info) => {
+    setClickRecommendCourse(info);
+
+  }
+
+  useEffect(() => {
+    props.clickRecommendCourse(clickRecommendCourse);
+    setClickRecommendCourse(null);
+}, [clickRecommendCourse]);
+
   useEffect(() => {
     if (props.point !== null) {
+      console.log(props.point.information);
       var checkName = placeNameList.find(function(data){ return data === (props.point.information.name)});
       if (checkName !== undefined) {
           alert("이미 추가된 경유지입니다.");
@@ -325,7 +337,7 @@ function MapCourse(props) {
 
           {recommendation.map((o,i) => {
             return (<div className={styles.recommendBoxContent}>
-              <img className={styles.recommendBoxImg} src={o.represent_image} />
+              <img className={styles.recommendBoxImg} src={o.represent_image} onClick={() => onClickRecommendCourse(o)} />
               <div className={styles.recommendBoxName}>{o.name}</div>
               <div className={styles.recommendBoxDistance}>
                 <Pin className={styles.icon} />
