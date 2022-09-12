@@ -69,82 +69,87 @@ function TourInformationCard(props) {
 
                             {/* <div className={styles.cardTag}>광진구</div>  */}
                         </div>
-                        <div>
+                        <div className={styles.cardMiddleOuter}>
                             <hr className={styles.line_hr} />
-                            {information.represent_image !== '' ? (
-                                <>
-                                    <div className={styles.cardImg}>
-                                        <img className={styles.tourImg} src={information.represent_image} />
-                                    </div>
-                                    <div className={styles.divSections}></div>
-                                </>
-                            ) : null}
-                            <div>
-                                <div className={styles.divSections}></div>
-                                <div className={styles.cardMiddle}>
-                                    <div className={styles.addressInfo}>
-                                        <div className={styles.addressTop_tour}>
-                                            <div className={styles.top}>
-                                                <Address_pin /> <div>주소</div>
+                            <div className={styles.cardMiddleScroll}>
+                                {information.represent_image !== '' ? (
+                                    <>
+                                        <div className={styles.cardImg}>
+                                            <img className={styles.tourImg} src={information.represent_image} />
+                                        </div>
+                                        <div className={styles.divSections}></div>
+                                    </>
+                                ) : null}
+                                <div>
+                                    <div className={styles.cardMiddle}>
+                                        <div className={styles.addressInfo}>
+                                            <div className={styles.addressTop_tour}>
+                                                <div className={styles.top}>
+                                                    <Address_pin /> <div>주소</div>
+                                                </div>
+                                                <div className={styles.bottom}>
+                                                    <Copy />
+                                                    <button
+                                                        className={styles.copyBtn}
+                                                        onClick={() => handleCopyClipBoard(information.address)}
+                                                    >
+                                                        주소복사 {isCopy && alert('복사성공')}
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div className={styles.bottom}>
-                                                <Copy />
-                                                <button className={styles.copyBtn} onClick={() => handleCopyClipBoard(information.address)}>
-                                                    주소복사 {isCopy && alert('복사성공')}
-                                                </button>
+
+                                            <div className={styles.addressDetail}>{information.address}</div>
+                                        </div>
+                                        <div className={styles.overviewInfo}>
+                                            <div className={styles.overview_top}>
+                                                <Paper className={styles.copy} /> <div className={styles.overview_name}>장소소개</div>
+                                            </div>
+                                            <div className={styles.overviewDetail}>
+                                                {information.overview == undefined ? (
+                                                    '세부 정보가 없습니다'
+                                                ) : (
+                                                    <div
+                                                        className={styles.overviewDetail2}
+                                                        dangerouslySetInnerHTML={{ __html: information.overview }}
+                                                    ></div>
+                                                )}
                                             </div>
                                         </div>
 
-                                        <div className={styles.addressDetail}>{information.address}</div>
-                                    </div>
-                                    <div className={styles.overviewInfo}>
-                                        <div className={styles.overview_top}>
-                                            <Paper className={styles.copy} /> <div className={styles.overview_name}>장소소개</div>
-                                        </div>
-                                        <div className={styles.overviewDetail}>
-                                            {information.overview == undefined ? (
-                                                '세부 정보가 없습니다'
-                                            ) : (
-                                                <div
-                                                    className={styles.overviewDetail2}
-                                                    dangerouslySetInnerHTML={{ __html: information.overview }}
-                                                ></div>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div className={styles.addressInfo}>
-                                        <div className={styles.addressTop_tour}>
-                                            <div className={styles.top}>
-                                                <Clip className={styles.copy} /> <div className={styles.overview_name}>홈페이지</div>
+                                        <div className={styles.addressInfo}>
+                                            <div className={styles.addressTop_tour}>
+                                                <div className={styles.top}>
+                                                    <Clip className={styles.copy} /> <div className={styles.overview_name}>홈페이지</div>
+                                                </div>
+                                                <div className={styles.bottom_2}>
+                                                    <Copy />
+                                                    <button
+                                                        className={styles.copyBtn}
+                                                        onClick={() => handleCopyClipBoard(information.homepage)}
+                                                    >
+                                                        링크복사{isCopy && alert('복사성공')}
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div className={styles.bottom_2}>
-                                                <Copy />
-                                                <button
-                                                    className={styles.copyBtn}
-                                                    onClick={() => handleCopyClipBoard(information.homepage)}
-                                                >
-                                                    링크복사{isCopy && alert('복사성공')}
-                                                </button>
+                                            <div className={styles.overviewDetail}>
+                                                {information.homepage == undefined ? '홈페이지 정보가 없습니다' : information.homepage}
                                             </div>
                                         </div>
-                                        <div className={styles.overviewDetail}>
-                                            {information.homepage == undefined ? '홈페이지 정보가 없습니다' : information.homepage}
-                                        </div>
-                                    </div>
-                                    <div className={styles.tourapi_outer}>
-                                        <div>
-                                            <TourApi className={styles.tourapi} />
+                                        <div className={styles.tourapi_outer}>
+                                            <div>
+                                                <TourApi className={styles.tourapi} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className={styles.Buttons}>
-                            <button className={styles.AddCourseBtn} onClick={() => AddCourse()}>
-                                나의 코스에 추가하기
-                            </button>
-                            {/*<img alt="add course btn" src="/img/addCourseBtn.png" height="50px" onClick={() => AddCourse()} />*/}
+
+                            <div className={styles.Buttons}>
+                                <button className={styles.AddCourseBtn} onClick={() => AddCourse()}>
+                                    나의 코스에 추가하기
+                                </button>
+                                {/*<img alt="add course btn" src="/img/addCourseBtn.png" height="50px" onClick={() => AddCourse()} />*/}
+                            </div>
                         </div>
                     </div>
                 </div>

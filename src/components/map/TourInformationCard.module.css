@@ -3,7 +3,9 @@
     bottom: 0px;
     left: 15px;
     z-index: 30;
-    max-height: calc(100vh - 90px);
+    /*max-height: calc(100vh - 90px);*/
+    height: 75vh;
+    bottom: 14.5vh;
     /*overflow-y: scroll;*/
 }
 
@@ -12,30 +14,27 @@
     bottom: 0px;
     left: 15px;
     z-index: 30;
-    max-height: calc(100vh - 90px);
+    height: 75vh;
+    bottom: 16vh;
+    /*max-height: calc(100vh - 90px);*/
     display: none;
 }
 
 .card_outer {
     display: flex;
-}
-
-.card::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
-}
-
-.card > div {
-    position: relative;
-    top: 0px;
-    width: 380px;
     height: fit-content;
-    border: 1px solid #e6e6e6;
-    background-color: white;
-    border-radius: 10px 10px 0px 0px;
 }
 
 .topOuter {
-    height: calc(100vh - 90px);
+    /*height: calc(100vh - 90px);*/
+    position: relative;
+    top: 0px;
+    width: 380px;
+    /*height: fit-content;*/
+    border: 1px solid #e6e6e6;
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
+    padding-bottom: 5%;
 }
 
 .cardTop {
@@ -85,6 +84,10 @@
     object-fit: cover;
     max-width: 150px;
 }
+.cardMiddleOuter {
+    height: fit-content;
+    padding-bottom: 100px;
+}
 
 .cardMiddle {
     display: flex;
@@ -93,7 +96,7 @@
     width: 380px;
     height: 410px;
     border-radius: 10px;
-    padding: 0px 24px 28px 24px;
+    padding: 20px 24px 28px 24px;
     height: fit-content;
     align-items: flex-start;
     overflow-y: scroll;
@@ -124,6 +127,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 16px;
+    margin-bottom: 24px;
     letter-spacing: -0.04em;
 }
 .overview_top {
@@ -354,12 +358,13 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    padding: 44px 44px;
+    padding: 0px 44px;
+    padding-bottom: 22px;
 }
 
 .DetailButton {
-    position: fixed;
-    bottom: 75px;
+    /*position: fixed;
+    bottom: 75px;*/
     width: 280px;
     height: 50px;
     background: #e97869;
@@ -389,8 +394,8 @@
 }
 
 .AddCourseBtn {
-    position: fixed;
-    bottom: 15px;
+    /*position: fixed;
+    bottom: 15px;*/
     width: 280px;
     height: 50px;
     background: white;
@@ -418,7 +423,7 @@
 
 .tourapi_outer {
     display: flex;
-    margin-bottom: 70px;
+    /*margin-bottom: 70px;*/
 }
 .tourapi {
     margin-top: 10px;
@@ -436,4 +441,14 @@
 .backBtn > button {
     border: solid 0px white;
     background: white;
+}
+
+.cardMiddleScroll {
+    height: 600px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.cardMiddleScroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
 }
