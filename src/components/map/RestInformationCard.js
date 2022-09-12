@@ -10,7 +10,7 @@ import { ReactComponent as Back } from '../../images/svg/back.svg';
 import styles from './RestInformationCard.module.css';
 import useCopyClipBoard from '../etc/useCopyClipBoard';
 import LikeButton from '../like/LikeButton';
-import ReviewCounter from "../review/ReviewCounter";
+import ReviewCounter from '../review/ReviewCounter';
 
 import axios from 'axios';
 import Review from '../mypage/Review';
@@ -29,20 +29,19 @@ function RestInformationCard(props) {
 
     async function getReviewRate() {
         try {
-        const res = await axios.get("http://localhost:8081/review-service/review/count?place_name=" + information.name);
-        setRateList(res.data);
-        } catch(e){
-        throw e;
+            const res = await axios.get('http://localhost:8081/review-service/review/count?place_name=' + information.name);
+            setRateList(res.data);
+        } catch (e) {
+            throw e;
         }
     }
 
     async function getUserReview() {
         try {
-            const res = await axios.get("http://localhost:8081/review-service/review/?place_name=" + information.name + "&amount=" + 2,
-            );
-            res.data.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
+            const res = await axios.get('http://localhost:8081/review-service/review/?place_name=' + information.name + '&amount=' + 2);
+            res.data.forEach((e, i) => (res.data[i].createdBy = e.createdBy.replaceAll('-', '. ')));
             setReviewList(res.data);
-        } catch(e){
+        } catch (e) {
             throw e;
         }
     }
@@ -113,9 +112,13 @@ function RestInformationCard(props) {
                     </div>
 
                     <div className={styles.cardImg}>
-                        <img src="/img/emonga.jpeg" alt="first pic" />
-                        <img src="/img/emonga.jpeg" alt="second pic" />
-                        <img src="/img/emonga.jpeg" alt="third pic" />
+                        {information.image != undefined ? (
+                            <>
+                                <img src={information.image[0]} alt="first pic" />
+                                <img src={information.image[1]} alt="second pic" />
+                                <img src={information.image[2]} alt="third pic" />
+                            </>
+                        ) : null}
                     </div>
 
                     <div className={styles.divSections}></div>
@@ -171,23 +174,24 @@ function RestInformationCard(props) {
                                     <span className={styles.reviewcount}>{reviewList.length}건</span>
                                 </div>
                                 <div className={styles.more}>
-                                    <button className={styles.morebtn} onClick={() => {navigate("/detail/" + information.name)}}>더보기 {'>'}</button>
+                                    <button
+                                        className={styles.morebtn}
+                                        onClick={() => {
+                                            navigate('/detail/' + information.name);
+                                        }}
+                                    >
+                                        더보기 {'>'}
+                                    </button>
                                 </div>
                             </li>
 
                             <div className={styles.totalReviews}>
-                                <ReviewCounter
-                                    rateVal={rateList}
-                                />
+                                <ReviewCounter rateVal={rateList} />
                             </div>
                             <div className={styles.DetailReviews}>
-                            {reviewList.map((o, i) =>
-                                <Review
-                                    review={o}
-                                    mypageMode={false}
-                                    mappageMode={true}
-                                />
-                            )}
+                                {reviewList.map((o, i) => (
+                                    <Review review={o} mypageMode={false} mappageMode={true} />
+                                ))}
                             </div>
                         </div>
                     </div>
