@@ -12,18 +12,32 @@ function MainPage() {
   const isPc = useMediaQuery({ query: "(min-width:426px)" });
   const isMobile = useMediaQuery({ query: "(max-width:426px)" });
 
-  const testData = [
+  const pcCarouselData = [
     {
       image: "img/main-carousel/main-carousel-1.png",
-      link: "/about"
+      link: "/map"
     },
     {
       image: "img/main-carousel/main-carousel-2.png",
-      link: "/map-service/main"
+      link: "/about"
     },
     {
-      image: "img/slideImg1.png",
-      link: "/mypage"
+      image: "img/main-carousel/main-carousel-3.png",
+      link: "/detail/성수완당 본점"
+    }
+  ];
+  const mobileCarouselData = [
+    {
+      image: "img/main-carousel/main-carousel-mobile-1.png",
+      link: "/map"
+    },
+    {
+      image: "img/main-carousel/main-carousel-mobile-2.png",
+      link: "/about"
+    },
+    {
+      image: "img/main-carousel/main-carousel-mobile-3.png",
+      link: "/detail/성수완당 본점"
     }
   ];
 
@@ -33,7 +47,7 @@ function MainPage() {
       {isMobile && <MobileNavBar />}
       {isPc &&
       <Carousel
-        dataList={testData}
+        dataList={pcCarouselData}
         outerViewWidth={"900px"}
         outerViewHeight={"400px"}
         imageWidth={"100%"}
@@ -49,7 +63,7 @@ function MainPage() {
       }
       {isMobile &&
       <MobileCarousel
-        dataList={testData}
+        dataList={mobileCarouselData}
         width={"90vw"}
         height={"50vw"}
         imageRadius={15}
