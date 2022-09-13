@@ -88,13 +88,14 @@
 
 .cardImg {
     display: flex;
-    padding: 24px 32px;
+    padding: 24px 15px;
 }
 
 .cardImg > img {
     align-items: center;
     margin: auto auto;
     width: 93px;
+    height: 93px;
     border-radius: 10px;
     object-fit: cover;
 }
