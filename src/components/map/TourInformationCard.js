@@ -14,6 +14,7 @@ function TourInformationCard(props) {
     const [information, setInformation] = useState({});
     const [type, setType] = useState();
     const [onDisplayNone, setOnDisplayNone] = useState(false);
+    const [onCloseOverlay, setOnCloseOverlay] = useState(false);
 
     const handleCopyClipBoard = (text) => {
         navigator.clipboard.writeText(text)
@@ -38,6 +39,24 @@ function TourInformationCard(props) {
             props.clickAddCourse(props.clickInformation);
         }
     };
+
+    const onClickBackBtn = () => {
+        setOnClose(true);
+        setOnCloseOverlay(true);
+    };
+
+    const onClickExitBtn = () => {
+        setOnDisplayNone(true);
+        setOnCloseOverlay(true);
+    };
+
+    useEffect(() => {
+        if(onCloseOverlay == true) {
+            props.closeOverlay(onCloseOverlay);
+        }
+        setOnCloseOverlay(false); // reset data
+    }, [onCloseOverlay]);
+    
     return (
         <>
             <div className={styles.card_outer}>
@@ -47,7 +66,7 @@ function TourInformationCard(props) {
                             <div className={styles.backBtn}>
                                 <button
                                     onClick={() => {
-                                        setOnClose(true);
+                                        onClickBackBtn();
                                     }}
                                 >
                                     <Back />
@@ -59,7 +78,7 @@ function TourInformationCard(props) {
                             <div className={styles.exitbutton}>
                                 <button
                                     onClick={() => {
-                                        setOnDisplayNone(true);
+                                        onClickExitBtn();
                                     }}
                                 >
                                     <Exit />

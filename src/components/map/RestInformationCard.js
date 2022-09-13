@@ -22,6 +22,7 @@ function RestInformationCard(props) {
     const [type, setType] = useState();
     const [isCopy, onCopy] = useCopyClipBoard();
     const [onDisplayNone, setOnDisplayNone] = useState(false);
+    const [onCloseOverlay, setOnCloseOverlay] = useState(false);
 
     // 리뷰
     const [reviewList, setReviewList] = useState([]);
@@ -75,6 +76,23 @@ function RestInformationCard(props) {
         }
     };
 
+    const onClickBackBtn = () => {
+        setOnClose(true);
+        setOnCloseOverlay(true);
+    };
+
+    const onClickExitBtn = () => {
+        setOnDisplayNone(true);
+        setOnCloseOverlay(true);
+    };
+
+    useEffect(() => {
+        if(onCloseOverlay == true) {
+            props.closeOverlay(onCloseOverlay);
+        }
+        setOnCloseOverlay(false); // reset data
+    }, [onCloseOverlay]);
+
     return (
         <div className={styles.card_outer}>
             <div className={onDisplayNone === true ? styles.card_display : styles.card}>
@@ -82,7 +100,7 @@ function RestInformationCard(props) {
                     <div className={styles.exitbutton}>
                         <button
                             onClick={() => {
-                                setOnDisplayNone(true);
+                                onClickExitBtn();
                             }}
                         >
                             <Exit />
@@ -92,7 +110,7 @@ function RestInformationCard(props) {
                         <div className={styles.backBtn}>
                             <button
                                 onClick={() => {
-                                    setOnClose(true);
+                                    onClickBackBtn();
                                 }}
                             >
                                 <Back />
