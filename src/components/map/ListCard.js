@@ -8,6 +8,7 @@ import { ReactComponent as Exit } from '../../images/svg/exit_button.svg';
 import axios from 'axios';
 
 function ListCard(props) {
+    const SERVER_IP = "43.200.16.191"
     const [information, setInformation] = useState();
     const [onClose, setOnClose] = useState(true);
     const { searchInformation } = useContext(SearchContext);
@@ -49,12 +50,12 @@ function ListCard(props) {
         let data = {};
 
         if (item.type == '음식점') {
-            const url = 'http://localhost:8081/map-service/getRestInfo?id=';
+            const url = 'http://' + SERVER_IP + ':8081/map-service/getRestInfo?id=';
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });
         } else if (item.type == '여행지') {
-            const url = 'http://localhost:8081/map-service/getTourInfo?id=';
+            const url = 'http://' + SERVER_IP + ':8081/map-service/getTourInfo?id=';
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });

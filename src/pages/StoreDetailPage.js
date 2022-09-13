@@ -14,6 +14,7 @@ import { useMediaQuery } from "react-responsive"
 import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function StoreDetailPage(){
+    const SERVER_IP = "43.200.16.191"
     const userinfo = useSelector((state) => state.userReducer.userinfo)
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -33,7 +34,7 @@ function StoreDetailPage(){
   
     async function getStoreDetail() {
       try {
-        const res = await axios.get("http://localhost:8081/map-service/findByName/?name=" + placeName);
+        const res = await axios.get("http://" + SERVER_IP + ":8081/map-service/findByName/?name=" + placeName);
         setInformation(res.data)
       } catch(e){
         console.log(e)
@@ -60,7 +61,7 @@ function StoreDetailPage(){
           // invalid
           console.log("*** ACCESS TOKEN OUTDATED ***")
           try {
-            const res = await axios.get("http://localhost:8081/user-service/auth/reissue",
+            const res = await axios.get("http://" + SERVER_IP + ":8081/user-service/auth/reissue",
               {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
               }
@@ -92,7 +93,7 @@ function StoreDetailPage(){
     async function logOut() {
       // logout
       try {
-        const res = await axios.delete("http://localhost:8081/user-service/auth/logout",
+        const res = await axios.delete("http://" + SERVER_IP + ":8081/user-service/auth/logout",
             {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
             }

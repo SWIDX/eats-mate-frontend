@@ -9,6 +9,7 @@ import { SearchContext } from '../../context/SearchContext';
 import { MarkerContext } from '../../context/MarkerContext';
 
 function TabMenu(props) {
+    const SERVER_IP = "43.200.16.191"
     const [selectedTab, setSelectedTab] = useState();
     const [tabData, setTabData] = useState([]);
     const [data, setData] = useState();
@@ -44,12 +45,12 @@ function TabMenu(props) {
         let data = {};
 
         if (item.type == '음식점') {
-            const url = 'http://localhost:8081/map-service/getRestInfo?id=';
+            const url = 'http://' + SERVER_IP + ':8081/map-service/getRestInfo?id=';
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });
         } else if (item.type == '여행지') {
-            const url = 'http://localhost:8081/map-service/getTourInfo?id=';
+            const url = 'http://' + SERVER_IP + ':8081/map-service/getTourInfo?id=';
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });

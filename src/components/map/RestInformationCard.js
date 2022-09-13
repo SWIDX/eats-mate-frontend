@@ -16,6 +16,7 @@ import axios from 'axios';
 import Review from '../mypage/Review';
 
 function RestInformationCard(props) {
+    const SERVER_IP = "43.200.16.191"
     const navigate = useNavigate();
     const [onClose, setOnClose] = useState(false);
     const [information, setInformation] = useState({});
@@ -30,7 +31,7 @@ function RestInformationCard(props) {
 
     async function getReviewRate() {
         try {
-            const res = await axios.get('http://localhost:8081/review-service/review/count?place_name=' + information.name);
+            const res = await axios.get('http://' + SERVER_IP + ':8081/review-service/review/count?place_name=' + information.name);
             setRateList(res.data);
         } catch (e) {
             throw e;
@@ -39,7 +40,7 @@ function RestInformationCard(props) {
 
     async function getUserReview() {
         try {
-            const res = await axios.get('http://localhost:8081/review-service/review/?place_name=' + information.name + '&amount=' + 2);
+            const res = await axios.get('http://' + SERVER_IP + ':8081/review-service/review/?place_name=' + information.name + '&amount=' + 2);
             res.data.forEach((e, i) => (res.data[i].createdBy = e.createdBy.replaceAll('-', '. ')));
             setReviewList(res.data);
         } catch (e) {

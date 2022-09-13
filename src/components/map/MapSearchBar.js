@@ -4,6 +4,7 @@ import styles from './Map.module.css';
 import { SearchContext } from '../../context/SearchContext';
 
 const MapSearchBar = (props) => {
+    const SERVER_IP = "43.200.16.191"
     const [inputText, setInputText] = useState('');
     const [selectValue, setSelectValue] = useState('전체');
     const [information, setInformation] = useState([]); // data(restaurant, tour)
@@ -61,7 +62,7 @@ const MapSearchBar = (props) => {
     }
 
     async function getSearchResult() {
-        const url = 'http://localhost:8081/map-service/getAllData?keyword=';
+        const url = 'http://' + SERVER_IP + ':8081/map-service/getAllData?keyword=';
         let data = await axios.get(url + inputText).then((res) => {
             if (res.data) {
                 return res.data;

@@ -7,6 +7,7 @@ import { changeUserInfo } from '../../_actions/user_action';
 import { useNavigate } from "react-router-dom";
 
 function LogoutButton() {
+    const SERVER_IP = "43.200.16.191"
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -14,7 +15,7 @@ function LogoutButton() {
         if (window.confirm('정말로 로그아웃 하시겠습니까?')) {
             // logout
             try{
-                const res = await axios.delete("http://localhost:8081/user-service/auth/logout",
+                const res = await axios.delete("http://" + SERVER_IP + ":8081/user-service/auth/logout",
                     {
                         withCredentials: true // Set-Cookie 작동을 위해 필수
                     }

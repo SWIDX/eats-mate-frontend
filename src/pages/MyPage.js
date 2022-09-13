@@ -15,6 +15,7 @@ import { useMediaQuery } from "react-responsive"
 import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function MyPage() {
+  const SERVER_IP = "43.200.16.191"
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userinfo = useSelector((state) => state.userReducer.userinfo)
@@ -57,7 +58,7 @@ function MyPage() {
         // invalid
         console.log("*** ACCESS TOKEN OUTDATED ***")
         try {
-          const res = await axios.get("http://localhost:8081/user-service/auth/reissue",
+          const res = await axios.get("http://" + SERVER_IP + ":8081/user-service/auth/reissue",
             {
               withCredentials: true // Set-Cookie 작동을 위해 필수
             }
@@ -110,7 +111,7 @@ function MyPage() {
   async function logOut() {
     // logout
     try {
-      const res = await axios.delete("http://localhost:8081/user-service/auth/logout",
+      const res = await axios.delete("http://" + SERVER_IP + ":8081/user-service/auth/logout",
           {
               withCredentials: true // Set-Cookie 작동을 위해 필수
           }
@@ -137,7 +138,7 @@ function MyPage() {
 
   async function runTest() {
     try{
-      const res = await axios.post("http://localhost:8081/user-service/user/course/",
+      const res = await axios.post("http://" + SERVER_IP + ":8081/user-service/user/course/",
         {
           title: "test title",
           placeNameList: [ "성수완당", "sdfg", "dgfh" ], /* temp */
@@ -155,7 +156,7 @@ function MyPage() {
 
   async function getUserCourse() {
     try{
-      const res = await axios.get("http://localhost:8081/user-service/user/course/all",
+      const res = await axios.get("http://" + SERVER_IP + ":8081/user-service/user/course/all",
         { //header
             headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
         }
@@ -173,7 +174,7 @@ function MyPage() {
 
   async function getUserLike() {
     try {
-      const res = await axios.get("http://localhost:8081/user-service/user/like/all",
+      const res = await axios.get("http://" + SERVER_IP + ":8081/user-service/user/like/all",
         { //header
             headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
         }
@@ -189,7 +190,7 @@ function MyPage() {
     if (window.confirm('정말로 삭제하시겠어요?')) {
       
       try {
-        const res = await axios.delete("http://localhost:8081/user-service/user/course/" + id,
+        const res = await axios.delete("http://" + SERVER_IP + ":8081/user-service/user/course/" + id,
           { //header
               headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
           }
@@ -229,7 +230,7 @@ function MyPage() {
   async function deleteLike(id) {
     if (window.confirm('정말로 삭제하시겠어요?')) {
       try {
-        const res = await axios.delete("http://localhost:8081/review-service/review/" + id,
+        const res = await axios.delete("http://" + SERVER_IP + ":8081/review-service/review/" + id,
           { //header
               headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
           }
@@ -252,7 +253,7 @@ function MyPage() {
   async function deleteReview(id) {
     if (window.confirm('정말로 삭제하시겠어요?')) {
       try {
-        const res = await axios.delete("http://localhost:8081/review-service/review/" + id,
+        const res = await axios.delete("http://" + SERVER_IP + ":8081/review-service/review/" + id,
           { //header
               headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
           }
@@ -268,7 +269,7 @@ function MyPage() {
 
   async function getUserReview() {
     try {
-      const res = await axios.get("http://localhost:8081/review-service/review/user",
+      const res = await axios.get("http://" + SERVER_IP + ":8081/review-service/review/user",
         { //header
             headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
         }

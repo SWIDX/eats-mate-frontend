@@ -5,12 +5,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 function Like(props) {
+    const SERVER_IP = "43.200.16.191"
     const userinfo = useSelector((state) => state.userReducer.userinfo)
     const navigate = useNavigate();
 
     async function requestDelete() {
         try {
-            const res = await axios.delete("http://localhost:8081/user-service/user/like/" + props.like.id,
+            const res = await axios.delete("http://" + SERVER_IP + ":8081/user-service/user/like/" + props.like.id,
                 { //header
                     headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
                 }

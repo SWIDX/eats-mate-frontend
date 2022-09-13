@@ -11,7 +11,7 @@ import { changeUserInfo, reissueJWT } from '../../_actions/user_action';
 import { CustomOverlayMap } from 'react-kakao-maps-sdk';
 
 function MapCourse(props) {
-
+  const SERVER_IP = "43.200.16.191"
   const userinfo = useSelector((state) => state.userReducer.userinfo);
   const [point, setPoint] = useState([]);
   const [title, setTitle] = useState();
@@ -36,7 +36,7 @@ function MapCourse(props) {
         // invalid
         console.log("*** ACCESS TOKEN OUTDATED ***")
         try {
-            const res = await axios.get("http://localhost:8081/user-service/auth/reissue",
+            const res = await axios.get("http://" + SERVER_IP + ":8081/user-service/auth/reissue",
             {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
             }
@@ -68,7 +68,7 @@ function MapCourse(props) {
   async function logOut() {
     // logout
     try {
-      const res = await axios.delete("http://localhost:8081/user-service/auth/logout",
+      const res = await axios.delete("http://" + SERVER_IP + ":8081/user-service/auth/logout",
         {
             withCredentials: true // Set-Cookie 작동을 위해 필수
         }
@@ -92,7 +92,7 @@ function MapCourse(props) {
           finalTitle = title;
         }
 
-        var url = "http://localhost:8081/user-service/user/course/";
+        var url = "http://" + SERVER_IP + ":8081/user-service/user/course/";
         var data = {
           title: finalTitle,
           placeNameList: placeNameList,
@@ -194,7 +194,7 @@ function MapCourse(props) {
 
   async function getRecommendation() {
     try {
-      const res = await axios.get("http://localhost:8081/map-service/tour-information/findByNearby?"
+      const res = await axios.get("http://" + SERVER_IP + ":8081/map-service/tour-information/findByNearby?"
         + "lat=" + props.point.information.lat
         + "&lng=" + props.point.information.lng
         + "&dist=" + 3 // 3km
