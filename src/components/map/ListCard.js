@@ -12,7 +12,9 @@ function ListCard(props) {
     const [onClose, setOnClose] = useState(true);
     const { searchInformation } = useContext(SearchContext);
     const [courseNum, setCourseNum] = useState();
+    const [overlayLatLng, setOverlayLatLng] = useState({lat:null, lng:null, name:null});
     const [onDisplayNone, setOnDisplayNone] = useState(false);
+    const [onCloseOverlay, setOnCloseOverlay] = useState(false);
 
     const mouseOver = (e) => {
         e.preventDefault();
@@ -34,9 +36,14 @@ function ListCard(props) {
 
     const setClickedInformation = (res) => {
         setInformation(res);
+        setOverlayLatLng({lat:res.information.lat, lng:res.information.lng, name:res.information.name});
         //console.log(res);
         //props.getClickInformation(res);
     }; // click information props
+
+    useEffect(() => {
+        props.getOverlayLatLng(overlayLatLng);
+    }, [overlayLatLng]);
 
     const onClickItem = async (item) => {
         let data = {};
@@ -85,6 +92,7 @@ function ListCard(props) {
         if (props.listInformation) {
             setOnClose(true);
             setOnDisplayNone(false);
+            setOnCloseOverlay(true); /* list reset, close overlay */
         }
     }, [props.listInformation]);
 
@@ -97,6 +105,17 @@ function ListCard(props) {
     const checkCourseNum = () => {
         props.checkCourseNum();
     };
+
+    const closeOverlay = (info) => {
+        setOnCloseOverlay(info);
+    };
+
+    useEffect(() => {
+        if(onCloseOverlay == true) {
+            props.closeOverlay(onCloseOverlay);
+        }
+        setOnCloseOverlay(false); // reset data
+    }, [onCloseOverlay]);
 
     return (
         <>
@@ -135,6 +154,7 @@ function ListCard(props) {
                         clickAddCourse={clickAddCourse}
                         checkCourseNum={checkCourseNum}
                         courseNum={courseNum}
+                        closeOverlay={closeOverlay}
                     />
                 </>
             ) : (
@@ -145,6 +165,7 @@ function ListCard(props) {
                         clickAddCourse={clickAddCourse}
                         checkCourseNum={checkCourseNum}
                         courseNum={courseNum}
+                        closeOverlay={closeOverlay}
                     />
                 </>
             )}
