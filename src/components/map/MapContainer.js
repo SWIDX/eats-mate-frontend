@@ -1,8 +1,9 @@
 /* global kakao */
 
 import React, { useEffect, useState, useContext } from 'react';
-import { Map, MapMarker, Circle, Polyline } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, Circle, Polyline, CustomOverlayMap } from 'react-kakao-maps-sdk';
 import { MarkerContext } from '../../context/MarkerContext';
+import styles from './Map.module.css';
 
 const MapContainer = (props) => {
     const [state, setState] = useState({
@@ -22,6 +23,9 @@ const MapContainer = (props) => {
     const markerInformation = useContext(MarkerContext);
     const [level, setLevel] = useState(2);
     const [radius, setRadius] = useState(5);
+    const [customOverlayOpen, setCustomOverlayOpen] = useState(false);
+    const [overlayLatLng, setOverlayLatLng] = useState({lat:null, lng:null, name:null});
+    const [onCloseOverlay, setOnCloseOverlay] = useState(false);
 
     useEffect(() => {
         setDrawCourseLine(false);
@@ -33,6 +37,7 @@ const MapContainer = (props) => {
 
     const onClickMarker = (info) => {
         setClickMarkerInformation(info);
+        setOverlayLatLng({lat:info.lat, lng:info.lng, name:info.name});
     };
 
     useEffect(() => {
@@ -43,6 +48,24 @@ const MapContainer = (props) => {
     const clearClickMarker = () => {
         setClickMarkerInformation(null);
     } // function to reset click marker data
+
+    useEffect(() => {
+        if(props.overlayLatLng.lat !== null) {
+            setOverlayLatLng({lat:props.overlayLatLng.lat, lng:props.overlayLatLng.lng, name:props.overlayLatLng.name});
+        }
+    }, [props.overlayLatLng]);
+
+    useEffect(() => {
+        if(overlayLatLng.lat !== null) {
+            setCustomOverlayOpen(true);
+        }
+    }, [overlayLatLng]);
+
+    useEffect(() => {
+        if(props.onCloseOverlay == true) {
+            setCustomOverlayOpen(false);
+        }
+    }, [props.onCloseOverlay]);
 
     /* to set circle radius with map level */
     useEffect(() => {
@@ -229,6 +252,20 @@ const MapContainer = (props) => {
                             fillOpacity={1} // 채우기 불투명
                     />
                     ))}
+
+                {customOverlayOpen === true ?
+                    <CustomOverlayMap
+                        position={{
+                            lat:overlayLatLng.lat,
+                            lng:overlayLatLng.lng
+                        }}>
+                        <div>
+                            <div className={styles.customOverlay}>
+                                {overlayLatLng.name}
+                            </div>
+                        </div>
+                    </CustomOverlayMap>
+                : null}
 
             </Map>
         </>
