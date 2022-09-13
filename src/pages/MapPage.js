@@ -33,6 +33,8 @@ function MapPage() {
     const [searchInformation, setSearchInformation] = useState({ info: [], value: '', text: '' });
     const [markerInformation, setMarkerInformation] = useState({ marker: [] });
     const [clickMarkerInformation, setClickMarkerInformation] = useState({information:null, type:null, id:null}); // information value from marker click event
+    const [overlayLatLng, setOverlayLatLng] = useState({lat:null, lng:null, name:null});
+    const [onCloseOverlay, setOnCloseOverlay] = useState(false);
 
     const getClickInfo = (info) => {
         setClickInformation(info);
@@ -111,6 +113,23 @@ function MapPage() {
         setClickMarkerInformation({information:null, type:null, id:null});
     }
 
+    const getOverlayLatLng = (info) => {
+        if(info.lat !== null) {
+            setOverlayLatLng({lat:info.lat, lng:info.lng, name:info.name});
+        }
+    }
+
+    const closeOverlay = (info) => {
+        setOnCloseOverlay(info);
+    };
+
+    useEffect(() => {
+        if(onCloseOverlay == true) {
+            //props.closeOverlay(onCloseOverlay);
+        }
+        setOnCloseOverlay(false); // reset data
+    }, [onCloseOverlay]);
+
     /*const getGpsLoc = (info) => {
     setGpsLoc({
       lat: info.lat,
@@ -169,6 +188,8 @@ function MapPage() {
                                 courseNum={courseNum}
                                 markerInformation={clickMarkerInformation}
                                 clearClickMarkerInfo={clearClickMarkerInfo}
+                                getOverlayLatLng={getOverlayLatLng}
+                                closeOverlay={closeOverlay}
                             />
                         ) : null}
 
@@ -183,6 +204,7 @@ function MapPage() {
                                 checkCourseNum={checkCourseNum}
                                 returnCourseNum={returnCourseNum}
                                 clickRecommendCourse={clickRecommendCourse}
+                                getOverlayLatLng={getOverlayLatLng}
                             />
                         ) : null}
                         <MapContainer
@@ -193,6 +215,8 @@ function MapPage() {
                             propFunction={clickAddCourse}
                             clickMarker={clickMarker}
                             clearClickMarker={clearClickMarkerInfo}
+                            overlayLatLng={overlayLatLng}
+                            onCloseOverlay={onCloseOverlay}
                         />
                     </div>
                 </MarkerContext.Provider>
