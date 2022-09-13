@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { changeUserInfo } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
-const REST_API_KEY = "c4a648b170fea0fbd26e61d052e9093b";
-const REDIRECT_URI =  "http://localhost:3000/user-service/auth/kakao";
+const REST_API_KEY = "%REACT_APP_KAKAO_MAP_API_KEY%";
+const REDIRECT_URI =  "http://43.200.16.191:3000/user-service/auth/kakao";
 
 const KakaoRedirectHandler = () => {
     const dispatch = useDispatch();
