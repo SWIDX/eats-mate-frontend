@@ -8,6 +8,7 @@ import { ReactComponent as ExitBtn } from '../../images/svg/course-exit-button.s
 import { ReactComponent as DeleteBtn } from '../../images/svg/course-delete-button.svg';
 import axios from "axios";
 import { changeUserInfo, reissueJWT } from '../../_actions/user_action';
+import { CustomOverlayMap } from 'react-kakao-maps-sdk';
 
 function MapCourse(props) {
 
@@ -21,6 +22,7 @@ function MapCourse(props) {
   const [recommendation, setRecommendation] = useState([]);
   const [currentPos, setCurrentPos] = useState({});
   const [clickRecommendCourse, setClickRecommendCourse] = useState(null);
+  const [overlayLatLng, setOverlayLatLng] = useState({lat:null, lng:null, name:null});
   const dispatch = useDispatch();
 
   async function checkExp() {
@@ -149,13 +151,17 @@ function MapCourse(props) {
 
   const onClickRecommendCourse = (info) => {
     setClickRecommendCourse(info);
-
+    setOverlayLatLng({lat:info.lat, lng:info.lng, name:info.name});
   }
 
   useEffect(() => {
     props.clickRecommendCourse(clickRecommendCourse);
     setClickRecommendCourse(null);
 }, [clickRecommendCourse]);
+
+  useEffect(() => {
+    props.getOverlayLatLng(overlayLatLng);
+}, [overlayLatLng]);
 
   useEffect(() => {
     if (props.point !== null) {
@@ -350,6 +356,7 @@ function MapCourse(props) {
         </div>
         : null
         }
+
       </div>
 
     </>
