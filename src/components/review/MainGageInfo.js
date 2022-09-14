@@ -1,32 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./MainGageInfo.module.css";
 import LikeButton from "../like/LikeButton";
 import Carousel from "../etc/Carousel";
 
 function MainGageInfo(props){
     console.log(props)
+    const [storeImg, setStoreImg] = useState([]);
 
-    const testData = [
-        {
-          image: "../img/main-carousel/main-carousel-1.png",
-          link: "/about"
-        },
-        {
-          image: "../img/main-carousel/main-carousel-2.png",
-          link: "/map-service/main"
-        },
-        {
-          image: "../img/slideImg1.png",
-          link: "/mypage"
+    // const testData = [
+    //     {
+    //       image: "../img/main-carousel/main-carousel-1.png",
+    //       link: "/about"
+    //     },
+    //     {
+    //       image: "../img/main-carousel/main-carousel-2.png",
+    //       link: "/map-service/main"
+    //     },
+    //     {
+    //       image: "../img/slideImg1.png",
+    //       link: "/mypage"
+    //     }
+    //   ];
+
+    useEffect(() => {
+        if(props.information.image != undefined) {
+            let imgList = []
+            props.information.image.forEach((img) => {
+                let imgData = {}
+                imgData["image"] = img;
+                imgData["link"] = img;
+                imgList.push(imgData);
+            })
+            setStoreImg(imgList);
         }
-      ];
+    }, [props.information])
 
     return(
         <div style={{marginBottom: "100px"}}> {/* 이부분 */}
             <div className={styles.infoContainer}> {/* 코드 */}
                 <div style={{width: "730px", flexShrink: "0"}}> {/* 수정하지마세요 */}
                     <Carousel
-                        dataList={testData}
+                        dataList={storeImg}
                         outerViewWidth={"660px"}
                         outerViewHeight={"400px"}
                         imageWidth={"400px"}
