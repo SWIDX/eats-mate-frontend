@@ -5,7 +5,7 @@ import axios from 'axios';
 import { changeUserInfo, reissueJWT } from '../../_actions/user_action';
 
 function LikeButton(props) {
-    const SERVER = "43.200.16.191:8081"
+    const SERVER = "eats-mate.com:8081"
     const userinfo = useSelector((state) => state.userReducer.userinfo)
     const [clicked, setClicked] = useState(false);
     const dispatch = useDispatch();

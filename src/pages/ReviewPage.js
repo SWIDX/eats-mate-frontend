@@ -16,7 +16,7 @@ import { useMediaQuery } from "react-responsive"
 import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function ReviewPage() {
-  const SERVER = "43.200.16.191:8081"
+  const SERVER = "eats-mate.com:8081"
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const placeName = useLocation().pathname.split("/").pop();

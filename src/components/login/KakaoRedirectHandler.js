@@ -8,7 +8,7 @@ const REST_API_KEY = "c4a648b170fea0fbd26e61d052e9093b";
 const REDIRECT_URI =  "http://eats-mate.com/user-service/auth/kakao";
 
 const KakaoRedirectHandler = () => {
-    const SERVER = "43.200.16.191:8081"
+    const SERVER = "eats-mate.com:8081"
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 
 function Like(props) {
-    const SERVER = "43.200.16.191:8081"
+    const SERVER = "eats-mate.com:8081"
     const userinfo = useSelector((state) => state.userReducer.userinfo)
     const navigate = useNavigate();
 

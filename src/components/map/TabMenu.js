@@ -9,7 +9,7 @@ import { SearchContext } from '../../context/SearchContext';
 import { MarkerContext } from '../../context/MarkerContext';
 
 function TabMenu(props) {
-    const SERVER = "43.200.16.191:8081"
+    const SERVER = "eats-mate.com:8081"
     const [selectedTab, setSelectedTab] = useState();
     const [tabData, setTabData] = useState([]);
     const [data, setData] = useState();

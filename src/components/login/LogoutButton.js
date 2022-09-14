@@ -7,7 +7,7 @@ import { changeUserInfo } from '../../_actions/user_action';
 import { useNavigate } from "react-router-dom";
 
 function LogoutButton() {
-    const SERVER = "43.200.16.191:8081"
+    const SERVER = "eats-mate.com:8081"
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

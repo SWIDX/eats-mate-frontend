@@ -15,7 +15,7 @@ import { useMediaQuery } from "react-responsive"
 import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 
 function MyPage() {
-  const SERVER = "43.200.16.191:8081"
+  const SERVER = "eats-mate.com:8081"
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userinfo = useSelector((state) => state.userReducer.userinfo)

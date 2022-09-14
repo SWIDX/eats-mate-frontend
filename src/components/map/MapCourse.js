@@ -11,7 +11,7 @@ import { changeUserInfo, reissueJWT } from '../../_actions/user_action';
 import { CustomOverlayMap } from 'react-kakao-maps-sdk';
 
 function MapCourse(props) {
-  const SERVER = "43.200.16.191:8081"
+  const SERVER = "eats-mate.com:8081"
   const userinfo = useSelector((state) => state.userReducer.userinfo);
   const [point, setPoint] = useState([]);
   const [title, setTitle] = useState();

@@ -9,7 +9,7 @@ import { ReactComponent as Rate1Svg } from "../../images/svg/rate-1.svg";
 import { ReactComponent as Rate2Svg } from "../../images/svg/rate-2.svg";
 
 function ReviewModal(props) {
-  const SERVER = "43.200.16.191:8081"
+  const SERVER = "eats-mate.com:8081"
   const userinfo = useSelector((state) => state.userReducer.userinfo)
   const dispatch = useDispatch();
   const [imageList, setImageList] = useState([]);
