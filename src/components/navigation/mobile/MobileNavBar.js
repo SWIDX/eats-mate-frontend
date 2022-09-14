@@ -7,6 +7,7 @@ import { ReactComponent as LogoSvg } from "../../../images/svg/navbar-logo.svg";
 import Burger from "./Burger";
 import RightNav from "./RightNav";
 import LoginButton from "../../login/LoginButton";
+import LogoutButton from "../../login/LogoutButton";
 
 function MobileNavBar() {
     const userinfo = useSelector((state) => state.userReducer.userinfo)
@@ -17,7 +18,10 @@ function MobileNavBar() {
                 <Navbar.Brand href="/" className={styles.logoContainer}>
                     <LogoSvg className={styles.logoSvg}/>
                 </Navbar.Brand>
-                <LoginButton/>
+                {
+                    userinfo == null? <LoginButton /> :
+                    <LogoutButton />
+                }
                 <RightNav/>
                 <Burger/>
             </Container>
