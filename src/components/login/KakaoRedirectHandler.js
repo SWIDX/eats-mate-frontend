@@ -37,7 +37,7 @@ const KakaoRedirectHandler = () => {
                 }
             );
             dispatch(changeUserInfo(res.data))
-            navigate(-1);
+            navigate("/"); // 여기서 -1로 뒤로가면 윗줄에서 dispatch 한 redux state가 다시 null로 돌아감
         } catch(e) {
             console.warn(e);
             window.alert("오류가 발생했습니다. 다시 시도해주세요.");
