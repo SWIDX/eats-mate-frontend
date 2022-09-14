@@ -26,7 +26,7 @@ function AboutPage(){
                 건강한 문화를 만들어가고 있습니다</h6>
                 </div>
                 <div className={styles.macMockup}>
-                    { <img className={styles.aboutimg} src="/img/mac_mainpage.png" alt="banner1 mockup" /> }
+                    { <img className={styles.aboutimg} src="/img/main-mockup.png" alt="banner1 mockup" /> }
                 </div>
             </div>
             <div className={styles.section}>
@@ -64,6 +64,9 @@ function AboutPage(){
                         <div className={styles.icon2}>
                             <img className={styles.aboutimg} src="/img/banner3-02.png" alt="banner3 background icon2" />
                         </div>
+                        <div className={styles.mapPop1}>
+                            <img className={styles.mapPopup1} src="/img/map-popup1.png" alt="banner2 popup image 1" /> 
+                        </div>   
                     </div>
                 </div>
             <div className={styles.section}>

@@ -43,7 +43,7 @@
 @media(min-width:426px){
 .banner1 {
   position: absolute;
-  top: 15%;
+  top: 12%;
   left: 35%;
 }
 }
@@ -114,9 +114,9 @@
 
 /* 첫 번째 배너 목업 */
 .macMockup {
-  width: 30%;
-  left: 37%;
-  top: 45%;
+  width: 60%;
+  left: 20%;
+  top: 32%;
   position: absolute;
 }
 
@@ -296,7 +296,6 @@ h2 {
   top: 32vw;
 }
 
-
 /* ========================================  */
 
 
@@ -432,6 +431,20 @@ font-weight: 400;
   left: 73vw;
   width: 52vw;
 }
+
+/*  번째 배너 팝업 이미지 - 1 */
+.mapPop1 {
+  width: 70%;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+}
+
+.mapPopup1 {
+  position: absolute;
+  z-index: 999;
+}
+
 
 
 /* ========================================  */
