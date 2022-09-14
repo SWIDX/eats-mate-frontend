@@ -6,7 +6,7 @@ import ReviewCounter from "./ReviewCounter";
 import Review from "../mypage/Review";
 
 function MainReview(props){
-    const SERVER_IP = "43.200.16.191"
+    const SERVER = "43.200.16.191:8081"
     const placeName = useLocation().pathname.split("/").pop();
     const navigate = useNavigate();
     const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
@@ -22,7 +22,7 @@ function MainReview(props){
     
     async function getUserReview() {
         try {
-            const res = await axios.get("http://" + SERVER_IP + ":8081/review-service/review/?place_name=" + placeName + "&amount=" + 2,
+            const res = await axios.get("http://" + SERVER + "/review-service/review/?place_name=" + placeName + "&amount=" + 2,
             );
             res.data.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
             setReviewList(res.data);
@@ -33,7 +33,7 @@ function MainReview(props){
 
     async function getReviewRate() {
         try {
-            const res = await axios.get("http://" + SERVER_IP + ":8081/review-service/review/count?place_name=" + placeName);
+            const res = await axios.get("http://" + SERVER + "/review-service/review/count?place_name=" + placeName);
             setRateList(res.data);
         } catch(e){
             throw e;

@@ -16,7 +16,7 @@ import axios from 'axios';
 import Review from '../mypage/Review';
 
 function RestInformationCard(props) {
-    const SERVER_IP = "43.200.16.191"
+    const SERVER = "43.200.16.191:8081"
     const navigate = useNavigate();
     const [onClose, setOnClose] = useState(false);
     const [information, setInformation] = useState({});

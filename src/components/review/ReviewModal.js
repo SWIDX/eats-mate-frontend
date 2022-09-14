@@ -9,7 +9,7 @@ import { ReactComponent as Rate1Svg } from "../../images/svg/rate-1.svg";
 import { ReactComponent as Rate2Svg } from "../../images/svg/rate-2.svg";
 
 function ReviewModal(props) {
-  const SERVER_IP = "43.200.16.191"
+  const SERVER = "43.200.16.191:8081"
   const userinfo = useSelector((state) => state.userReducer.userinfo)
   const dispatch = useDispatch();
   const [imageList, setImageList] = useState([]);
@@ -66,7 +66,7 @@ function ReviewModal(props) {
       console.log(item[0] + " : " + item[1]);
     }
 
-    axios.post("http://" + SERVER_IP + ":8081/review-service/review",
+    axios.post("http://" + SERVER + "/review-service/review",
       formData,
       {
           headers: {
@@ -97,7 +97,7 @@ function ReviewModal(props) {
         // invalid
         console.log("*** ACCESS TOKEN OUTDATED ***")
         try {
-          const res = await axios.get("http://" + SERVER_IP + ":8081/user-service/auth/reissue",
+          const res = await axios.get("http://" + SERVER + "/user-service/auth/reissue",
             {
               withCredentials: true // Set-Cookie 작동을 위해 필수
             }
@@ -129,7 +129,7 @@ function ReviewModal(props) {
   async function logOut() {
     // logout
     try {
-      const res = await axios.delete("http://" + SERVER_IP + ":8081/user-service/auth/logout",
+      const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
           {
               withCredentials: true // Set-Cookie 작동을 위해 필수
           }
