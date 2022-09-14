@@ -19,7 +19,7 @@ function RecentReview(){
 
     useEffect(() => {
         getRecentReview();
-        setBtnClick([false, false, false, false, false]);
+        setBtnClick([true, false, false, false, false]);
     }, [])
 
     async function getRecentReview() {
