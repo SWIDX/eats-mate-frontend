@@ -13,6 +13,7 @@ import Dropdown from '../components/etc/Dropdown';
 import { ReactComponent as KakaoCircleSvg } from "../images/svg/kakao-circle.svg";
 import { useMediaQuery } from "react-responsive"
 import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
+import NoContent from '../components/etc/mobile/NoContent';
 
 function MyPage() {
   const SERVER = "eats-mate.com:8081"
@@ -291,6 +292,9 @@ function MyPage() {
         <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
 
           {/* 싱단 타이틀 */}
+          {isMobile && <NoContent/>}
+          {isPc &&
+          <div>
           <div className={styles.title}>
             <div className={styles.profileContainer}>
               <Image
@@ -409,13 +413,16 @@ function MyPage() {
           </div>
           : null
           }
-
+        
           {/*
           <div>
             <button onClick={runTest}>save</button>
             <button onClick={getUserCourse}>getAll</button>
           </div>
           */}
+
+          
+        </div>}
         </Container>
       </>
       : null
