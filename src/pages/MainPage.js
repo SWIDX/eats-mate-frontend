@@ -89,7 +89,7 @@ function MainPage() {
         showBullets={false}
       /> */}
       {isPc &&
-      <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
+      <Container fluid="xxl" style={{ width: "75%", maxWidth: "1200px", height: "100%", padding: "50px 0px 100px 0px"}}>
         <RecommendedList />
         <RecentReview />
       </Container>
