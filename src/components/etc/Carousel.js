@@ -61,6 +61,10 @@ function Carousel(props) {
         });
         buttonRef[0].style.transform = `translateX(-${props.buttonSize/2}px)`
         buttonRef[1].style.transform = `translateX(${props.buttonSize/2}px)`
+        if(props.buttonColor != undefined) {
+            buttonRef[0].firstElementChild.lastElementChild.style.stroke = props.buttonColor
+            buttonRef[1].firstElementChild.lastElementChild.style.stroke = props.buttonColor
+        }
     },[]);
 
     useEffect(()=> {

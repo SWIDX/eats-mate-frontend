@@ -224,8 +224,17 @@
     }
 }
 
-.parent{
-    display: flex;
+@media(max-width:426px){
+    .parent{
+        display: flex;
+        margin-bottom: 20px;
+    }
+}
+@media(min-width:426px){
+    .parent{
+        display: flex;
+        margin-bottom: 80px;
+    }
 }
 
 @media(min-width:426px){
