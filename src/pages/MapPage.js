@@ -14,6 +14,7 @@ import { SearchContext } from '../context/SearchContext';
 import { MarkerContext } from '../context/MarkerContext';
 import { useMediaQuery } from "react-responsive"
 import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
+import NoContent from '../components/etc/mobile/NoContent';
 
 function MapPage() {
     const [clickInformation, setClickInformation] = useState();
@@ -174,7 +175,9 @@ function MapPage() {
                     </div>
 
                     {/*<CategoryBtn propFunction={getGpsLoc} gpsInformation={gpsLoc} />*/}
-
+                    <div>
+                    {isMobile && <NoContent/>}
+                    {isPc &&
                     <div className="styles.map">
                         {listCardOn ? (
                             <ListCard
@@ -218,9 +221,11 @@ function MapPage() {
                             overlayLatLng={overlayLatLng}
                             onCloseOverlay={onCloseOverlay}
                         />
+                    </div>}
                     </div>
                 </MarkerContext.Provider>
             </SearchContext.Provider>
+            
         </>
     );
 }
