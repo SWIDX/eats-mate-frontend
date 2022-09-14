@@ -34,7 +34,7 @@ const RightNav = ({ open }) => {
       <Ul open={open}>
         <Nav className={`me-auto ${styles.nav}`}>
                 <Nav.Link href="/about">서비스 소개</Nav.Link>
-                <Nav.Link href="/map-service/main">지도</Nav.Link>
+                <Nav.Link href="/map">지도</Nav.Link>
                 <Nav.Link href="/mypage">마이페이지</Nav.Link>
         </Nav>
       </Ul>
