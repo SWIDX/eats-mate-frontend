@@ -62,7 +62,7 @@ const MapSearchBar = (props) => {
     }
 
     async function getSearchResult() {
-        const url = 'http://' + SERVER_IP + ':8081/map-service/getAllData?keyword=';
+        const url = 'http://' + SERVER + '/map-service/getAllData?keyword=';
         let data = await axios.get(url + inputText).then((res) => {
             if (res.data) {
                 return res.data;
