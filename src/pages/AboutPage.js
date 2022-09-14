@@ -75,7 +75,7 @@ function AboutPage(){
                     <h2>혼행 경험 공유하기</h2>
                     <h6>잇츠 메이트로 장소를 탐색하고 다녀온 혼행 경험을<br />
                         다른 메이트들과 공유하고, 나만의 기록으로 남겨보세요!</h6>
-                    <img className={styles.aboutimg} src="/img/banner4-mypage.png" alt="banner4 page image" />
+                    <img className={styles.aboutimg} src="/img/banner4-myPage.png" alt="banner4 page image" />
                     <div className={styles.icon1}>
                             <img className={styles.aboutimg} src="/img/banner4-01.png" alt="banner2 background icon1" />
                         </div>
