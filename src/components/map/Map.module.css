@@ -169,11 +169,11 @@ hr {
   padding-top: 5px;
   padding-left: 15px;
   padding-right: 15px;
-  margin-top: 19px;
   text-align: center;
   background-color:white;
   border: 2px solid #FA8576;
   border-radius: 20px;
+  transform: translate(0px, -90px);
 }
 
 /*.customOverlay:after {
