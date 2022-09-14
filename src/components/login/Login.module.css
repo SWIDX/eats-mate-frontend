@@ -1,7 +1,15 @@
+
+@media(min-width:426px){
 .kakao_btn{
     width: 200px;
     cursor: pointer;
 }
+}
+@media(max-width:426px){
+    .kakao_btn{
+        display:none;
+    }
+    }
 
 .logout_btn {
     display: flex;
@@ -18,4 +26,17 @@
 }
 .logout_btn > svg {
     margin: auto auto auto 6px;
+}
+@media (max-width:426px){
+    .mobilelogin{
+        width:84px;
+        height:34px;
+        margin-bottom: 3.3vh;
+        margin-right: 3.3vw
+    }
+}
+@media(min-width:426px){
+    .mobilelogin{
+        display: none;
+    }
 }

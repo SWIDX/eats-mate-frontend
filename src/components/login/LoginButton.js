@@ -12,6 +12,7 @@ function LoginButton() {
     return (
         <a href={KAKAO_AUTH_URL}>
             <KakaoLoginSvg className={styles.kakao_btn} />
+            <img className={styles.mobilelogin} alt="" src="img/mobilelogin.png"/>
         </a>
     );
 }
