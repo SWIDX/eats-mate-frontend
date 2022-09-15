@@ -45,12 +45,12 @@ function TabMenu(props) {
         let data = {};
 
         if (item.type == '음식점') {
-            const url = 'http://' + SERVER + '/map-service/getRestInfo?id=';
+            const url = 'https://' + SERVER + '/map-service/getRestInfo?id=';
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });
         } else if (item.type == '여행지') {
-            const url = 'http://' + SERVER + '/map-service/getTourInfo?id=';
+            const url = 'https://' + SERVER + '/map-service/getTourInfo?id=';
             data = await axios.get(url + item.id).then((res) => {
                 return res.data;
             });
