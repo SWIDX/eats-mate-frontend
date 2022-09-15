@@ -5,7 +5,7 @@ import { changeUserInfo } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
 const REST_API_KEY = "c4a648b170fea0fbd26e61d052e9093b";
-const REDIRECT_URI =  "http://eats-mate.com/user-service/auth/kakao";
+const REDIRECT_URI =  "https://eats-mate.com/user-service/auth/kakao";
 
 const KakaoRedirectHandler = () => {
     const SERVER = "eats-mate.com:8081"
