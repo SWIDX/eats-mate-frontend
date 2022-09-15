@@ -1,15 +1,15 @@
 
 @media(min-width:426px){
-.kakao_btn{
-    width: 200px;
-    cursor: pointer;
-}
+    .kakao_btn{
+        width: 200px;
+        cursor: pointer;
+    }
 }
 @media(max-width:426px){
     .kakao_btn{
         display:none;
     }
-    }
+}
 
 .logout_btn {
     display: flex;
@@ -31,8 +31,7 @@
     .mobilelogin{
         width:84px;
         height:34px;
-        margin-bottom: 3.3vh;
-        margin-right: 3.3vw
+        margin: auto 20px auto auto;
     }
 }
 @media(min-width:426px){

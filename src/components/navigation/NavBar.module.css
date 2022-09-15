@@ -3,21 +3,37 @@
     height: 75px;
 }
 
-.logoContainer {
-    width: fit-content;
-    transform: translateX(-20px);
-    margin-right: 5px;
+.mobileNavContainer {
+    width: 100%;
+    display: flex;
 }
 
-.logoSvg {
-    scale: 0.7;
+@media(max-width:426px){
+    .logoContainer {
+        width: 100px;
+        height: 59px;
+        transform: translateX(-20px);
+        margin-right: 0px !important;
+    }
+}
+@media(min-width:426px){
+    .logoContainer {
+        width: fit-content;
+        transform: translateX(-20px);
+        margin-right: 5px;
+    }
+}
+
+@media(min-width:426px){
+    .logoSvg {
+        scale: 0.7;
+    }
 }
 
 @media(max-width:426px){
     .logoSvg {
         scale: 0.5;
-        margin-left:-50px;
-        margin-top:-20px;
+        transform: translateY(-30px);
     }
      
 }
@@ -57,6 +73,6 @@
 
 @media(max-width:426px){
     .navLogin{
-    display: none;   
+        display: none;   
     }
 }

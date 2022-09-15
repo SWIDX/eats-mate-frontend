@@ -14,10 +14,11 @@ function MobileNavBar() {
 
     return (
         <Navbar expand="lg" bg="white" variant="light" sticky="top" className={styles.navbar}>
-            <Container style={{ width: "75%" }}>
+            <Container className={styles.mobileNavContainer}>
                 <Navbar.Brand href="/" className={styles.logoContainer}>
                     <LogoSvg className={styles.logoSvg}/>
                 </Navbar.Brand>
+                <div style={{flex: '1'}} />
                 {
                     userinfo == null? <LoginButton /> :
                     <LogoutButton />
