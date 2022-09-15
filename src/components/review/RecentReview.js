@@ -23,7 +23,7 @@ function RecentReview(){
     }, [])
 
     async function getRecentReview() {
-        let res = await axios.get("http://" + SERVER + "/review-service/review/recent")
+        let res = await axios.get("https://" + SERVER + "/review-service/review/recent")
         let info = res.data;
 
         info.forEach((o) => {

@@ -36,7 +36,7 @@ function MapCourse(props) {
         // invalid
         console.log("*** ACCESS TOKEN OUTDATED ***")
         try {
-            const res = await axios.get("http://" + SERVER + "/user-service/auth/reissue",
+            const res = await axios.get("https://" + SERVER + "/user-service/auth/reissue",
             {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
             }
@@ -68,7 +68,7 @@ function MapCourse(props) {
   async function logOut() {
     // logout
     try {
-      const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
+      const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
         {
             withCredentials: true // Set-Cookie 작동을 위해 필수
         }
@@ -194,7 +194,7 @@ function MapCourse(props) {
 
   async function getRecommendation() {
     try {
-      const res = await axios.get("http://" + SERVER + "/map-service/tour-information/findByNearby?"
+      const res = await axios.get("https://" + SERVER + "/map-service/tour-information/findByNearby?"
         + "lat=" + props.point.information.lat
         + "&lng=" + props.point.information.lng
         + "&dist=" + 3 // 3km

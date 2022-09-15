@@ -28,7 +28,7 @@ const KakaoRedirectHandler = () => {
                     headers: {'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'}
                 }
             );
-            const res = await axios.post("http://" + SERVER + "/user-service/auth/kakao",
+            const res = await axios.post("https://" + SERVER + "/user-service/auth/kakao",
                 {
                     access_token: kakao_res.data.access_token
                 },
@@ -42,7 +42,7 @@ const KakaoRedirectHandler = () => {
             console.warn(e);
             window.alert("오류가 발생했습니다. 다시 시도해주세요.");
             try {
-                const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
+                const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
                     {
                         withCredentials: true // Set-Cookie 작동을 위해 필수
                     }

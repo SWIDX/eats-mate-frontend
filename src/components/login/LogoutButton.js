@@ -15,7 +15,7 @@ function LogoutButton() {
         if (window.confirm('정말로 로그아웃 하시겠습니까?')) {
             // logout
             try{
-                const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
+                const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
                     {
                         withCredentials: true // Set-Cookie 작동을 위해 필수
                     }

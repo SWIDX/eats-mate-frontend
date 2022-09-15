@@ -17,14 +17,14 @@ function LikeButton(props) {
     async function handleLike() {
         try {
             if (clicked) {
-                const res = await axios.delete("http://" + SERVER + "/user-service/user/like/" + props.placeId,
+                const res = await axios.delete("https://" + SERVER + "/user-service/user/like/" + props.placeId,
                     { //header
                         headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
                     }
                 );
             }
             else {
-                const res = await axios.put("http://" + SERVER + "/user-service/user/like/" + props.placeId,
+                const res = await axios.put("https://" + SERVER + "/user-service/user/like/" + props.placeId,
                     null, // parameter
                     { //header
                         headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
@@ -40,7 +40,7 @@ function LikeButton(props) {
 
     async function getLikeClicked() {
         try {
-            const res = await axios.get("http://" + SERVER + "/user-service/user/like/" + props.placeId,
+            const res = await axios.get("https://" + SERVER + "/user-service/user/like/" + props.placeId,
                 { //header
                     headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
                 }
@@ -62,7 +62,7 @@ function LikeButton(props) {
                 // invalid
                 console.log("*** ACCESS TOKEN OUTDATED ***")
                 try {
-                    const res = await axios.get("http://" + SERVER + "/user-service/auth/reissue",
+                    const res = await axios.get("https://" + SERVER + "/user-service/auth/reissue",
                     {
                         withCredentials: true // Set-Cookie 작동을 위해 필수
                     }
@@ -94,7 +94,7 @@ function LikeButton(props) {
     async function logOut() {
     // logout
     try {
-        const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
+        const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
             {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
             }

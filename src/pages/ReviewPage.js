@@ -41,7 +41,7 @@ function ReviewPage() {
 
   async function getInformation() {
     try {
-      const res = await axios.get("http://" + SERVER + "/map-service/findByName/?name=" + placeName);
+      const res = await axios.get("https://" + SERVER + "/map-service/findByName/?name=" + placeName);
       setInformation(res.data)
     } catch(e){
       throw e;
@@ -50,7 +50,7 @@ function ReviewPage() {
 
   async function getUserReview() {
     try {
-      const res = await axios.get("http://" + SERVER + "/review-service/review/?place_name=" + placeName + "&amount=" + 0,
+      const res = await axios.get("https://" + SERVER + "/review-service/review/?place_name=" + placeName + "&amount=" + 0,
       );
       res.data.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
       setReviewList(res.data);
@@ -63,7 +63,7 @@ function ReviewPage() {
 
   async function getReviewRate() {
     try {
-      const res = await axios.get("http://" + SERVER + "/review-service/review/count?place_name=" + placeName);
+      const res = await axios.get("https://" + SERVER + "/review-service/review/count?place_name=" + placeName);
       setRateList(res.data);
     } catch(e){
       throw e;
@@ -116,7 +116,7 @@ async function checkExp() {
       // invalid
       console.log("*** ACCESS TOKEN OUTDATED ***")
       try {
-        const res = await axios.get("http://" + SERVER + "/user-service/auth/reissue",
+        const res = await axios.get("https://" + SERVER + "/user-service/auth/reissue",
           {
             withCredentials: true // Set-Cookie 작동을 위해 필수
           }
@@ -148,7 +148,7 @@ async function checkExp() {
 async function logOut() {
   // logout
   try {
-    const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
+    const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
       {
           withCredentials: true // Set-Cookie 작동을 위해 필수
       }

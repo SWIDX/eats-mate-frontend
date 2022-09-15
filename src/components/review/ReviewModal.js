@@ -66,7 +66,7 @@ function ReviewModal(props) {
       console.log(item[0] + " : " + item[1]);
     }
 
-    axios.post("http://" + SERVER + "/review-service/review",
+    axios.post("https://" + SERVER + "/review-service/review",
       formData,
       {
           headers: {
@@ -97,7 +97,7 @@ function ReviewModal(props) {
         // invalid
         console.log("*** ACCESS TOKEN OUTDATED ***")
         try {
-          const res = await axios.get("http://" + SERVER + "/user-service/auth/reissue",
+          const res = await axios.get("https://" + SERVER + "/user-service/auth/reissue",
             {
               withCredentials: true // Set-Cookie 작동을 위해 필수
             }
@@ -129,7 +129,7 @@ function ReviewModal(props) {
   async function logOut() {
     // logout
     try {
-      const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
+      const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
           {
               withCredentials: true // Set-Cookie 작동을 위해 필수
           }

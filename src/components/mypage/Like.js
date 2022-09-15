@@ -11,7 +11,7 @@ function Like(props) {
 
     async function requestDelete() {
         try {
-            const res = await axios.delete("http://" + SERVER + "/user-service/user/like/" + props.like.id,
+            const res = await axios.delete("https://" + SERVER + "/user-service/user/like/" + props.like.id,
                 { //header
                     headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
                 }

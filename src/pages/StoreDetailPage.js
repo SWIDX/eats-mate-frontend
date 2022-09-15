@@ -34,7 +34,7 @@ function StoreDetailPage(){
   
     async function getStoreDetail() {
       try {
-        const res = await axios.get("http://" + SERVER + "/map-service/findByName/?name=" + placeName);
+        const res = await axios.get("https://" + SERVER + "/map-service/findByName/?name=" + placeName);
         setInformation(res.data)
       } catch(e){
         console.log(e)
@@ -61,7 +61,7 @@ function StoreDetailPage(){
           // invalid
           console.log("*** ACCESS TOKEN OUTDATED ***")
           try {
-            const res = await axios.get("http://" + SERVER + "/user-service/auth/reissue",
+            const res = await axios.get("https://" + SERVER + "/user-service/auth/reissue",
               {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
               }
@@ -93,7 +93,7 @@ function StoreDetailPage(){
     async function logOut() {
       // logout
       try {
-        const res = await axios.delete("http://" + SERVER + "/user-service/auth/logout",
+        const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
             {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
             }
