@@ -93,6 +93,7 @@
         display:inline-block;
         flex-shrink: 0;
         overflow: hidden;
+        cursor: pointer;
     }
     }
     
@@ -105,6 +106,7 @@
             display:inline-block; 
             flex-shrink: 0;
             overflow: hidden;
+            cursor: pointer;
         }
     }
         
