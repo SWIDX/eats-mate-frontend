@@ -62,6 +62,7 @@
   border: 1px solid #f1f1f1;
   border-radius: 16px;
   margin-right: 24px;
+  object-fit: cover;
 }
 
 /* 식당 카테고리  */

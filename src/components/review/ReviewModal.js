@@ -153,7 +153,7 @@ function ReviewModal(props) {
       <div className={styles.reviewmodalname}>식사는 맛있게 하셨나요? 리뷰를 작성해보세요</div>
 
       <div className={styles.locationboxflex}>
-        <img className={styles.reviewmodalimg} alt="" src="/img/emonga.jpeg" />
+        <img className={styles.reviewmodalimg} alt="" src={props.information.image[0]} />
         <div className={styles.locationboxflex2}>
           <div className={styles.reviewmodalcategory}>{props.information.gubun}</div>
           <b className={styles.reviewmodalname2}>{props.information.name}</b>
