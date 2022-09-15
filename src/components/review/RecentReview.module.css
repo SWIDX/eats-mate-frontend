@@ -163,7 +163,7 @@
     line-height: 20px;
     letter-spacing: -0.04em;
     color: #FFFFFF;
-    margin: 4px auto auto 0px;
+    margin: 4px 20px auto 0px;
     flex-shrink: 0;
   }
 }
@@ -179,7 +179,7 @@
     line-height: 20px;
     letter-spacing: -0.04em;
     color: #FFFFFF;
-    margin: auto auto auto 0px;
+    margin: auto 20px auto 0px;
     flex-shrink: 0;
   }
 }
@@ -201,7 +201,7 @@
 }
 
 .kakaoMobileSvg {
-  margin: 0px 0px auto 10px;
+  margin: 0px 0px auto auto;
 }
 
 .reviewContainer {

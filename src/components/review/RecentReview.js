@@ -149,7 +149,7 @@ function RecentReview(){
                     </div>
                     }
                     {isMobile &&
-                    <div style={{flex: '1'}}> {/* 카카오 아이콘 */}
+                    <div style={{display: 'flex', flex: '1'}}> {/* 카카오 아이콘 */}
                         <KakaoMapSvg className={styles.kakaoMobileSvg} />
                     </div>
                     }
