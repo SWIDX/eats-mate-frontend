@@ -21,8 +21,8 @@ function ReviewPage() {
   const dispatch = useDispatch();
   const placeName = useLocation().pathname.split("/").pop();
   const userinfo = useSelector((state) => state.userReducer.userinfo)
-  const isPc = useMediaQuery({ query: "(min-width:426px)" });
-  const isMobile = useMediaQuery({ query: "(max-width:426px)" });
+  const isPc = useMediaQuery({ query: "(min-width:481px)" });
+  const isMobile = useMediaQuery({ query: "(max-width:480px)" });
 
   const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
   const [dynReviewList, setDynReviewList] = useState([]);

@@ -8,7 +8,7 @@
     display: flex;
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
     .logoContainer {
         width: 100px;
         height: 59px;
@@ -16,7 +16,7 @@
         margin-right: 0px !important;
     }
 }
-@media(min-width:426px){
+@media(min-width:481px){
     .logoContainer {
         width: fit-content;
         transform: translateX(-20px);
@@ -24,13 +24,13 @@
     }
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
     .logoSvg {
         scale: 0.7;
     }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
     .logoSvg {
         scale: 0.5;
         transform: translateY(-30px);
@@ -71,7 +71,7 @@
 }
 
 
-@media(max-width:426px){
+@media(max-width:480px){
     .navLogin{
         display: none;   
     }

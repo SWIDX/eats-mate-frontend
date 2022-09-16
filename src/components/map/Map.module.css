@@ -2,7 +2,7 @@ hr {
   margin: 0;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .inputBackground {
   display: flex;
   background-color: #FA8576;
@@ -12,7 +12,7 @@ hr {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .inputBackground {
     display: flex;
     background-color: #FA8576;
@@ -23,7 +23,7 @@ hr {
   }
   
 
-@media(min-width:426px){
+@media(min-width:481px){
 .search > div > input {
   width: 450px;
   height: 46px;
@@ -34,7 +34,7 @@ hr {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .search > div > input {
     width: 260px;
     height: 46px;
@@ -73,7 +73,7 @@ hr {
 
 /*search bar drop down menu*/
 
-@media(min-width:426px){
+@media(min-width:481px){
 .search {
   display: flex;
   position: absolute;
@@ -86,7 +86,7 @@ hr {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .search {
     display: flex;
     position: absolute;
@@ -99,7 +99,7 @@ hr {
   }
   }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .dropbtn {
   display: flex;
   width: 130px;
@@ -109,7 +109,7 @@ hr {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .dropbtn {
     display: flex;
     width: 109px;

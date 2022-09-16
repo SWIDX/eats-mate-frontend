@@ -5,8 +5,8 @@ import { useMediaQuery } from "react-responsive"
 import MobileNavBar from '../components/navigation/mobile/MobileNavBar';
 
 function AboutPage(){
-    const isPc = useMediaQuery({ query: "(min-width:426px)" });
-    const isMobile = useMediaQuery({ query: "(max-width:426px)" });
+    const isPc = useMediaQuery({ query: "(min-width:481px)" });
+    const isMobile = useMediaQuery({ query: "(max-width:480px)" });
 
     return(
     <>

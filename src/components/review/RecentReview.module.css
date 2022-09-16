@@ -1,4 +1,4 @@
-@media(max-width:426px){
+@media(max-width:480px){
   .title {
     margin-bottom: 28px;
     margin-left: 16px;
@@ -7,7 +7,7 @@
     letter-spacing: -0.04em;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .title {
     font-weight: 700;
     font-size: 28px;
@@ -16,7 +16,7 @@
   }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .buttonContainer {
     display: flex;
     width: 100%;
@@ -26,7 +26,7 @@
     overflow-x: scroll;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .buttonContainer {
     display: flex;
     gap: 8px;
@@ -34,7 +34,7 @@
   }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .button {
     flex-shrink: 0;
     border: 1px solid #E97869;
@@ -61,7 +61,7 @@
     transition: 0.3s;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .button {
     border: 1px solid #E97869;
     background-color: #ffffff;
@@ -87,14 +87,14 @@
   }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .carouselContainer{
     width: 100vw;
     flex-shrink: 0;
     margin: auto auto;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .carouselContainer{
     width: 670px;
     flex-shrink: 0;
@@ -102,14 +102,14 @@
   }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .contentContainer {
     display: flex;
     flex-direction: column;
     position: relative;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .contentContainer {
     display: flex;
     flex-direction: row;
@@ -117,7 +117,7 @@
   }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .storeInfo {
     box-shadow: 0px 4px 31px 5px rgba(31, 31, 31, 0.25);
     background: #8F7BF7;
@@ -129,7 +129,7 @@
     cursor: pointer;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .storeInfo {
     box-shadow: 0px 4px 31px 5px rgba(31, 31, 31, 0.25);
     background: #8F7BF7;
@@ -150,7 +150,7 @@
   color: #7BE7A3;
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .border {
     height: 12px;
     width: 2px;
@@ -167,7 +167,7 @@
     flex-shrink: 0;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .border {
     height: 12px;
     width: 2px;
@@ -211,7 +211,7 @@
   gap: 24px;
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .review {
     display: flex;
     flex-direction: column;
@@ -227,7 +227,7 @@
     border-radius: 32px 32px 32px 0px !important;
   }
 }
-@media(min-width:426px){
+@media(min-width:481px){
   .review {
     display: flex;
     flex-direction: column;

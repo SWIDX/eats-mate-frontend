@@ -25,8 +25,8 @@ function StoreDetailPage(){
     const [modalOpen, setModalOpen] = useState(false);
     const [information, setInformation] = useState({});
 
-    const isPc = useMediaQuery({ query: "(min-width:426px)" });
-    const isMobile = useMediaQuery({ query: "(max-width:426px)" });
+    const isPc = useMediaQuery({ query: "(min-width:481px)" });
+    const isMobile = useMediaQuery({ query: "(max-width:480px)" });
 
     useEffect(() => {
       getStoreDetail();

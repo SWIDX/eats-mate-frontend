@@ -1,10 +1,10 @@
-@media(min-width: 426px){
+@media(min-width: 480px){
 .title {
     display: flex;
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .title {
     /*display: flex;*/
     margin: 0px auto 50px auto;
@@ -12,7 +12,7 @@
 }
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .profileContainer {
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .profileContainer {
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@
 }
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .profileImage {
     object-fit: cover; /* prevent image to resize */
     width: 124px;
@@ -40,7 +40,7 @@
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .profileImage {
     object-fit: cover; /* prevent image to resize */
     width: 80px;
@@ -52,7 +52,7 @@
 }
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .userName {
     font-weight: 700;
     font-size: 22px;
@@ -62,7 +62,7 @@
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .userName {
     font-weight: 700;
     font-size: 22px;
@@ -94,14 +94,14 @@
     /*border: 1px solid black;*/
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .welcomeText {
     margin-bottom: 30px;
     font-size: 24px;
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .welcomeText {
     margin-bottom: 30px;
     font-size: 19px;
@@ -117,7 +117,7 @@
     font-weight: 700;
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .category {
     display: inline-block;
     padding: 21px 46px;
@@ -127,7 +127,7 @@
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .category {
     /*display: inline-block;*/
     padding: 21px 46px;
@@ -137,20 +137,20 @@
 }
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .category > div {
     display: flex;
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .category > div {
     display: flex;
     flex-direction: column;
 }
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .category > div > div {
     display: flex;
     flex-direction: column;
@@ -160,7 +160,7 @@
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .category > div > div {
     display: flex;
     flex-direction: column;
@@ -184,7 +184,7 @@
     letter-spacing: -0.04em;
 }
 
-@media(min-width: 426px){
+@media(min-width: 480px){
 .separator {
     width: 1px;
     height: 64px;
@@ -193,7 +193,7 @@
 }
 }
 
-@media(max-width: 426px){
+@media(max-width: 480px){
 .separator {
     width: 50vw;
     height: 1px;

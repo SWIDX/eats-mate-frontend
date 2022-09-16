@@ -14,8 +14,8 @@ function RecentReview(){
     const [currentInfo, setCurrentInfo] = useState({}); // 버튼 클릭하면 나와야 하는 단일 정보 객체
     const [btnClick, setBtnClick] = useState([]);
 
-    const isPc = useMediaQuery({ query: "(min-width:426px)" });
-    const isMobile = useMediaQuery({ query: "(max-width:426px)" });
+    const isPc = useMediaQuery({ query: "(min-width:481px)" });
+    const isMobile = useMediaQuery({ query: "(max-width:480px)" });
 
     useEffect(() => {
         getRecentReview();

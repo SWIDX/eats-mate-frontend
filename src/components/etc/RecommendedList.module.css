@@ -1,4 +1,4 @@
-@media (min-width:426px){
+@media (min-width:481px){
     .recommended_list {
         position: relative;
         left: 150px;
@@ -6,7 +6,7 @@
     }
     }
     
-    @media (max-width:426px){
+    @media (max-width:480px){
         .recommended_list {
             position: relative;
             top:155px;
@@ -19,7 +19,7 @@
         color: grey;
     }
     
-    @media (max-width:426px){
+    @media (max-width:480px){
     .timeformedia{
         margin-left: 16px;
         position: relative;
@@ -39,7 +39,7 @@
         letter-spacing: -0.04em;
     }
     
-    @media (min-width:426px){
+    @media (min-width:481px){
     .element_list {
         width: 100%;
         margin-top: 50px;
@@ -58,7 +58,7 @@
     }
 
     
-    @media (max-width:426px){
+    @media (max-width:480px){
     .element_list {
         margin-top: 30px;
         display: flex;
@@ -71,7 +71,7 @@
     }
     }
     
-    @media(max-width:426px){
+    @media(max-width:480px){
     .wrap{
         background: #ffffff;
         overflow: scroll;
@@ -79,13 +79,13 @@
     }
     }
 
-    @media(max-width:426px){
+    @media(max-width:480px){
         .forscroll{
             overflow: scroll;
         }
         }
     
-    @media (min-width:426px){
+    @media (min-width:481px){
     .element {
         height: 100%;
         border-radius: 15px;
@@ -97,7 +97,7 @@
     }
     }
     
-    @media (max-width:426px){
+    @media (max-width:480px){
         .element {
             width: 200px;
             height: 100%;
@@ -110,20 +110,20 @@
         }
     }
         
-    @media (max-width:426px){
+    @media (max-width:480px){
         .elementimg {
             width: 146px;
             height: 100px;
         }
         }
     
-@media (min-width:426px){
+@media (min-width:481px){
     .recommendContent {
         padding: 14px 16px;
     }
 }
 
-@media (max-width:426px){
+@media (max-width:480px){
     .recommendContent {
         padding: 12px 12px;
     }
@@ -133,7 +133,7 @@
     display: flex;
 }
 
-@media(min-width:426px){    
+@media(min-width:481px){    
 .locationimage {
     margin: auto 0px auto 0px;
     width: 14px;
@@ -141,7 +141,7 @@
 }
 }
     
-@media(max-width:426px){
+@media(max-width:480px){
 .locationimage {
     margin: auto 5px auto 0px;
     width: 12px;
@@ -149,33 +149,33 @@
 }
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .address {
     margin: auto auto auto 8px; 
 }
 }
     
-    @media(max-width:426px){
+    @media(max-width:480px){
     .address {
         font-size: 13px;
     }
     }
     
-    @media(min-width:426px){
+    @media(min-width:481px){
         .name {
             margin-top: 8px;
             font-weight: bold;
         }
     }
     
-    @media(max-width:426px){
+    @media(max-width:480px){
         .name {
             margin-left: 0px;
             font-weight: bold;
         }
     }
     
-    @media(min-width:426px){
+    @media(min-width:481px){
     .name > span {
         color: #BDBDBD;
         font-size: 15px;
@@ -183,7 +183,7 @@
     }
     }
     
-    @media(max-width:426px){
+    @media(max-width:480px){
         .name > span {
             color: #BDBDBD;
             font-size: 13px;
@@ -192,13 +192,13 @@
     }
     
     
-    @media(min-width:426px){    
+    @media(min-width:481px){    
     .ment {
         margin-top: 15px;
     }
     }
     
-    @media(max-width:426px){
+    @media(max-width:480px){
     .ment {
         margin-top: 16px;
         font-size: 14px;
@@ -211,14 +211,14 @@
     }
     
     
-@media(min-width:426px){
+@media(min-width:481px){
 .maininfomessage {
     font-weight: 700;
     font-size: 28px;
     }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .maininfomessage {
     margin-left: 16px;
     font-weight: 700;
@@ -226,26 +226,26 @@
     }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
     .parent{
         display: flex;
         margin-bottom: 20px;
     }
 }
-@media(min-width:426px){
+@media(min-width:481px){
     .parent{
         display: flex;
         margin-bottom: 80px;
     }
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .child{
     margin-bottom: 50px;
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .child{
     margin: auto auto;
     margin-bottom: 50px;
@@ -277,7 +277,7 @@
     }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
     .recommendimage{
         margin-top:-1px;
         width: 100%;

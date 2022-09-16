@@ -13,7 +13,7 @@
 
 
 
-@media(min-width:426px){
+@media(min-width:481px){
 .category {
   margin-bottom: 6px;
   font-size: 16px;
@@ -21,7 +21,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .category {
     margin-bottom: 6px;
     font-size: 14px;
@@ -30,7 +30,7 @@
   }
 
 
-@media(min-width:426px){
+@media(min-width:481px){
 .name {
   font-size: 32px;
   font-weight: 700;
@@ -38,7 +38,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .name {
   font-size: 25px;
   font-weight: 700;
@@ -46,7 +46,7 @@
 }
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .subTitle {
   display: flex;
   padding: 20px 10px;
@@ -55,7 +55,7 @@
 }
 
 
-@media(max-width:426px){
+@media(max-width:480px){
 .subTitle {
   display: flex;
   padding: 10px 0px;
@@ -65,7 +65,7 @@
 
 
 
-@media(min-width:426px){
+@media(min-width:481px){
 .titleText {
   font-weight: 700;
   line-height: 35px;
@@ -74,7 +74,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .titleText {
     padding: 10px 0px;
     font-weight: 700;
@@ -84,7 +84,7 @@
   }
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .counterBox {
   background: #FFFFFF;
   border: 2px solid #F1F1F1;
@@ -92,7 +92,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .counterBox {
     background: #FFFFFF;
     border: 2px solid #F1F1F1;
@@ -105,7 +105,7 @@
 .reviewReqTextContainer {
   display: flex;
 }
-@media(min-width:426px){
+@media(min-width:481px){
 .reviewReqTextContainer > div {
   font-weight: 700;
   font-size: 18px;
@@ -115,7 +115,7 @@
   margin-bottom: 24px;
 }
 
-}@media(max-width:426px){
+}@media(max-width:480px){
   .reviewReqTextContainer > div {
     font-weight: 700;
     font-size: 18px;
@@ -148,14 +148,14 @@
   margin: auto 0px auto auto;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
   .forresponsive{
     display: flex;
     padding: 18px 10px;
   }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .forresponsive{
     padding:23px 23px;
   }

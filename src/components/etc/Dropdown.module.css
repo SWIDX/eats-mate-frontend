@@ -1,4 +1,4 @@
-@media(min-width:426px){
+@media(min-width:481px){
 .container {
     position: relative; /* for floating effect */
     padding: 2px 20px;
@@ -8,7 +8,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
     .container {
         position: relative; /* for floating effect */
         margin: auto 0px auto auto;

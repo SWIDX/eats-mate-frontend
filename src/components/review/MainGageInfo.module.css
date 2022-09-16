@@ -1,17 +1,17 @@
-@media(min-width:426px){
+@media(min-width:481px){
 .infoContainer {
     display: flex;
     flex-direction: row;
 }
 }
         
-@media(max-width:426px){
+@media(max-width:480px){
 .infoContainer {
     margin: 0px auto;
 }
 }
     
-@media(min-width:426px){
+@media(min-width:481px){
 .gageInfo {
     flex-grow: 1;
     padding: 34px 30px;
@@ -22,7 +22,7 @@
 }
 }
         
-@media(max-width:426px){
+@media(max-width:480px){
 .gageInfo {
     flex-grow: 1;
     margin: 0px auto;
@@ -30,7 +30,7 @@
 }
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .titleContainer {
     display: flex;
     flex-direction: row;
@@ -38,7 +38,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .titleContainer {
     display: flex;
     flex-direction: row;
@@ -46,7 +46,7 @@
 }
 }
     
-@media(min-width:426px){
+@media(min-width:481px){
 .gageInfoContainer {
     display: flex;
     flex-direction: row;
@@ -54,7 +54,7 @@
 }
 }
     
-@media(max-width:426px){
+@media(max-width:480px){
 .gageInfoContainer {
     display: flex;
     flex-direction: row;
@@ -67,7 +67,7 @@
     border-radius: 10px 10px 10px 10px;
 }
     
-@media(min-width:426px){
+@media(min-width:481px){
 .gageCircle{
     position: absolute;
     margin: 6px auto auto 7px;
@@ -75,13 +75,13 @@
 }
 }
     
-@media(max-width:426px){
+@media(max-width:480px){
 .gageCircle{
     display: none;
 }
 }
     
-@media(min-width:426px){
+@media(min-width:481px){
 .gageName {
     font-size: 22px;
     font-weight: 700;
@@ -90,7 +90,7 @@
 }
 }
     
-@media(max-width:426px){
+@media(max-width:480px){
 .gageName {
     font-size: 30px;
     font-weight: 700;
@@ -99,7 +99,7 @@
 }
 }
     
-@media(min-width:426px){
+@media(min-width:481px){
 .gageGubun {
     margin: 5px auto auto 10px;
     color:#8C8C8C;
@@ -109,7 +109,7 @@
 }
 }
     
-@media(max-width:426px){
+@media(max-width:480px){
 .gageGubun {
     margin: 10px auto auto 15px;
     color:#8C8C8C;
@@ -118,33 +118,33 @@
 }
 }
     
-@media(min-width:426px){
+@media(min-width:481px){
 .likeButton {
     margin: 0px 0px auto auto;
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .likeButton {
     margin: auto 30px auto auto;
 }
 }
     
-@media(min-width:426px) {
+@media(min-width:481px) {
 .gageContentContainer {
     display: flex;
     margin-bottom: 32px;
 }
 }
     
-@media(max-width:426px) {
+@media(max-width:480px) {
 .gageContentContainer {
     display: flex;
     margin: 0px auto 45px auto;
 }
 }
 
-@media(min-width:426px) {
+@media(min-width:481px) {
 .gageContent {
     display: flex;
     margin-left: 15px;
@@ -152,7 +152,7 @@
 }
 }
 
-@media(max-width:426px) {
+@media(max-width:480px) {
 .gageContent {
     display: flex;
     margin: 0px auto auto 25px;
@@ -168,14 +168,14 @@
     margin-left: 12px;
 }
 
-@media(min-width:426px) {
+@media(min-width:481px) {
 .gageContentTitle {
     font-weight: 700;
     letter-spacing: -0.04em;
 }
 }
 
-@media(max-width:426px) {
+@media(max-width:480px) {
 .gageContentTitle {
     font-size: 23px;
     font-weight: 700;

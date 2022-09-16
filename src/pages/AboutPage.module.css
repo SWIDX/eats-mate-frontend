@@ -25,14 +25,14 @@
 }
 
 /* 첫 번째 배너 섹션 */
-@media(min-width:426px){
+@media(min-width:481px){
 .section:nth-of-type(1) {
   background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
   position: relative;
   height: 100vh;
 }}
 
-@media(max-width:426px){
+@media(max-width:480px){
   .section:nth-of-type(1) {
     background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
     position: relative;
@@ -40,7 +40,7 @@
   }}
 
 /* 첫 번째 배너 위치*/
-@media(min-width:426px){
+@media(min-width:481px){
 .banner1 {
   position: absolute;
   top: 12%;
@@ -48,7 +48,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .banner1 {
     position: absolute;
     top: 15%;
@@ -57,7 +57,7 @@
   }
 /* 첫 번째 배너 텍스트 */
 
-@media(min-width:426px){
+@media(min-width:481px){
 .banner1 h1 {
   margin: 0;
   font-weight: bold;
@@ -71,7 +71,7 @@
 }
 
 
-@media(max-width:426px){
+@media(max-width:480px){
   .banner1 h1 {
     margin: 0;
     font-weight: bold;
@@ -85,7 +85,7 @@
   }
   
 
-@media(min-width:426px){ 
+@media(min-width:481px){ 
 .banner1 h6 {
   font-family: 'Noto Sans KR';
   font-style: normal;
@@ -99,7 +99,7 @@
 }
 }
 
-@media(max-width:426px){ 
+@media(max-width:480px){ 
   .banner1 h6 {
     font-family: 'Noto Sans KR';
     font-style: normal;
@@ -113,7 +113,7 @@
   }
 
 /* 첫 번째 배너 목업 */
-@media(min-width:426px){
+@media(min-width:481px){
 .macMockup {
   width: 60%;
   left: 20%;
@@ -121,7 +121,7 @@
   position: absolute;
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
   .macMockup {
     width: 60%;
     left: 20%;
@@ -131,12 +131,12 @@
   }
 
 
-@media(min-width:426px){
+@media(min-width:481px){
 .macMockup img {
   width: 100%;
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
   .macMockup img {
     width: 100%;
     scale:2.0;
@@ -158,14 +158,14 @@
 /* ========================================  */
 
 /* 두 번째 배너 섹션 */
-@media(min-width:426px){
+@media(min-width:481px){
 .section:nth-of-type(2) {
   position: relative;
   width: 100%;
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .section:nth-of-type(2) {
     position: relative;
     width: 100%;
@@ -187,7 +187,7 @@ h2 {
 }
 
 /* 두 번째 배너 서브 타이틀 */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner2 > h6 {
   font-weight: 400;
   font-size: 1vw;
@@ -195,7 +195,7 @@ h2 {
   letter-spacing: -0.05vw;
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
   .banner2 > h6 {
     font-weight: 400;
     font-size: 3vw;
@@ -206,7 +206,7 @@ h2 {
   }
 
 /* 두 번째 배너 위치  */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner2 {
   display: flex;
   flex-direction: column;
@@ -215,7 +215,7 @@ h2 {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .banner2 {
     position: absolute;
     top:15%;
@@ -245,14 +245,14 @@ h2 {
 }
 
 /* 두 번째 배너 웹 이미지 */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner2 > img {
   width: 50%;
   margin-top: 3vw;
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .banner2 > img {
     width: 80%;
     margin-top: 3vw;
@@ -269,12 +269,12 @@ h2 {
   display: inline;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .aboutimg {
   width: 100%;
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
 .aboutimg {
   width: 80%;
   margin-top:15px;
@@ -311,14 +311,14 @@ h2 {
 
 
 /* 세 번째 배너 섹션 */
-@media(min-width:426px){
+@media(min-width:481px){
 .section:nth-of-type(3) {
   position: relative;
   width: 100%;
   background: linear-gradient(180deg, #FAFAFA 0%, #F8F8F8 100%);
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
   .section:nth-of-type(3) {
     position: relative;
     width: 100%;
@@ -342,7 +342,7 @@ h2 {
 }
 
 /* 세 번째 배너 서브 타이틀 */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner3 > h6 {
   font-weight: 400;
   font-size: 1vw;
@@ -353,7 +353,7 @@ h2 {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .banner3 > h6 {
 font-weight: 400;
     font-size: 3vw;
@@ -364,7 +364,7 @@ font-weight: 400;
     width: 70vw;
 }}
 /* 세 번째 배너 위치  */
-@media(min-width:426PX){
+@media(min-width:481px){
 .banner3 {
   display: flex;
   flex-direction: column;
@@ -374,7 +374,7 @@ font-weight: 400;
   width: 100%;
 }
 }
-@media(max-width:426PX){
+@media(max-width:480PX){
   .banner3 {
     position: absolute;
     top:15%;
@@ -405,14 +405,14 @@ font-weight: 400;
 }
 
 /* 세 번째 배너 웹 이미지 */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner3 img {
   width: 50%;
   margin-top: 3vw;
   z-index: 999;
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
   .banner3 img {
     width: 80%;
     margin-top: 3vw;
@@ -471,7 +471,7 @@ font-weight: 400;
 
 
 /* 네 번째 배너 타이틀 */
-@media(min-width:426px){
+@media(min-width:481px){
 h2 {
   font-family: 'Noto Sans KR';
   font-style: normal;
@@ -485,7 +485,7 @@ h2 {
   margin-top: 0.5vw;
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
   h2 {
     font-family: 'Noto Sans KR';
     font-style: normal;
@@ -501,7 +501,7 @@ h2 {
   }
 
 /* 네 번째 배너 서브 타이틀 */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner4 > h6 {
   font-weight: 400;
   font-size: 1vw;
@@ -512,7 +512,7 @@ h2 {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .banner4 > h6 {
     font-weight: 400;
     font-size: 3vw;
@@ -526,7 +526,7 @@ h2 {
 
 
 /* 네 번째 배너 위치  */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner4 {
   display: flex;
   flex-direction: column;
@@ -536,7 +536,7 @@ h2 {
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
   .banner4 {
     display: flex;
     flex-direction: column;
@@ -550,14 +550,14 @@ h2 {
   }
 
 /* 네 번째 배너 웹 이미지 */
-@media(min-width:426px){
+@media(min-width:481px){
 .banner4 img {
   width: 50%;
   margin-top: 3vw;
   z-index: 9;
 }
 }
-@media(max-width:426px){
+@media(max-width:480px){
   .banner4 img {
     width: 80%;
     margin-top: 7vw;

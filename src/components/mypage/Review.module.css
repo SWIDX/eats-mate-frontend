@@ -72,13 +72,13 @@
     cursor: pointer;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .meta {
     display: flex;
     margin-top: 24px;
 }}
 
-@media(max-width:426px){
+@media(max-width:480px){
     .meta {
     }}
 

@@ -20,8 +20,8 @@ function MyPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userinfo = useSelector((state) => state.userReducer.userinfo)
-  const isPc = useMediaQuery({ query: "(min-width:426px)" });
-  const isMobile = useMediaQuery({ query: "(max-width:426px)" });
+  const isPc = useMediaQuery({ query: "(min-width:481px)" });
+  const isMobile = useMediaQuery({ query: "(max-width:480px)" });
 
   const [renderFlag, setRenderFlag] = useState(false); // 렌더링 할지 말지
   const [tabNum, setTabNum] = useState(0); // 0:코스 1:리뷰 2:찜

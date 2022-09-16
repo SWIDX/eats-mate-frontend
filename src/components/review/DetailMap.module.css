@@ -1,4 +1,4 @@
-@media(min-width:426px){
+@media(min-width:481px){
 .detail_map_wrapper {
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
 }
 }
   
-@media(max-width:426px){
+@media(max-width:480px){
 .detail_map_wrapper {
   display: flex;
   flex-direction: column;
@@ -15,20 +15,20 @@
 }
 } 
   
-@media(min-width:426px){
+@media(min-width:481px){
 .detail_map_wrapper_top {
   display: flex;
   margin-bottom: 36px;
 }
 }
   
-@media(max-width:426px){
+@media(max-width:480px){
 .detail_map_wrapper_top {
   margin-bottom: 30px;
 }
 }
   
-@media(min-width:426px){
+@media(min-width:481px){
 .detail_map_title {
   flex-grow: 2;
   font-size: 24px;
@@ -37,7 +37,7 @@
 }
 }
   
-@media(max-width:426px){
+@media(max-width:480px){
 .detail_map_title {
   flex-grow: 2;
   font-size: 24px;
@@ -46,19 +46,19 @@
 }
 }
   
-@media(min-width:426px){
+@media(min-width:481px){
 .detail_map_address {
   display: inline-block;
 }
 }
   
-@media(max-width:426px){
+@media(max-width:480px){
 .detail_map_address {
   display: inline-block;
 }
 }
   
-@media(min-width:426px){
+@media(min-width:481px){
 .detail_map_box {
   height: 48px;
   display: flex;
@@ -68,7 +68,7 @@
 }
 }
   
-@media(max-width:426px){
+@media(max-width:480px){
 .detail_map_box {
   width: 75vw;
   height: 40px;
@@ -92,13 +92,13 @@
   margin: auto 4px auto auto;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .detail_map_font{
   font-size: 16px;
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .detail_map_font{
   font-size: 12px;
 }
@@ -113,26 +113,26 @@
   cursor: pointer;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .detail_map {
   display: flex;
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .detail_map {
   display: flex;
   flex-direction: column;
 }
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .kakao_map {
   margin-right: 40px;
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .kakao_map {
   margin-bottom: 25px;
 }
@@ -146,7 +146,7 @@
   padding: 12px 0px;
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .buttonContainer {
   width: 75vw;
   display: flex;
@@ -161,7 +161,7 @@
   text-align: center;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .whiteButton {
   flex-grow: 1;
   padding: 22px 80px;
@@ -172,7 +172,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .whiteButton {
   flex-grow: 1;
   padding: 18px 80px;
@@ -191,7 +191,7 @@
   white-space: nowrap;
 }
 
-@media(min-width:426px){
+@media(min-width:481px){
 .blackButton {
   display: flex;
   flex-grow: 1;
@@ -203,7 +203,7 @@
 }
 }
 
-@media(max-width:426px){
+@media(max-width:480px){
 .blackButton {
   display: flex;
   flex-grow: 1;
