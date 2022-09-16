@@ -214,6 +214,7 @@ h2 {
   
 
 /* 두 번째 배너 숫자 */
+@media(min-width:481px){
 .numbers {
   margin-top: 3vw;
   width: 5vw;
@@ -229,6 +230,24 @@ h2 {
   letter-spacing: -0.05vw;
   color: #E97869;
 }
+}
+@media(max-width:480px){
+  .numbers {  
+    margin-top: 3vw;
+    width: 12vw;
+    height: 5vw;
+    border: 2px solid #E97869;
+    border-radius: 37px;
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2.2vw;
+    line-height: 1.5vw;
+    text-align: center;
+    color: #E97869;
+    padding: 4.5px;
+  }
+  }
 
 /* 두 번째 배너 웹 이미지 */
 @media(min-width:481px){
@@ -241,7 +260,7 @@ h2 {
 @media(max-width:480px){
   .banner2 > img {
     width: 80%;
-    margin-top: 3vw;
+    margin-top: 14vw;
   }
   }
 
@@ -263,7 +282,7 @@ h2 {
 @media(max-width:480px){
 .aboutimg {
   width: 80%;
-  margin-top:15px;
+  margin-top:9vh;
 }
 }
 
@@ -366,6 +385,7 @@ font-weight: 400;
   }
 
 /* 세 번째 배너 숫자 */
+@media(min-width:481px){
 .numbers {
   margin-top: 3vw;
   width: 5vw;
@@ -381,7 +401,25 @@ font-weight: 400;
   letter-spacing: -0.05vw;
   color: #E97869;
 }
+}
 
+@media(max-width:480px){
+.numbers {  
+  margin-top: 3vw;
+  width: 12vw;
+  height: 5vw;
+  border: 2px solid #E97869;
+  border-radius: 37px;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.2vw;
+  line-height: 1.5vw;
+  text-align: center;
+  color: #E97869;
+  padding: 4.5px;
+}
+}
 /* 세 번째 배너 웹 이미지 */
 @media(min-width:481px){
 .banner3 img {
@@ -393,7 +431,7 @@ font-weight: 400;
 @media(max-width:480px){
   .banner3 img {
     width: 80%;
-    margin-top: 3vw;
+    margin-top: 14vh;
     z-index: 999;
   }
   }
@@ -538,7 +576,7 @@ h2 {
 @media(max-width:480px){
   .banner4 img {
     width: 80%;
-    margin-top: 7vw;
+    margin-top: 20vw;
     z-index: 9;
   }
   }
