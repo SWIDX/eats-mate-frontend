@@ -25,19 +25,13 @@
 }
 
 /* 첫 번째 배너 섹션 */
-@media(min-width:481px){
 .section:nth-of-type(1) {
   background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
   position: relative;
   height: 100vh;
-}}
+}
 
-@media(max-width:480px){
-  .section:nth-of-type(1) {
-    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
-    position: relative;
-    height: 80vh;
-  }}
+
 
 /* 첫 번째 배너 위치*/
 @media(min-width:481px){
@@ -158,20 +152,12 @@
 /* ========================================  */
 
 /* 두 번째 배너 섹션 */
-@media(min-width:481px){
 .section:nth-of-type(2) {
   position: relative;
   width: 100%;
 }
-}
 
-@media(max-width:480px){
-  .section:nth-of-type(2) {
-    position: relative;
-    width: 100%;
-    height:80vh;
-  }
-  }
+
 /* 두 번째 배너 타이틀 */
 h2 {
   font-family: 'Noto Sans KR';
@@ -311,21 +297,13 @@ h2 {
 
 
 /* 세 번째 배너 섹션 */
-@media(min-width:481px){
 .section:nth-of-type(3) {
   position: relative;
   width: 100%;
   background: linear-gradient(180deg, #FAFAFA 0%, #F8F8F8 100%);
 }
-}
-@media(max-width:480px){
-  .section:nth-of-type(3) {
-    position: relative;
-    width: 100%;
-    height:80vh;
-    background: linear-gradient(180deg, #FAFAFA 0%, #F8F8F8 100%);
-  }
-  }
+
+
 
 /* 세 번째 배너 타이틀 */
 h2 {
