@@ -4,6 +4,15 @@ import styles from './AboutPage.module.css';
 import { useMediaQuery } from "react-responsive"
 import MobileNavBar from '../components/navigation/mobile/MobileNavBar';
 
+// 모바일 화면 넘침 방지 함수
+function setScreenSize() {
+    let vh = window.innerHeight * 0.01;
+
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    setScreenSize();
+
 function AboutPage(){
     const isPc = useMediaQuery({ query: "(min-width:481px)" });
     const isMobile = useMediaQuery({ query: "(max-width:480px)" });
