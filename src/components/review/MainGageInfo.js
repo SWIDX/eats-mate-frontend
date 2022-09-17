@@ -38,7 +38,7 @@ function MainGageInfo(props){
     return(
         <div style={{marginBottom: "100px"}}> {/* 이부분 */}
             <div className={styles.infoContainer}> {/* 코드 */}
-                <div style={{width: "730px", flexShrink: "0"}}> {/* 수정하지마세요 */}
+                <div style={{width: "730px", flexShrink: "0", marginLeft: "-35px"}}> {/* 수정하지마세요 */}
                     <Carousel
                         dataList={storeImg}
                         outerViewWidth={"660px"}
