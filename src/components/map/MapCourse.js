@@ -259,14 +259,14 @@ function MapCourse(props) {
                 size="24"
                 onChange={onInputTitleChange}
               />
-              <RiceEmoticon
+              {/* <RiceEmoticon
                 style={{
                   width:"25px",
                   height:"25px",
                   position: "absolute",
                   right: "195px",
                   top: "25px",
-              }}/>
+              }}/> */}
               <CompleteBtn
                 style={{
                   width:"110px",
@@ -279,7 +279,7 @@ function MapCourse(props) {
                 onClick={() => checkExp()}
               />
               <div className={styles.courseDistance}>
-                총 이동거리&nbsp;{finalDistance}m
+                총 이동거리&nbsp;<b>{finalDistance}m</b>
               </div>
 
               <ExitBtn
