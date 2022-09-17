@@ -41,8 +41,14 @@ function MapCourse(props) {
                 withCredentials: true // Set-Cookie 작동을 위해 필수
             }
             );
-            console.log(dispatch(reissueJWT(res.data)))
-            clickCompleteBtn();
+            let redux_res = await dispatch(reissueJWT(res.data))
+            if (redux_res != undefined) {
+              clickCompleteBtn();
+            }
+            else {
+              console.log("로그인 정보를 갱신하는 중입니다. 잠시만 기다려주세요.");
+              setTimeout(checkExp, 200);
+            }
     
         } catch(e) {
             console.log(e);
