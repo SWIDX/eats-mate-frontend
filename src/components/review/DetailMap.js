@@ -112,7 +112,7 @@ const DetailMap = (props) => {
             <MapMarker
             position={{lat: userPos.lat, lng: userPos.lng}}
             image={{
-              src: "../img/map-marker/pin_tour.svg",
+              src: "../img/map-marker/pin_user.svg",
               size: {
                 width: 64,
                 height: 69
