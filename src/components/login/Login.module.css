@@ -11,13 +11,25 @@
     }
 }
 
-.logout_btn {
-    display: flex;
-    color: #939393;
-    font-size: 13px;
-    margin: auto 25px;
-    margin-right: 0px;
-    cursor: pointer;
+@media (max-width:480px){
+    .logout_btn {
+        display: flex;
+        color: #939393;
+        font-size: 13px;
+        margin: auto 25px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+}
+@media (min-width:481px){
+    .logout_btn {
+        display: flex;
+        color: #939393;
+        font-size: 13px;
+        margin: auto 25px;
+        margin-right: 0px;
+        cursor: pointer;
+    }
 }
 .logout_btn > div {
     margin: auto auto;
