@@ -12,7 +12,7 @@ function LogoutButton() {
     const navigate = useNavigate();
 
     async function handleLogout() {
-        if (window.confirm('정말로 로그아웃 하시겠습니까?')) {
+        if (window.confirm('정말 로그아웃 하시겠습니까?')) {
             // logout
             try{
                 const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",

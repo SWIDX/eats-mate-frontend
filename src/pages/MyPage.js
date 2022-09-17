@@ -188,7 +188,7 @@ function MyPage() {
   }
 
   async function deleteCourse(id) {
-    if (window.confirm('정말로 삭제하시겠어요?')) {
+    if (window.confirm('정말 삭제하시겠어요?')) {
       
       try {
         const res = await axios.delete("https://" + SERVER + "/user-service/user/course/" + id,
@@ -229,7 +229,7 @@ function MyPage() {
   }
 
   async function deleteLike(id) {
-    if (window.confirm('정말로 삭제하시겠어요?')) {
+    if (window.confirm('정말 삭제하시겠어요?')) {
       try {
         const res = await axios.delete("https://" + SERVER + "/review-service/review/" + id,
           { //header
@@ -252,7 +252,7 @@ function MyPage() {
   }
 
   async function deleteReview(id) {
-    if (window.confirm('정말로 삭제하시겠어요?')) {
+    if (window.confirm('정말 삭제하시겠어요?')) {
       try {
         const res = await axios.delete("https://" + SERVER + "/review-service/review/" + id,
           { //header
