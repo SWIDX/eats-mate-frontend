@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeUserInfo, reissueJWT } from '../_actions/user_action';
 import { useMediaQuery } from "react-responsive"
 import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
+import NoContent from '../components/etc/mobile/NoContent';
 
 function StoreDetailPage(){
     const SERVER = "eats-mate.com:8081"
@@ -108,6 +109,8 @@ function StoreDetailPage(){
         <>
           {isPc && <NavBar />}
           {isMobile && <MobileNavBar/>}
+          {isMobile && <NoContent/>}
+          {isPc &&
           <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "10px 0px 100px 0px"}}>
               <div>
                   <MainGageInfo information={information}/>
@@ -116,6 +119,7 @@ function StoreDetailPage(){
               </div>
               { modalOpen ? <ReviewModal information={information} closeModal={closeModal}/> : null }
           </Container>
+          }
         </>
     );
 }

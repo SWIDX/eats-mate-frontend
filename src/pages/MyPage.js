@@ -289,10 +289,10 @@ function MyPage() {
       <>
         {isPc && <NavBar />}
         {isMobile && <MobileNavBar />}
+        {isMobile && <NoContent/>}
+        {isPc &&
         <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
-
-          {/* 싱단 타이틀 */}
-          {isMobile && <NoContent/>}
+          {/* 상단 타이틀 */}
           {isPc &&
           <div>
           <div className={styles.title}>
@@ -424,6 +424,7 @@ function MyPage() {
           
         </div>}
         </Container>
+        }
       </>
       : null
     }
