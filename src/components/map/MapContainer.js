@@ -231,7 +231,7 @@ const MapContainer = (props) => {
                         path={course.map((info) => ({ lat: info.lat, lng: info.lng }))}
                         draggable={false}
                         strokeWeight={4} // 선의 두께 입니다
-                        strokeColor={'#e97869'} // 선의 색깔입니다
+                        strokeColor={'#7E67F8'} // 선의 색깔입니다
                         strokeOpacity={1} // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                         strokeStyle={'solid'} // 선의 스타일입니다
                     />
@@ -245,10 +245,10 @@ const MapContainer = (props) => {
                             }}
                             radius={radius}
                             strokeWeight={3} // 선의 두께입니다
-                            strokeColor={"#000000"} // 선의 색깔
+                            strokeColor={"#7E67F8"} // 선의 색깔
                             strokeOpacity={1} // 선의 불투명도
                             strokeStyle={"solid"} // dash
-                            fillColor={"#e97869"} // 채우기 색깔
+                            fillColor={"#ffffff"} // 채우기 색깔
                             fillOpacity={1} // 채우기 불투명
                     />
                     ))}
