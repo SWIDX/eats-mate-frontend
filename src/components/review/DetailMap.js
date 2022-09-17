@@ -6,6 +6,7 @@ import { ReactComponent as KakaoMapSvg } from "../../images/svg/kakaomap-button.
 const DetailMap = (props) => {
   const [storePos, setStorePos] = useState({})
   const [centerPos, setCenterPos] = useState({})
+  const [userPos, setUserPos] = useState(undefined);
 
   useEffect(() => {
     setStorePos({lat: props.information.lat, lng: props.information.lng})
@@ -22,6 +23,23 @@ const DetailMap = (props) => {
   function copyText(){
     navigator.clipboard.writeText(props.information.address)
     alert("주소가 복사되었습니다.");
+  }
+
+  function getLocation() {
+  if(navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(getUserLatLng);
+  else
+      alert("GPS를 지원하지 않는 브라우저입니다.");
+  }
+
+  function getUserLatLng(position){
+    var lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    let pos = {};
+    pos["lat"] = lat;
+    pos["lng"] = lng;
+    setUserPos(pos);
+    setCenterPos(pos);
   }
 
   return (
@@ -52,7 +70,7 @@ const DetailMap = (props) => {
                 <path d="M2 10H8" stroke="#8E8E8E"/>
                 </svg>
               </div>
-              <div onClick={copyText} className={styles.detail_map_font2} >
+              <div onClick={copyText} className={styles.detail_map_font2}>
                 주소 복사
               </div>
             </div>
@@ -90,10 +108,22 @@ const DetailMap = (props) => {
               }
             }}
             />
+            {userPos != undefined &&
+            <MapMarker
+            position={{lat: userPos.lat, lng: userPos.lng}}
+            image={{
+              src: "../img/map-marker/pin_tour.svg",
+              size: {
+                width: 64,
+                height: 69
+              }
+            }}
+            />
+            }
           </Map>
 
           <div className={styles.buttonContainer}>
-            <div className={styles.whiteButton}><div>내 위치로 이동</div></div>
+            <div className={styles.whiteButton} onClick={getLocation}><div>내 위치로 이동</div></div>
             <div className={styles.whiteButton} onClick={() => {setCenterPos(storePos)}}><div>가게 위치로 이동</div></div>
             <div className={styles.blackButton} onClick={urlScheme}>
               <KakaoMapSvg />
