@@ -88,7 +88,7 @@
 
 .cardImg {
     display: flex;
-    padding: 24px 15px;
+    padding: 24px 8px;
 }
 
 .cardImg > img {
