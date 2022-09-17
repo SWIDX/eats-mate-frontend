@@ -47,7 +47,7 @@
     padding: 10px;
     border-radius: 10px;
     justify-content: flex-start;
-    padding: -7px 24px;
+    padding: 8px;
     align-items: center;
 }
 
@@ -76,7 +76,7 @@
     box-shadow: none;
     border-radius: 0;
     padding-left: 10%;
-    cursor: pointerx;
+    cursor: pointer;
 }
 
 .divSections {
