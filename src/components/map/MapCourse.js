@@ -92,7 +92,7 @@ function MapCourse(props) {
           finalTitle = title;
         }
 
-        var url = "http://" + SERVER + "/user-service/user/course/";
+        var url = "https://" + SERVER + "/user-service/user/course/";
         var data = {
           title: finalTitle,
           placeNameList: placeNameList,

@@ -31,7 +31,7 @@ function RestInformationCard(props) {
 
     async function getReviewRate() {
         try {
-            const res = await axios.get('http://' + SERVER + '/review-service/review/count?place_name=' + information.name);
+            const res = await axios.get('https://' + SERVER + '/review-service/review/count?place_name=' + information.name);
             setRateList(res.data);
         } catch (e) {
             throw e;
@@ -40,7 +40,7 @@ function RestInformationCard(props) {
 
     async function getUserReview() {
         try {
-            const res = await axios.get('http://' + SERVER + '/review-service/review/?place_name=' + information.name + '&amount=' + 2);
+            const res = await axios.get('https://' + SERVER + '/review-service/review/?place_name=' + information.name + '&amount=' + 2);
             res.data.forEach((e, i) => (res.data[i].createdBy = e.createdBy.replaceAll('-', '. ')));
             setReviewList(res.data);
         } catch (e) {
