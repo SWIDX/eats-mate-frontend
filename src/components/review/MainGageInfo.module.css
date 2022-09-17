@@ -50,7 +50,7 @@
 .gageInfoContainer {
     display: flex;
     flex-direction: row;
-    margin: auto auto;
+    margin: auto auto auto 16px;
 }
 }
     
