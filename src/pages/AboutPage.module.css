@@ -1,8 +1,10 @@
-body{
+
+/* body 태그는 전역 html에 적용되기 때문에 사용X */
+/* body{
   width:100%;
   overflow-x:hidden;
   overflow-y:hidden;
-}
+} */
 
 /* CSS-Scroll-snap 속성 */
 .scrollContainer {
