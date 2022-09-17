@@ -24,8 +24,8 @@ function ReviewPage() {
   const isPc = useMediaQuery({ query: "(min-width:481px)" });
   const isMobile = useMediaQuery({ query: "(max-width:480px)" });
 
-  const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
-  const [dynReviewList, setDynReviewList] = useState([]);
+  const [reviewList, setReviewList] = useState([]); // 최초로 받아온 리뷰 리스트 (수정 x)
+  const [dynReviewList, setDynReviewList] = useState([]); // 화면에 보여줄, 변동 가능한 리뷰 리스트 (수정 o)
   const [information, setInformation] = useState({}); // 가게 정보
   const [rateList, setRateList] = useState([]);
   const [dropdownList, setDropdownList] = useState(["최신순", "인기순"]);
@@ -61,6 +61,17 @@ function ReviewPage() {
     }
   }
 
+  async function setUserReviewByRecommend() { // 추천순 정렬
+    try {
+      const res = await axios.get("https://" + SERVER + "/review-service/review/?place_name=" + placeName + "&amount=" + 0 + "&recommend=" + true,
+      );
+      res.data.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
+      setDynReviewList(res.data);
+    } catch(e){
+      throw e;
+    }
+  }
+
   async function getReviewRate() {
     try {
       const res = await axios.get("https://" + SERVER + "/review-service/review/count?place_name=" + placeName);
@@ -89,12 +100,10 @@ function ReviewPage() {
 
   function sortReview(selection) {
     if (selection == "최신순") {
-      setDynReviewList(reviewList)
+      setDynReviewList(reviewList);
     }
     else {
-      console.log(dynReviewList)
-      const sortedList = dynReviewList.sort((a, b) => b.recommend - a.recommend);
-      setDynReviewList(sortedList);
+      setUserReviewByRecommend();
     }
   }
 
