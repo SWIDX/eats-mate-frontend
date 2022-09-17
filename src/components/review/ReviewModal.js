@@ -82,7 +82,7 @@ function ReviewModal(props) {
     })
     .catch(err => {
         console.log(err);
-        window.alert("오류가 발생했습니다.")
+        window.alert("오류가 발생했습니다. 다시 시도해주세요.")
     })
   }
 
@@ -102,8 +102,14 @@ function ReviewModal(props) {
               withCredentials: true // Set-Cookie 작동을 위해 필수
             }
           );
-          console.log(dispatch(reissueJWT(res.data)))
-          submitReview();
+          let redux_res = await dispatch(reissueJWT(res.data))
+          if (redux_res != undefined) {
+            submitReview();
+          }
+          else {
+            console.log("로그인 정보를 갱신하는 중입니다. 잠시만 기다려주세요.");
+            setTimeout(checkExp, 200);
+          }
 
         } catch(e) {
           console.log(e);
