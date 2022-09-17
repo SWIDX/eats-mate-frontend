@@ -201,6 +201,7 @@ textarea::placeholder {
 }
 .preview > img {
   object-fit: cover;
+  flex: 1;
 }
 
 .reviewModalBtn {
