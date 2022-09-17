@@ -11,7 +11,9 @@ function LikeButton(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        getLikeClicked();
+        if (props.placeId != undefined) {
+            getLikeClicked();
+        }
     })
 
     async function handleLike() {
