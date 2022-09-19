@@ -10,6 +10,8 @@ const MapSearchBar = (props) => {
     const [information, setInformation] = useState([]); // data(restaurant, tour)
     const [showDropDown, setShowDropDown] = useState(false);
     const [text, setText] = useState('');
+    const [list, setList] = useState(["강남", "용산", "신촌", "광진구", "마포구", "서대문구", "서초구"]);
+    const [placeHolder, setPlaceHolder] = useState("");
     const dropDownRef = useRef();
 
     const { searchInformation, setSearchInformation } = useContext(SearchContext);
@@ -89,6 +91,15 @@ const MapSearchBar = (props) => {
     }
     onClickOutside(dropDownRef);
 
+    useEffect(() => {
+        const recommendKeyword = list[Math.floor(Math.random() * list.length)];
+        setPlaceHolder(recommendKeyword+"을(를) 검색해 보세요");
+    }, []);
+
+    useEffect(() => {
+        //console.log(placeHolder);
+    }, [placeHolder]);
+
     return (
         <div className={styles.search}>
             <div ref={dropDownRef}>
@@ -125,7 +136,7 @@ const MapSearchBar = (props) => {
                     type="text"
                     id="search"
                     name="search"
-                    placeholder="검색어를 입력하세요."
+                    placeholder={placeHolder}
                     value={inputText}
                     onChange={onInputTextChange}
                     onKeyPress={handleOnEnterKeyPress}
