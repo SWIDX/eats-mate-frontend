@@ -29,8 +29,8 @@ function ReviewModal(props) {
   }
 
   function submitReview() {
-    if(contentText.length < 50) {
-      alert("50자 이상 입력해주세요.");
+    if(contentText.length < 10) {
+      alert("10자 이상 입력해주세요.");
       return;
     }
 
