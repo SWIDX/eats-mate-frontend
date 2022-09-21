@@ -18,7 +18,8 @@ function Carousel(props) {
 
     function imgClick(idx) {
         // not using useNavigate was intended
-        window.location = props.dataList[idx].link;
+        // window.location = props.dataList[idx].link;
+        window.open(props.dataList[idx].link, '_blank');
     } // img click event function
 
     function leftBtnClick() {
