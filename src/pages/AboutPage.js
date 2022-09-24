@@ -35,7 +35,7 @@ function AboutPage(){
                 건강한 문화를 만들어가고 있습니다</h6>
                 </div>
                 <div className={styles.macMockup}>
-                    { <img className={styles.aboutimg} src="/img/main-mockup.png" alt="banner1 mockup" /> }
+                    { <img className={styles.aboutimg} src="/img/main-pc-72.png" alt="banner1 mockup" /> }
                 </div>
             </div>
             <div className={styles.section}>
