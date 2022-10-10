@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styles from "./Review.module.css";
 import ReviewModal from "./ReviewModal";
 
-function AllReview(){
+function AllReview(props){
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -36,7 +36,7 @@ function AllReview(){
                     <div className={styles.locationboxflex2}>
                     <div className={styles.locationboxflex}>
                     <img className={styles.rrr} src="/img/rrr.png"></img>
-                    <div className={styles.rrrcontent}>성수완당에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
+                    <div className={styles.rrrcontent}>{props.information.name}에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
                     </div>
                     <div>
                         <button className={styles.modalbutton} onClick={showModal}><img src="/img/goreview.png"></img></button>
@@ -44,13 +44,8 @@ function AllReview(){
                     </div>
                     </div>
                 </div>
-             
+    
 
-                <div className={styles.locationboxflex}>
-                    <img className={styles.bestcontent} alt="" src="/img/bestcontent.png"></img>
-                    <img className={styles.count} alt="" src="/img/count.png"></img>
-                </div>
-                
                 <div className={styles.reviewcontent}>말해뭐해 일단 너무 맛있고요... 혼자 건대갔다가 들렀는데 혼밥하기 좋아요 추천</div>
                 <img className={styles.reviewimg} src="/img/emonga.jpeg" alt="first pic" />
 
@@ -62,10 +57,6 @@ function AllReview(){
 
                 <hr/>
 
-                <div className={styles.locationboxflex}>
-                    <img className={styles.bestcontent} alt="" src="/img/bestcontent.png"></img>
-                    <img className={styles.count} alt="" src="/img/count.png"></img>
-                </div>
 
                 <div className={styles.reviewcontent}>말해뭐해 일단 너무 맛있고요... 혼자 건대갔다가 들렀는데 혼밥하기 좋아요 추천</div>
                 <img className={styles.reviewimg} src="/img/emonga.jpeg" alt="first pic" />

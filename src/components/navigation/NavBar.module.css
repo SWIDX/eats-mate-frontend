@@ -3,14 +3,39 @@
     height: 75px;
 }
 
-.logoContainer {
-    width: fit-content;
-    transform: translateX(-20px);
-    margin-right: 5px;
+.mobileNavContainer {
+    width: 100%;
+    display: flex;
 }
 
-.logoSvg {
-    scale: 0.7;
+@media(max-width:480px){
+    .logoContainer {
+        width: 100px;
+        height: 59px;
+        transform: translateX(-20px);
+        margin-right: 0px !important;
+    }
+}
+@media(min-width:481px){
+    .logoContainer {
+        width: fit-content;
+        transform: translateX(-20px);
+        margin-right: 5px;
+    }
+}
+
+@media(min-width:481px){
+    .logoSvg {
+        scale: 0.7;
+    }
+}
+
+@media(max-width:480px){
+    .logoSvg {
+        scale: 0.5;
+        transform: translateY(-30px);
+    }
+     
 }
 
 .nav > a:nth-child(n) {
@@ -43,4 +68,11 @@
 .userprofile > p {
     margin: auto;
     letter-spacing: -0.04em;
+}
+
+
+@media(max-width:480px){
+    .navLogin{
+        display: none;   
+    }
 }

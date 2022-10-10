@@ -1,77 +1,301 @@
-.recommended_list {
-    position: absolute;
-    left: 150px;
-    top: 1050px;
+@media (min-width:481px){
+    .recommended_list {
+        position: relative;
+        left: 150px;
+        top:155px;
+    }
+    }
+    
+    @media (max-width:480px){
+        .recommended_list {
+            position: relative;
+            top:155px;
+    }
+    }
+        
+    
+    .recommended_list > span {
+        font-size: 18px;
+        color: grey;
+    }
+    
+    @media (max-width:480px){
+    .timeformedia{
+        margin-left: 16px;
+        position: relative;
+    }
+    }
+    
+    .recommended_list > p {
+        /*position: absolute;*/
+        width: 500px;
+        height: 41px;
+        /*top: 120px;*/
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 41px;
+        display: flex;
+        align-items: center;
+        letter-spacing: -0.04em;
+    }
+    
+    @media (min-width:481px){
+    .element_list {
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        gap: 40px;
+    }
+    }
+
+    @media(min-width:1000px) and (max-width:1200px){
+    .element_list {
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        gap: 25px;
+    }
+    }
+
+    
+    @media (max-width:480px){
+    .element_list {
+        margin-top: 30px;
+        display: flex;
+        overflow-x: auto; 
+        background-color: #ffffff;
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+        gap: 16px;
+    }
+    }
+    
+    @media(max-width:480px){
+    .wrap{
+        background: #ffffff;
+        overflow: scroll;
+        width: 100%;
+    }
+    }
+
+    @media(max-width:480px){
+        .forscroll{
+            overflow: scroll;
+        }
+        }
+    
+@media (min-width:481px){
+    .element {
+        height: 100%;
+        border-radius: 15px;
+        border: 1px solid #DCDCDC;
+        display:inline-block;
+        flex-shrink: 0;
+        overflow: hidden;
+        cursor: pointer;
+        scale: 1;
+        transition: 0.3s;
+    }
+    .element:hover {
+        height: 100%;
+        border-radius: 15px;
+        border: 1px solid #DCDCDC;
+        box-shadow: 0px 4px 31px 5px rgb(230 230 230 / 50%);
+        display:inline-block;
+        flex-shrink: 0;
+        overflow: hidden;
+        cursor: pointer;
+        scale: 1.04;
+        transition: 0.3s;
+    }
 }
 
-.recommended_list > span {
-    font-size: 18px;
-    color: grey;
+@media (max-width:480px){
+    .element {
+        width: 200px;
+        height: 100%;
+        border-radius: 10px;
+        border: 1px solid #DCDCDC;
+        display:inline-block; 
+        flex-shrink: 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+}
+        
+    @media (max-width:480px){
+        .elementimg {
+            width: 146px;
+            height: 100px;
+        }
+        }
+    
+@media (min-width:481px){
+    .recommendContent {
+        padding: 14px 16px;
+    }
 }
 
-.recommended_list > p {
-    /*position: absolute;*/
-    width: 500px;
-    height: 41px;
-    /*top: 120px;*/
-
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 41px;
-    display: flex;
-    align-items: center;
-    letter-spacing: -0.04em;
-}
-
-.element_list {
-    width: 1200px;
-    height: 350px;
-    margin-top: 50px;
-    display: flex;
-}
-
-.element {
-    width: 33%;
-    height: 100%;
-    border-radius: 15px;
-    border: 1px solid lightgrey;
-    margin-right: 30px;
+@media (max-width:480px){
+    .recommendContent {
+        padding: 12px 12px;
+    }
 }
 
 .title {
     display: flex;
-    margin-top: 15px;
 }
 
-.image {
+@media(min-width:481px){    
+.locationimage {
+    margin: auto 0px auto 0px;
+    width: 14px;
+    height: 18px;
+}
+}
     
-    margin-left: 15px;
-    width: 15px;
-    height: 20px;
+@media(max-width:480px){
+.locationimage {
+    margin: auto 5px auto 0px;
+    width: 12px;
+    height: 15px;
+}
 }
 
+@media(min-width:481px){
 .address {
-    margin-left: 8px;
+    margin: auto auto auto 8px; 
+}
+}
+    
+    @media(max-width:480px){
+    .address {
+        font-size: 13px;
+    }
+    }
+    
+    @media(min-width:481px){
+        .name {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+    }
+    
+    @media(max-width:480px){
+        .name {
+            margin-left: 0px;
+            font-weight: bold;
+        }
+    }
+    
+    @media(min-width:481px){
+    .name > span {
+        color: #BDBDBD;
+        font-size: 15px;
+        margin-left: 5px;
+    }
+    }
+    
+    @media(max-width:480px){
+        .name > span {
+            color: #BDBDBD;
+            font-size: 13px;
+            margin-left: 5px;
+        }
+    }
+    
+    
+    @media(min-width:481px){    
+    .ment {
+        margin-top: 15px;
+    }
+    }
+    
+    @media(max-width:480px){
+    .ment {
+        margin-top: 16px;
+        font-size: 14px;
+    }
+    }
+    
+    .ment > span {
+        color: #E97869;
+        font-weight: 700;
+    }
+    
+    
+@media(min-width:481px){
+.maininfomessage {
+    font-weight: 700;
+    font-size: 28px;
+    }
 }
 
-.name {
-    margin-top: 15px;
-    margin-left: 15px;
-    font-weight: bold;
+@media(max-width:480px){
+.maininfomessage {
+    margin-left: 16px;
+    font-weight: 700;
+    font-size: 18px;
+    }
 }
 
-.name > span {
-    color: lightgrey;
-    font-size: 15px;
+@media(max-width:480px){
+    .parent{
+        display: flex;
+        margin-bottom: 20px;
+    }
+}
+@media(min-width:481px){
+    .parent{
+        display: flex;
+        margin-bottom: 80px;
+    }
 }
 
-.ment {
-    margin-left: 15px;
-    margin-top: 15px;
+@media(min-width:481px){
+.child{
+    margin-bottom: 50px;
+}
 }
 
-.ment > span {
-    color: red;
+@media(max-width:480px){
+.child{
+    margin: auto auto;
+    margin-bottom: 50px;
+    width:100%;
+}
+}
+
+@media(min-width:1400px){
+    .recommendimage{
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+}
+
+@media(min-width:1200px) and (max-width:1400px){
+    .recommendimage{
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+}
+
+@media(min-width:1000px) and (max-width:1200px){
+    .recommendimage{
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+    }
+}
+
+@media(max-width:480px){
+    .recommendimage{
+        margin-top:-1px;
+        width: 100%;
+        height: 110px;
+        object-fit: cover;
+    }
 }

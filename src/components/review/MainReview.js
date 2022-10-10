@@ -1,83 +1,92 @@
-import React, {useState} from "react";
-import styles from './Review.module.css';
-import ReviewModal from "./ReviewModal";
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+import styles from './MainReview.module.css';
+import { useLocation, useNavigate } from "react-router";
+import ReviewCounter from "./ReviewCounter";
+import Review from "../mypage/Review";
 
 function MainReview(props){
+    const SERVER = "eats-mate.com:8081"
+    const placeName = useLocation().pathname.split("/").pop();
+    const navigate = useNavigate();
+    const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
+    const [rateList, setRateList] = useState([0, 0, 0]);
 
-    const [modalOpen, setModalOpen] = useState(false);
+    // props 확인용
+    useState(()=>{console.log(props.information)},[props])
 
-    const showModal = () => {
-        setModalOpen(true);
+    useEffect(() => {
+        getUserReview();
+        getReviewRate();
+    }, []);
+    
+    async function getUserReview() {
+        try {
+            const res = await axios.get("https://" + SERVER + "/review-service/review/?place_name=" + placeName + "&amount=" + 2,
+            );
+            res.data.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
+            setReviewList(res.data);
+        } catch(e){
+            throw e;
+        }
     }
 
-    return(
+    async function getReviewRate() {
+        try {
+            const res = await axios.get("https://" + SERVER + "/review-service/review/count?place_name=" + placeName);
+            setRateList(res.data);
+        } catch(e){
+            throw e;
+        }
+    }
+
+    function gotoReviewPage() {
+        navigate("/review/" + props.information.name);
+    }
+
+    return (
         <>
-            <div className={styles.responsivewrapper}>
-
-                <div className={styles.locationboxflex}>
-                    <p className={styles.maininfomessage}>메이트들의 생생한 리뷰를 확인해보세요</p>
-                    <img className={styles.allreview} src="/img/allreviewview.png"></img>
-                </div>
-
-
-                <div className={styles.locationboxflex}>
-                    <div className={styles.locationboxflex2}>
-                        <div className={styles.box1}>
-                            <p className={styles.gagename}>{props.information.name}</p>
-                            <div className={styles.locationboxflex}>
-                            <img className={styles.rateimg} src="/img/besttextcolor.png"></img>
-                            <img className={styles.rateimg} src="/img/sosotext.png"></img>
-                            <img className={styles.rateimg} src="/img/badtext.png"></img>
-                    </div>
-                        </div>
-                        <div className={styles.locationboxflex}>
-                        <img className={styles.rrr} src="/img/rrr.png"></img>
-                        <div className={styles.locationboxflex2}>
-                        <div className={styles.rrrcontent}>{props.information.name}에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
-                        <div>
-                        <button className={styles.modalbutton2} onClick={showModal}><img src="/img/goreview.png"></img></button>
-                        {modalOpen && <ReviewModal setModalOpen={setModalOpen} />}
-                        </div>
-                    </div>
+            <div className={styles.container}>
+                <div className={styles.titleContainer}>
+                    <div className={styles.title}>메이트들의 생생한 리뷰를 확인해보세요</div>
+                    <div className={styles.allReviewButton} onClick={gotoReviewPage}>
+                        <div>전체보기</div>
+                        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L10 10L1 19" stroke="#A7A7A7" strokeWidth="1.5"/>
+                        </svg>
                     </div>
                 </div>
-             
-            
-                
-                    <div className={styles.locationboxflex2}>
 
-                    <div className={styles.box2}>
-                        <div className={styles.locationboxflex}>
-                        <img className={styles.bestcontent} alt="" src="/img/bestcontent.png"></img>
-                        <img className={styles.count} alt="" src="/img/count.png"></img>
+                <div className={styles.bottomContainer}>
+                    <div className={styles.bottomLeftContainer}>
+                        <div className={styles.counterBox}>
+                            <div className={styles.reviewCountText}><b>{rateList[0] + rateList[1] + rateList[2]}건</b>의 리뷰가 있어요</div>
+                            <ReviewCounter
+                                rateVal={rateList}
+                            />
                         </div>
-                        <div className={styles.reviewcontent}>말해뭐해 일단 너무 맛있고요... 혼자 건대갔다가 들렀는데 혼밥하기 좋아요 추천</div>
-                        <div className={styles.locationboxflex}>
-                        <img src="/img/emonga.jpeg" alt="first pic" className={styles.reviewwriterimg}></img>
-                        <div className={styles.reviewwriter}>나는야먹짱</div>
-                        <div className={styles.reviewdate}> | 2022.01.08</div>
+                        <div className={styles.reviewReqTextContainer}>
+                            <div style={{marginRight: "10px"}}>📢</div>
+                            <div>{props.information.name}에서 혼밥해본 적이 있다면 직접 리뷰를 남겨보세요</div>
                         </div>
-                    </div>
-                
-                    <div className={styles.box2}>
-                            <div className={styles.locationboxflex}>
-                            <img className={styles.bestcontent} alt="" src="/img/bestcontent.png"></img>
-                            <img className={styles.count} alt="" src="/img/count.png"></img>
-                            </div>
-                            <div className={styles.reviewcontent}>말해뭐해 일단 너무 맛있고요... 혼자 건대갔다가 들렀는데 혼밥하기 좋아요 추천</div>
-                            <div className={styles.locationboxflex}>
-                            <img src="/img/emonga.jpeg" alt="first pic" className={styles.reviewwriterimg}></img>
-                            <div className={styles.reviewwriter}>나는야먹짱</div>
-                            <div className={styles.reviewdate}> | 2022.01.08</div>
-                            </div>
+                        <div className={styles.reviewButton} onClick={props.showModal}>
+                            <div>리뷰쓰러 가기</div>
+                            <svg width="34" height="10" viewBox="0 0 34 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 9H31L23.1311 1" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
                         </div>
                     </div>
 
+                    <div className={styles.bottomRightContainer}>
+                    {reviewList.map((o, i) =>
+                        <Review
+                            review={o}
+                            mypageMode={false}
+                        />
+                    )}
                     </div>
-
-            </div>    
-
-    
+                </div>
+            </div>
         </>
     );
 }

@@ -1,0 +1,88 @@
+.slideShow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* can set image view size(width, height) */
+.slideBtnContainer {
+    position: relative;
+    margin: auto auto;
+    display: flex;
+}
+
+    /* can set view type(overflow: visible | hidden) */
+.slideContainer {
+    margin: auto auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* can set image size(width, height) */
+.slides {
+    position: absolute;
+    /* width: 100%; /* image size */
+    /* height: 100%; /* image size */
+    display: flex;
+    gap: 0px 100px;
+}
+
+.leftBtn {
+    margin: auto auto auto 0px;
+    z-index: 999;
+    cursor: pointer;
+
+    /* circle shadow */
+    border-radius:50%;
+    box-shadow: 0px 0px 25px 4px rgba(204, 204, 204, 0.25);
+}
+
+.rightBtn {
+    margin: auto 0px auto auto;
+    z-index: 999;
+    cursor: pointer;
+
+    /* circle shadow */
+    border-radius:50%;
+    box-shadow: 0px 0px 25px 4px rgba(204, 204, 204, 0.25);
+}
+
+.bullets {
+    display: flex;
+    margin: 30px auto;
+}
+
+.bullets > div {
+    width: 12px;
+    height: 12px;
+    margin: auto 0px;
+    border-radius: 50%;
+    border: 2px solid #8F7BF7;
+    cursor: pointer;
+}
+.bullets > div:not(:last-child) {
+    margin-right: 18px;
+}
+
+.checked {
+    background-color: #8F7BF7;
+    transition: 0.4s;
+    box-shadow: 0px 4px 8px 1px rgba(99, 99, 99, 0.25);
+}
+.unchecked {
+    margin-right: 13px;
+    background-color: #FFFFFF;
+    transition: 0.4s;
+}
+
+.image {
+    /* width: 100%;
+    height: 100%; */
+    flex-shrink: 0; /* force image to keep props width */
+    border-radius: 10px;
+    object-fit: cover;
+    z-index: 10;
+}

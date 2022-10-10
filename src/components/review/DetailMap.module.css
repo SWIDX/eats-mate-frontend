@@ -1,0 +1,229 @@
+@media(min-width:481px){
+.detail_map_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+}
+  
+@media(max-width:480px){
+.detail_map_wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto 100px auto;
+  height: 700px;
+}
+} 
+  
+@media(min-width:481px){
+.detail_map_wrapper_top {
+  display: flex;
+  margin-bottom: 36px;
+}
+}
+  
+@media(max-width:480px){
+.detail_map_wrapper_top {
+  margin-bottom: 30px;
+}
+}
+  
+@media(min-width:481px){
+.detail_map_title {
+  flex-grow: 2;
+  font-size: 24px;
+  font-weight: 700;
+  margin: auto auto auto 0px;
+}
+}
+  
+@media(max-width:480px){
+.detail_map_title {
+  flex-grow: 2;
+  font-size: 24px;
+  font-weight: 700;
+  margin: auto auto 25px 0px;
+}
+}
+  
+@media(min-width:481px){
+.detail_map_address {
+  display: inline-block;
+}
+}
+  
+@media(max-width:480px){
+.detail_map_address {
+  display: inline-block;
+}
+}
+  
+@media(min-width:481px){
+.detail_map_box {
+  height: 48px;
+  display: flex;
+  background-color: #F8F8F8;
+  border-radius: 20px;
+  padding: 12px;
+}
+}
+  
+@media(max-width:480px){
+.detail_map_box {
+  width: 75vw;
+  height: 40px;
+  display: flex;
+  background-color: #F8F8F8;
+  border-radius: 20px;
+  padding: 10px;
+}
+}
+  
+.detail_map_box > svg {
+  margin: auto 6px auto 2px;
+}
+  
+.detail_icon{
+  margin-left: 20px;
+  display: flex;
+}
+
+.detail_icon > svg {
+  margin: auto 4px auto auto;
+}
+
+@media(min-width:481px){
+.detail_map_font{
+  font-size: 16px;
+}
+}
+
+@media(max-width:480px){
+.detail_map_font{
+  font-size: 12px;
+}
+}
+  
+.detail_map_font2{
+  font-size: 13px;
+  color:#8E8E8E;
+  transform: translateY(1px);
+  margin-right: 6px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media(min-width:481px){
+.detail_map {
+  display: flex;
+}
+}
+
+@media(max-width:480px){
+.detail_map {
+  display: flex;
+  flex-direction: column;
+}
+}
+
+@media(min-width:481px){
+.kakao_map {
+  margin-right: 40px;
+}
+}
+
+@media(max-width:480px){
+.kakao_map {
+  margin-bottom: 25px;
+}
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 28px 0px;
+  margin: auto 0px auto auto;
+  padding: 12px 0px;
+}
+
+@media(max-width:480px){
+.buttonContainer {
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  gap: 18px 0px;
+  margin: auto 0px auto auto;
+  padding: 12px 0px;
+}
+}
+
+.buttonContainer > div > div {
+  text-align: center;
+}
+
+@media(min-width:481px){
+.whiteButton {
+  flex-grow: 1;
+  padding: 22px 80px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 22px -1px rgba(120, 120, 120, 0.25);
+  border-radius: 50px;
+  cursor: pointer;
+}
+}
+
+@media(max-width:480px){
+.whiteButton {
+  flex-grow: 1;
+  padding: 18px 80px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  border: 1px solid #DEDEDE;
+  cursor: pointer;
+}
+}
+
+.whiteButton > div {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  color: #454545;
+  white-space: nowrap;
+}
+
+@media(min-width:481px){
+.blackButton {
+  display: flex;
+  flex-grow: 1;
+  padding: 28px 80px;
+  background: #404040;
+  box-shadow: 0px 4px 22px -1px rgba(120, 120, 120, 0.25);
+  border-radius: 50px;
+  cursor: pointer;
+}
+}
+
+@media(max-width:480px){
+.blackButton {
+  display: flex;
+  flex-grow: 1;
+  padding: 28px 80px;
+  background: #404040;
+  border-radius: 10px;
+  border: 1px solid #DEDEDE;
+  cursor: pointer;
+}
+}
+
+.blackButton > svg {
+  margin: auto 12px auto auto;
+}
+
+.blackButton > div {
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  white-space: nowrap;
+  margin: auto auto auto 0px;
+}

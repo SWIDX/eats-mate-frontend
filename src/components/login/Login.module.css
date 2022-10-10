@@ -1,18 +1,35 @@
-.kakao_btn{
-    scale: 0.95;
-    width: 183px;
-    height: 50px;
-    display: block;
-    cursor: pointer;
+
+@media(min-width:481px){
+    .kakao_btn{
+        width: 200px;
+        cursor: pointer;
+    }
+}
+@media(max-width:480px){
+    .kakao_btn{
+        display:none;
+    }
 }
 
-.logout_btn {
-    display: flex;
-    color: #939393;
-    font-size: 13px;
-    margin: auto 25px;
-    margin-right: 0px;
-    cursor: pointer;
+@media (max-width:480px){
+    .logout_btn {
+        display: flex;
+        color: #939393;
+        font-size: 13px;
+        margin: auto 25px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+}
+@media (min-width:481px){
+    .logout_btn {
+        display: flex;
+        color: #939393;
+        font-size: 13px;
+        margin: auto 25px;
+        margin-right: 0px;
+        cursor: pointer;
+    }
 }
 .logout_btn > div {
     margin: auto auto;
@@ -21,4 +38,16 @@
 }
 .logout_btn > svg {
     margin: auto auto auto 6px;
+}
+@media (max-width:480px){
+    .mobilelogin{
+        width:84px;
+        height:34px;
+        margin: auto 20px auto auto;
+    }
+}
+@media(min-width:481px){
+    .mobilelogin{
+        display: none;
+    }
 }

@@ -1,111 +1,155 @@
 .item {
-  margin: 5% 5% 5% 5%;
+    margin: 18px 24px;
 }
 
 .item > br {
-  color: #e6e6e6;
+    color: #e6e6e6;
 }
 
 .name {
-  font-weight: bold;
-  font-size: large;
-  cursor: pointer;
+    color: #000000;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: ease-in-out 0.1s;
+}
+.name:hover {
+    color: #e97869;
+    transition: ease-in-out 0.1s;
 }
 
 .tablist {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 2em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 2em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
 }
 
 .tabs {
-  position: relative;
+    position: relative;
 }
 
 .tab {
-  display: inline-block;
-  position: relative;
-  list-style: none;
-  padding: 11px 40.5px 18px;
-  cursor: pointer;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 17px;
-  color: gray;
-  background: white;
-  margin-left: 1%;
-  font-size: 17px;
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 11px 40px 18px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 17px;
+    color: gray;
+    background: white;
+    margin-left: 1%;
+    font-size: 17px;
 }
 
 .is_selected {
-  background: white;
-  border-color: #aaa;
-  border-bottom: 2px solid #e97869;
-  font: bolder;
-  color: #e97869;
+    background: white;
+    border-color: #aaa;
+    border-bottom: 3px solid #e97869;
+    font: bolder;
+    color: #e97869;
 }
 
 .subtab_list {
-  position: relative;
+    position: relative;
+    padding: 0;
+    display: flex;
+}
+.subtab_list > li {
+    margin: auto auto;
 }
 
+.subtab_list > li:first-child {
+    margin-left: 9px;
+}
+.subtab_list > li:last-child {
+    margin-right: 9px;
+}
 .subtab_all {
-  display: inline-block;
-  position: relative;
-  list-style: none;
-  padding: 11px 58px 12px;
-  cursor: pointer;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 17px;
-  color: gray;
-  background: white;
-  margin-left: 1%;
-  font-size: 15px;
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 11px 58px 12px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 17px;
+    color: gray;
+    background: white;
+    margin-left: 1%;
+    font-size: 15px;
 }
 
 .subtab_rest {
-  display: inline-block;
-  position: relative;
-  list-style: none;
-  padding: 11px 11px 12px;
-  cursor: pointer;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 17px;
-  color: gray;
-  background: white;
-  margin-left: 1%;
-  font-size: 15px;
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 11px 11px 12px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 17px;
+    color: gray;
+    background: white;
+    margin-left: 1%;
+    font-size: 15px;
+    letter-spacing: -0.04em;
 }
 
 .subtab_tour {
-  display: inline-block;
-  position: relative;
-  list-style: none;
-  padding: 11px 13.5px 11px 12px;
-  cursor: pointer;
-  font-weight: 700;
-  text-transform: uppercase;
-  line-height: 17px;
-  background: white;
-  color: gray;
-  margin-left: 1%;
-  font-weight: bold;
-  font-size: 15px;
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 11px 10px 11px 10px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 17px;
+    background: white;
+    color: gray;
+    margin-left: 1%;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: -0.04em;
 }
 
 .sub_is_selected {
-  background: white;
-  font: bolder;
-  color: #e97869;
+    background: white;
+    font: bolder;
+    color: #e97869;
 }
 
 .tabpanel {
-  overflow: scroll;
-  height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 261px - 1rem);
+    width: 380px;
+}
+
+.tabpanel_all {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 221px);
+    width: 380px;
+}
+
+.markOuter {
+    margin: 12%;
+    padding-right: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.marktext {
+    color: #686868;
+    font-size: 18px;
+    letter-spacing: -0.04em;
 }

@@ -2,11 +2,23 @@
     position: relative; /* for floating effect */
     display: flex;
     padding: 32px 50px;
+}
+
+.containerSmaller {
+    position: relative; /* for floating effect */
+    display: flex;
+    padding: 32px 0px;
+}
+
+.container:not(:last-child) {
     border-bottom: 1px solid #E8E8E8;
 }
 
 .reviewInfo {
     margin-right: 60px;
+}
+.reviewInfoSmaller {
+    width: 100%;
 }
 
 .title {
@@ -29,15 +41,47 @@
 }
 
 .content {
-    font-size: 18px;
+    font-size: 17px;
     letter-spacing: -0.04em;
     color: #000000;
 }
 
+.imageContainer {
+    display: flex;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.imageContainer > img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.imageContainerSmaller {
+    display: flex;
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.imageContainerSmaller > img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+@media(min-width:481px){
 .meta {
     display: flex;
     margin-top: 24px;
-}
+}}
+
+@media(max-width:480px){
+    .meta {
+    }}
+
 
 .rate {
     display: flex;
@@ -46,7 +90,7 @@
 .rateBorder {
     margin: auto 12px auto 12px;
     width: 1px;
-    height: 9px;
+    height: 12px;
     background-color: #DBDBDB;
 }
 
@@ -84,7 +128,16 @@
     margin: auto 0px 0px auto;
 }
 .reviewLike > svg {
-    margin: auto auto;
+    margin: auto 8px auto auto;
+}
+
+.reviewLikeSmaller {
+    display: flex;
+    margin: auto 0px auto auto;
+}
+.reviewLikeSmaller > svg {
+    scale: 0.8;
+    margin: auto 8px auto auto;
 }
 
 .subMenu {
@@ -103,4 +156,39 @@
     letter-spacing: -0.04em;
     color: #000000;
     cursor: pointer;
+}
+
+.recommend {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    color: #8E8E8E;
+}
+
+.recommendSmaller {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    color: #8E8E8E;
+}
+
+
+/* NOT ON MYPAGE */
+.userProfileImg {
+    width: 24px;
+    height: 24px;
+    border-radius: 50% 50%;
+    object-fit: cover;
+    overflow: hidden;
+    margin-right: 9px;
+}
+
+.username {
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.04em;
+    line-height: 20px;
+    color: #000000;
 }

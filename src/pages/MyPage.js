@@ -5,17 +5,23 @@ import { Container, Image } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import NavBar from '../components/navigation/NavBar';
 import { useNavigate } from 'react-router-dom';
-import { changeUserInfo } from '../_actions/user_action';
+import { changeUserInfo, reissueJWT } from '../_actions/user_action';
 import Course from '../components/mypage/Course';
 import Like from '../components/mypage/Like';
 import Review from '../components/mypage/Review';
 import Dropdown from '../components/etc/Dropdown';
 import { ReactComponent as KakaoCircleSvg } from "../images/svg/kakao-circle.svg";
+import { useMediaQuery } from "react-responsive"
+import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
+import NoContent from '../components/etc/mobile/NoContent';
 
 function MyPage() {
+  const SERVER = "eats-mate.com:8081"
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userinfo = useSelector((state) => state.userReducer.userinfo)
+  const isPc = useMediaQuery({ query: "(min-width:481px)" });
+  const isMobile = useMediaQuery({ query: "(max-width:480px)" });
 
   const [renderFlag, setRenderFlag] = useState(false); // 렌더링 할지 말지
   const [tabNum, setTabNum] = useState(0); // 0:코스 1:리뷰 2:찜
@@ -31,18 +37,65 @@ function MyPage() {
   const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트
 
   useEffect(() => {
-    getUserData()
-  }, [])
+    checkExp();
+  }, []);
+
+  // 수정 필요
+  // invalid 시 2번 실행, rt 만료 시 실행되는 점이 원치 않는 동작임
+  useEffect(() => {
+    if(userinfo != null) {
+      getUserData();
+    }
+  }, [userinfo]); // matrix에 오류나는거 넣지 마시오 (ex. userinfo.accessToken)
+
+  async function checkExp() {
+    if(userinfo != null) {
+      const isTokenExpired = Date.now() >= userinfo.expirationTime - 10000;
+      console.log('Date.now(): ', Date.now());
+      console.log('exp - 10s: ', userinfo.expirationTime - 10000);
+      console.log('isTokenExpired: ', isTokenExpired);
+
+      if (isTokenExpired) {
+        // invalid
+        console.log("*** ACCESS TOKEN OUTDATED ***")
+        try {
+          const res = await axios.get("https://" + SERVER + "/user-service/auth/reissue",
+            {
+              withCredentials: true // Set-Cookie 작동을 위해 필수
+            }
+          );
+          console.log(dispatch(reissueJWT(res.data)))
+
+        } catch(e) {
+          console.log(e);
+          console.log("*** REFRESH TOKEN OUTDATED ***")
+          window.alert("로그인이 필요합니다.");  
+          await logOut(); // rt outdated
+          navigate("/") // previous page
+        }
+      }
+      else {
+        // valid
+        console.log("*** VALID USERINFO ***")
+        getUserData();
+      }
+    }
+    else {
+      // not logged in
+      console.log("*** NOT LOGGED IN ***")
+      window.alert("로그인이 필요합니다.");
+      await logOut(); // rt outdated
+      navigate(-1) // previous page
+    }
+  }
 
   async function getUserData() {
-    try{
+    try {
       // getUser... 함수에서 던지는 error 여부를 판단한 후에 render flag를 설정해야 함
-      // await 없으면 render flag를 먼저 설정해버리고 getUser... 에서 발생한 error는 handle 되지 않음
-      // 따라서 getUserData는 async function 이어야 함
-      await getUserCourse()
-      await getUserLike()
-      await getUserReview()
-      setRenderFlag(true)
+      getUserCourse()
+      getUserLike()
+      getUserReview()
+      setRenderFlag(true) // 지금은 일단 처리 없이 해놓음
     } catch(e) {
       console.log(e)
 
@@ -51,7 +104,7 @@ function MyPage() {
         logOut();
       }
 
-      window.alert("로그인이 필요합니다.");
+      window.alert("사용자 정보를 받아오는데 실패했습니다.");
       navigate(-1) // previous page
     }
   }
@@ -59,7 +112,7 @@ function MyPage() {
   async function logOut() {
     // logout
     try {
-      const res = await axios.delete("http://localhost:8081/user-service/auth/logout",
+      const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
           {
               withCredentials: true // Set-Cookie 작동을 위해 필수
           }
@@ -86,7 +139,7 @@ function MyPage() {
 
   async function runTest() {
     try{
-      const res = await axios.post("http://localhost:8081/user-service/user/course/",
+      const res = await axios.post("https://" + SERVER + "/user-service/user/course/",
         {
           title: "test title",
           placeNameList: [ "성수완당", "sdfg", "dgfh" ], /* temp */
@@ -104,7 +157,7 @@ function MyPage() {
 
   async function getUserCourse() {
     try{
-      const res = await axios.get("http://localhost:8081/user-service/user/course/all",
+      const res = await axios.get("https://" + SERVER + "/user-service/user/course/all",
         { //header
             headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
         }
@@ -122,59 +175,46 @@ function MyPage() {
 
   async function getUserLike() {
     try {
-      // const res = await axios.get("http://localhost:8081/user-service/user/like/all",
-      //   { //header
-      //       headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
-      //   }
-      // );
-      const data = 
-      [
-          {
-              id: 123,
-              name: "멘지",
-              gubun: "일식",
-              address: "서울 마포구 월드컵로11길 8 103호(망원동)"
-          },
-          {
-              id: 92,
-              name: "할랄가이즈 강남점",
-              gubun: "기타",
-              address: "서울 서초구 강남대로69길 8"
-          },
-          {
-            id: 101,
-            name: "비스트로주라",
-            gubun: "양식",
-            address: "서울특별시 마포구 와우산로23길 18-7"
-          },
-          {
-            id: 56,
-            name: "제스의부엌 옐로서브마린점",
-            gubun: "일식",
-            address: "서울 서대문구 연세로5다길 35"
-          }
-      ]
-      setLikeList(data);
-      setFilteredLikeList(data);
+      const res = await axios.get("https://" + SERVER + "/user-service/user/like/all",
+        { //header
+            headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+        }
+      );
+      setLikeList(res.data);
+      setFilteredLikeList(res.data);
     } catch(e){
       throw e;
     }
   }
 
-  function deleteCourse(id) {
-    if (window.confirm('정말로 삭제하시겠어요?')) {
-      const newCourseList = courseList.filter(course => course.courseId !== id);
-      setCourseList(newCourseList);
-      const pages = Math.ceil(newCourseList.length / 2);
+  async function deleteCourse(id) {
+    if (window.confirm('정말 삭제하시겠어요?')) {
+      
+      try {
+        const res = await axios.delete("https://" + SERVER + "/user-service/user/course/" + id,
+          { //header
+              headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+          }
+        );
+        
+        const newCourseList = courseList.filter(course => course.courseId !== id);
+        setCourseList(newCourseList);
+        const pages = Math.ceil(newCourseList.length / 2);
 
-      if (pages > 0) {
-        setTotalCoursePage(pages);
+        if (pages > 0) {
+          setTotalCoursePage(pages);
 
-        // DO NOT USE totalCoursePage since it's async (use pages instead)
-        if (currentCoursePage > pages) {
-          setCurrentCoursePage(pages);
+          // DO NOT USE totalCoursePage since it's async (use pages instead)
+          if (currentCoursePage > pages) {
+            setCurrentCoursePage(pages);
+          }
         }
+
+      } catch(e){
+        alert("오류가 발생했습니다.")
+        throw e;
       }
+
     }
   }
 
@@ -188,62 +228,56 @@ function MyPage() {
     }
   }
 
-  function deleteLike(id) {
-    if (window.confirm('정말로 삭제하시겠어요?')) {
-      // 원본에서 삭제
-      const newLikeList = likeList.filter(like => like.id !== id);
-      setLikeList(newLikeList);
+  async function deleteLike(id) {
+    if (window.confirm('정말 삭제하시겠어요?')) {
+      try {
+        const res = await axios.delete("https://" + SERVER + "/review-service/review/" + id,
+          { //header
+              headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+          }
+        );
+        // 원본에서 삭제
+        const newLikeList = likeList.filter(like => like.id !== id);
+        setLikeList(newLikeList);
 
-      // 필터에서 삭제
-      const newFilteredList = filteredLikeList.filter(like => like.id !== id);
-      setFilteredLikeList(newFilteredList);
+        // 필터에서 삭제
+        const newFilteredList = filteredLikeList.filter(like => like.id !== id);
+        setFilteredLikeList(newFilteredList);
+
+      } catch(e){
+        alert("오류가 발생했습니다.")
+        throw e;
+      }
     }
   }
 
-  function deleteReview(id) {
-    if (window.confirm('정말로 삭제하시겠어요?')) {
-      const newReviewList = reviewList.filter(review => review.id !== id);
-      setReviewList(newReviewList);
+  async function deleteReview(id) {
+    if (window.confirm('정말 삭제하시겠어요?')) {
+      try {
+        const res = await axios.delete("https://" + SERVER + "/review-service/review/" + id,
+          { //header
+              headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+          }
+        );
+        const newReviewList = reviewList.filter(review => review.id !== id);
+        setReviewList(newReviewList);
+      } catch(e){
+        alert("오류가 발생했습니다.")
+        throw e;
+      }
     }
   }
 
   async function getUserReview() {
     try {
-      // const res = await axios.get("http://localhost:8081/review-service/???",
-      //   { //header
-      //       headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
-      //   }
-      // );
-      const data = 
-      [
-          {
-              id: 999,
-              placeName: "성수완당 본점",
-              category: "일식",
-              content: "말해뭐해 일단 너무 맛있고요... 혼자 건대 갔다가 들렀는데 혼밥하기 딱 좋은 분위기였어요 추천",
-              createdBy: "2022-01-08",
-              rate: 2
-          },
-          {
-              id: 1023,
-              placeName: "만뽀스키야키 강남 더인피닛스퀘어점",
-              category: "일식",
-              content: "스키야키가 이렇게 가성비 좋은 음식이었나요...? 1인으로 팔아주시니 넘 감사할 따름입니다~ ",
-              createdBy: "2022-01-08",
-              rate: 1
-          },
-          {
-            id: 2340,
-            placeName: "홍마방 이태원점",
-            category: "중식",
-            content: "저는 꿔바로우가 이렇게 맛있는지 처음 알았어요... 사장님도 잇츠메이트 쓰시는 거 아니죠? ㅋㅋ 가게가 혼밥하기 딱 좋아서 놀랐네요 너무 잘먹어서 후기 남깁니다",
-            createdBy: "2022-01-08",
-            rate: 0
-          }
-      ]
-      const newData = data
-      data.forEach((e, i) => data[i].createdBy = e.createdBy.replaceAll("-", ". "));
-      setReviewList(data);
+      const res = await axios.get("https://" + SERVER + "/review-service/review/user",
+        { //header
+            headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
+        }
+      );
+      const newData = res.data;
+      newData.forEach((e, i) => res.data[i].createdBy = e.createdBy.replaceAll("-", ". "));
+      setReviewList(newData);
     } catch(e){
       throw e;
     }
@@ -253,10 +287,14 @@ function MyPage() {
     <>
     { userinfo != null && renderFlag ?
       <>
-        <NavBar />
+        {isPc && <NavBar />}
+        {isMobile && <MobileNavBar />}
+        {isMobile && <NoContent/>}
+        {isPc &&
         <Container fluid="xxl" style={{ width: "75%", height: "100%", padding: "50px 0px 100px 0px"}}>
-
-          {/* 싱단 타이틀 */}
+          {/* 상단 타이틀 */}
+          {isPc &&
+          <div>
           <div className={styles.title}>
             <div className={styles.profileContainer}>
               <Image
@@ -375,14 +413,18 @@ function MyPage() {
           </div>
           : null
           }
-
+        
           {/*
           <div>
             <button onClick={runTest}>save</button>
             <button onClick={getUserCourse}>getAll</button>
           </div>
           */}
+
+          
+        </div>}
         </Container>
+        }
       </>
       : null
     }

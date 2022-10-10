@@ -1,0 +1,255 @@
+@media(min-width:481px){
+.container {
+    display: flex;
+    flex-direction: column;
+    /* padding: 0px 100px; */
+}
+}
+
+@media(max-width:480px){
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto;
+}
+}
+
+@media(min-width:481px){
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 32px;
+}
+}
+
+@media(max-width:480px){
+.titleContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+}
+    
+
+@media(min-width:481px){
+.title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 41px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin: auto auto auto 0px;
+}
+}
+
+@media(max-width:480px){
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 41px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin: auto auto auto 0px;
+}
+}
+
+@media(min-width:481px){
+.allReviewButton {
+    display: flex;
+    flex-direction: row;
+    margin: auto 0px auto auto;
+    cursor: pointer;
+}
+}
+
+@media(max-width:480px){
+.allReviewButton {
+    display: flex;
+    flex-direction: row;
+    margin: auto auto auto 0px;
+    cursor: pointer;
+}
+}
+
+@media(min-width:481px){
+.allReviewButton > div {
+    font-size: 16px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #A7A7A7;
+    margin: auto 5px auto auto;
+}
+}
+
+@media(max-width:480px){
+.allReviewButton > div {
+    font-size: 18px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #A7A7A7;
+    margin: auto 5px auto auto;
+}
+}
+
+.allReviewButton > svg {
+    scale: 0.9;
+    margin: auto 0px auto auto;
+}
+
+@media(min-width:481px){
+.bottomContainer {
+    display: flex;
+    gap: 0px 30px;
+}
+}
+
+@media(max-width:480px){
+.bottomContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0px 30px;
+}
+}
+
+.bottomLeftContainer {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 28%;
+}
+
+@media(min-width:481px){
+.bottomRightContainer {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    flex-basis: 72%;
+    background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.4);
+    border-radius: 32px 32px 32px 32px;
+}
+}
+
+@media(max-width:480px){
+.bottomRightContainer {
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+    align-self: flex-start;
+    flex-basis: 72%;
+    background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    border-radius: 32px 32px 32px 32px;
+}
+}
+
+@media(min-width:481px){
+.counterBox {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 48px;
+    background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.4);
+    border-radius: 32px 32px 0px 32px;
+    margin-bottom: 58px;
+}
+}
+
+@media(max-width:480px){
+.counterBox {
+    display: flex;
+    flex-direction: column;
+    padding: 35px 30px;
+    background: #FFFFFF;
+    border: 1px solid #EFEFEF;
+    border-radius: 32px 32px 0px 32px;
+    margin: auto 0px auto 0px;
+    margin-bottom: 25px;
+}
+}
+
+.reviewCountText {
+    font-size: 22px;
+    line-height: 35px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin: 0px auto 12px auto;
+}
+
+.reviewReqTextContainer {
+display: flex;
+}
+
+@media(min-width:481px){
+.reviewReqTextContainer > div {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-bottom: 24px;
+}
+}
+
+@media(max-width:480px){
+.reviewReqTextContainer > div {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-bottom: 10px;
+}
+}
+
+@media(min-width:481px){
+.reviewButton {
+    display: flex;
+    height: 68px;
+    background: #E97869;
+    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.25);
+    border-radius: 16px;
+    padding: 19px 27px;
+    cursor: pointer;
+}
+}
+
+@media(max-width:480px){
+.reviewButton {
+    display: flex;
+    height: 68px;
+    background: #E97869;
+    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.25);
+    border-radius: 16px;
+    padding: 19px 27px;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+}
+
+@media(min-width:481px){
+.reviewButton > div {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: auto auto auto 0px;
+}
+}
+
+@media(max-width:480px){
+.reviewButton > div {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 11px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: auto auto auto 0px;
+}
+}
+
+.reviewButton > svg {
+    margin: auto 0px auto auto;
+}

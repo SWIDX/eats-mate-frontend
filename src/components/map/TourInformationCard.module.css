@@ -1,0 +1,457 @@
+.card {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    z-index: 30;
+    height: calc(100vh - 90px);
+    /*overflow-y: scroll;*/
+}
+
+.card_display {
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+    z-index: 30;
+    height: 75vh;
+    bottom: 16vh;
+    /*max-height: calc(100vh - 90px);*/
+    display: none;
+}
+
+.card_outer {
+    display: flex;
+    height: fit-content;
+}
+
+.topOuter {
+    position: relative;
+    bottom: 0px;
+    width: 380px;
+    height: calc(100vh - 90px);
+    /*height: fit-content;*/
+    border: 1px solid #e6e6e6;
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cardTop {
+    display: flex;
+    flex-direction: row;
+    width: 380px;
+    height: 80px;
+    border-radius: 10px;
+    justify-content: flex-start;
+    padding: 8px 15px 8px 8px;
+    align-items: center;
+}
+
+.cardTagOuter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.cardName {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+}
+
+.cardTag {
+    margin-left: 10px;
+    letter-spacing: -0.04em;
+}
+
+.divSections {
+    border: 0;
+    width: 100%;
+    height: 8px;
+    background: #f7f7f7;
+}
+
+.cardImg {
+    display: flex;
+    justify-content: space-around;
+    margin: 18px;
+}
+
+.cardImgtour > img {
+    align-items: center;
+}
+.tourImg {
+    object-fit: cover;
+    max-width: 150px;
+}
+.cardMiddleOuter {
+    height: calc(100vh - 171px); /* 90px + 80px + 1px hr height */
+    /* padding-bottom: 100px; */
+}
+
+.cardMiddle {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 380px;
+    border-radius: 10px;
+    padding: 20px 24px 100px 24px;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.addressTop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.addressTop_tour {
+    display: flex;
+    align-items: center;
+}
+
+.addressInfo {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
+}
+
+.overviewInfo {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    /* margin-bottom: 24px; */
+    letter-spacing: -0.04em;
+}
+.overview_top {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+.overviewDetail {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    margin-left: 24px;
+    margin-bottom: 24px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+}
+
+.overviewDetail2 {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    margin-left: -4px;
+    margin-bottom: 24px;
+    line-height: 20px;
+    overflow: scroll;
+    max-height: 140px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+}
+.overviewDetail2::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.overview_name {
+    width: 60px;
+    margin-left: 5px;
+    font-weight: 700;
+}
+.copy {
+    margin-left: 1px;
+}
+
+.copyBtn {
+    border: solid 0 white;
+    text-decoration: underline;
+    text-underline-position: under;
+    background: white;
+    font-size: 14px;
+    color: #8e8e8e;
+}
+
+.cardMiddle .timeInfo {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle .callInfo {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle .callInfo > img {
+    width: 24px;
+}
+
+.cardMiddle .addressInfo .addressDetail {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    margin-left: 24px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle .timeInfo .timeDetail {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    line-height: 24px;
+    margin-left: 24px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle .callInfo .callDetail {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    margin-left: 24px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle > hr {
+    border: 1%;
+    background: #e6e6e6;
+    margin: 0;
+}
+
+.cardMiddle > div {
+    text-align: left;
+}
+
+.cardMiddle > div > div {
+    text-align: left;
+}
+
+.cardBottom {
+    height: 500px;
+    position: relative;
+}
+
+.reviews {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 24px 15px;
+    letter-spacing: -0.04em;
+    margin-bottom: 70px;
+}
+
+.evaluate_outer {
+    display: flex;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 10px;
+    color: #8c8c8c;
+    justify-content: space-between;
+    letter-spacing: -0.04em;
+}
+
+.moreTab {
+    display: flex;
+    top: 24px;
+    right: 56px;
+    color: #939393;
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: -0.04em;
+}
+.more {
+    margin: auto 0px auto auto;
+}
+.morebtn {
+    border: 0px solid white;
+    background: white;
+    font-size: 14px;
+    color: #8c8c8c;
+    letter-spacing: -0.04em;
+}
+
+.totalReviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 36px;
+    font-weight: normal;
+    color: #8c8c8c;
+}
+
+.totalReviews img {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.totalReviews span {
+    display: block;
+    text-align: center;
+    margin-left: 0;
+}
+
+.profile {
+    margin-top: 22px;
+}
+
+.profile img {
+    margin-right: 10px;
+}
+
+.DetailReviews {
+    margin-bottom: 24px;
+}
+
+.DetailReviews p {
+    font-weight: normal;
+    margin-top: 12px;
+}
+
+.DetailReviews .date {
+    font-size: 14px;
+    color: #8c8c8c;
+    font-weight: normal;
+    display: inline;
+    letter-spacing: -0.04em;
+}
+
+.DetailReviews .face {
+    display: inline;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto 0px auto auto;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
+}
+
+.DetailReviews .face img {
+    width: 26px;
+    margin-right: 8px;
+}
+
+.Buttons {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 44px;
+    padding-bottom: 22px;
+}
+
+.DetailButton {
+    /*position: fixed;
+    bottom: 75px;*/
+    width: 280px;
+    height: 50px;
+    background: #e97869;
+    border: 0;
+    box-shadow: 0px 5px 12px 4px rgba(181, 181, 181, 0.25);
+    margin-top: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+.exitbutton {
+    position: absolute;
+    top: 24px;
+    right: -44px;
+    z-index: 28;
+}
+
+.exitbutton > button {
+    display: flex;
+    color: #e97869;
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    border: solid 1px #e6e6e6;
+    width: 44px;
+    height: 44px;
+}
+
+.exitbutton > button > svg {
+    margin: auto auto;
+}
+
+.AddCourseBtn {
+    /*position: fixed;
+    bottom: 15px;*/
+    width: 280px;
+    height: 50px;
+    background: white;
+    border: solid 1px #e97869;
+    /* box-shadow: 0px 5px 12px 4px rgb(181 181 181 / 25%); */
+    margin-top: 10px;
+    border-radius: 8px;
+    color: #e97869;
+    font-weight: bold;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+}
+.top > div {
+    font-weight: 700;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+.bottom_2 {
+    margin-left: 7px;
+}
+
+.tourapi_outer {
+    display: flex;
+    /*margin-bottom: 70px;*/
+}
+.tourapi {
+    margin-top: 10px;
+    margin-left: 160%;
+}
+
+.line_hr {
+    margin: 0px 35px;
+}
+
+.backBtn {
+    background-color: white;
+}
+
+.backBtn > button {
+    border: solid 0px white;
+    background: white;
+}
+
+.cardMiddleScroll {
+    /* height: 600px; */
+    height: calc(100vh - 172px);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.cardMiddleScroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}

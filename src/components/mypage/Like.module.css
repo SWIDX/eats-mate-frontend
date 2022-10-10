@@ -24,6 +24,14 @@
     font-weight: 700;
     font-size: 20px;
     letter-spacing: -0.04em;
+    cursor: pointer;
+    color: #000000;
+    transition: 0.3s;
+}
+
+.name:hover {
+    color: #E97869;
+    transition: 0.3s;
 }
 
 .gubun {

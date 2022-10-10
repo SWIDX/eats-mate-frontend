@@ -1,0 +1,59 @@
+.all{
+    background-color: white;
+    z-index:100;
+    display: flex;
+    flex-direction: column;
+}
+
+.main{
+    margin:61px auto -50px auto;
+    font-size: 24px;
+    font-weight: bold;
+    width:245px;
+    text-align: center;
+    color: black;
+    letter-spacing: -0.04em;
+}
+
+.sub{
+    margin:auto;
+    margin-bottom: 57px;
+    font-size:14px;
+    color: #4a4a4a;
+    width:285px;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+
+.sub>span{
+    margin:auto;
+    font-weight: bold;
+    font-size:14px;
+    color: #4a4a4a;
+    text-align: center;
+    letter-spacing: -0.04em;
+}
+
+.backButton {
+    display: flex;
+    margin:auto auto 57px auto;
+    width:343px;
+    height: 55px;
+    background: #E97869;
+    box-shadow: 0px 4px 31px 5px rgba(228, 228, 228, 0.25);
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .backButton > div {
+    font-size: 18px;
+    margin:auto auto;
+    padding-left: 17%;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+  }
+  .backButton > svg {
+    margin: auto 0px auto auto;
+  }
+
+

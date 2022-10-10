@@ -1,0 +1,454 @@
+.card_outer {
+    display: flex;
+}
+.card {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    z-index: 30;
+    height: calc(100vh - 90px);
+    /*overflow-y: scroll;*/
+}
+.card_display {
+    position: absolute;
+    bottom: 0px;
+    left: 15px;
+    z-index: 30;
+    height: 90%;
+    /*max-height: calc(100vh - 90px);*/
+    display: none;
+}
+
+.card::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+.card > div {
+    position: relative;
+    top: 0px;
+    width: 380px;
+    height: fit-content;
+    border: 1px solid #e6e6e6;
+    background-color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.topOuter {
+    bottom: 0px;
+    width: 380px;
+    height: calc(100vh - 90px);
+}
+
+.cardTop {
+    display: flex;
+    flex-direction: row;
+    width: 380px;
+    height: 80px;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: flex-start;
+    padding: 8px;
+    align-items: center;
+}
+
+.cardTagOuter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.cardName {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+}
+
+.cardTag {
+    margin-left: 10px;
+    letter-spacing: -0.04em;
+}
+.heart {
+    border: 0;
+    padding: 0;
+    margin: auto 8px auto auto;
+    background-color: #fff;
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 10%;
+    cursor: pointer;
+}
+
+.divSections {
+    border: 0;
+    width: 100%;
+    height: 8px;
+    background: #f7f7f7;
+}
+
+.cardImg {
+    display: flex;
+    padding: 24px 8px;
+}
+
+.cardImg > img {
+    align-items: center;
+    margin: auto auto;
+    width: 93px;
+    height: 93px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cardMiddle {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    height: calc(100vh - 172px);
+    border-radius: 10px;
+    padding: 0px 20px 100px 20px;
+    overflow-y: scroll;
+}
+.addressInfo {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+    padding: 24px 0px;
+}
+
+.addressTop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+}
+.top > div {
+    font-weight: 700;
+}
+.bottom {
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+}
+.copy {
+    margin-left: 1px;
+}
+
+.copyBtn {
+    border: solid 0 white;
+    text-decoration: underline;
+    text-underline-position: under;
+    background: white;
+    font-size: 14px;
+    color: #8e8e8e;
+}
+.addressDetail {
+    font-weight: normal;
+    font-size: 16px;
+    margin-left: 24px;
+    line-height: 22px;
+    display: flex;
+    justify-content: flex-start;
+    letter-spacing: -0.04em;
+}
+
+.overview_top {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+.overviewDetail {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    margin-left: 24px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+}
+
+.overviewDetail2 {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    margin-left: -4px;
+    margin-bottom: 24px;
+    line-height: 20px;
+    overflow: scroll;
+    height: 140px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+}
+.overviewDetail2::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.overview_name {
+    width: 60px;
+    margin-left: 5px;
+    font-weight: 700;
+}
+
+.cardMiddle .timeInfo {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle .callInfo {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle .callInfo > img {
+    width: 24px;
+}
+
+.timeDetail {
+    display: flex;
+    justify-content: flex-start;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    line-height: 24px;
+    margin-left: 24px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle .callInfo .callDetail {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 6px;
+    margin-left: 24px;
+    letter-spacing: -0.04em;
+}
+
+.cardMiddle > hr {
+    border: 1%;
+    background: #e6e6e6;
+    margin: 0;
+}
+
+.cardMiddle > div {
+    text-align: left;
+}
+
+.cardMiddle > div > div {
+    text-align: left;
+}
+
+.cardBottom {
+    height: 500px;
+    position: relative;
+}
+
+.reviews {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 24px 15px;
+    letter-spacing: -0.04em;
+}
+
+.evaluate_outer {
+    display: flex;
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 10px;
+    color: #8c8c8c;
+    justify-content: space-between;
+    letter-spacing: -0.04em;
+}
+
+.moreTab {
+    display: flex;
+    top: 24px;
+    right: 56px;
+    color: #939393;
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: -0.04em;
+}
+.more {
+    margin: auto 0px auto auto;
+}
+.morebtn {
+    border: 0px solid white;
+    background: white;
+    font-size: 14px;
+    color: #8c8c8c;
+    letter-spacing: -0.04em;
+}
+
+.totalReviews {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 36px;
+    font-weight: normal;
+    color: #8c8c8c;
+}
+
+.totalReviews img {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.totalReviews span {
+    display: block;
+    text-align: center;
+    margin-left: 0;
+}
+
+.profile {
+    margin-top: 22px;
+}
+
+.profile img {
+    margin-right: 10px;
+}
+
+.DetailReviews {
+    margin-bottom: 24px;
+}
+
+.DetailReviews p {
+    font-weight: normal;
+    margin-top: 12px;
+}
+
+.DetailReviews .date {
+    font-size: 14px;
+    color: #8c8c8c;
+    font-weight: normal;
+    display: inline;
+    letter-spacing: -0.04em;
+}
+
+.DetailReviews .face {
+    display: inline;
+    text-align: right;
+    font-size: 14px;
+    font-weight: bold;
+    margin: auto 0px auto auto;
+    margin-bottom: 24px;
+    letter-spacing: -0.04em;
+}
+
+.DetailReviews .face img {
+    width: 26px;
+    margin-right: 8px;
+}
+
+.Buttons {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 44px;
+    padding-bottom: 22px;
+}
+
+.DetailButton {
+    /*position: fixed;*/
+    bottom: 75px;
+    width: 280px;
+    height: 50px;
+    background: #e97869;
+    border: 0;
+    box-shadow: 0px 5px 12px 4px rgba(181, 181, 181, 0.25);
+    margin-top: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+.exitbutton {
+    position: absolute;
+    top: 24px;
+    right: -44px;
+    z-index: 28;
+}
+
+.exitbutton > button {
+    display: flex;
+    color: #e97869;
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    border: solid 1px #e6e6e6;
+    width: 44px;
+    height: 44px;
+}
+
+.exitbutton > button > svg {
+    margin: auto auto;
+}
+
+.exitbutton_tour {
+    position: absolute;
+    top: 15px;
+    right: -44px;
+    z-index: 28;
+}
+
+.exitbutton_tour > button {
+    display: inline-block;
+    color: #e97869;
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    border: solid 1px #e6e6e6;
+    width: 44px;
+    height: 44px;
+}
+
+.AddCourseBtn {
+    /*position: fixed;*/
+    bottom: 15px;
+    width: 280px;
+    height: 50px;
+    background: white;
+    border: solid 1px #e97869;
+    /* box-shadow: 0px 5px 12px 4px rgb(181 181 181 / 25%); */
+    margin-top: 10px;
+    border-radius: 8px;
+    color: #e97869;
+    font-weight: bold;
+}
+
+.evaluate_outer {
+    display: flex;
+    align-items: center;
+}
+
+.evaluate {
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+}
+.reviewcount {
+    margin-left: 10px;
+}
+
+.backBtn > button {
+    border: solid 0px white;
+    background: white;
+}

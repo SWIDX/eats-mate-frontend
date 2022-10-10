@@ -2,13 +2,16 @@ import React from "react";
 import axios from 'axios';
 import styles from "./Like.module.css"
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 function Like(props) {
+    const SERVER = "eats-mate.com:8081"
     const userinfo = useSelector((state) => state.userReducer.userinfo)
+    const navigate = useNavigate();
 
     async function requestDelete() {
         try {
-            const res = await axios.delete("http://localhost:8081/user-service/user/like/" + props.like.id,
+            const res = await axios.delete("https://" + SERVER + "/user-service/user/like/" + props.like.id,
                 { //header
                     headers: { 'Authorization': `Bearer ${userinfo.accessToken}` }
                 }
@@ -17,6 +20,10 @@ function Like(props) {
         } catch(e) {
             console.warn(e);
         }
+    }
+
+    function gotoDetailPage() {
+        navigate("/detail/" + props.like.name);
     }
 
     return (
@@ -29,7 +36,7 @@ function Like(props) {
             </div>
             <div className={styles.likeInfo}>
                 <div className={styles.title}>
-                    <div className={styles.name}>{props.like.name}</div>
+                    <div className={styles.name} onClick={gotoDetailPage}>{props.like.name}</div>
                     <div className={styles.gubun}>{props.like.gubun}</div>
                 </div>
                 <div className={styles.address}>{props.like.address}</div>
