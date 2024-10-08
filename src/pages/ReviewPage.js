@@ -17,7 +17,7 @@ import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 import NoContent from '../components/etc/mobile/NoContent';
 
 function ReviewPage() {
-  const SERVER = "eats-mate.com:8081"
+  const SERVER = "localhost:8081"
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const placeName = useLocation().pathname.split("/").pop();

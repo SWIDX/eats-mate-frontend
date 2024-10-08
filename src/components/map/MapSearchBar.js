@@ -4,7 +4,7 @@ import styles from './Map.module.css';
 import { SearchContext } from '../../context/SearchContext';
 
 const MapSearchBar = (props) => {
-    const SERVER = "eats-mate.com:8081"
+    const SERVER = "localhost:8081"
     const [inputText, setInputText] = useState('');
     const [selectValue, setSelectValue] = useState('전체');
     const [information, setInformation] = useState([]); // data(restaurant, tour)

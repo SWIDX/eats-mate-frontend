@@ -16,7 +16,7 @@ import axios from 'axios';
 import Review from '../mypage/Review';
 
 function RestInformationCard(props) {
-    const SERVER = "eats-mate.com:8081"
+    const SERVER = "localhost:8081"
     const navigate = useNavigate();
     const [onClose, setOnClose] = useState(false);
     const [information, setInformation] = useState({});

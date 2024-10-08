@@ -6,7 +6,7 @@ import ReviewCounter from "./ReviewCounter";
 import Review from "../mypage/Review";
 
 function MainReview(props){
-    const SERVER = "eats-mate.com:8081"
+    const SERVER = "localhost:8081"
     const placeName = useLocation().pathname.split("/").pop();
     const navigate = useNavigate();
     const [reviewList, setReviewList] = useState([]); // 리뷰 데이터 리스트

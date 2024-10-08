@@ -16,7 +16,7 @@ import MobileNavBar from "../components/navigation/mobile/MobileNavBar";
 import NoContent from '../components/etc/mobile/NoContent';
 
 function MyPage() {
-  const SERVER = "eats-mate.com:8081"
+  const SERVER = "localhost:8081"
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userinfo = useSelector((state) => state.userReducer.userinfo)

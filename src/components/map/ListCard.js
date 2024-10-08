@@ -8,7 +8,7 @@ import { ReactComponent as Exit } from '../../images/svg/exit_button.svg';
 import axios from 'axios';
 
 function ListCard(props) {
-    const SERVER = "eats-mate.com:8081"
+    const SERVER = "localhost:8081"
     const [information, setInformation] = useState();
     const [onClose, setOnClose] = useState(true);
     const { searchInformation } = useContext(SearchContext);

@@ -9,7 +9,7 @@ import { useMediaQuery } from "react-responsive"
 
 function RecentReview(){
     const navigate = useNavigate();
-    const SERVER = "eats-mate.com:8081"
+    const SERVER = "localhost:8081"
     const [information, setInformation] = useState(undefined); // 백엔드에서 받아온 정보 객체 리스트
     const [currentInfo, setCurrentInfo] = useState({}); // 버튼 클릭하면 나와야 하는 단일 정보 객체
     const [btnClick, setBtnClick] = useState([]);
