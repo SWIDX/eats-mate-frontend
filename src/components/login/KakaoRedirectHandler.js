@@ -4,11 +4,13 @@ import { useDispatch } from 'react-redux';
 import { changeUserInfo } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
-const REST_API_KEY = "c4a648b170fea0fbd26e61d052e9093b";
-const REDIRECT_URI =  "https://eats-mate.com/user-service/auth/kakao";
+const REST_API_KEY = "b16b8c54e2c2b7fc607ed0c23abd4160";
+const FE_SERVER = "localhost:3000" // FE for redirection
+const BE_SERVER = "localhost:8081" // BE for post redirection
+const PROTOCOL = "http"
+const REDIRECT_URI =  `${PROTOCOL}://${FE_SERVER}/user-service/auth/kakao`;
 
 const KakaoRedirectHandler = () => {
-    const SERVER = "eats-mate.com:8081"
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -28,7 +30,9 @@ const KakaoRedirectHandler = () => {
                     headers: {'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'}
                 }
             );
-            const res = await axios.post("https://" + SERVER + "/user-service/auth/kakao",
+
+            // FE로 redirect 하여 code 처리 후 BE로 Access Token 전송 (혼동 유의)
+            const res = await axios.post(PROTOCOL + "://" + BE_SERVER + "/user-service/auth/kakao",
                 {
                     access_token: kakao_res.data.access_token
                 },
@@ -42,7 +46,7 @@ const KakaoRedirectHandler = () => {
             console.warn(e);
             window.alert("오류가 발생했습니다. 다시 시도해주세요.");
             try {
-                const res = await axios.delete("https://" + SERVER + "/user-service/auth/logout",
+                const res = await axios.delete(PROTOCOL + "://" + BE_SERVER + "/user-service/auth/logout",
                     {
                         withCredentials: true // Set-Cookie 작동을 위해 필수
                     }
